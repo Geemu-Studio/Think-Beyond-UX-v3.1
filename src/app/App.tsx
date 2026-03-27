@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { SocialProofBar } from './components/SocialProofBar';
@@ -9,8 +10,9 @@ import { CaseStudySection } from './components/CaseStudySection';
 import { CTAFormSection } from './components/CTAFormSection';
 import { OfferBridgeSection } from './components/OfferBridgeSection';
 import { Footer } from './components/Footer';
+import RecruitmentPage from './components/recruitment/RecruitmentPage';
 
-export default function App() {
+function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -27,5 +29,16 @@ export default function App() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter basename="/Think-Beyond-UX-v3">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/recruitment" element={<RecruitmentPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
