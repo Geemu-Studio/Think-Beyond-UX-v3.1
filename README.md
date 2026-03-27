@@ -1,18 +1,41 @@
-Opis Projektu: Architektura Informacji (IA) i UX dla Salesforce Education Cloud
+# Architektura Informacji (IA) i UX: Salesforce Education Cloud
 
+🔗 **[ZOBACZ PROJEKT](#)** *(tutaj wklej link do podglądu, np. Figma, live demo)*
 
-Cel projektu
-Głównym założeniem projektu było stworzenie Architektury Informacji (IA) oraz makiety doświadczeń użytkownika (UX) dla dedykowanej strony docelowej (landing page), oferującej wdrożenia Salesforce Education Cloud. Projekt został zoptymalizowany pod kątem pozyskiwania ruchu z kampanii Google Ads, a jego główną grupą docelową są decydenci wyższego szczebla z sektora edukacji wyższej (m.in. rektorzy, prorektorzy, kanclerze), ze szczególnym uwzględnieniem rynku brytyjskiego.
-Strategia i Podejście Badawcze
-Podstawą projektowania UX była dogłębna analiza dyskursu marketingowego elitarnych uczelni brytyjskich. Zrezygnowano z tradycyjnego, agresywnego języka sprzedażowego B2B (tzw. dyskursu deficytu, skupionego na awariach systemów i stratach finansowych). Zamiast tego zaimplementowano "dyskurs transformacyjny", pozycjonujący technologię jako strategiczne narzędzie do realizacji misji uczelni, upełnomocnienia (empowerment) społeczności akademickiej oraz budowania relacji na całe życie (lifelong learning).
-Kluczowe Moduły Architektury Informacji (IA)
-Zaprojektowano modułowy układ strony (scroll-telling), który prowadzi użytkownika przez spójną narrację, stopniowo budując zaufanie i minimalizując opór przed konwersją.
-Wizja i Obietnica (Hero Section): Moduł otwierający, w którym oprogramowanie pozycjonowane jest nie jako system IT, lecz jako narzędzie redefiniujące ścieżkę studenta. Zastosowano wzniosłą typografię i otwartą przestrzeń (whitespace), komunikując prestiż.
-Transformacja Wyzwań (Pain Points): Sekcja uderzająca w bolączki uczelni (np. spadek retencji, problemy rekrutacyjne), jednak z przeformułowaniem ich na język potencjału i wsparcia (np. "Proaktywna Retencja i Dobrostan", "Holistyczne Zrozumienie Studenta").
-Kalkulator Wpływu (Impact Calculator): Interaktywny moduł ROI zoptymalizowany pod kątem psychologii decydenta. Zamiast wywoływać strach przed utratą czesnego (loss aversion), narzędzie skupia się na uświadamianiu wartości dodanej płynącej z zaangażowania i sukcesu społeczności studenckiej.
-Tarcza Wizerunkowa (Security & Compliance): Dedykowany blok budujący zaufanie instytucjonalne. Skupiono się w nim na odporności infrastruktury na cyberataki (Proactive Cyber Resilience) oraz rygorystycznej zgodności z przepisami o ochronie danych osobowych (GDPR/RODO).
-Dowód Społeczny (Social Proof / Case Study): Uwiarygodnienie skuteczności rozwiązania na podstawie autentycznej historii wdrożenia. Twarde dane liczbowe (skala przetworzonych aplikacji, redukcja czasu obsługi) osadzono w kontekście wspierania "przyszłych liderów".
-Ekspertyza i Konsultacja (Conversion Area): Formularz kontaktowy zaprojektowany w oparciu o doradztwo strategiczne, a nie agresywną sprzedaż. Formularz zbiera kluczowe dane, jednocześnie pozycjonując zespół wdrożeniowy jako partnerów w transformacji edukacyjnej.
-Wnioski i Użyteczność
-Opracowany produkt to skalowalny Master Template (wzorzec główny). Zastosowana modułowość i wypracowana rama komunikacyjna pozwalają na szybkie klonowanie struktury i jej precyzyjne dostosowywanie pod węższe intencje wyszukiwania (np. tworzenie sub-landingów dedykowanych wyłącznie procesom rekrutacji lub wyłącznie zarządzaniu siecią absolwentów). Projekt jest w pełni przygotowany do nałożenia docelowej warstwy wizualnej (High-Fidelity UI).
+---
 
+## 🎯 Cel projektu
+Projekt obejmuje kompleksową Architekturę Informacji (IA) oraz makietę doświadczeń użytkownika (UX) dla dedykowanej strony docelowej (landing page). Głównym zadaniem platformy jest ofertowanie i generowanie leadów na wdrożenia systemu **Salesforce Education Cloud**.
+
+Strona została zoptymalizowana pod kątem konwersji z kampanii Google Ads.  
+**Grupa docelowa:** Decydenci wyższego szczebla z sektora edukacji wyższej (rektorzy, prorektorzy, kanclerze), ze szczególnym naciskiem na rynek brytyjski.
+
+---
+
+## 🧠 Strategia i Podejście Badawcze
+Zrezygnowano z tradycyjnego, agresywnego języka sprzedażowego B2B (tzw. dyskursu deficytu, skupiającego się na stratach i awariach). Zamiast tego, w oparciu o analizę komunikacji elitarnych uczelni brytyjskich, wdrożono **dyskurs transformacyjny**. Technologia jest pozycjonowana jako:
+* Strategiczne narzędzie do realizacji misji edukacyjnej uczelni.
+* Środek do upełnomocnienia (empowerment) społeczności akademickiej.
+* Fundament do budowania relacji na całe życie (lifelong learning).
+
+---
+
+## 🏗️ Kluczowe Moduły Architektury (Scroll-telling)
+Układ opiera się na narracji, która stopniowo buduje zaufanie i minimalizuje opór przed konwersją.
+
+* **Wizja i Obietnica (Hero Section):** Oprogramowanie jako narzędzie redefiniujące ścieżkę studenta. Zastosowano otwartą przestrzeń (whitespace) i wzniosłą typografię w celu komunikacji prestiżu.
+* **Transformacja Wyzwań (Pain Points):** Uderzenie w instytucjonalne bolączki (spadek retencji, rekrutacja) poprzez przeformułowanie ich na język potencjału i wsparcia (np. "Proaktywna Retencja i Dobrostan").
+* **Kalkulator Wpływu (Impact Calculator):** Interaktywny moduł ROI zoptymalizowany pod kątem psychologii decydenta. Narzędzie uświadamia wartość dodaną płynącą z sukcesu studentów, eliminując nacisk na strach przed stratą finansową (loss aversion).
+* **Tarcza Wizerunkowa (Security & Compliance):** Dedykowany blok budujący zaufanie. Akcentuje odporność infrastruktury na cyberataki (Proactive Cyber Resilience) i rygorystyczną zgodność z przepisami (GDPR/RODO).
+* **Dowód Społeczny (Social Proof):** Uwiarygodnienie poprzez autentyczne case study. Twarde dane (np. redukcja czasu obsługi) osadzono w kontekście wspierania "przyszłych liderów".
+* **Ekspertyza i Konsultacja (Conversion Area):** Strategicznie zaprojektowany formularz kontaktowy. Odrzuca agresywną sprzedaż na rzecz doradztwa, pozycjonując zespół jako partnerów w transformacji edukacyjnej.
+
+---
+
+## ⚙️ Skalowalność i Użyteczność
+Opracowany produkt to w pełni skalowalny **Master Template**. 
+
+Zastosowana modułowość i uniwersalna rama komunikacyjna pozwalają na:
+* Szybkie klonowanie struktury.
+* Precyzyjne dostosowywanie pod węższe intencje wyszukiwania (np. sub-landingi dedykowane wyłącznie procesom rekrutacji lub sieci absolwentów).
+* Bezproblemowe nałożenie docelowej warstwy wizualnej (High-Fidelity UI).
