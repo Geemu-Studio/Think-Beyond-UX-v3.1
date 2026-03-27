@@ -1,6 +1,6 @@
 # Architektura Informacji (IA) i UX: Salesforce Education Cloud
 
-🔗 **[ZOBACZ PROJEKT](#)** *(https://geemu-studio.github.io/Think-Beyond-UX-v3/)*
+🔗 Projekt: https://geemu-studio.github.io/Think-Beyond-UX-v3/
 
 ---
 
