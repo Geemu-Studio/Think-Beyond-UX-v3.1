@@ -8,7 +8,7 @@ function LogoSWSP() {
         <text x="16" y="22" textAnchor="middle" fill="white" fontSize="14" fontFamily="sans-serif" fontWeight="700">S</text>
       </svg>
       <span className="text-[13px] text-neutral-700 tracking-[-0.2px]" style={{ fontWeight: 600 }}>
-        Uniwersytet SWPS
+        SWPS University
       </span>
     </div>
   );
@@ -22,7 +22,7 @@ function LogoKozminski() {
         <text x="16" y="22" textAnchor="middle" fill="white" fontSize="13" fontFamily="sans-serif" fontWeight="700">ALK</text>
       </svg>
       <span className="text-[13px] text-neutral-700 tracking-[-0.2px]" style={{ fontWeight: 600 }}>
-        Akademia Leona Koźmińskiego
+        Kozminski University
       </span>
     </div>
   );
@@ -47,7 +47,7 @@ export function SocialProofBar() {
     <section className="bg-neutral-50 border-t border-b border-neutral-200 py-8 px-6">
       <div className="mx-auto max-w-5xl flex flex-col items-center gap-6">
         <p className="text-[12px] text-neutral-400 uppercase tracking-[1.2px]" style={{ fontWeight: 600 }}>
-          Zaufali nam liderzy transformacji edukacji:
+          Partnering with leaders in global education
         </p>
         <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16">
           <LogoSWSP />

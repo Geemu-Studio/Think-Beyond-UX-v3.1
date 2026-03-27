@@ -2,20 +2,20 @@ import svgPaths from "../../imports/svg-fitf5bq036";
 
 const col2 = [
   { label: 'Salesforce Education Cloud', href: '#' },
-  { label: 'Wdrożenia', href: '#' },
-  { label: 'Utrzymanie i rozwój', href: '#' },
+  { label: 'Implementations', href: '#' },
+  { label: 'Support & Development', href: '#' },
 ];
 
 const col3 = [
-  { label: 'O nas', href: '#' },
+  { label: 'About', href: '#' },
   { label: 'Case Studies', href: '#' },
   { label: 'Blog', href: '#' },
 ];
 
 const col4 = [
   { label: 'hello@thinkbeyond.cloud', href: 'mailto:hello@thinkbeyond.cloud' },
-  { label: 'Polityka prywatności', href: '#' },
-  { label: 'Regulamin', href: '#' },
+  { label: 'Privacy Policy', href: '#' },
+  { label: 'Terms of Service', href: '#' },
 ];
 
 function FooterLink({ href, label }: { href: string; label: string }) {
@@ -42,10 +42,10 @@ export function Footer() {
       <div className="border-t border-neutral-200">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="text-[12px] text-neutral-400">
-            © 2026 Think Beyond. Wszelkie prawa zastrzeżone.
+            © 2026 Think Beyond. All rights reserved.
           </p>
           <p className="text-[12px] text-neutral-400">
-            Wdrożenia Salesforce Education Cloud · Polska i Europa
+            Salesforce Education Cloud · UK & Europe
           </p>
         </div>
       </div>

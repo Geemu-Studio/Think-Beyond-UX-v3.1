@@ -68,10 +68,10 @@ export function CTAFormSection() {
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = 'Pole wymagane';
-    if (!form.university.trim()) e.university = 'Pole wymagane';
-    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Podaj poprawny e-mail';
-    if (!form.gdpr) e.gdpr = 'Zgoda jest wymagana';
+    if (!form.name.trim()) e.name = 'This field is required';
+    if (!form.university.trim()) e.university = 'This field is required';
+    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Please enter a valid email address';
+    if (!form.gdpr) e.gdpr = 'Your consent is required to proceed';
     return e;
   };
 
@@ -89,10 +89,10 @@ export function CTAFormSection() {
         {/* ── Section headline ── */}
         <div className="text-left">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Bezpłatna konsultacja
+            Free Strategic Consultation
           </span>
           <h2 className="mt-3 text-[34px] sm:text-[42px] leading-[1.15] tracking-[-1.5px] text-black text-left">
-            O nas: Twój zespół ds. transformacji edukacji.
+            About us: Your dedicated higher education transformation team.
           </h2>
         </div>
 
@@ -113,12 +113,12 @@ export function CTAFormSection() {
                   <AvatarSilhouette initials="PW" offset="52px" />
                 </div>
                 {/* Bold label */}
-                <p className="text-[22px] text-black tracking-[-0.6px]" style={{ fontWeight: 800 }}>+20 ekspertów<br /><span style={{ fontWeight: 400 }} className="text-neutral-500 text-[15px] tracking-normal">Salesforce</span></p>
+                <p className="text-[22px] text-black tracking-[-0.6px]" style={{ fontWeight: 800 }}>20+ Experts<br /><span style={{ fontWeight: 400 }} className="text-neutral-500 text-[15px] tracking-normal">Salesforce</span></p>
               </div>
 
               {/* Slogan */}
               <p className="text-[14px] text-neutral-600 leading-[1.7]">
-                Za sukcesem Twojej uczelni stanie nasz cały zespół certyfikowanych architektów i&nbsp;deweloperów.
+                Your institution's transformation will be guided by our full team of certified Salesforce architects and developers.
               </p>
             </div>
 
@@ -137,7 +137,7 @@ export function CTAFormSection() {
                 <div>
                   <p className="text-[15px] text-black" style={{ fontWeight: 700 }}>Marcin Pieńkowski</p>
                   <p className="text-[13px] text-neutral-500 leading-[1.5] mt-0.5">
-                    Strateg ds. Cyfrowej Transformacji
+                    Digital Transformation Strategist
                   </p>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export function CTAFormSection() {
                   <div className="w-4 h-4 bg-white border-t border-l border-[#F0F0F0] rotate-45 translate-y-1 translate-x-1" />
                 </div>
                 <p className="text-[14px] text-neutral-700 leading-[1.75] italic">
-                  "Zacznijmy od strategii. Nie będę namawiał Cię na kolejny system IT. Pokażę Ci, jak załatać dziury w budżecie."
+                  "Let's start with strategy. I won't sell you another IT system. I'll show you how to build the institutional foundation your ambitions deserve."
                 </p>
               </div>
             </div>
@@ -156,7 +156,7 @@ export function CTAFormSection() {
             {/* ── BOTTOM: Direct contact ── */}
             <div className="border-t border-neutral-200 pt-6 flex flex-col gap-4">
               <p className="text-[12px] text-neutral-400 uppercase tracking-[1.2px]" style={{ fontWeight: 700 }}>
-                Wolisz kontakt bezpośredni?
+                Prefer direct contact?
               </p>
               <ul className="flex flex-col gap-2.5">
                 {CONTACTS.map((item) => (
@@ -184,7 +184,7 @@ export function CTAFormSection() {
           <div className="bg-white rounded-[24px] border border-[#F0F0F0] p-8 sm:p-10 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)]">
             <div>
               <h3 className="text-[24px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black">
-                Porozmawiajmy o rekrutacji na Twojej uczelni.
+                Let's talk about the student experience at your institution.
               </h3>
             </div>
 
@@ -194,9 +194,9 @@ export function CTAFormSection() {
                   <circle cx="24" cy="24" r="24" fill="#111" />
                   <path d="M14 24l8 8 12-12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <p className="text-[18px] text-black" style={{ fontWeight: 700 }}>Dziękujemy!</p>
+                <p className="text-[18px] text-black" style={{ fontWeight: 700 }}>Thank you!</p>
                 <p className="text-[14px] text-neutral-500">
-                  Marcin skontaktuje się z Tobą w ciągu 24 godzin roboczych.
+                  Marcin will be in touch within 24 business hours.
                 </p>
               </div>
             ) : (
@@ -205,11 +205,11 @@ export function CTAFormSection() {
                 {/* Name */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[13px] text-neutral-700" style={{ fontWeight: 500 }}>
-                    Imię i nazwisko
+                    Full name
                   </label>
                   <input
                     type="text"
-                    placeholder="Jan Kowalski"
+                    placeholder="Professor Jane Smith"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     className={`rounded-xl px-4 py-3 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.name ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
@@ -220,11 +220,11 @@ export function CTAFormSection() {
                 {/* University */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[13px] text-neutral-700" style={{ fontWeight: 500 }}>
-                    Nazwa uczelni
+                    Institution name
                   </label>
                   <input
                     type="text"
-                    placeholder="Nazwa Twojej uczelni"
+                    placeholder="Your university"
                     value={form.university}
                     onChange={(e) => setForm({ ...form, university: e.target.value })}
                     className={`rounded-xl px-4 py-3 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.university ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
@@ -235,11 +235,11 @@ export function CTAFormSection() {
                 {/* Email */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[13px] text-neutral-700" style={{ fontWeight: 500 }}>
-                    Służbowy adres e-mail
+                    Institutional email address
                   </label>
                   <input
                     type="email"
-                    placeholder="jan.kowalski@uczelnia.edu.pl"
+                    placeholder="j.smith@university.ac.uk"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className={`rounded-xl px-4 py-3 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.email ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
@@ -257,7 +257,7 @@ export function CTAFormSection() {
                       className="mt-0.5 accent-black w-4 h-4 shrink-0"
                     />
                     <span className="text-[13px] text-neutral-600 leading-[1.6]">
-                      Wyrażam zgodę na przetwarzanie danych osobowych zgodnie z&nbsp;RODO w celu udzielenia odpowiedzi na moje zapytanie.
+                      I consent to the processing of my personal data in accordance with GDPR for the purpose of responding to my enquiry.
                     </span>
                   </label>
                   {errors.gdpr && <p className="text-[12px] text-neutral-700 ml-7">{errors.gdpr}</p>}
@@ -269,7 +269,7 @@ export function CTAFormSection() {
                   className="w-full bg-black text-white py-4 text-[15px] hover:bg-neutral-800 transition-colors rounded-full"
                   style={{ fontWeight: 600 }}
                 >
-                  Porozmawiaj z zespołem
+                  Speak with Our Team
                 </button>
 
                 {/* Trust line */}
@@ -278,7 +278,7 @@ export function CTAFormSection() {
                     <rect x="2" y="5.5" width="9" height="6.5" rx="1" />
                     <path d="M4.5 5.5V3.5a2 2 0 0 1 4 0v2" />
                   </svg>
-                  <span>Twoje dane są u nas w 100% bezpieczne. Zero spamu.</span>
+                  <span>Your data is 100% secure and will never be shared. No spam, ever.</span>
                 </div>
 
               </form>

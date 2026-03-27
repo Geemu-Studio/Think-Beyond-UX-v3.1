@@ -1,23 +1,23 @@
 const CARDS = [
   {
     label: 'University CRM',
-    title: 'Dziekanat i Retencja.',
-    body: 'Proaktywne zarządzanie sprawami studenckimi i zapobieganie rezygnacjom.',
-    link: 'Zobacz obszar CRM →',
+    title: 'Student Affairs & Retention.',
+    body: 'Proactively manage every student case and build the early-intervention capability that sustains completion and belonging.',
+    link: 'Explore the CRM →',
     href: '#',
   },
   {
     label: 'Salesforce for Universities',
-    title: 'Kwestura i Finanse.',
-    body: 'Pełna kontrola nad spływem czesnego i zautomatyzowane rozliczenia operacyjne.',
-    link: 'Zobacz platformę →',
+    title: 'Finance & Tuition Management.',
+    body: 'Gain full visibility over tuition income and automate complex operational billing — with the institutional confidence your leadership demands.',
+    link: 'Explore the Platform →',
     href: '#',
   },
   {
     label: 'Digital Transformation',
-    title: 'Strategia i Alumni.',
-    body: 'Budowanie lojalności absolwentów i model Lifelong Learning.',
-    link: 'Zobacz transformację →',
+    title: 'Strategy, Alumni & Lifelong Learning.',
+    body: 'Cultivate lasting relationships with your graduates and build a Lifelong Learning community that extends your impact far beyond graduation.',
+    link: 'Explore the Transformation →',
     href: '#',
   },
 ];
@@ -33,9 +33,9 @@ export function OfferBridgeSection() {
             Salesforce Education Cloud
           </span>
           <h2 className="text-[30px] sm:text-[38px] leading-[1.15] tracking-[-1.2px] text-white">
-            Rekrutacja to dopiero początek transformacji.
+            Admissions is only the beginning of your institutional story.
           </h2>
-          <p className="text-[15px] text-neutral-400 leading-[1.75] max-w-xl">Zbuduj kompletny ekosystem Salesforce. Rekrutacja to pierwszy krok – poznaj pozostałe 3 filary transformacji Twojej uczelni.</p>
+          <p className="text-[15px] text-neutral-400 leading-[1.75] max-w-xl">Build a complete Salesforce ecosystem. Admissions is your first chapter — discover the three further pillars that define a truly transformed institution.</p>
         </div>
 
         {/* 3-column mini-grid */}
@@ -75,7 +75,7 @@ export function OfferBridgeSection() {
             className="inline-flex items-center gap-2 bg-white text-black px-7 py-4 text-[14px] hover:bg-neutral-100 transition-colors rounded-full w-full sm:w-auto justify-center sm:justify-start"
             style={{ fontWeight: 700 }}
           >
-            Poznaj pełnię możliwości Salesforce Education Cloud
+            Discover the Full Salesforce Education Cloud Ecosystem
           </a>
         </div>
 

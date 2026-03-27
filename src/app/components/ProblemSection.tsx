@@ -48,18 +48,18 @@ function IconRandom() {
 const cards = [
   {
     icon: <IconChaos />,
-    title: 'Chaos i padające systemy',
-    body: 'Dziesiątki tysięcy papierowych formularzy i serwery, które nie wytrzymują naporu w dniu wyników matur.',
+    title: 'A Seamless Campus Experience',
+    body: 'Replace fragmented paper-based processes and overwhelmed systems with a resilient, unified digital infrastructure that scales gracefully with your institution.',
   },
   {
     icon: <IconNoControl />,
-    title: 'Brak kontroli nad retencją',
-    body: 'Dowiadujesz się o rezygnacji, gdy jest już za późno. Brak wiedzy, dlaczego studenci odchodzą.',
+    title: 'Proactive Retention & Student Wellbeing',
+    body: 'Move from reactive to proactive. Identify students who need support before they\'re lost — and build the sense of belonging that sustains their academic journey to completion.',
   },
   {
     icon: <IconRandom />,
-    title: 'Przypadkowa rekrutacja',
-    body: 'Przyjmowanie kandydatów bez głębszej segmentacji, co obniża prestiż uczelni i zwiększa ryzyko szybkiego porzucenia nauki.',
+    title: 'Purpose-Driven Recruitment',
+    body: 'Attract and enrol candidates who align with your institution\'s values and mission — enhancing academic prestige and fostering a genuinely engaged student community.',
   },
 ];
 
@@ -71,9 +71,9 @@ export function ProblemSection() {
         {/* Section headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Problem
+            Opportunity
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Co drugi zrekrutowany student nie odbierze dyplomu. Nie pozwól, by przychody z czesnego przeciekały Wam przez palce.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Cultivating student success. Build lasting relationships that proactively foster retention, wellbeing, and the pride of graduation.</h2>
         </div>
 
         {/* 3-col agitation grid */}

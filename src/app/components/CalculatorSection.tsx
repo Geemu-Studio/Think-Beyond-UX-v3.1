@@ -3,28 +3,28 @@ import { useState, useMemo } from 'react';
 const stats = [
   {
     key: 'dropouts',
-    microcopy: 'Dane na podstawie europejskiej średniej wskaźnika drop-out (50%).',
+    microcopy: 'Based on the European average student non-completion rate of 50%.',
     suffix: (v: number) => (
       <p className="text-[13px] text-neutral-600 leading-[1.6]">
-        z nich statystycznie <span style={{ fontWeight: 600 }} className="text-black">nie dotrwa do obrony licencjatu.</span>
+        Students at risk of missing their <span style={{ fontWeight: 600 }} className="text-black">full potential without proactive support</span>
       </p>
     ),
   },
   {
     key: 'saved',
-    microcopy: 'Symulacja zatrzymania zaledwie 10% studentów z puli ogólnej.',
+    microcopy: 'Modelled on retaining as few as 10% of at-risk students through early intervention.',
     suffix: (v: number) => (
       <p className="text-[13px] text-neutral-600 leading-[1.6]">
-        studentów rocznie możecie <span style={{ fontWeight: 600 }} className="text-black">uratować, zwiększając retencję o 10%.</span>
+        Students empowered to graduate through a <span style={{ fontWeight: 600 }} className="text-black">10% uplift in engagement</span>
       </p>
     ),
   },
   {
     key: 'tuition',
-    microcopy: 'Średni roczny cykl rozliczeniowy w zależności od trybu studiów.',
+    microcopy: 'Average annual tuition cycle, adjusted for programme type.',
     suffix: (v: number) => (
       <p className="text-[13px] text-neutral-600 leading-[1.6]">
-        miesięcy czesnego na <span style={{ fontWeight: 600 }} className="text-black">jednego odzyskanego studenta.</span>
+        <span style={{ fontWeight: 600 }} className="text-black">Months of sustained academic investment realised</span> per student
       </p>
     ),
   },
@@ -41,8 +41,8 @@ export function CalculatorSection() {
   }, [students]);
 
   const displayValues: Record<string, string> = {
-    dropouts: results.dropouts.toLocaleString('pl-PL'),
-    saved: `+${results.saved.toLocaleString('pl-PL')}`,
+    dropouts: results.dropouts.toLocaleString('en-GB'),
+    saved: `+${results.saved.toLocaleString('en-GB')}`,
     tuition: `×${results.tuition}`,
   };
 
@@ -58,10 +58,10 @@ export function CalculatorSection() {
             className="text-[11px] text-neutral-400 uppercase tracking-[1.4px] text-left"
             style={{ fontWeight: 600 }}
           >
-            Kalkulator strat
+            Institutional Impact
           </span>
           <h2 className="mt-3 text-[32px] sm:text-[40px] leading-[1.15] tracking-[-1.4px] text-black text-left">
-            Ile kosztuje Was ignorowanie retencji studentów?
+            Measuring the immense value of a fully supported, thriving student community.
           </h2>
         </div>
 
@@ -71,13 +71,13 @@ export function CalculatorSection() {
           {/* Slider label + value badge */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <p className="text-[14px] text-neutral-600" style={{ fontWeight: 500 }}>
-              Wybierz średnią liczbę studentów przyjmowanych na I&nbsp;rok:
+              Annual Student Intake
             </p>
             <span
               className="self-start sm:self-auto bg-black text-white text-[20px] tracking-[-0.8px] px-5 py-1.5 rounded-full"
               style={{ fontWeight: 700 }}
             >
-              {students.toLocaleString('pl-PL')}
+              {students.toLocaleString('en-GB')}
             </span>
           </div>
 
@@ -98,7 +98,7 @@ export function CalculatorSection() {
             />
             <div className="flex justify-between mt-2">
               <span className="text-[12px] text-neutral-400">200</span>
-              <span className="text-[12px] text-neutral-400">5 000</span>
+              <span className="text-[12px] text-neutral-400">5,000</span>
             </div>
           </div>
 
@@ -143,7 +143,7 @@ export function CalculatorSection() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-black px-6 py-3 text-[14px] text-black hover:bg-black hover:text-white transition-colors rounded-full"
               style={{ fontWeight: 600 }}
             >
-              Zatrzymaj utratę budżetu — Skonsultuj się
+              Maximise Your Institutional Potential
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2 7h10M8 3l4 4-4 4" />
               </svg>

@@ -2,10 +2,10 @@ import { useState } from 'react';
 import svgPaths from "../../imports/svg-fitf5bq036";
 
 const NAV_LINKS = [
-  { label: 'Problem', href: '#problem' },
-  { label: 'Rozwiązania', href: '#solution' },
+  { label: 'Opportunity', href: '#problem' },
+  { label: 'Solutions', href: '#solution' },
   { label: 'Case Studies', href: '#case-study' },
-  { label: 'O nas', href: '#contact-form' },
+  { label: 'About', href: '#contact-form' },
 ];
 
 export function Header() {
@@ -78,7 +78,7 @@ export function Header() {
             className="hidden md:inline-block bg-black text-white px-5 py-2 text-[14px] hover:bg-neutral-800 transition-colors rounded-full"
             style={{ fontWeight: 600 }}
           >
-            Skonsultuj bezpłatnie
+            Book a Free Consultation
           </a>
 
           {/* Hamburger (mobile only) */}
@@ -114,7 +114,7 @@ export function Header() {
             className="bg-black text-white text-center px-5 py-3 text-[14px] mt-2 rounded-full"
             style={{ fontWeight: 600 }}
           >
-            Skonsultuj bezpłatnie
+            Book a Free Consultation
           </a>
         </div>
       )}

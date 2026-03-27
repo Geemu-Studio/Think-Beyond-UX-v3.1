@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 const STATS = [
-  { value: '35\u00a0000', label: 'zgłoszeń' },
-  { value: '\u221262%', label: 'czasu obsługi' },
-  { value: '17\u00a0500', label: 'studentów obsłużonych' },
+  { value: '35,000', label: 'Future Leaders Welcomed' },
+  { value: '62%', label: 'Reduction in Administrative Friction' },
+  { value: '17,500', label: 'Seamless Student Experiences' },
 ];
 
 export function CaseStudySection() {
@@ -19,7 +19,7 @@ export function CaseStudySection() {
             Case Studies
           </span>
           <h2 className="mt-3 text-[32px] sm:text-[40px] leading-[1.15] tracking-[-1.4px] text-black">
-            Zaufali nam liderzy transformacji edukacji:
+            Trusted by leaders shaping the future of higher education:
           </h2>
         </div>
 
@@ -33,18 +33,18 @@ export function CaseStudySection() {
               <text x="16" y="22" textAnchor="middle" fill="white" fontSize="14" fontFamily="sans-serif" fontWeight="700">S</text>
             </svg>
             <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-              Case Study · Uniwersytet SWPS
+              Case Study · SWPS University
             </span>
           </div>
 
           {/* Headline */}
           <h3 className="text-[22px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black" style={{ fontWeight: 700 }}>
-            Jak Uniwersytet SWPS przetworzył 35&nbsp;000 zgłoszeń bez chaosu?
+            Scaling excellence: How SWPS University welcomed 35,000 future leaders with seamless precision.
           </h3>
 
           {/* Body */}
           <p className="text-[15px] text-neutral-500 leading-[1.75] max-w-xl">
-            Przejście z procesów papierowych na cyfrowe centrum spraw studenckich dla 17&nbsp;500 studentów.
+            A transformational shift from paper-based administration to a fully digital, human-centred student services hub — empowering 17,500 students and their academic community.
           </p>
 
           {/* Expanded stats */}
@@ -73,7 +73,7 @@ export function CaseStudySection() {
               className="inline-flex items-center justify-center bg-white text-black border border-black px-7 py-4 text-[14px] hover:bg-black hover:text-white transition-colors rounded-full w-full sm:w-auto"
               style={{ fontWeight: 600 }}
             >
-              Zobacz pełne Case Study →
+              Read the Full Case Study →
             </a>
           </div>
 

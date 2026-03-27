@@ -45,18 +45,18 @@ function IconRetention() {
 const cards = [
   {
     icon: <IconStudent360 />,
-    title: '360° Widok Studenta',
-    body: 'Od pierwszego leada do zaangażowanego absolwenta w jednym systemie.',
+    title: 'Holistic Student Understanding',
+    body: 'From first enquiry to engaged alumnus — every interaction, milestone, and relationship held within one compassionate, intelligent system.',
   },
   {
     icon: <IconSegmentation />,
-    title: 'Segmentacja i PR',
-    body: 'Rekrutuj świadomie, weryfikuj profile i buduj prestiż swojej uczelni.',
+    title: 'Personalised Engagement',
+    body: 'Attract candidates who share your institution\'s mission. Enrich your academic community with purpose-driven, data-informed admissions.',
   },
   {
     icon: <IconRetention />,
-    title: 'Zwiększona Retencja',
-    body: 'Wyłapuj sygnały ostrzegawcze (np. brak frekwencji) i reaguj, zanim student złoży rezygnację.',
+    title: 'Empowered Academic Journeys',
+    body: 'Surface early signals of disengagement and respond with empathy — before a student is lost. Turn retention into a reflection of your institution\'s commitment to every individual.',
   },
 ];
 
@@ -68,10 +68,10 @@ export function SolutionSection() {
         {/* Headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Rozwiązanie
+            Solution
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
-            Cyfrowe centrum zarządzania cyklem życia studenta.
+            The unified ecosystem for the modern, globally minded university.
           </h2>
         </div>
 
@@ -108,7 +108,7 @@ export function SolutionSection() {
             className="inline-flex items-center gap-2 text-[14px] text-black hover:opacity-60 transition-opacity px-4 py-2 rounded-full hover:bg-neutral-100"
             style={{ fontWeight: 600 }}
           >
-            Zobacz, ile tracisz bez tych rozwiązań
+            Discover the full impact for your institution
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M2 6.5h9M8 3l3.5 3.5L8 10" />
             </svg>
