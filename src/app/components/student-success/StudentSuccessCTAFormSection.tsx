@@ -198,6 +198,7 @@ export function StudentSuccessCTAFormSection() {
                   <input
                     type="text"
                     placeholder="Your university"
+                    list="uk-universities"
                     value={form.university}
                     onChange={(e) => setForm({ ...form, university: e.target.value })}
                     className={`rounded-xl px-4 py-3 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.university ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
