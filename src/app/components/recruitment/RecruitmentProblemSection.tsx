@@ -2,50 +2,25 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 
-function IconDigital() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="6" y="8" width="24" height="20" rx="3" />
-      <line x1="10" y1="18" x2="26" y2="18" strokeDasharray="4 2" />
-      <circle cx="18" cy="18" r="4" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function IconGlobal() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="18" cy="18" r="10" />
-      <ellipse cx="18" cy="18" rx="4" ry="10" />
-      <line x1="8" y1="18" x2="28" y2="18" />
-    </svg>
-  );
-}
-
-function IconYield() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 24v-6a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v6" />
-      <circle cx="18" cy="10" r="3" />
-      <path d="M26 12l4 4-4 4" />
-      <path d="M10 12L6 16l4 4" />
-    </svg>
-  );
-}
+import { 
+  DevicesOutlined, 
+  PublicOutlined, 
+  TrendingUpOutlined 
+} from '@mui/icons-material';
 
 const cards = [
   {
-    icon: <IconDigital />,
+    icon: <DevicesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Meeting Digital Expectations',
     body: 'Today’s applicants demand the seamless, hyper-personalised digital experiences they encounter in everyday e-commerce. Legacy systems create friction that drives top talent away.',
   },
   {
-    icon: <IconGlobal />,
+    icon: <PublicOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Global Talent Acquisition',
     body: 'In an intensely competitive, borderless education market, relying on passive application portals is no longer viable. Proactive, targeted outreach is essential to attract international candidates.',
   },
   {
-    icon: <IconYield />,
+    icon: <TrendingUpOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Maximising Enrolment Yield',
     body: 'An offer of admission does not guarantee a student on campus. Maintaining continuous, meaningful engagement during the critical window between offer and enrolment is vital to prevent drop-offs.',
   },

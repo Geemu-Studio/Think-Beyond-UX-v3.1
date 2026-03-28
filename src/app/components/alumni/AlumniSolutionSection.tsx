@@ -12,50 +12,25 @@ function CheckIcon() {
   );
 }
 
-function IconFundraising() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 29.5a7.5 7.5 0 0 0 0-15v15z" />
-      <path d="M18 14.5a7.5 7.5 0 0 0 0 15V14.5z" />
-      <path d="M18 31.5V34M18 12V9.5" />
-      <path d="M8 18h20" />
-    </svg>
-  );
-}
-
-function IconGraduationHat() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 10L4 17l14 7 14-7-14-7z" />
-      <path d="M8 19v6c0 3 4 5 10 5s10-2 10-5v-6" />
-      <path d="M32 17v9" />
-    </svg>
-  );
-}
-
-function IconPortal() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="6" y="8" width="24" height="16" rx="2" />
-      <path d="M14 28h8M18 24v4" />
-      <circle cx="18" cy="16" r="3" />
-    </svg>
-  );
-}
+import { 
+  AutoGraphOutlined, 
+  SchoolOutlined, 
+  LanguageOutlined 
+} from '@mui/icons-material';
 
 const cards = [
   {
-    icon: <IconFundraising />,
+    icon: <AutoGraphOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Holistic Advancement',
     body: 'Transform your fundraising strategy. Gain a comprehensive view of donor readiness, track engagement, and build deeply personalised philanthropic campaigns.',
   },
   {
-    icon: <IconGraduationHat />,
+    icon: <SchoolOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Frictionless Learning',
     body: 'Deliver a seamless digital storefront for executive education. Empower returning learners to easily discover, enrol in, and manage their continuous development.',
   },
   {
-    icon: <IconPortal />,
+    icon: <LanguageOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Community Portals',
     body: 'Create exclusive digital spaces where graduates can connect. Facilitate global networking, peer-to-peer mentorship, and lifelong career support.',
   },

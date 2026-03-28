@@ -2,48 +2,25 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 
-function IconGrowth() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6 30h24M8 24l6-6 4 4 10-10M28 12h0" />
-      <path d="M22 12h6v6" />
-    </svg>
-  );
-}
-
-function IconBook() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6 8v20a2 2 0 0 0 2 2h20M6 8a2 2 0 0 1 2-2h12v6L16 9l-4 3V6H8" />
-      <path d="M20 6h6a2 2 0 0 1 2 2v20H8" />
-    </svg>
-  );
-}
-
-function IconNetwork() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="18" cy="10" r="4" />
-      <circle cx="8" cy="24" r="4" />
-      <circle cx="28" cy="24" r="4" />
-      <path d="M15 13L11 21M21 13l4 8M12 24h12" />
-    </svg>
-  );
-}
+import { 
+  TrendingUpOutlined, 
+  MenuBookOutlined, 
+  HubOutlined 
+} from '@mui/icons-material';
 
 const cards = [
   {
-    icon: <IconGrowth />,
+    icon: <TrendingUpOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Transcending Transactional Giving',
     body: 'Modern alumni expect genuine relationships, not just funding requests. Cultivating philanthropic growth requires understanding their unique journeys, passions, and professional milestones.',
   },
   {
-    icon: <IconBook />,
+    icon: <MenuBookOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'The Rise of Lifelong Learning',
     body: 'The traditional degree is evolving. Alumni continuously seek to upskill through microcredentials and short programmes to stay competitive in a dynamic global economy.',
   },
   {
-    icon: <IconNetwork />,
+    icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Unifying the Graduate Experience',
     body: 'Fragmented data prevents meaningful outreach. A disconnected approach means missed opportunities for mentorship, corporate partnerships, and community advocacy.',
   },

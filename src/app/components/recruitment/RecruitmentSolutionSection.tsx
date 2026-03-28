@@ -14,57 +14,25 @@ function CheckIcon() {
   );
 }
 
-function IconNurturing() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Heart with signal waves */}
-      <path d="M18 28s-11-7-11-14a7 7 0 0 1 11-5.74A7 7 0 0 1 29 14c0 7-11 14-11 14z" />
-      <path d="M12 14h3l2 4 3-8 2 4h2" strokeWidth="1.4" />
-    </svg>
-  );
-}
-
-function IconPortal() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Browser / portal window */}
-      <rect x="3" y="6" width="30" height="24" rx="3" />
-      <line x1="3" y1="13" x2="33" y2="13" />
-      <circle cx="8" cy="9.5" r="1.2" fill="currentColor" stroke="none" />
-      <circle cx="13" cy="9.5" r="1.2" fill="currentColor" stroke="none" />
-      {/* Checkmark inside */}
-      <path d="M12 22l4 4 8-8" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
-function IconInsights() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Bar chart with upward trend */}
-      <rect x="4" y="20" width="6" height="12" rx="1.5" />
-      <rect x="13" y="14" width="6" height="18" rx="1.5" />
-      <rect x="22" y="8" width="6" height="24" rx="1.5" />
-      {/* Trend arrow */}
-      <path d="M6 18l8-8 8 4 8-10" strokeWidth="1.8" />
-      <path d="M26 4h4v4" strokeWidth="1.8" />
-    </svg>
-  );
-}
+import { 
+  FavoriteBorderOutlined, 
+  WebOutlined, 
+  InsightsOutlined 
+} from '@mui/icons-material';
 
 const cards = [
   {
-    icon: <IconNurturing />,
+    icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Intelligent Lead Nurturing',
     body: 'Anticipate candidate needs. Deliver highly personalised, omnichannel communication that resonates with the unique aspirations of every prospective student.',
   },
   {
-    icon: <IconPortal />,
+    icon: <WebOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'A Frictionless Application Journey',
     body: 'Remove barriers to entry. Provide a seamless, intuitive digital application portal that reflects the prestige and excellence of your university brand.',
   },
   {
-    icon: <IconInsights />,
+    icon: <InsightsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Strategic Enrolment Insights',
     body: "Make confident, data-driven decisions. Leverage predictive analytics to identify high-intent applicants and optimise your global recruitment investments.",
   },

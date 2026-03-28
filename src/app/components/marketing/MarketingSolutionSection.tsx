@@ -12,51 +12,25 @@ function CheckIcon() {
   );
 }
 
-function IconStudent360() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="18" cy="13" r="5" />
-      <path d="M7 31c0-6.075 4.925-11 11-11s11 4.925 11 11" />
-      <path d="M4 18a14 14 0 0 0 14 14A14 14 0 0 0 32 18 14 14 0 0 0 18 4a14 14 0 0 0-14 14z" strokeDasharray="2 2" />
-    </svg>
-  );
-}
-
-function IconSegmentation() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Funnel / alert */}
-      <path d="M18 6L4 30h28L18 6z" />
-      <path d="M18 24h.01" strokeWidth="2.5" />
-      <path d="M18 14v6" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
-function IconRetention() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Heart or shield mobile phone */}
-      <rect x="10" y="4" width="16" height="28" rx="4" />
-      <path d="M14 26h8" />
-      <circle cx="18" cy="14" r="3" />
-    </svg>
-  );
-}
+import { 
+  FilterAltOutlined, 
+  RouteOutlined, 
+  AnalyticsOutlined 
+} from '@mui/icons-material';
 
 const cards = [
   {
-    icon: <IconSegmentation />,
+    icon: <FilterAltOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Intelligent Segmentation',
     body: 'Transform raw data into actionable audiences. Deliver hyper-targeted campaigns based on individual interests, academic goals, and behavioural signals.',
   },
   {
-    icon: <IconStudent360 />,
+    icon: <RouteOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Automated Omnichannel Journeys',
     body: 'Engage constituents exactly where they are. Seamlessly orchestrate email, SMS, social, and web interactions to create cohesive brand experiences.',
   },
   {
-    icon: <IconRetention />,
+    icon: <AnalyticsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Real-Time Campaign Analytics',
     body: 'Measure what matters. Gain instant visibility into engagement metrics and campaign ROI, allowing your team to continuously optimise their strategic outreach.',
   },

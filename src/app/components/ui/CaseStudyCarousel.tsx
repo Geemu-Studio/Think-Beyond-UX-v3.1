@@ -143,9 +143,6 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                 onClick={() => {
                   if (!isActive && !isJumping) {
                     setActiveIdx(idx);
-                  } else if (isActive) {
-                    // Action when clicking the active card - e.g. follow the link
-                    window.location.href = '#';
                   }
                 }}
                 initial={false}
@@ -156,7 +153,7 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                 }}
                 whileHover={isActive ? { scale: 1.02, transition: { duration: 0.2 } } : {}}
                 transition={isJumping ? { duration: 0 } : { duration: 0.5, ease: "easeInOut" }}
-                className={`bg-white rounded-[32px] p-8 sm:p-10 flex flex-col gap-6 shrink-0 cursor-pointer select-none border border-neutral-100 transition-shadow duration-300
+                className={`group bg-white rounded-[32px] p-8 sm:p-10 flex flex-col gap-6 shrink-0 cursor-pointer select-none border border-neutral-100 transition-shadow duration-300
                   ${isActive
                     ? "w-[85vw] sm:w-[620px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)] z-10"
                     : "w-[85vw] sm:w-[620px]"

@@ -14,51 +14,25 @@ function CheckIcon() {
   );
 }
 
-function IconStudent360() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="18" cy="13" r="5" />
-      <path d="M7 31c0-6.075 4.925-11 11-11s11 4.925 11 11" />
-      <path d="M4 18a14 14 0 0 0 14 14A14 14 0 0 0 32 18 14 14 0 0 0 18 4a14 14 0 0 0-14 14z" strokeDasharray="2 2" />
-    </svg>
-  );
-}
-
-function IconSegmentation() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Funnel / filter */}
-      <path d="M5 8h26l-10 12v10l-6-3V20L5 8z" />
-      {/* checkmark on funnel */}
-      <path d="M14 23l2 2 4-4" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
-function IconRetention() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Shield */}
-      <path d="M18 3L6 8v9c0 7 5.5 12.5 12 15 6.5-2.5 12-8 12-15V8L18 3z" />
-      {/* Checkmark inside */}
-      <path d="M12 18l4 4 8-8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
+import { 
+  AnalyticsOutlined, 
+  RouteOutlined, 
+  HealthAndSafetyOutlined 
+} from '@mui/icons-material';
 
 const cards = [
   {
-    icon: <IconStudent360 />,
+    icon: <AnalyticsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Holistic Student Understanding',
     body: 'From first enquiry to engaged alumnus — every interaction, milestone, and relationship held within one compassionate, intelligent system.',
   },
   {
-    icon: <IconSegmentation />,
+    icon: <RouteOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Personalised Engagement',
     body: 'Attract candidates who share your institution\'s mission. Enrich your academic community with purpose-driven, data-informed admissions.',
   },
   {
-    icon: <IconRetention />,
+    icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Empowered Academic Journeys',
     body: 'Surface early signals of disengagement and respond with empathy — before a student is lost. Turn retention into a reflection of your institution\'s commitment to every individual.',
   },

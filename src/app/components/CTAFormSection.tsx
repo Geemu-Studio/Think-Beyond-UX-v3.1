@@ -75,6 +75,13 @@ export function CTAFormSection() {
     return e;
   };
 
+  const isFormValid = 
+    form.name.trim() !== '' && 
+    form.university.trim() !== '' && 
+    form.email.trim() !== '' && 
+    /\S+@\S+\.\S+/.test(form.email) && 
+    form.gdpr;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errs = validate();
@@ -267,8 +274,11 @@ export function CTAFormSection() {
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full bg-black text-white py-4 text-[15px] hover:bg-neutral-800 transition-colors rounded-full"
-                  style={{ fontWeight: 600 }}
+                  disabled={!isFormValid}
+                  className={`w-full py-4 text-[15px] transition-all duration-300 rounded-full font-semibold shadow-sm
+                    ${isFormValid 
+                      ? 'bg-black text-white hover:bg-neutral-800 border border-black cursor-pointer' 
+                      : 'bg-neutral-200 text-neutral-400 border border-neutral-200 cursor-not-allowed opacity-70'}`}
                 >
                   Speak with Our Team
                 </button>

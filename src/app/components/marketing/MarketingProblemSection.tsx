@@ -2,47 +2,25 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 
-function IconSignal() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 28s-11-7-11-14a7 7 0 0 1 11-5.74A7 7 0 0 1 29 14c0 7-11 14-11 14z" />
-      <circle cx="18" cy="9" r="2" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function IconHeart() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 30l-2.4-2.18C8.4 21.28 4 17.29 4 12.3 4 8.1 7.1 5 11.3 5c2.4 0 4.7 1.1 6.7 2.9 2-1.8 4.3-2.9 6.7-2.9 4.2 0 7.3 3.1 7.3 7.3 0 5-4.4 9-11.6 15.52L18 30z"/>
-    </svg>
-  );
-}
-
-function IconAdvising() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="18" cy="12" r="5" />
-      <path d="M6 30c0-6 5.5-11 12-11s12 5 12 11" />
-      <path d="M12 20h12" />
-      <path d="M12 24h6" />
-    </svg>
-  );
-}
+import { 
+  CampaignOutlined, 
+  DataUsageOutlined, 
+  VolunteerActivismOutlined 
+} from '@mui/icons-material';
 
 const cards = [
   {
-    icon: <IconSignal />,
+    icon: <CampaignOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Breaking Through the Digital Noise',
     body: 'Prospective students are overwhelmed by generic marketing. Standing out requires deeply relevant, timely, and authentic storytelling across their preferred channels.',
   },
   {
-    icon: <IconHeart />,
+    icon: <DataUsageOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Overcoming Data Silos',
     body: 'Truly personalised communication is impossible when student data is fragmented across departments. Unified insights are the foundation of impactful engagement.',
   },
   {
-    icon: <IconAdvising />,
+    icon: <VolunteerActivismOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Building Lifelong Advocacy',
     body: 'Marketing doesn\'t end at enrolment. Sustaining a vibrant university brand means continuously engaging students, staff, and alumni throughout their entire institutional journey.',
   },

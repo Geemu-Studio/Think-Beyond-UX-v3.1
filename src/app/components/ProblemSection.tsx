@@ -2,66 +2,25 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from './ConsultationModal';
 
-/* Problem Agitation Grid — 3-column cards, line-art icons */
-
-function IconChaos() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Server stack */}
-      <rect x="4" y="6" width="28" height="7" rx="2" />
-      <rect x="4" y="17" width="28" height="7" rx="2" />
-      {/* Status dots */}
-      <circle cx="28" cy="9.5" r="1.5" fill="currentColor" stroke="none" />
-      <circle cx="28" cy="20.5" r="1.5" fill="currentColor" stroke="none" />
-      {/* Lightning bolt — crash indicator */}
-      <path d="M18 28l-3 5h5l-3 5" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
-function IconNoControl() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Warning triangle */}
-      <path d="M18 5L3 30h30L18 5z" />
-      {/* Exclamation */}
-      <line x1="18" y1="15" x2="18" y2="23" strokeWidth="2" />
-      <circle cx="18" cy="26.5" r="1" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function IconRandom() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      {/* Scatter dots */}
-      <circle cx="9" cy="9" r="3" />
-      <circle cx="27" cy="12" r="3" />
-      <circle cx="12" cy="26" r="3" />
-      <circle cx="26" cy="25" r="3" />
-      <circle cx="18" cy="17" r="3" />
-      {/* Dashed random lines between them */}
-      <line x1="9" y1="9" x2="27" y2="12" strokeDasharray="3 2" />
-      <line x1="27" y1="12" x2="18" y2="17" strokeDasharray="3 2" />
-      <line x1="18" y1="17" x2="12" y2="26" strokeDasharray="3 2" />
-      <line x1="18" y1="17" x2="26" y2="25" strokeDasharray="3 2" />
-    </svg>
-  );
-}
+import { 
+  HubOutlined, 
+  HealthAndSafetyOutlined, 
+  TrackChangesOutlined 
+} from '@mui/icons-material';
 
 const cards = [
   {
-    icon: <IconChaos />,
+    icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'A Seamless Campus Experience',
     body: 'Replace fragmented paper-based processes and overwhelmed systems with a resilient, unified digital infrastructure that scales gracefully with your institution.',
   },
   {
-    icon: <IconNoControl />,
+    icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Proactive Retention & Student Wellbeing',
     body: 'Move from reactive to proactive. Identify students who need support before they\'re lost — and build the sense of belonging that sustains their academic journey to completion.',
   },
   {
-    icon: <IconRandom />,
+    icon: <TrackChangesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Purpose-Driven Recruitment',
     body: 'Attract and enrol candidates who align with your institution\'s values and mission — enhancing academic prestige and fostering a genuinely engaged student community.',
   },
