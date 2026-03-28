@@ -1,28 +1,62 @@
-const CARDS = [
-  {
-    label: 'University CRM',
-    title: 'Student Affairs & Retention.',
-    body: 'Proactively manage every student case and build the early-intervention capability that sustains completion and belonging.',
-    link: 'Explore the CRM →',
-    href: '#',
+import { useLocation, Link } from 'react-router';
+
+const BOXES = {
+  RECRUITMENT: {
+    label: 'Salesforce Education Cloud',
+    title: 'Recruitment & Admissions',
+    body: 'Shape the future of your institution. Attract, engage, and enrol the world’s brightest minds with purpose-driven recruitment.',
+    linkText: 'Explore Recruitment →',
+    href: '/recruitment',
   },
-  {
-    label: 'Salesforce for Universities',
-    title: 'Finance & Tuition Management.',
-    body: 'Gain full visibility over tuition income and automate complex operational billing — with the institutional confidence your leadership demands.',
-    link: 'Explore the Platform →',
-    href: '#',
+  SUCCESS: {
+    label: 'Salesforce Education Cloud',
+    title: 'Student Success & Retention',
+    body: 'Move from reactive support to proactive care. Build a connected campus where every student is empowered to graduate.',
+    linkText: 'Explore Student Success →',
+    href: '/student-success',
   },
-  {
-    label: 'Digital Transformation',
-    title: 'Strategy, Alumni & Lifelong Learning.',
-    body: 'Cultivate lasting relationships with your graduates and build a Lifelong Learning community that extends your impact far beyond graduation.',
-    link: 'Explore the Transformation →',
-    href: '#',
+  MARKETING: {
+    label: 'Salesforce Education Cloud',
+    title: 'Marketing & Communications',
+    body: 'Orchestrate highly personalised, omnichannel journeys that build lifelong institutional loyalty and brand advocacy.',
+    linkText: 'Explore Marketing →',
+    href: '/marketing',
   },
-];
+  ALUMNI: {
+    label: 'Salesforce Education Cloud',
+    title: 'Alumni & Lifelong Learning',
+    body: 'Cultivate lasting relationships with your graduates and build a global network that supports continuous education.',
+    linkText: 'Explore Alumni & Lifelong Learning →',
+    href: '/alumni',
+  }
+};
 
 export function OfferBridgeSection() {
+  const location = useLocation();
+  const path = location.pathname;
+
+  let heading = 'A unified ecosystem for the entire student lifecycle.';
+  let subheading = 'Discover the core pillars of a transformed institution powered by Salesforce Education Cloud.';
+  let cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING];
+
+  if (path === '/recruitment') {
+    heading = 'Admissions is only the beginning of your institutional story.';
+    subheading = 'Recruitment is your first chapter — discover the three further pillars that complete a truly transformed institution.';
+    cards = [BOXES.SUCCESS, BOXES.MARKETING, BOXES.ALUMNI];
+  } else if (path === '/student-success') {
+    heading = 'A thriving campus starts with the right connections.';
+    subheading = 'Student success is the heart of your institution — discover the other pillars of a unified Salesforce ecosystem.';
+    cards = [BOXES.RECRUITMENT, BOXES.MARKETING, BOXES.ALUMNI];
+  } else if (path === '/marketing') {
+    heading = 'Great communication connects the entire academic journey.';
+    subheading = 'Marketing drives your brand — discover how the rest of the Salesforce ecosystem delivers on that promise.';
+    cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.ALUMNI];
+  } else if (path === '/alumni') {
+    heading = 'Your institutional impact doesn\'t end at graduation.';
+    subheading = 'Alumni engagement fuels your mission — discover how the rest of the Salesforce ecosystem builds the foundation.';
+    cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING];
+  }
+
   return (
     <section className="bg-neutral-800 py-20 px-6 rounded-none">
       <div className="mx-auto max-w-5xl flex flex-col gap-12">
@@ -33,16 +67,18 @@ export function OfferBridgeSection() {
             Salesforce Education Cloud
           </span>
           <h2 className="text-[30px] sm:text-[38px] leading-[1.15] tracking-[-1.2px] text-white">
-            Admissions is only the beginning of your institutional story.
+            {heading}
           </h2>
-          <p className="text-[15px] text-neutral-400 leading-[1.75] max-w-xl">Build a complete Salesforce ecosystem. Admissions is your first chapter — discover the three further pillars that define a truly transformed institution.</p>
+          <p className="text-[15px] text-neutral-400 leading-[1.75] max-w-xl">
+            {subheading}
+          </p>
         </div>
 
         {/* 3-column mini-grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {CARDS.map((card) => (
+          {cards.map((card) => (
             <div
-              key={card.label}
+              key={card.title}
               className="bg-neutral-700 rounded-[20px] p-6 flex flex-col gap-3"
             >
               <span
@@ -57,26 +93,25 @@ export function OfferBridgeSection() {
               <p className="text-[13px] text-neutral-400 leading-[1.65]">
                 {card.body}
               </p>
-              <a
-                href={card.href}
-                className="mt-auto text-[13px] text-neutral-300 hover:text-white transition-colors underline underline-offset-2"
-                style={{ fontWeight: 500 }}
-              >
-                {card.link}
-              </a>
+              {card.href.startsWith('#') ? (
+                <a
+                  href={card.href}
+                  className="mt-auto text-[13px] text-neutral-300 hover:text-white transition-colors underline underline-offset-2"
+                  style={{ fontWeight: 500 }}
+                >
+                  {card.linkText}
+                </a>
+              ) : (
+                <Link
+                  to={card.href}
+                  className="mt-auto text-[13px] text-neutral-300 hover:text-white transition-colors underline underline-offset-2"
+                  style={{ fontWeight: 500 }}
+                >
+                  {card.linkText}
+                </Link>
+              )}
             </div>
           ))}
-        </div>
-
-        {/* CTA button */}
-        <div>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 bg-white text-black px-7 py-4 text-[14px] hover:bg-neutral-100 transition-colors rounded-full w-full sm:w-auto justify-center sm:justify-start"
-            style={{ fontWeight: 700 }}
-          >
-            Discover the Full Salesforce Education Cloud Ecosystem
-          </a>
         </div>
 
       </div>

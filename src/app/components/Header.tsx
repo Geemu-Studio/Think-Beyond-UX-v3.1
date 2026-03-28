@@ -1,21 +1,28 @@
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router';
 import svgPaths from "../../imports/svg-fitf5bq036";
 
 const NAV_LINKS = [
-  { label: 'Opportunity', href: '#problem' },
-  { label: 'Solutions', href: '#solution' },
-  { label: 'Case Studies', href: '#case-study' },
-  { label: 'About', href: '#contact-form' },
+  { label: 'Platform', href: '/' },
+  { label: 'Recruitment', href: '/recruitment' },
+  { label: 'Student Success', href: '/student-success' },
+  { label: 'Marketing', href: '/marketing' },
+  { label: 'Alumni', href: '/alumni' },
 ];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
-  const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    setMobileOpen(false);
-    const el = document.getElementById(id.replace('#', ''));
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      setMobileOpen(false);
+      const el = document.getElementById(href.replace('#', ''));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      setMobileOpen(false);
+    }
   };
 
   const handleCTA = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -30,43 +37,57 @@ export function Header() {
 
         {/* ── Logo ── */}
         <div className="flex items-center gap-2.5 shrink-0">
-          <div className="bg-black rounded-[6px] flex items-center justify-center w-7 h-7 shrink-0">
-            <div className="w-[13px] h-[13px]">
-              <svg fill="none" viewBox="0 0 13 13" className="w-full h-full">
-                <g clipPath="url(#hdr-clip)">
-                  <path
-                    d={svgPaths.p1cfaff00}
-                    stroke="white"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.08333"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="hdr-clip">
-                    <rect fill="white" height="13" width="13" />
-                  </clipPath>
-                </defs>
-              </svg>
+          <Link to="/" className="flex items-center gap-2.5">
+            <div className="bg-black rounded-[6px] flex items-center justify-center w-7 h-7 shrink-0">
+              <div className="w-[13px] h-[13px]">
+                <svg fill="none" viewBox="0 0 13 13" className="w-full h-full">
+                  <g clipPath="url(#hdr-clip)">
+                    <path
+                      d={svgPaths.p1cfaff00}
+                      stroke="white"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.08333"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="hdr-clip">
+                      <rect fill="white" height="13" width="13" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
             </div>
-          </div>
-          <span className="text-black text-[17px] tracking-[-0.86px] leading-none" style={{ fontWeight: 600 }}>
-            Think Beyond
-          </span>
+            <span className="text-black text-[17px] tracking-[-0.86px] leading-none hover:opacity-80 transition-opacity" style={{ fontWeight: 600 }}>
+              Think Beyond
+            </span>
+          </Link>
         </div>
 
         {/* ── Center nav (desktop) ── */}
         <nav className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => scrollTo(e, link.href)}
-              className="text-[14px] text-neutral-600 hover:text-black transition-colors"
-              style={{ fontWeight: 500 }}
-            >
-              {link.label}
-            </a>
+            link.href.startsWith('#') ? (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-[14px] text-neutral-600 hover:text-black transition-colors"
+                style={{ fontWeight: 500 }}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.label}
+                to={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`text-[14px] transition-colors ${location.pathname === link.href ? 'text-black font-semibold' : 'text-neutral-600 hover:text-black'}`}
+                style={{ fontWeight: location.pathname === link.href ? 600 : 500 }}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </nav>
 
@@ -98,15 +119,27 @@ export function Header() {
       {mobileOpen && (
         <div className="md:hidden border-t border-neutral-200 bg-white px-6 py-6 flex flex-col gap-5">
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => scrollTo(e, link.href)}
-              className="text-[15px] text-neutral-700 hover:text-black transition-colors"
-              style={{ fontWeight: 500 }}
-            >
-              {link.label}
-            </a>
+            link.href.startsWith('#') ? (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-[15px] text-neutral-700 hover:text-black transition-colors"
+                style={{ fontWeight: 500 }}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.label}
+                to={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`text-[15px] transition-colors ${location.pathname === link.href ? 'text-black font-semibold' : 'text-neutral-700 hover:text-black'}`}
+                style={{ fontWeight: location.pathname === link.href ? 600 : 500 }}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
           <a
             href="#contact-form"

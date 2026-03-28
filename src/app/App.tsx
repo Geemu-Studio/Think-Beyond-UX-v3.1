@@ -11,6 +11,9 @@ import { CTAFormSection } from './components/CTAFormSection';
 import { OfferBridgeSection } from './components/OfferBridgeSection';
 import { Footer } from './components/Footer';
 import RecruitmentPage from './components/recruitment/RecruitmentPage';
+import { StudentSuccessPage } from './components/student-success/StudentSuccessPage';
+import MarketingPage from './components/marketing/MarketingPage';
+import AlumniPage from './components/alumni/AlumniPage';
 
 function HomePage() {
   return (
@@ -24,8 +27,8 @@ function HomePage() {
         <CalculatorSection />
         <SecurityTrustSection />
         <CaseStudySection />
-        <CTAFormSection />
         <OfferBridgeSection />
+        <CTAFormSection />
       </main>
       <Footer />
     </div>
@@ -38,6 +41,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/recruitment" element={<RecruitmentPage />} />
+        <Route path="/student-success" element={<StudentSuccessPage />} />
+        <Route path="/marketing" element={<MarketingPage />} />
+        <Route path="/alumni" element={<AlumniPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -22,8 +22,8 @@ export default function RecruitmentPage() {
         <CalculatorSection />
         <SecurityTrustSection />
         <RecruitmentCaseStudySection />
-        <RecruitmentCTAFormSection />
         <OfferBridgeSection />
+        <RecruitmentCTAFormSection />
       </main>
       <Footer />
     </div>
