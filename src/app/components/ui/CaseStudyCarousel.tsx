@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { motion } from 'motion/react';
 
 const CARDS = [
   {
@@ -34,31 +34,65 @@ const CARDS = [
   }
 ];
 
+// Expanded for infinite looping [C,A,B, C,A,B, C,A,B]
+const EXTENDED_CARDS = [...CARDS, ...CARDS, ...CARDS];
+
 interface CaseStudyCarouselProps {
   initialActiveIdx?: number;
 }
 
 export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselProps) {
-  const [activeIdx, setActiveIdx] = useState(initialActiveIdx);
+  // We start in the middle set of cards (index 3 to 5)
+  const [activeIdx, setActiveIdx] = useState(initialActiveIdx + CARDS.length);
   const [isPaused, setIsPaused] = useState(false);
+  const [isJumping, setIsJumping] = useState(false);
 
   // Responsive settings
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
   const nextSlide = useCallback(() => {
-    setActiveIdx((prev) => (prev + 1) % CARDS.length);
+    setActiveIdx((prev) => prev + 1);
   }, []);
 
   const prevSlide = useCallback(() => {
-    setActiveIdx((prev) => (prev - 1 + CARDS.length) % CARDS.length);
+    setActiveIdx((prev) => prev - 1);
   }, []);
+
+  // Silent Jump Logic
+  useEffect(() => {
+    // If we've reached a clone in the first or last set
+    // Index 6 (CDV clone in set 3) -> Jump to Index 3
+    // Wait, with 3 cards: Set 1 (0,1,2), Set 2 (3,4,5), Set 3 (6,7,8)
+    // If activeIdx becomes 6, we've just slid from 5 (CDV set 2) to 6 (SWPS set 3).
+    // We should allow the animation to finish, then jump.
+    
+    let timer: NodeJS.Timeout;
+    
+    if (activeIdx >= CARDS.length * 2) {
+      // Reached Set 3 ( клоны ), jump to Set 2 equivalent
+      timer = setTimeout(() => {
+        setIsJumping(true);
+        setActiveIdx(activeIdx - CARDS.length);
+        setTimeout(() => setIsJumping(false), 50);
+      }, 500); // 500ms matches transition duration
+    } else if (activeIdx < CARDS.length) {
+      // Reached Set 1 ( клоны ), jump to Set 2 equivalent
+      timer = setTimeout(() => {
+        setIsJumping(true);
+        setActiveIdx(activeIdx + CARDS.length);
+        setTimeout(() => setIsJumping(false), 50);
+      }, 500);
+    }
+
+    return () => clearTimeout(timer);
+  }, [activeIdx]);
 
   // Auto-play logic
   useEffect(() => {
-    if (isPaused || isMobile) return;
+    if (isPaused || isMobile || isJumping) return;
     const interval = setInterval(nextSlide, 3500);
     return () => clearInterval(interval);
-  }, [isPaused, isMobile, nextSlide]);
+  }, [isPaused, isMobile, nextSlide, isJumping]);
 
   const handleDragEnd = (event: any, info: any) => {
     const threshold = 50;
@@ -68,6 +102,15 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
       prevSlide();
     }
   };
+
+  const handleSelect = (idx: number) => {
+    // Always navigate within the relative distance to keep it smooth
+    // For simplicity, we just set the Logical index in the Middle Set
+    setActiveIdx(idx + CARDS.length);
+  };
+
+  // Logical Display Index (0, 1, or 2)
+  const logicalIdx = activeIdx % CARDS.length;
 
   return (
     <div 
@@ -81,30 +124,30 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
           className="flex gap-6 sm:gap-10 shrink-0"
           animate={{ 
             x: isMobile 
-              ? `calc(${(1 - activeIdx) * 85}vw + ${(1 - activeIdx) * 24}px)`
-              : `calc(${(1 - activeIdx) * 620}px + ${(1 - activeIdx) * 40}px)`
+              ? `calc(${(4 - activeIdx) * 85}vw + ${(4 - activeIdx) * 24}px)`
+              : `calc(${(4 - activeIdx) * 620}px + ${(4 - activeIdx) * 40}px)`
           }}
-          transition={{ type: "spring", stiffness: 300, damping: 35 }}
+          transition={isJumping ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 35 }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
-          style={{ cursor: "grab" }}
-          whileTap={{ cursor: "grabbing" }}
+          style={{ cursor: isJumping ? "default" : "grab" }}
+          whileTap={{ cursor: isJumping ? "default" : "grabbing" }}
         >
-          {CARDS.map((card, idx) => {
+          {EXTENDED_CARDS.map((card, idx) => {
             const isActive = idx === activeIdx;
             
             return (
               <motion.div 
-                key={card.university}
-                onClick={() => !isActive && setActiveIdx(idx)}
+                key={`${card.university}-${idx}`}
+                onClick={() => !isActive && !isJumping && setActiveIdx(idx)}
                 initial={false}
                 animate={{ 
                   scale: isActive ? 1 : 0.9,
                   opacity: isActive ? 1 : 0.35,
                   filter: isActive ? "blur(0px)" : "blur(1px)",
                 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
+                transition={isJumping ? { duration: 0 } : { duration: 0.5, ease: "easeInOut" }}
                 className={`bg-white rounded-[32px] p-8 sm:p-10 flex flex-col gap-6 shrink-0 cursor-pointer select-none border border-neutral-100
                   ${isActive 
                     ? "w-[85vw] sm:w-[620px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] z-10" 
@@ -157,10 +200,10 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
         {CARDS.map((_, i) => (
           <button 
             key={i}
-            onClick={() => setActiveIdx(i)}
+            onClick={() => handleSelect(i)}
             aria-label={`Go to slide ${i + 1}`}
             className={`h-[4px] rounded-full transition-all duration-500 ease-in-out cursor-pointer border-none p-0 outline-none
-              ${i === activeIdx ? 'w-10 bg-black' : 'w-5 bg-neutral-100 hover:bg-neutral-200'}`}
+              ${i === logicalIdx ? 'w-10 bg-black' : 'w-5 bg-neutral-100 hover:bg-neutral-200'}`}
           ></button>
         ))}
       </div>
