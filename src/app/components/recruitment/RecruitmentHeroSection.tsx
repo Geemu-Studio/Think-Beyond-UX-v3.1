@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router';
+import { ConsultationModal } from '../ConsultationModal';
 
 export function RecruitmentHeroSection() {
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCTA = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const el = document.getElementById('contact-form');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setIsModalOpen(true);
   };
 
   return (
@@ -38,7 +42,7 @@ export function RecruitmentHeroSection() {
         {/* CTA */}
         <a
           href="#contact-form"
-          onClick={handleScroll}
+          onClick={handleCTA}
           className="mt-1 w-full sm:w-auto inline-flex items-center justify-center bg-black text-white px-8 py-4 text-[15px] transition-colors hover:bg-neutral-800 rounded-full animate-in slide-in-from-bottom-4 fade-in duration-700"
           style={{ fontWeight: 600 }}
         >
@@ -53,6 +57,12 @@ export function RecruitmentHeroSection() {
         </div>
 
       </div>
+
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        pathname={location.pathname}
+      />
     </section>
   );
 }

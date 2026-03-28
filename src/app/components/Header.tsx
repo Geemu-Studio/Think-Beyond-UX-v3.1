@@ -97,7 +97,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <button
             onClick={handleCTA}
-            className="hidden md:inline-block bg-black text-white px-5 py-2 text-[14px] hover:bg-neutral-800 transition-colors rounded-full"
+            className="hidden md:inline-block bg-black text-white px-5 py-2 text-[14px] hover:bg-neutral-800 transition-colors rounded-full cursor-pointer"
             style={{ fontWeight: 600 }}
           >
             Book a Free Consultation
@@ -105,7 +105,7 @@ export function Header() {
 
           {/* Hamburger (mobile only) */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-1"
+            className="md:hidden flex flex-col gap-1.5 p-1 cursor-pointer"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Menu"
           >
@@ -125,7 +125,7 @@ export function Header() {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-[15px] text-neutral-700 hover:text-black transition-colors"
+                className="text-[15px] text-neutral-700 hover:text-black transition-colors cursor-pointer"
                 style={{ fontWeight: 500 }}
               >
                 {link.label}
@@ -135,7 +135,7 @@ export function Header() {
                 key={link.label}
                 to={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`text-[15px] transition-colors ${location.pathname === link.href ? 'text-black font-semibold' : 'text-neutral-700 hover:text-black'}`}
+                className={`text-[15px] transition-colors cursor-pointer ${location.pathname === link.href ? 'text-black font-semibold' : 'text-neutral-700 hover:text-black'}`}
                 style={{ fontWeight: location.pathname === link.href ? 600 : 500 }}
               >
                 {link.label}
@@ -144,7 +144,7 @@ export function Header() {
           ))}
           <button
             onClick={handleCTA}
-            className="bg-black text-white text-center px-5 py-3 text-[14px] mt-2 rounded-full w-full"
+            className="bg-black text-white text-center px-5 py-3 text-[14px] mt-2 rounded-full w-full cursor-pointer hover:bg-neutral-800 transition-colors"
             style={{ fontWeight: 600 }}
           >
             Book a Free Consultation

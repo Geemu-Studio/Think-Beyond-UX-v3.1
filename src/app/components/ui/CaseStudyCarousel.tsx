@@ -65,9 +65,9 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
     // Wait, with 3 cards: Set 1 (0,1,2), Set 2 (3,4,5), Set 3 (6,7,8)
     // If activeIdx becomes 6, we've just slid from 5 (CDV set 2) to 6 (SWPS set 3).
     // We should allow the animation to finish, then jump.
-    
+
     let timer: NodeJS.Timeout;
-    
+
     if (activeIdx >= CARDS.length * 2) {
       // Reached Set 3 ( клоны ), jump to Set 2 equivalent
       timer = setTimeout(() => {
@@ -113,17 +113,17 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
   const logicalIdx = activeIdx % CARDS.length;
 
   return (
-    <div 
+    <div
       className="relative flex flex-col items-center w-full overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Carousel Track */}
       <div className="relative w-full flex justify-center py-10 px-4 sm:px-0">
-        <motion.div 
+        <motion.div
           className="flex gap-6 sm:gap-10 shrink-0"
-          animate={{ 
-            x: isMobile 
+          animate={{
+            x: isMobile
               ? `calc(${(4 - activeIdx) * 85}vw + ${(4 - activeIdx) * 24}px)`
               : `calc(${(4 - activeIdx) * 620}px + ${(4 - activeIdx) * 40}px)`
           }}
@@ -136,20 +136,20 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
         >
           {EXTENDED_CARDS.map((card, idx) => {
             const isActive = idx === activeIdx;
-            
+
             return (
-              <motion.div 
+              <motion.div
                 key={`${card.university}-${idx}`}
                 onClick={() => {
                   if (!isActive && !isJumping) {
                     setActiveIdx(idx);
                   } else if (isActive) {
                     // Action when clicking the active card - e.g. follow the link
-                    window.location.href = '#'; 
+                    window.location.href = '#';
                   }
                 }}
                 initial={false}
-                animate={{ 
+                animate={{
                   scale: isActive ? 1 : 0.9,
                   opacity: isActive ? 1 : 0.35,
                   filter: isActive ? "blur(0px)" : "blur(1px)",
@@ -157,8 +157,8 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                 whileHover={isActive ? { scale: 1.02, transition: { duration: 0.2 } } : {}}
                 transition={isJumping ? { duration: 0 } : { duration: 0.5, ease: "easeInOut" }}
                 className={`bg-white rounded-[32px] p-8 sm:p-10 flex flex-col gap-6 shrink-0 cursor-pointer select-none border border-neutral-100 transition-shadow duration-300
-                  ${isActive 
-                    ? "w-[85vw] sm:w-[620px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)] z-10" 
+                  ${isActive
+                    ? "w-[85vw] sm:w-[620px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)] z-10"
                     : "w-[85vw] sm:w-[620px]"
                   }`}
               >
@@ -202,7 +202,7 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
       {/* Apple-style Pagination Buttons */}
       <div className="flex justify-center gap-3 mt-4 mb-2">
         {CARDS.map((_, i) => (
-          <button 
+          <button
             key={i}
             onClick={() => handleSelect(i)}
             aria-label={`Go to slide ${i + 1}`}

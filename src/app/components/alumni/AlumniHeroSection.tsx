@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router';
+import { ConsultationModal } from '../ConsultationModal';
 
 const slides = [
   {
@@ -11,12 +13,13 @@ const slides = [
 ];
 
 export function AlumniHeroSection() {
+  const location = useLocation();
   const [activeIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleCTA = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const el = document.getElementById('contact-form');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setIsModalOpen(true);
   };
 
   const currentSlide = slides[activeIndex];
@@ -52,7 +55,7 @@ export function AlumniHeroSection() {
         {/* CTA */}
         <a
           href="#contact-form"
-          onClick={handleScroll}
+          onClick={handleCTA}
           className="mt-1 w-full sm:w-auto inline-flex items-center justify-center bg-black text-white px-8 py-4 text-[15px] transition-colors hover:bg-neutral-800 rounded-full animate-in slide-in-from-bottom-4 fade-in duration-700"
           style={{ fontWeight: 600 }}
         >
@@ -67,6 +70,12 @@ export function AlumniHeroSection() {
         </div>
 
       </div>
+
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        pathname={location.pathname}
+      />
     </section>
   );
 }

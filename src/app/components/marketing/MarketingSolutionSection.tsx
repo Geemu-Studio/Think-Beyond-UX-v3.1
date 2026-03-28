@@ -1,4 +1,6 @@
-import React from 'react';
+import { useState } from 'react';
+import { useLocation } from 'react-router';
+import { ConsultationModal } from '../ConsultationModal';
 
 function CheckIcon() {
   return (
@@ -61,6 +63,9 @@ const cards = [
 ];
 
 export function MarketingSolutionSection() {
+  const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section id="solution" className="bg-neutral-50 py-24 px-6 border-t border-neutral-200">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
@@ -80,11 +85,12 @@ export function MarketingSolutionSection() {
           {cards.map((card) => (
             <div
               key={card.title}
-              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_32px_rgba(0,0,0,0.09)] transition-shadow"
+              onClick={() => setIsModalOpen(true)}
+              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] hover:scale-[1.01] transition-all duration-300 cursor-pointer group"
             >
               {/* Icon row: line-art + checkmark badge */}
               <div className="flex items-start justify-between">
-                <div className="text-black">{card.icon}</div>
+                <div className="text-black group-hover:scale-110 transition-transform duration-300">{card.icon}</div>
                 <CheckIcon />
               </div>
 
@@ -102,9 +108,8 @@ export function MarketingSolutionSection() {
 
         {/* Bridge CTA */}
         <div className="flex items-center gap-6 pt-2">
-          <a
-            href="#calculator"
-            onClick={(e) => { e.preventDefault(); document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' }); }}
+          <button
+            onClick={() => setIsModalOpen(true)}
             className="inline-flex items-center gap-2 text-[14px] text-black hover:opacity-60 transition-opacity px-4 py-2 rounded-full hover:bg-neutral-100"
             style={{ fontWeight: 600 }}
           >
@@ -112,10 +117,16 @@ export function MarketingSolutionSection() {
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M2 6.5h9M8 3l3.5 3.5L8 10" />
             </svg>
-          </a>
+          </button>
         </div>
 
       </div>
+
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        pathname={location.pathname}
+      />
     </section>
   );
 }

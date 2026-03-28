@@ -1,3 +1,7 @@
+import { useState } from 'react';
+import { useLocation } from 'react-router';
+import { ConsultationModal } from './ConsultationModal';
+
 /* Problem Agitation Grid — 3-column cards, line-art icons */
 
 function IconChaos() {
@@ -64,6 +68,9 @@ const cards = [
 ];
 
 export function ProblemSection() {
+  const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section id="problem" className="bg-white py-24 px-6 border-t border-neutral-100">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
@@ -81,7 +88,7 @@ export function ProblemSection() {
           {cards.map((card) => (
             <div
               key={card.title}
-              onClick={() => { document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' }); }}
+              onClick={() => setIsModalOpen(true)}
               className="p-8 flex flex-col gap-5 rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] hover:scale-[1.01] transition-all duration-300 cursor-pointer group"
             >
               {/* Icon tinted lightly */}
@@ -97,6 +104,12 @@ export function ProblemSection() {
         </div>
 
       </div>
+
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        pathname={location.pathname}
+      />
     </section>
   );
 }
