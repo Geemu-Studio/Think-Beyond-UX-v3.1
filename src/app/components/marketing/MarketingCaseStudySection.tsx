@@ -1,83 +1,26 @@
-import React, { useState } from 'react';
-
-const STATS = [
-  { value: '35,000', label: 'Unique Voices Engaged' },
-  { value: '45%', label: 'Increase in Applicant Conversion' },
-  { value: '1', label: 'Cohesive Brand Story' },
-];
+import { CaseStudyCarousel } from '../ui/CaseStudyCarousel';
 
 export function MarketingCaseStudySection() {
-  const [expanded] = useState(true);
-
   return (
-    <section id="case-study" className="bg-neutral-50 py-24 px-6 border-t border-neutral-100">
-      <div className="mx-auto max-w-4xl flex flex-col gap-10">
-
-        {/* Section label */}
-        <div>
+    <section id="case-study" className="bg-neutral-50 py-24 border-t border-neutral-100 overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6">
+        
+        {/* Section Headings */}
+        <div className="text-center mb-16 max-w-2xl mx-auto">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
             Case Studies
           </span>
           <h2 className="mt-3 text-[32px] sm:text-[40px] leading-[1.15] tracking-[-1.4px] text-black">
-            Trusted by leaders shaping the future of higher education:
+            Social Proof & Transformation Stories
           </h2>
-        </div>
-
-        {/* Single hero case study card */}
-        <div className="bg-white rounded-[24px] shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-8 sm:p-12 flex flex-col gap-8">
-
-           {/* Institution tag */}
-           <div className="flex items-center gap-2">
-            <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#111" />
-              <text x="16" y="22" textAnchor="middle" fill="white" fontSize="14" fontFamily="sans-serif" fontWeight="700">S</text>
-            </svg>
-            <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-              Case Study · SWPS University
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h3 className="text-[22px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black" style={{ fontWeight: 700 }}>
-            35,000 unique voices, one cohesive brand story.
-          </h3>
-
-          {/* Body */}
-          <p className="text-[15px] text-neutral-500 leading-[1.75] max-w-xl">
-            Discover how SWPS University unified its marketing architecture, delivering highly targeted, omnichannel campaigns that increased engagement and applicant conversion.
+          <p className="mt-4 text-neutral-500 text-[15px] leading-[1.6]">
+            Discover how institutions like yours have leveraged our Salesforce Education Cloud ecosystem to achieve profound, measurable change.
           </p>
-
-          {/* Expanded stats */}
-          {expanded && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-6 border-t border-b border-neutral-200">
-              {STATS.map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-1.5">
-                  <span
-                    className="text-[34px] sm:text-[42px] tracking-[-1.5px] text-black leading-none"
-                    style={{ fontWeight: 700 }}
-                  >
-                    {stat.value}
-                  </span>
-                  <p className="text-[12px] text-neutral-500 uppercase tracking-[0.6px]" style={{ fontWeight: 500 }}>
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* CTA button */}
-          <div>
-            <a
-              href="#"
-              className="inline-flex items-center justify-center bg-white text-black border border-black px-7 py-4 text-[14px] hover:bg-black hover:text-white transition-colors rounded-full w-full sm:w-auto"
-              style={{ fontWeight: 600 }}
-            >
-              Read the SWPS Marketing Story →
-            </a>
-          </div>
-
         </div>
+
+        {/* Standardized Interactive Carousel */}
+        <CaseStudyCarousel initialActiveIdx={0} />
+
       </div>
     </section>
   );
