@@ -80,11 +80,12 @@ export function SolutionSection() {
           {cards.map((card) => (
             <div
               key={card.title}
-              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_32px_rgba(0,0,0,0.09)] transition-shadow"
+              onClick={() => { document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] hover:scale-[1.01] transition-all duration-300 cursor-pointer group"
             >
               {/* Icon row: line-art + checkmark badge */}
               <div className="flex items-start justify-between">
-                <div className="text-black">{card.icon}</div>
+                <div className="text-black group-hover:scale-110 transition-transform duration-300">{card.icon}</div>
                 <CheckIcon />
               </div>
 

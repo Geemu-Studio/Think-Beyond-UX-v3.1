@@ -77,9 +77,10 @@ export function OfferBridgeSection() {
         {/* 3-column mini-grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {cards.map((card) => (
-            <div
+            <Link
               key={card.title}
-              className="bg-neutral-700 rounded-[20px] p-6 flex flex-col gap-3"
+              to={card.href}
+              className="bg-neutral-700 rounded-[20px] p-6 flex flex-col gap-3 group hover:bg-neutral-600 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl cursor-pointer no-underline"
             >
               <span
                 className="text-[10px] text-neutral-400 uppercase tracking-[1.4px]"
@@ -93,24 +94,13 @@ export function OfferBridgeSection() {
               <p className="text-[13px] text-neutral-400 leading-[1.65]">
                 {card.body}
               </p>
-              {card.href.startsWith('#') ? (
-                <a
-                  href={card.href}
-                  className="mt-auto text-[13px] text-neutral-300 hover:text-white transition-colors underline underline-offset-2"
-                  style={{ fontWeight: 500 }}
-                >
-                  {card.linkText}
-                </a>
-              ) : (
-                <Link
-                  to={card.href}
-                  className="mt-auto text-[13px] text-neutral-300 hover:text-white transition-colors underline underline-offset-2"
-                  style={{ fontWeight: 500 }}
-                >
-                  {card.linkText}
-                </Link>
-              )}
-            </div>
+              <div
+                className="mt-auto text-[13px] text-neutral-300 group-hover:text-white transition-colors"
+                style={{ fontWeight: 500 }}
+              >
+                {card.linkText}
+              </div>
+            </Link>
           ))}
         </div>
 

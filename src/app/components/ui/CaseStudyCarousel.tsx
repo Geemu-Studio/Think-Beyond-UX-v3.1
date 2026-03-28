@@ -140,17 +140,25 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
             return (
               <motion.div 
                 key={`${card.university}-${idx}`}
-                onClick={() => !isActive && !isJumping && setActiveIdx(idx)}
+                onClick={() => {
+                  if (!isActive && !isJumping) {
+                    setActiveIdx(idx);
+                  } else if (isActive) {
+                    // Action when clicking the active card - e.g. follow the link
+                    window.location.href = '#'; 
+                  }
+                }}
                 initial={false}
                 animate={{ 
                   scale: isActive ? 1 : 0.9,
                   opacity: isActive ? 1 : 0.35,
                   filter: isActive ? "blur(0px)" : "blur(1px)",
                 }}
+                whileHover={isActive ? { scale: 1.02, transition: { duration: 0.2 } } : {}}
                 transition={isJumping ? { duration: 0 } : { duration: 0.5, ease: "easeInOut" }}
-                className={`bg-white rounded-[32px] p-8 sm:p-10 flex flex-col gap-6 shrink-0 cursor-pointer select-none border border-neutral-100
+                className={`bg-white rounded-[32px] p-8 sm:p-10 flex flex-col gap-6 shrink-0 cursor-pointer select-none border border-neutral-100 transition-shadow duration-300
                   ${isActive 
-                    ? "w-[85vw] sm:w-[620px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] z-10" 
+                    ? "w-[85vw] sm:w-[620px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)] z-10" 
                     : "w-[85vw] sm:w-[620px]"
                   }`}
               >
@@ -179,15 +187,11 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                 </div>
 
                 <div className="mt-2 text-left">
-                  <a
-                    href="#"
-                    onClick={(e) => {
-                      if (!isActive) e.preventDefault();
-                    }}
-                    className={`inline-flex items-center justify-center bg-white text-black border border-black px-8 py-4 text-[13px] hover:bg-black hover:text-white transition-all duration-300 rounded-full font-bold shadow-sm ${!isActive ? 'pointer-events-none' : ''}`}
+                  <div
+                    className={`inline-flex items-center justify-center bg-white text-black border border-black px-8 py-4 text-[13px] group-hover:bg-black group-hover:text-white transition-all duration-300 rounded-full font-bold shadow-sm ${!isActive ? 'pointer-events-none opacity-50' : ''}`}
                   >
                     {card.button} →
-                  </a>
+                  </div>
                 </div>
               </motion.div>
             );
