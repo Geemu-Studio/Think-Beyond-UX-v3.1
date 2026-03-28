@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import svgPaths from "../../imports/svg-fitf5bq036";
+import { ConsultationModal } from './ConsultationModal';
 
 const NAV_LINKS = [
   { label: 'Platform', href: '/' },
@@ -12,6 +13,7 @@ const NAV_LINKS = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -25,10 +27,10 @@ export function Header() {
     }
   };
 
-  const handleCTA = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleCTA = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     e.preventDefault();
     setMobileOpen(false);
-    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+    setIsModalOpen(true);
   };
 
   return (
@@ -93,14 +95,13 @@ export function Header() {
 
         {/* ── Right: CTA + mobile hamburger ── */}
         <div className="flex items-center gap-4">
-          <a
-            href="#contact-form"
+          <button
             onClick={handleCTA}
             className="hidden md:inline-block bg-black text-white px-5 py-2 text-[14px] hover:bg-neutral-800 transition-colors rounded-full"
             style={{ fontWeight: 600 }}
           >
             Book a Free Consultation
-          </a>
+          </button>
 
           {/* Hamburger (mobile only) */}
           <button
@@ -141,16 +142,22 @@ export function Header() {
               </Link>
             )
           ))}
-          <a
-            href="#contact-form"
+          <button
             onClick={handleCTA}
-            className="bg-black text-white text-center px-5 py-3 text-[14px] mt-2 rounded-full"
+            className="bg-black text-white text-center px-5 py-3 text-[14px] mt-2 rounded-full w-full"
             style={{ fontWeight: 600 }}
           >
             Book a Free Consultation
-          </a>
+          </button>
         </div>
       )}
+
+      {/* Global Contact Modal */}
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        pathname={location.pathname}
+      />
     </header>
   );
 }

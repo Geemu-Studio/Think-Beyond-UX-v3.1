@@ -82,7 +82,7 @@ export function MarketingCTAFormSection() {
             Free Strategic Consultation
           </span>
           <h2 className="mt-3 text-[34px] sm:text-[42px] leading-[1.15] tracking-[-1.5px] text-black text-left">
-            About us: Your dedicated higher education transformation team.
+            About us: Your dedicated university marketing and communications team.
           </h2>
         </div>
 
@@ -160,7 +160,7 @@ export function MarketingCTAFormSection() {
           <div className="bg-white rounded-[24px] border border-[#F0F0F0] p-8 sm:p-10 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)]">
             <div>
               <h3 className="text-[24px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black">
-                Transform your university's narrative. Let's design your next campaign ecosystem.
+                Let's talk about your university's marketing and communications strategy.
               </h3>
             </div>
 

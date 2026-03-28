@@ -184,7 +184,7 @@ export function CTAFormSection() {
           <div className="bg-white rounded-[24px] border border-[#F0F0F0] p-8 sm:p-10 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)]">
             <div>
               <h3 className="text-[24px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black">
-                Let's talk about the student experience at your institution.
+                Let's talk about the complete student experience at your institution.
               </h3>
             </div>
 

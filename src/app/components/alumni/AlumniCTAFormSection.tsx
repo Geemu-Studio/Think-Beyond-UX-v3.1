@@ -82,7 +82,7 @@ export function AlumniCTAFormSection() {
             Free Strategic Consultation
           </span>
           <h2 className="mt-3 text-[34px] sm:text-[42px] leading-[1.15] tracking-[-1.5px] text-black text-left">
-            About us: Your dedicated higher education transformation team.
+            About us: Your dedicated alumni relations and advancement team.
           </h2>
         </div>
 
@@ -160,7 +160,7 @@ export function AlumniCTAFormSection() {
           <div className="bg-white rounded-[24px] border border-[#F0F0F0] p-8 sm:p-10 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)]">
             <div>
               <h3 className="text-[24px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black">
-                Shape the future of your institutional legacy. Let’s build a network that lasts a lifetime.
+                Let's talk about alumni engagement and lifelong learning at your institution.
               </h3>
             </div>
 
