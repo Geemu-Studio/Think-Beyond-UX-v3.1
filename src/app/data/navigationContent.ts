@@ -1,4 +1,11 @@
 export const NAVIGATION_CONTENT = {
+  PLATFORM: {
+    label: 'Salesforce Education Cloud',
+    title: 'Integrated Platform',
+    body: 'A unified student lifecycle ecosystem. Seamlessly connect every touchpoint into one intelligent, purpose-driven Salesforce environment.',
+    linkText: 'Learn More →',
+    href: '/',
+  },
   RECRUITMENT: {
     label: 'Salesforce Education Cloud',
     title: 'Recruitment & Admissions',
@@ -30,7 +37,7 @@ export const NAVIGATION_CONTENT = {
 };
 
 export const NAV_LINKS = [
-  { label: 'Platform', href: '/' },
+  { label: 'Platform', href: NAVIGATION_CONTENT.PLATFORM.href, description: NAVIGATION_CONTENT.PLATFORM.body },
   { label: 'Recruitment', href: NAVIGATION_CONTENT.RECRUITMENT.href, description: NAVIGATION_CONTENT.RECRUITMENT.body },
   { label: 'Student Success', href: NAVIGATION_CONTENT.SUCCESS.href, description: NAVIGATION_CONTENT.SUCCESS.body },
   { label: 'Marketing', href: NAVIGATION_CONTENT.MARKETING.href, description: NAVIGATION_CONTENT.MARKETING.body },
