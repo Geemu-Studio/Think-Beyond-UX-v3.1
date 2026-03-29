@@ -10,7 +10,7 @@ export function OfferBridgeSection() {
 
   let heading = 'A unified ecosystem for the entire student lifecycle.';
   let subheading = 'Discover the core pillars of a transformed institution powered by Salesforce Education Cloud.';
-  let cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING];
+  let cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING, BOXES.ALUMNI];
 
   if (path === '/recruitment') {
     heading = 'Admissions is only the beginning of your institutional story.';
@@ -47,17 +47,17 @@ export function OfferBridgeSection() {
           </p>
         </div>
 
-        {/* 3-column mini-grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {/* Dynamic mini-grid */}
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${cards.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-4`}>
           {cards.map((card) => (
             <Link
               key={card.title}
               to={card.href}
               className="bg-transparent border border-neutral-700 rounded-[20px] p-6 flex flex-col gap-3 group hover:bg-[#333333] hover:border-transparent transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl active:scale-[0.98] cursor-pointer no-underline"
             >
-              <p className="text-[15px] text-white leading-[1.5] tracking-[-0.3px]" style={{ fontWeight: 600 }}>
+              <h3 className="text-[15px] text-white leading-[1.5] tracking-[-0.3px]" style={{ fontWeight: 600 }}>
                 {card.title}
-              </p>
+              </h3>
               <p className="text-[13px] text-neutral-400 leading-[1.65]">
                 {card.body}
               </p>

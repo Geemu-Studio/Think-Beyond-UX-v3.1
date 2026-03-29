@@ -9,29 +9,29 @@ export const NAVIGATION_CONTENT = {
   RECRUITMENT: {
     label: 'Salesforce Education Cloud',
     title: 'Recruitment & Admissions',
-    body: 'Shape the future of your institution. Attract, engage, and enrol the world’s brightest minds with purpose-driven recruitment.',
+    body: 'Empower your institution to attract global talent. Eliminate application barriers and build frictionless, highly personalized enrolment journeys.',
     linkText: 'Explore Recruitment →',
     href: '/recruitment',
   },
   SUCCESS: {
     label: 'Salesforce Education Cloud',
     title: 'Student Success & Retention',
-    body: 'Move from reactive support to proactive care. Build a connected campus where every student is empowered to graduate.',
+    body: 'Shift from reactive support to proactive care. Leverage data-driven early alerts to boost retention and ensure holistic student wellbeing.',
     linkText: 'Explore Student Success →',
     href: '/student-success',
   },
   MARKETING: {
     label: 'Salesforce Education Cloud',
     title: 'Marketing & Communications',
-    body: 'Orchestrate highly personalised, omnichannel journeys that build lifelong institutional loyalty and brand advocacy.',
+    body: 'Break down data silos and cut through the digital noise. Build automated, omnichannel engagement paths driven by authentic storytelling.',
     linkText: 'Explore Marketing →',
     href: '/marketing',
   },
   ALUMNI: {
     label: 'Salesforce Education Cloud',
     title: 'Alumni & Lifelong Learning',
-    body: 'Cultivate lasting relationships with your graduates and build a global network that supports continuous education.',
-    linkText: 'Explore Alumni & Lifelong Learning →',
+    body: 'Cultivate a loyal global community. Transform transactional fundraising into lifelong relationships and executive education opportunities.',
+    linkText: 'Explore Alumni →',
     href: '/alumni',
   }
 };
