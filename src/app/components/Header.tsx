@@ -94,14 +94,8 @@ export function Header() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="absolute top-full mt-2 z-[100] pointer-events-none bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col gap-3 min-w-[260px] max-w-[280px]"
+                        className="absolute top-full mt-2 z-[100] pointer-events-none bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col min-w-[260px] max-w-[280px]"
                       >
-                        <span className="text-[10px] text-neutral-400 uppercase tracking-[1.4px] font-semibold whitespace-nowrap">
-                          Salesforce Education Cloud
-                        </span>
-                        <p className="text-[15px] text-white font-semibold leading-tight">
-                          {link.label}
-                        </p>
                         <p className="text-[13px] text-neutral-400 leading-[1.65]">
                           {link.description}
                         </p>
