@@ -86,7 +86,17 @@ export function CalculatorSection() {
           </div>
 
           {/* Slider */}
-          <div className="relative">
+          <div className="relative group/slider">
+            <style>
+              {`
+                input[type='range']::-webkit-slider-thumb {
+                  transition: transform 0.2s ease;
+                }
+                input[type='range']:hover::-webkit-slider-thumb {
+                  transform: scale(1.25);
+                }
+              `}
+            </style>
             <input
               type="range"
               min={200}
