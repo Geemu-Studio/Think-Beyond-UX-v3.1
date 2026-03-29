@@ -17,7 +17,8 @@ import {
   GraduationCap,
   AlertCircle,
   Lightbulb,
-  Quote
+  Quote,
+  Target
 } from 'lucide-react';
 
 // --- Types ---
@@ -54,121 +55,124 @@ interface Card {
   fullStory: FullStory;
 }
 
-// Specialized content for SWPS - TRANSLATION TO ENGLISH (UK)
+// Specialized content for SWPS - Conversion-optimized B2B copy
 const SWPS_DETAILED_CONTENT: SWPSContent = {
-  title: "Student services management at SWPS University using Salesforce Experience Cloud.",
+  title: "Transforming the Student Experience at Scale: The SWPS University Ecosystem",
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
-      title: "About the University:",
+      title: "At a Glance",
       items: [
-        "Client: SWPS University, headquartered in Warsaw.",
-        "Scale: 17,500 students across undergraduate, postgraduate, and doctoral studies.",
-        "Locations: 6 campuses in major cities across Poland."
+        "Client: SWPS University",
+        "Scale: 17,500+ undergraduate, postgraduate, and doctoral students",
+        "Footprint: 6 campuses across major cities"
       ]
     },
     {
       icon: <AlertCircle className="w-5 h-5 text-black" />,
-      title: "Challenges:",
-      description: "Prior to the implementation, the university relied on traditional paper-based documentation. Three main challenges were identified:",
+      title: "The Challenge: Overcoming Administrative Silos",
+      description: "Before partnering with Think Beyond, the university relied on fragmented, paper-based documentation. They needed to modernize their infrastructure to meet the digital expectations of today’s learners. The key objectives were:",
       items: [
-        "Workflow digitisation: The need to move student services to a digital version for seamless case tracking.",
-        "Process improvement: Eliminating obsolete manual signing and printing processes.",
-        "Multichannel services: Creating a multi-channel environment providing top-tier service levels."
+        "Frictionless Journeys: Replacing obsolete manual processes with seamless, digital workflows.",
+        "Omnichannel Engagement: Creating a responsive environment that provides top-tier support across all student touchpoints."
       ]
     },
     {
       icon: <Lightbulb className="w-5 h-5 text-black" />,
-      title: "Solution (Education Cloud):",
-      description: "The university underwent a digital \"omnichannel\" transformation. The foundation became Salesforce Education Cloud and the Genesys Cloud contact centre.",
-      subTitle: "Key implementations:",
+      title: "The Solution: A Unified Digital Campus",
+      description: "Powered by Salesforce Education Cloud and Genesys Cloud, Think Beyond orchestrated a complete omnichannel transformation, shifting the institution from reactive administration to proactive student care.",
+      items: []
+    },
+    {
+      icon: <Target className="w-5 h-5 text-black" />,
+      title: "Transformational Impact",
       items: [
-        "Student Affairs Centre: A digital, responsive portal (desktop & mobile).",
-        "360-degree Profile: A tool aggregating communication history (email, phone, messenger), submitted documents, applications, and processes in a single, consistent view."
+        "Centralised Student Hub: A highly responsive, digital portal empowering students to manage their academic journey from any device.",
+        "360-Degree Visibility: Breaking down data silos to provide staff with a single, holistic view of every student—aggregating communication history, applications, and academic milestones in one place."
       ]
     }
   ],
   reference: {
-    text: "Incredible attention to the customer's needs, a wonderfully supportive implementation team full of willingness to help, patience. Thanks to their commitment and knowledge, the process went as smoothly as possible. The collaboration was (and still is) a pleasure.",
-    author: "Kamila Dryjańska, HR Department"
+    text: "Incredible attention to our institutional needs. The Think Beyond team provided wonderful support, patience, and expertise. Thanks to their commitment, this complex transformation went as smoothly as possible.",
+    author: "SWPS University Representative"
   }
 };
 
 const KOZMINSKI_DETAILED_CONTENT: SWPSContent = {
-  title: "Global Scale and Prestige: International Recruitment at Kozminski University.",
+  title: "Optimizing Global Admissions: The ALD Warsaw Ecosystem",
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
-      title: "About the University:",
+      title: "At a Glance",
       items: [
-        "Client: Kozminski University (ALK Warsaw).",
-        "Prestige: Triple Crown accreditation (AACSB, AMBA, EQUIS).",
-        "Reach: Over 12,000 international candidates from 60+ countries annually."
+        "Client: ALD Warsaw (Kozminski University)",
+        "Focus: Elite Business Education",
+        "Scale: 12,000+ international applications processed annually"
       ]
     },
     {
       icon: <AlertCircle className="w-5 h-5 text-black" />,
-      title: "Challenges:",
-      description: "As a premier international business school, Kozminski faced complex global recruitment hurdles:",
-      items: [
-        "Global Scalability: Managing candidate journeys across multiple time zones and languages.",
-        "Administrative Overhead: High manual workload in verifying international secondary and higher education documents.",
-        "Candidate Engagement: Maintaining high engagement throughout long-term international enrolment cycles."
-      ]
+      title: "The Challenge: Scaling Global Talent Acquisition",
+      description: "As a globally recognized institution, ALD Warsaw faced a massive influx of international applications. Their existing, rigid administrative processes led to slow response times and high administrative overhead, risking the loss of top-tier candidates to competing universities.",
+      items: []
     },
     {
       icon: <Lightbulb className="w-5 h-5 text-black" />,
-      title: "Solution (Education Cloud):",
-      description: "Implementation focused on a unified global admissions hub and automated document processing.",
-      subTitle: "Key implementations:",
+      title: "The Solution: Intelligent Application Workflows",
+      description: "Leveraging Salesforce Education Cloud, Think Beyond implemented an automated, data-driven admissions ecosystem. The new architecture streamlined candidate scoring, automated routine communications, and provided admissions teams with real-time analytics.",
+      items: []
+    },
+    {
+      icon: <Target className="w-5 h-5 text-black" />,
+      title: "Transformational Impact",
       items: [
-        "Global Candidate Portal: A localised application experience for students from 60+ countries.",
-        "Automated Ranking & Scholarship: Rules-based engines that calculate eligibility instantly, reducing response times by 35%."
+        "Unprecedented Efficiency: Achieved a 35% reduction in administrative overhead per enrolment.",
+        "Candidate-Centric Journey: Reached a 92% positive candidate experience score through highly personalized, timely engagement."
       ]
     }
   ],
   reference: {
-    text: "Our international footprint required a system that scales without borders. Think Beyond delivered a world-class environment that truly reflects our global prestige and supports our ambitious growth targets.",
-    author: "Director of International Relations, ALK"
+    text: "Think Beyond entirely reshaped how we engage with global talent. The automation, clarity, and strategic insight brought to our admissions team have given us a distinct competitive advantage.",
+    author: "Admissions Director, ALD Warsaw"
   }
 };
 
 const CDV_DETAILED_CONTENT: SWPSContent = {
-  title: "Proactive Student Support: Early Warning Systems at CDV Poznań.",
+  title: "Fostering Lifelong Success: The CDV Poznań Experience",
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
-      title: "About the University:",
+      title: "At a Glance",
       items: [
-        "Client: CDV Poznań (Collegium Da Vinci).",
-        "Focus: Practical skill development and strong industry integration.",
-        "Scale: Supporting over 8,000 students in high-tech and creative industries."
+        "Client: CDV Poznań (Collegium Da Vinci)",
+        "Focus: Creative and Technology Education",
+        "Scale: 8,000+ students supported"
       ]
     },
     {
       icon: <AlertCircle className="w-5 h-5 text-black" />,
-      title: "Challenges:",
-      description: "Focusing on student-centric education, CDV identified key areas for proactive intervention:",
-      items: [
-        "Student Retention: Identifying students at risk of drop-out before they reached a critical point.",
-        "Fragmented Welfare Data: Wellbeing information was scattered across different departments.",
-        "Career Alignment: Ensuring every student is actively matched with relevant career opportunities."
-      ]
+      title: "The Challenge: Redefining Student Retention",
+      description: "CDV Poznań recognized a critical need to shift from reactive student administration to proactive welfare and career guidance. Without early-alert mechanisms, identifying students at risk of dropping out or struggling with their academic path was highly inefficient.",
+      items: []
     },
     {
       icon: <Lightbulb className="w-5 h-5 text-black" />,
-      title: "Solution (Education Cloud):",
-      description: "Deployment of a state-of-the-art Welfare Alerts system and integrated career pathway management.",
-      subTitle: "Key implementations:",
+      title: "The Solution: A Proactive Care Ecosystem",
+      description: "Think Beyond deployed a unified engagement platform centered on student success. By integrating academic performance data with behavioral insights in Salesforce, the university gained the ability to intervene early and provide tailored support.",
+      items: []
+    },
+    {
+      icon: <Target className="w-5 h-5 text-black" />,
+      title: "Transformational Impact",
       items: [
-        "Welfare Alerts Manager: A predictive system that flags early signs of disengagement, enabling 25% higher retention.",
-        "Integrated Career Hub: A direct link between student skill profiles and industry partner requirements, achieving 98% outreach success."
+        "Increased Retention: Achieved a 25% increase in the student retention rate year-over-year.",
+        "Career Readiness: Delivered 98% timely outreach for relevant career opportunities, bridging the gap between education and industry."
       ]
     }
   ],
   reference: {
-    text: "Student success is our core metric. The Welfare Alerts system enabled us to support our students exactly when they needed it most, building a culture based on genuine data-driven care.",
-    author: "Student Success Manager, CDV Poznań"
+    text: "The transition from reactive administration to proactive student care has fundamentally changed our campus culture. Think Beyond's strategic approach and deep understanding of our mission made this evolution possible.",
+    author: "Head of Student Success, CDV Poznań"
   }
 };
 
@@ -183,7 +187,7 @@ const CARDS: Card[] = [
     button: "Discover the SWPS Story",
     initial: "S",
     fullStory: {
-      title: "Digital Recruitment Transformation at SWPS University",
+      title: "Transforming the Student Experience at Scale: The SWPS University Ecosystem",
       isDetailed: true,
       content: SWPS_DETAILED_CONTENT
     }
@@ -198,7 +202,7 @@ const CARDS: Card[] = [
     button: "Discover the ALD Story",
     initial: "A",
     fullStory: {
-      title: "Global Scale and Prestige: ALD Warsaw Case Study",
+      title: "Optimizing Global Admissions: The ALD Warsaw Ecosystem",
       isDetailed: true,
       content: KOZMINSKI_DETAILED_CONTENT
     }
@@ -213,7 +217,7 @@ const CARDS: Card[] = [
     button: "Explore the CDV Campus",
     initial: "C",
     fullStory: {
-      title: "Proactive Student Support: CDV Poznań Success Story",
+      title: "Fostering Lifelong Success: The CDV Poznań Experience",
       isDetailed: true,
       content: CDV_DETAILED_CONTENT
     }

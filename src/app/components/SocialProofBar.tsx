@@ -16,7 +16,8 @@ import {
   Lightbulb, 
   Quote, 
   CheckCircle2, 
-  ArrowRight 
+  ArrowRight,
+  Target 
 } from 'lucide-react';
 
 /* --- Shared Types --- */
@@ -54,119 +55,122 @@ interface PartnerCase {
 
 /* --- Data Definitions --- */
 const SWPS_DETAILED_CONTENT: SWPSContent = {
-  title: "Student services management at SWPS University using Salesforce Experience Cloud.",
+  title: "Transforming the Student Experience at Scale: The SWPS University Ecosystem",
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
-      title: "About the University:",
+      title: "At a Glance",
       items: [
-        "Client: SWPS University, headquartered in Warsaw.",
-        "Scale: 17,500 students across undergraduate, postgraduate, and doctoral studies.",
-        "Locations: 6 campuses in major cities across Poland."
+        "Client: SWPS University",
+        "Scale: 17,500+ undergraduate, postgraduate, and doctoral students",
+        "Footprint: 6 campuses across major cities"
       ]
     },
     {
       icon: <AlertCircle className="w-5 h-5 text-black" />,
-      title: "Challenges:",
-      description: "Prior to the implementation, the university relied on traditional paper-based documentation. Three main challenges were identified:",
+      title: "The Challenge: Overcoming Administrative Silos",
+      description: "Before partnering with Think Beyond, the university relied on fragmented, paper-based documentation. They needed to modernize their infrastructure to meet the digital expectations of today’s learners. The key objectives were:",
       items: [
-        "Workflow digitisation: The need to move student services to a digital version for seamless case tracking.",
-        "Process improvement: Eliminating obsolete manual signing and printing processes.",
-        "Multichannel services: Creating a multi-channel environment providing top-tier service levels."
+        "Frictionless Journeys: Replacing obsolete manual processes with seamless, digital workflows.",
+        "Omnichannel Engagement: Creating a responsive environment that provides top-tier support across all student touchpoints."
       ]
     },
     {
       icon: <Lightbulb className="w-5 h-5 text-black" />,
-      title: "Solution (Education Cloud):",
-      description: "The university underwent a digital \"omnichannel\" transformation. The foundation became Salesforce Education Cloud and the Genesys Cloud contact centre.",
-      subTitle: "Key implementations:",
+      title: "The Solution: A Unified Digital Campus",
+      description: "Powered by Salesforce Education Cloud and Genesys Cloud, Think Beyond orchestrated a complete omnichannel transformation, shifting the institution from reactive administration to proactive student care.",
+      items: []
+    },
+    {
+      icon: <Target className="w-5 h-5 text-black" />,
+      title: "Transformational Impact",
       items: [
-        "Student Affairs Centre: A digital, responsive portal (desktop & mobile).",
-        "360-degree Profile: A tool aggregating communication history (email, phone, messenger), submitted documents, applications, and processes in a single, consistent view."
+        "Centralised Student Hub: A highly responsive, digital portal empowering students to manage their academic journey from any device.",
+        "360-Degree Visibility: Breaking down data silos to provide staff with a single, holistic view of every student—aggregating communication history, applications, and academic milestones in one place."
       ]
     }
   ],
   reference: {
-    text: "Incredible attention to the customer's needs, a wonderfully supportive implementation team full of willingness to help, patience. Thanks to their commitment and knowledge, the process went as smoothly as possible. The collaboration was (and still is) a pleasure.",
-    author: "Kamila Dryjańska, HR Department"
+    text: "Incredible attention to our institutional needs. The Think Beyond team provided wonderful support, patience, and expertise. Thanks to their commitment, this complex transformation went as smoothly as possible.",
+    author: "SWPS University Representative"
   }
 };
 
 const KOZMINSKI_DETAILED_CONTENT: SWPSContent = {
-  title: "Global Scale and Prestige: International Recruitment at Kozminski University.",
+  title: "Optimizing Global Admissions: The ALD Warsaw Ecosystem",
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
-      title: "About the University:",
+      title: "At a Glance",
       items: [
-        "Client: Kozminski University (ALK Warsaw).",
-        "Prestige: Triple Crown accreditation (AACSB, AMBA, EQUIS).",
-        "Reach: Over 12,000 international candidates from 60+ countries annually."
+        "Client: ALD Warsaw (Kozminski University)",
+        "Focus: Elite Business Education",
+        "Scale: 12,000+ international applications processed annually"
       ]
     },
     {
       icon: <AlertCircle className="w-5 h-5 text-black" />,
-      title: "Challenges:",
-      description: "As a premier international business school, Kozminski faced complex global recruitment hurdles:",
-      items: [
-        "Global Scalability: Managing candidate journeys across multiple time zones and languages.",
-        "Administrative Overhead: High manual workload in verifying international secondary and higher education documents.",
-        "Candidate Engagement: Maintaining high engagement throughout long-term international enrolment cycles."
-      ]
+      title: "The Challenge: Scaling Global Talent Acquisition",
+      description: "As a globally recognized institution, ALD Warsaw faced a massive influx of international applications. Their existing, rigid administrative processes led to slow response times and high administrative overhead, risking the loss of top-tier candidates to competing universities.",
+      items: []
     },
     {
       icon: <Lightbulb className="w-5 h-5 text-black" />,
-      title: "Solution (Education Cloud):",
-      description: "Implementation focused on a unified global admissions hub and automated document processing.",
-      subTitle: "Key implementations:",
+      title: "The Solution: Intelligent Application Workflows",
+      description: "Leveraging Salesforce Education Cloud, Think Beyond implemented an automated, data-driven admissions ecosystem. The new architecture streamlined candidate scoring, automated routine communications, and provided admissions teams with real-time analytics.",
+      items: []
+    },
+    {
+      icon: <Target className="w-5 h-5 text-black" />,
+      title: "Transformational Impact",
       items: [
-        "Global Candidate Portal: A localised application experience for students from 60+ countries.",
-        "Automated Ranking & Scholarship: Rules-based engines that calculate eligibility instantly, reducing response times by 35%."
+        "Unprecedented Efficiency: Achieved a 35% reduction in administrative overhead per enrolment.",
+        "Candidate-Centric Journey: Reached a 92% positive candidate experience score through highly personalized, timely engagement."
       ]
     }
   ],
   reference: {
-    text: "Our international footprint required a system that scales without borders. Think Beyond delivered a world-class environment that truly reflects our global prestige and supports our ambitious growth targets.",
-    author: "Director of International Relations, ALK"
+    text: "Think Beyond entirely reshaped how we engage with global talent. The automation, clarity, and strategic insight brought to our admissions team have given us a distinct competitive advantage.",
+    author: "Admissions Director, ALD Warsaw"
   }
 };
 
 const CDV_DETAILED_CONTENT: SWPSContent = {
-  title: "Proactive Student Support: Early Warning Systems at CDV Poznań.",
+  title: "Fostering Lifelong Success: The CDV Poznań Experience",
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
-      title: "About the University:",
+      title: "At a Glance",
       items: [
-        "Client: CDV Poznań (Collegium Da Vinci).",
-        "Focus: Practical skill development and strong industry integration.",
-        "Scale: Supporting over 8,000 students in high-tech and creative industries."
+        "Client: CDV Poznań (Collegium Da Vinci)",
+        "Focus: Creative and Technology Education",
+        "Scale: 8,000+ students supported"
       ]
     },
     {
       icon: <AlertCircle className="w-5 h-5 text-black" />,
-      title: "Challenges:",
-      description: "Focusing on student-centric education, CDV identified key areas for proactive intervention:",
-      items: [
-        "Student Retention: Identifying students at risk of drop-out before they reached a critical point.",
-        "Fragmented Welfare Data: Wellbeing information was scattered across different departments.",
-        "Career Alignment: Ensuring every student is actively matched with relevant career opportunities."
-      ]
+      title: "The Challenge: Redefining Student Retention",
+      description: "CDV Poznań recognized a critical need to shift from reactive student administration to proactive welfare and career guidance. Without early-alert mechanisms, identifying students at risk of dropping out or struggling with their academic path was highly inefficient.",
+      items: []
     },
     {
       icon: <Lightbulb className="w-5 h-5 text-black" />,
-      title: "Solution (Education Cloud):",
-      description: "Deployment of a state-of-the-art Welfare Alerts system and integrated career pathway management.",
-      subTitle: "Key implementations:",
+      title: "The Solution: A Proactive Care Ecosystem",
+      description: "Think Beyond deployed a unified engagement platform centered on student success. By integrating academic performance data with behavioral insights in Salesforce, the university gained the ability to intervene early and provide tailored support.",
+      items: []
+    },
+    {
+      icon: <Target className="w-5 h-5 text-black" />,
+      title: "Transformational Impact",
       items: [
-        "Welfare Alerts Manager: A predictive system that flags early signs of disengagement, enabling 25% higher retention.",
-        "Integrated Career Hub: A direct link between student skill profiles and industry partner requirements, achieving 98% outreach success."
+        "Increased Retention: Achieved a 25% increase in the student retention rate year-over-year.",
+        "Career Readiness: Delivered 98% timely outreach for relevant career opportunities, bridging the gap between education and industry."
       ]
     }
   ],
   reference: {
-    text: "Student success is our core metric. The Welfare Alerts system enabled us to support our students exactly when they needed it most, building a culture based on genuine data-driven care.",
-    author: "Student Success Manager, CDV Poznań"
+    text: "Think Beyond shared our vision of a student-centric campus. From early-warning systems to automated career matching, the technical solutions they delivered have significantly enhanced our institutional impact.",
+    author: "Student Success Lead, CDV Poznań"
   }
 };
 
@@ -182,7 +186,7 @@ const PARTNER_CASES: PartnerCase[] = [
     }
   },
   {
-    university: "Kozminski University",
+    university: "ALD Warsaw (Kozminski University)",
     initial: "ALK",
     buttonText: "Discover the ALD Story",
     fullStory: {
@@ -192,7 +196,7 @@ const PARTNER_CASES: PartnerCase[] = [
     }
   },
   {
-    university: "Collegium Da Vinci",
+    university: "CDV Poznań (Collegium Da Vinci)",
     initial: "CDV",
     buttonText: "Explore the CDV Campus",
     fullStory: {
@@ -279,9 +283,11 @@ function ExpertFooter() {
           </div>
         ) : (
           <div className="bg-white rounded-[24px] border border-[#F0F0F0] p-8 sm:p-10 flex flex-col gap-8 shadow-[0_4px_24px_rgba(0,0,0,0.05)]">
-            <h3 className="text-[24px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black text-left">
-              Let's talk about the complete student experience at your institution.
-            </h3>
+            <div>
+              <h3 className="text-[24px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black text-left">
+                Let's talk about the complete student experience at your institution.
+              </h3>
+            </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-left" noValidate>
               <div className="flex flex-col gap-1.5">
@@ -301,6 +307,7 @@ function ExpertFooter() {
                 <input
                   type="text"
                   placeholder="Your university"
+                  list="uk-universities"
                   value={form.university}
                   onChange={(e) => setForm({ ...form, university: e.target.value })}
                   className={`rounded-xl px-4 py-3.5 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.university ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
@@ -345,6 +352,14 @@ function ExpertFooter() {
               >
                 Speak with Our Team
               </button>
+
+              <div className="flex items-center justify-center gap-2 text-[12px] text-neutral-400 mt-2">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="5.5" width="9" height="6.5" rx="1" />
+                  <path d="M4.5 5.5V3.5a2 2 0 0 1 4 0v2" />
+                </svg>
+                <span>Your data is 100% secure and will never be shared. No spam, ever.</span>
+              </div>
             </form>
           </div>
         )}
@@ -361,7 +376,8 @@ function PartnerCard({ partner, onClick }: { partner: PartnerCase; onClick: () =
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
-      className="p-6 flex flex-row items-center gap-5 rounded-[20px] bg-white shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer w-[300px] sm:w-[340px]"
+      whileHover={{ y: -4 }}
+      className="p-6 flex flex-row items-center gap-5 rounded-[20px] bg-white shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group cursor-pointer w-[300px] sm:w-[340px]"
     >
       <div 
         className="w-10 h-10 rounded-[12px] flex items-center justify-center text-neutral-400 bg-neutral-50 border border-neutral-100 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
@@ -446,17 +462,19 @@ export function SocialProofBar() {
           <div className="relative h-full flex flex-col overflow-hidden">
             <DialogClose className="absolute right-8 sm:right-12 top-6 z-[130] w-8 h-8 flex items-center justify-center rounded-full bg-white text-black hover:bg-neutral-200 transition-all shadow-lg active:scale-95 outline-none cursor-pointer">
               <X className="w-4 h-4" strokeWidth={2.5} />
+              <span className="sr-only">Close</span>
             </DialogClose>
 
             <motion.div 
+              initial={false}
               animate={{ 
-                height: isNearForm ? 0 : 112,
+                height: isNearForm ? 0 : (window.innerWidth < 640 ? 80 : 112),
                 opacity: isNearForm ? 0 : 1,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="relative shrink-0 bg-black flex items-center overflow-hidden z-[100]"
             >
-              <div className="h-28 flex items-center px-12 w-full relative">
+              <div className="h-20 sm:h-28 flex items-center px-8 sm:px-12 w-full relative">
                 <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[100px] font-bold text-white/[0.05] pointer-events-none select-none">
                   {PARTNER_CASES[selectedIdx].initial}
                 </div>
@@ -476,16 +494,28 @@ export function SocialProofBar() {
               onScroll={(e) => {
                 const target = e.currentTarget;
                 const scrollPos = target.scrollTop;
-                setIsNearForm(scrollPos > 100 && (target.scrollHeight - scrollPos <= target.clientHeight + 450));
+                const scrollHeight = target.scrollHeight;
+                const clientHeight = target.clientHeight;
+                
+                const nearBottom = scrollHeight - scrollPos <= clientHeight + 450;
+                setIsNearForm(scrollPos > 100 && nearBottom);
               }}
               className="flex-1 overflow-y-auto w-full bg-white min-h-0 relative z-[50] scroll-smooth"
             >
-              <div className="px-8 sm:px-12 py-12 flex flex-col gap-10">
+              <motion.div 
+                animate={{ 
+                  paddingTop: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48),
+                  paddingBottom: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48)
+                }}
+                className="px-8 sm:px-12 flex flex-col gap-10"
+              >
                 {PARTNER_CASES[selectedIdx].fullStory.isDetailed ? (
                   <div className="flex flex-col gap-10 text-left">
-                    <h3 className="text-xl sm:text-2xl font-bold text-black mb-6 leading-tight">
-                      {PARTNER_CASES[selectedIdx].fullStory.content?.title}
-                    </h3>
+                    <header>
+                      <h3 className="text-xl sm:text-2xl font-bold text-black mb-6 leading-tight">
+                        {PARTNER_CASES[selectedIdx].fullStory.content?.title}
+                      </h3>
+                    </header>
                     <div className="flex flex-col gap-12">
                       {PARTNER_CASES[selectedIdx].fullStory.content?.sections.map((section, sIdx) => (
                         <section key={sIdx} className="flex flex-col gap-4">
@@ -495,6 +525,9 @@ export function SocialProofBar() {
                           </div>
                           {section.description && (
                             <p className="text-neutral-600 leading-relaxed mb-2">{section.description}</p>
+                          )}
+                          {section.subTitle && (
+                            <p className="font-bold text-black mt-2 mb-1">{section.subTitle}</p>
                           )}
                           <ul className="flex flex-col gap-3">
                             {section.items.map((item, iIdx) => (
@@ -507,14 +540,17 @@ export function SocialProofBar() {
                         </section>
                       ))}
                     </div>
-                    <blockquote className="bg-neutral-50 rounded-2xl p-8 border-l-4 border-black relative overflow-hidden">
+                    <blockquote className="bg-neutral-50 rounded-2xl p-8 border-l-4 border-black relative overflow-hidden group/quote">
                       <Quote className="absolute -top-2 -right-2 w-20 h-20 text-black/5 opacity-10" />
-                      <p className="text-lg italic text-neutral-800 leading-relaxed mb-6">
+                      <p className="text-lg italic text-neutral-800 leading-relaxed mb-6 relative z-10">
                         "{PARTNER_CASES[selectedIdx].fullStory.content?.reference.text}"
                       </p>
-                      <cite className="not-italic font-bold text-black text-sm">
-                        {PARTNER_CASES[selectedIdx].fullStory.content?.reference.author}
-                      </cite>
+                      <footer className="flex items-center gap-4 relative z-10">
+                        <div className="h-px w-8 bg-neutral-200"></div>
+                        <cite className="not-italic font-bold text-black text-sm">
+                          {PARTNER_CASES[selectedIdx].fullStory.content?.reference.author}
+                        </cite>
+                      </footer>
                     </blockquote>
                   </div>
                 ) : (
@@ -529,29 +565,34 @@ export function SocialProofBar() {
                     </div>
                     <div className="grid sm:grid-cols-2 gap-4">
                       {PARTNER_CASES[selectedIdx].fullStory.impact?.map((item, i) => (
-                        <div key={i} className="flex gap-3 bg-neutral-50 p-5 rounded-[20px] border border-neutral-100">
+                        <div key={i} className="flex gap-3 bg-neutral-50 p-5 rounded-[20px] border border-neutral-100 text-left">
                           <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
-                          <span className="text-[14px] text-neutral-700 font-medium">{item}</span>
+                          <span className="text-[14px] text-neutral-700 font-medium leading-[1.5]">{item}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                 )}
                 <ExpertFooter />
-              </div>
+              </motion.div>
             </div>
 
             <motion.div 
-              animate={{ height: isNearForm ? 0 : 88, opacity: isNearForm ? 0 : 1 }}
+              initial={false}
+              animate={{ 
+                height: isNearForm ? 0 : (window.innerWidth < 640 ? 76 : 88),
+                opacity: isNearForm ? 0 : 1,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="shrink-0 bg-white border-t border-neutral-100 overflow-hidden z-[100]"
             >
-              <div className="h-[88px] px-12 flex justify-between items-center text-sm text-neutral-400">
+              <div className="h-[76px] sm:h-[88px] px-8 py-6 sm:px-12 sm:py-8 flex justify-between items-center text-sm text-neutral-400 w-full">
                 <span>Think Beyond &copy; 2026</span>
                 <div className="flex items-center gap-6">
                   <div className="font-bold text-black text-base">{selectedIdx + 1} / {PARTNER_CASES.length}</div>
                   <div className="flex gap-2">
-                    <button onClick={handlePrevCase} className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer"><ChevronLeft className="w-5 h-5" /></button>
-                    <button onClick={handleNextCase} className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer"><ChevronRight className="w-5 h-5" /></button>
+                    <button onClick={handlePrevCase} className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90" aria-label="Previous case"><ChevronLeft className="w-5 h-5" /></button>
+                    <button onClick={handleNextCase} className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90" aria-label="Next case"><ChevronRight className="w-5 h-5" /></button>
                   </div>
                 </div>
               </div>
