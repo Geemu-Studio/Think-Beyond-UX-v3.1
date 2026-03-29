@@ -228,8 +228,7 @@ export function ProblemSection() {
 
                   {/* Video Navigation Bar (Floating at bottom) */}
                   <div className="absolute bottom-8 right-8 z-40 bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 border border-white/20 flex items-center gap-6 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <div className="flex items-center gap-2">
-                       <span className="text-white/40 text-[11px] font-bold uppercase tracking-wider">Step</span>
+                    <div className="flex items-center">
                        <span className="text-white font-bold text-sm tracking-tight">
                          {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
                        </span>
@@ -270,12 +269,11 @@ export function ProblemSection() {
                   {/* Player Navigation Overlays (Visible on hover) */}
                   <div className="absolute inset-x-0 bottom-8 px-8 flex justify-end opacity-0 group-hover/player:opacity-100 transition-opacity duration-300 pointer-events-none">
                     <div className="bg-black/60 backdrop-blur-md rounded-full px-5 py-2.5 border border-white/10 flex items-center gap-6 shadow-2xl pointer-events-auto">
-                      <div className="flex items-center gap-2">
-                         <span className="text-white/40 text-[11px] font-bold uppercase tracking-wider">Step</span>
-                         <span className="text-white font-bold text-sm tracking-tight">
-                           {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
-                         </span>
-                      </div>
+                    <div className="flex items-center">
+                       <span className="text-white font-bold text-sm tracking-tight">
+                         {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
+                       </span>
+                    </div>
                       <div className="flex gap-2">
                         <button 
                           onClick={prevVideo} 
