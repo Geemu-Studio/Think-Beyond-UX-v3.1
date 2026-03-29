@@ -1,4 +1,6 @@
 import { useState, useMemo } from 'react';
+import { useLocation } from 'react-router';
+import { ConsultationModal } from './ConsultationModal';
 
 const stats = [
   {
@@ -31,7 +33,9 @@ const stats = [
 ];
 
 export function CalculatorSection() {
+  const location = useLocation();
   const [students, setStudents] = useState(1000);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const results = useMemo(() => {
     const dropouts = Math.round(students * 0.5);
@@ -138,7 +142,7 @@ export function CalculatorSection() {
               href="#contact-form"
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                setIsModalOpen(true);
               }}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-black px-6 py-3 text-[14px] text-black hover:bg-black hover:text-white transition-colors rounded-full"
               style={{ fontWeight: 600 }}
@@ -152,6 +156,11 @@ export function CalculatorSection() {
 
         </div>
       </div>
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        pathname={location.pathname}
+      />
     </section>
   );
 }
