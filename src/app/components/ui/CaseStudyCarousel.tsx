@@ -3,14 +3,98 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   Dialog, 
   DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogDescription,
   DialogClose,
 } from './dialog';
-import { ArrowRight, CheckCircle2, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { 
+  ArrowRight, 
+  CheckCircle2, 
+  X, 
+  ChevronLeft, 
+  ChevronRight, 
+  Mail, 
+  Phone, 
+  SendHorizonal,
+  GraduationCap,
+  AlertCircle,
+  Lightbulb,
+  Quote
+} from 'lucide-react';
 
-const CARDS = [
+// --- Types ---
+interface SWPSSection {
+  icon: React.ReactNode;
+  title: string;
+  description?: string;
+  subTitle?: string;
+  items: string[];
+}
+
+interface SWPSContent {
+  title: string;
+  sections: SWPSSection[];
+  reference: {
+    text: string;
+    author: string;
+  };
+}
+
+interface FullStory {
+  title: string;
+  description?: string;
+  impact?: string[];
+  isDetailed?: boolean;
+  content?: SWPSContent;
+}
+
+interface Card {
+  university: string;
+  metrics: string[];
+  button: string;
+  initial: string;
+  fullStory: FullStory;
+}
+
+// Specialized content for SWPS based on user request - TRANSLATION TO ENGLISH (UK)
+const SWPS_DETAILED_CONTENT: SWPSContent = {
+  title: "Student services management at SWPS University using Salesforce Experience Cloud.",
+  sections: [
+    {
+      icon: <GraduationCap className="w-5 h-5 text-black" />,
+      title: "About the University:",
+      items: [
+        "Client: SWPS University, headquartered in Warsaw.",
+        "Scale: 17,500 students across undergraduate, postgraduate, and doctoral studies.",
+        "Locations: 6 campuses in major cities across Poland."
+      ]
+    },
+    {
+      icon: <AlertCircle className="w-5 h-5 text-black" />,
+      title: "Challenges:",
+      description: "Prior to the implementation, the university relied on traditional paper-based documentation. Three main challenges were identified:",
+      items: [
+        "Workflow digitisation: The need to move student services to a digital version for seamless case tracking.",
+        "Process improvement: Eliminating obsolete manual signing and printing processes.",
+        "Multichannel services: Creating a multi-channel environment providing top-tier service levels."
+      ]
+    },
+    {
+      icon: <Lightbulb className="w-5 h-5 text-black" />,
+      title: "Solution (Education Cloud):",
+      description: "The university underwent a digital \"omnichannel\" transformation. The foundation became Salesforce Education Cloud and the Genesys Cloud contact centre.",
+      subTitle: "Key implementations:",
+      items: [
+        "Student Affairs Centre: A digital, responsive portal (desktop & mobile).",
+        "360-degree Profile: A tool aggregating communication history (email, phone, messenger), submitted documents, applications, and processes in a single, consistent view."
+      ]
+    }
+  ],
+  reference: {
+    text: "Incredible attention to the customer's needs, a wonderfully supportive implementation team full of willingness to help, patience. Thanks to their commitment and knowledge, the process went as smoothly as possible. The collaboration was (and still is) a pleasure.",
+    author: "Kamila Dryjańska, HR Department"
+  }
+};
+
+const CARDS: Card[] = [
   {
     university: "SWPS University",
     metrics: [
@@ -21,18 +105,13 @@ const CARDS = [
     button: "Discover the SWPS Story",
     initial: "S",
     fullStory: {
-      title: "Transformacja Cyfrowa Rekrutacji na Uniwersytecie SWPS",
-      description: "Przed wdrożeniem Salesforce Education Cloud, Uniwersytet SWPS zmagał się z rozproszonymi procesami rekrutacyjnymi i dużą ilością dokumentacji papierowej. Dzięki transformacji cyfrowej, uczelnia stworzyła zintegrowane centrum obsługi, które pozwala na płynne procesowanie ponad 15 000 wniosków rocznie.",
-      impact: [
-        "Automatyzacja powtarzalnych zadań skróciła czas rozpatrywania skomplikowanych aplikacji o 40%",
-        "Wzrost satysfakcji kandydatów do rekordowego poziomu 95%",
-        "Ujednolicenie procesów dla 5 wydziałów w całej Polsce",
-        "Pełna transparentność statusu aplikacji dla kandydata w czasie rzeczywistym"
-      ]
+      title: "Digital Recruitment Transformation at SWPS University",
+      isDetailed: true,
+      content: SWPS_DETAILED_CONTENT
     }
   },
   {
-    university: "ALD Warsaw (Akademia Leona Koźmińskiego)",
+    university: "ALD Warsaw (Kozminski University)",
     metrics: [
       "Processed 12,000+ International Applications Annually",
       "35% Reduction in Administrative Overhead per Enrolment",
@@ -41,13 +120,13 @@ const CARDS = [
     button: "Discover the ALD Story",
     initial: "A",
     fullStory: {
-      title: "Globalna Skala i Prestiż: Case Study ALD Warsaw",
-      description: "Akademia Leona Koźmińskiego postawiła na wzmocnienie swojej pozycji na arenie międzynarodowej. Implementacja nowoczesnego systemu CRM pozwoliła na ujednolicenie obsługi kandydatów z całego świata, eliminując bariery językowe i czasowe.",
+      title: "Global Scale and Prestige: ALD Warsaw Case Study",
+      description: "Kozminski University focused on strengthening its international position. The implementation of a modern CRM system allowed for the unification of candidate services worldwide, eliminating language and time zone barriers.",
       impact: [
-        "35% redukcji kosztów administracyjnych dzięki automatyzacji weryfikacji dokumentów",
-        "Skuteczne zarządzanie rekrutacją ponad 12 000 kandydatów zagranicznych rocznie",
-        "Wzrost zaangażowania absolwentów (Alumni Engagement) do poziomu 92%",
-        "Personalizacja ścieżki kandydata w zależności od kraju pochodzenia i wybranego programu"
+        "35% reduction in administrative costs thanks to document verification automation",
+        "Effective recruitment management for over 12,000 international candidates annually",
+        "Alumni Engagement increased to 92%",
+        "Personalisation of the candidate journey based on country of origin and chosen programme"
       ]
     }
   },
@@ -61,39 +140,199 @@ const CARDS = [
     button: "Explore the CDV Campus",
     initial: "C",
     fullStory: {
-      title: "Proaktywne Wsparcie Studenta: Sukces CDV Poznań",
-      description: "W Collegium Da Vinci kluczowym wyzwaniem była retencja studentów i proaktywne wsparcie ich ścieżki edukacyjnej. Wykorzystując analitykę predykcyjną Salesforce, uczelnia wdrożyła system wczesnego ostrzegania Welfare Alerts.",
+      title: "Proactive Student Support: CDV Poznań Success Story",
+      description: "At Collegium Da Vinci, the key challenge was student retention and proactive support for their educational path. Leveraging Salesforce predictive analytics, the university implemented an early warning Welfare Alerts system.",
       impact: [
-        "25-procentowy wzrost wskaźnika utrzymania studentów rok do roku",
-        "Identyfikacja studentów zagrożonych rezygnacją przed wystąpieniem problemu",
-        "98% skuteczności w terminowym dostarczaniu spersonalizowanych ofert kariery",
-        "Budowa kultury opartej na danych i realnym wsparciu dobrostanu studenta"
+        "25% increase in student retention rate year-on-year",
+        "Identification of students at risk of drop-out before problems occurred",
+        "98% effective delivery of personalised career opportunities",
+        "Building a culture based on data and real wellbeing support"
       ]
     }
   }
 ];
 
-// Expanded for infinite looping [C,A,B, C,A,B, C,A,B]
+// Expanded for infinite looping
 const EXTENDED_CARDS = [...CARDS, ...CARDS, ...CARDS];
 
 interface CaseStudyCarouselProps {
   initialActiveIdx?: number;
 }
 
+function ExpertFooter() {
+  const [form, setForm] = useState({ name: '', university: '', email: '', gdpr: false });
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validate = () => {
+    const e: Record<string, string> = {};
+    if (!form.name.trim()) e.name = 'This field is required';
+    if (!form.university.trim()) e.university = 'This field is required';
+    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Please enter a valid email address';
+    if (!form.gdpr) e.gdpr = 'Your consent is required to proceed';
+    return e;
+  };
+
+  const isFormValid = 
+    form.name.trim() !== '' && 
+    form.university.trim() !== '' && 
+    form.email.trim() !== '' && 
+    /\S+@\S+\.\S+/.test(form.email) && 
+    form.gdpr;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="mt-16 pt-12 border-t border-neutral-100 flex flex-col gap-10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div className="flex items-center gap-5">
+          <div className="w-16 h-16 rounded-full bg-neutral-100 border border-neutral-200 flex items-center justify-center overflow-hidden shrink-0">
+             <div className="w-12 h-12 bg-neutral-200 rounded-full flex items-center justify-center text-neutral-500 font-bold text-lg">
+               MP
+             </div>
+          </div>
+          <div className="flex flex-col text-left">
+            <h5 className="font-bold text-black text-lg">Marcin Pieńkowski</h5>
+            <p className="text-sm text-neutral-500">Digital Transformation Strategist</p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <a href="tel:+48502227174" className="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:bg-black hover:text-white transition-all cursor-pointer">
+            <Phone className="w-5 h-5" />
+          </a>
+          <a href="mailto:marcin@thinkbeyond.cloud" className="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:bg-black hover:text-white transition-all cursor-pointer">
+            <Mail className="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+
+      <div className="w-full">
+        {submitted ? (
+          <div className="bg-white rounded-[24px] border border-[#F0F0F0] p-12 flex flex-col items-center gap-6 text-center shadow-[0_4px_24px_rgba(0,0,0,0.05)] animate-in fade-in zoom-in-95 duration-500">
+            <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center shadow-xl mb-2">
+              <CheckCircle2 className="w-10 h-10 text-white" />
+            </div>
+            <div>
+              <h6 className="font-bold text-black text-2xl mb-2">Thank you!</h6>
+              <p className="text-neutral-500 max-w-sm">
+                Marcin will be in touch within 24 business hours to talk about the details.
+              </p>
+            </div>
+            <button 
+              onClick={() => setSubmitted(false)}
+              className="mt-4 text-sm font-bold text-black hover:underline cursor-pointer"
+            >
+              Send another message
+            </button>
+          </div>
+        ) : (
+          <div className="bg-white rounded-[24px] border border-[#F0F0F0] p-8 sm:p-10 flex flex-col gap-8 shadow-[0_4px_24px_rgba(0,0,0,0.05)]">
+            <div>
+              <h3 className="text-[24px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black text-left">
+                Let's talk about the complete student experience at your institution.
+              </h3>
+            </div>
+
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-left" noValidate>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[13px] text-neutral-700 font-medium">Full name</label>
+                <input
+                  type="text"
+                  placeholder="Professor Jane Smith"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className={`rounded-xl px-4 py-3.5 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.name ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
+                />
+                {errors.name && <p className="text-[12px] text-neutral-700 mt-1">{errors.name}</p>}
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[13px] text-neutral-700 font-medium">Institution name</label>
+                <input
+                  type="text"
+                  placeholder="Your university"
+                  list="uk-universities"
+                  value={form.university}
+                  onChange={(e) => setForm({ ...form, university: e.target.value })}
+                  className={`rounded-xl px-4 py-3.5 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.university ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
+                />
+                {errors.university && <p className="text-[12px] text-neutral-700 mt-1">{errors.university}</p>}
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[13px] text-neutral-700 font-medium">Institutional email address</label>
+                <input
+                  type="email"
+                  placeholder="j.smith@university.ac.uk"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className={`rounded-xl px-4 py-3.5 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.email ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
+                />
+                {errors.email && <p className="text-[12px] text-neutral-700 mt-1">{errors.email}</p>}
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={form.gdpr}
+                    onChange={(e) => setForm({ ...form, gdpr: e.target.checked })}
+                    className="mt-1 accent-black w-4 h-4 shrink-0 cursor-pointer"
+                  />
+                  <span className="text-[13px] text-neutral-600 leading-[1.6]">
+                    I consent to the processing of my personal data in accordance with GDPR for the purpose of responding to my enquiry.
+                  </span>
+                </label>
+                {errors.gdpr && <p className="text-[12px] text-neutral-700 ml-7">{errors.gdpr}</p>}
+              </div>
+
+              <button
+                type="submit"
+                disabled={!isFormValid}
+                className={`w-full py-4 text-[15px] transition-all duration-300 rounded-full font-semibold shadow-sm
+                  ${isFormValid 
+                    ? 'bg-black text-white hover:bg-neutral-800 border border-black cursor-pointer' 
+                    : 'bg-neutral-200 text-neutral-400 border border-neutral-200 cursor-not-allowed opacity-70'}`}
+              >
+                Speak with Our Team
+              </button>
+
+              <div className="flex items-center justify-center gap-2 text-[12px] text-neutral-400 mt-2">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="5.5" width="9" height="6.5" rx="1" />
+                  <path d="M4.5 5.5V3.5a2 2 0 0 1 4 0v2" />
+                </svg>
+                <span>Your data is 100% secure and will never be shared. No spam, ever.</span>
+              </div>
+            </form>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselProps) {
-  // We start in the middle set of cards (index 3 to 5)
   const [activeIdx, setActiveIdx] = useState(initialActiveIdx + CARDS.length);
   const [isPaused, setIsPaused] = useState(false);
   const [isJumping, setIsJumping] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [selectedIdx, setSelectedIdx] = useState<number>(0);
+  const [isNearForm, setIsNearForm] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Reset scroll on case study change
+  // Reset scroll and UI state on case study change
   useEffect(() => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTop = 0;
     }
+    setIsNearForm(false);
   }, [selectedIdx, openModal]);
 
   // Responsive settings
@@ -109,23 +348,15 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
 
   // Silent Jump Logic
   useEffect(() => {
-    // If we've reached a clone in the first or last set
-    // Index 6 (CDV clone in set 3) -> Jump to Index 3
-    // Wait, with 3 cards: Set 1 (0,1,2), Set 2 (3,4,5), Set 3 (6,7,8)
-    // If activeIdx becomes 6, we've just slid from 5 (CDV set 2) to 6 (SWPS set 3).
-    // We should allow the animation to finish, then jump.
-
     let timer: any;
 
     if (activeIdx >= CARDS.length * 2) {
-      // Reached Set 3 ( клоны ), jump to Set 2 equivalent
       timer = setTimeout(() => {
         setIsJumping(true);
         setActiveIdx(activeIdx - CARDS.length);
         setTimeout(() => setIsJumping(false), 50);
-      }, 500); // 500ms matches transition duration
+      }, 500); 
     } else if (activeIdx < CARDS.length) {
-      // Reached Set 1 ( клоны ), jump to Set 2 equivalent
       timer = setTimeout(() => {
         setIsJumping(true);
         setActiveIdx(activeIdx + CARDS.length);
@@ -160,8 +391,6 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
   };
 
   const handleSelect = (idx: number) => {
-    // Always navigate within the relative distance to keep it smooth
-    // For simplicity, we just set the Logical index in the Middle Set
     setActiveIdx(idx + CARDS.length);
   };
 
@@ -239,7 +468,7 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                   </span>
                 </div>
 
-                <h3 className="text-[22px] sm:text-[26px] leading-[1.2] tracking-[-0.8px] text-black font-bold">
+                <h3 className="text-[22px] sm:text-[26px] leading-[1.2] tracking-[-0.8px] text-black font-bold text-left w-full">
                   {card.university}
                 </h3>
 
@@ -278,7 +507,7 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
           <button
             key={i}
             onClick={() => handleSelect(i)}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`Go to slide ${i+1}`}
             className={`h-[4px] rounded-full transition-all duration-500 ease-in-out cursor-pointer border-none p-0 outline-none
               ${i === logicalIdx ? 'w-10 bg-black' : 'w-5 bg-neutral-100 hover:bg-neutral-200'}`}
           ></button>
@@ -288,82 +517,176 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
       <Dialog open={openModal} onOpenChange={setOpenModal}>
         <DialogContent className="sm:max-w-[750px] p-0 overflow-hidden rounded-[24px] sm:rounded-[40px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
           {selectedIdx !== null && (
-            <>
-              {/* Fixed Header with gradient/image area */}
-              <div className="relative shrink-0 h-32 sm:h-48 bg-neutral-900 flex items-end p-8 sm:p-12 overflow-hidden">
-                {/* Custom Close Button */}
-                <DialogClose className="absolute top-6 right-6 z-[110] w-10 h-10 flex items-center justify-center rounded-full bg-white text-neutral-500 hover:text-black hover:bg-neutral-50 transition-all shadow-sm active:scale-95 outline-none cursor-pointer">
-                  <X className="w-5 h-5" strokeWidth={2.5} />
-                  <span className="sr-only">Zamknij</span>
-                </DialogClose>
+            <div className="relative h-full flex flex-col overflow-hidden">
+              {/* Floating Global Close Button - Persistent */}
+              <DialogClose className="absolute right-8 sm:right-12 top-6 z-[130] w-8 h-8 flex items-center justify-center rounded-full bg-white text-black hover:bg-neutral-200 transition-all shadow-lg active:scale-95 outline-none cursor-pointer">
+                <X className="w-4 h-4" strokeWidth={2.5} />
+                <span className="sr-only">Close</span>
+              </DialogClose>
 
-                <div className="absolute top-0 right-0 p-12 opacity-10">
-                   <div className="text-[120px] font-black text-white select-none leading-none">
-                     {CARDS[selectedIdx].initial}
-                   </div>
+              {/* Header - Collapses height on scroll toward form */}
+              <motion.div 
+                initial={false}
+                animate={{ 
+                  height: isNearForm ? 0 : (window.innerWidth < 640 ? 80 : 112),
+                  opacity: isNearForm ? 0 : 1,
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="relative shrink-0 bg-black flex items-center overflow-hidden z-[100]"
+              >
+                <div className="h-20 sm:h-28 flex items-center px-8 sm:px-12 w-full relative">
+                  {/* Background Watermark */}
+                  <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[100px] font-bold text-white/[0.05] pointer-events-none select-none">
+                    {CARDS[selectedIdx].initial}
+                  </div>
+                  
+                  <div className="relative z-10 w-full text-left">
+                    <span className="text-neutral-500 text-[9px] uppercase tracking-[2px] font-bold mb-0.5 block">
+                      Case Study Success Story
+                    </span>
+                    <h2 className="text-white text-xl sm:text-2xl font-bold tracking-tight">
+                      {CARDS[selectedIdx].university}
+                    </h2>
+                  </div>
                 </div>
-                <div className="relative z-10 w-full">
-                  <span className="text-neutral-400 text-[11px] uppercase tracking-[2px] font-bold mb-2 block">
-                    Case Study Success Story
-                  </span>
-                  <h2 className="text-white text-2xl sm:text-4xl font-bold tracking-tight">
-                    {CARDS[selectedIdx].university}
-                  </h2>
-                </div>
-              </div>
+              </motion.div>
 
               {/* Scrollable Middle Content */}
               <div 
                 ref={scrollContainerRef}
-                className="flex-1 overflow-y-auto p-8 sm:p-12 flex flex-col gap-8 bg-white min-h-0"
+                onScroll={(e) => {
+                  const target = e.currentTarget;
+                  const scrollPos = target.scrollTop;
+                  const scrollHeight = target.scrollHeight;
+                  const clientHeight = target.clientHeight;
+                  
+                  // Refined logic: hide when user scrolls down and is in the bottom area
+                  const nearBottom = scrollHeight - scrollPos <= clientHeight + 450;
+                  setIsNearForm(scrollPos > 100 && nearBottom);
+                }}
+                className="flex-1 overflow-y-auto w-full bg-white min-h-0 relative z-[50] scroll-smooth"
               >
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-black mb-4">
-                    {CARDS[selectedIdx].fullStory.title}
-                  </h3>
-                  <p className="text-neutral-600 leading-relaxed text-lg">
-                    {CARDS[selectedIdx].fullStory.description}
-                  </p>
-                </div>
+                <motion.div 
+                  animate={{ 
+                    paddingTop: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48),
+                    paddingBottom: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48)
+                  }}
+                  className="px-8 sm:px-12 flex flex-col gap-10"
+                >
+                  {CARDS[selectedIdx].fullStory.isDetailed && CARDS[selectedIdx].fullStory.content ? (
+                    <div className="flex flex-col gap-10 text-left">
+                      {/* Rich Content View for SWPS */}
+                      <header>
+                        <h3 className="text-xl sm:text-2xl font-bold text-black mb-6 leading-tight">
+                          {CARDS[selectedIdx].fullStory.content.title}
+                        </h3>
+                      </header>
 
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {CARDS[selectedIdx].fullStory.impact.map((item, i) => (
-                    <div key={i} className="flex gap-3 bg-neutral-50 p-5 rounded-[20px] border border-neutral-100">
-                      <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
-                      <span className="text-[14px] text-neutral-700 font-medium leading-[1.5]">
-                        {item}
-                      </span>
+                      <div className="flex flex-col gap-12">
+                        {CARDS[selectedIdx].fullStory.content.sections.map((section, sIdx) => (
+                          <section key={sIdx} className="flex flex-col gap-4">
+                            <div className="flex items-center gap-2 mb-1">
+                              {section.icon}
+                              <h4 className="font-bold text-lg text-black">{section.title}</h4>
+                            </div>
+                            {section.description && (
+                              <p className="text-neutral-600 leading-relaxed mb-2">{section.description}</p>
+                            )}
+                            {section.subTitle && (
+                              <p className="font-bold text-black mt-2 mb-1">{section.subTitle}</p>
+                            )}
+                            <ul className="flex flex-col gap-3">
+                              {section.items.map((item, iIdx) => (
+                                <li key={iIdx} className="flex gap-3 items-start">
+                                  <div className="h-1.5 w-1.5 rounded-full bg-neutral-300 shrink-0 mt-2"></div>
+                                  <span className="text-neutral-700 leading-relaxed">{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </section>
+                        ))}
+                      </div>
+
+                      {/* Reference Block */}
+                      <blockquote className="bg-neutral-50 rounded-2xl p-8 border-l-4 border-black relative overflow-hidden group/quote">
+                        <Quote className="absolute -top-2 -right-2 w-20 h-20 text-black/5 opacity-10" />
+                        <p className="text-lg italic text-neutral-800 leading-relaxed mb-6 relative z-10">
+                          "{CARDS[selectedIdx].fullStory.content.reference.text}"
+                        </p>
+                        <footer className="flex items-center gap-4 relative z-10">
+                           <div className="h-px w-8 bg-neutral-200"></div>
+                           <cite className="not-italic font-bold text-black text-sm">
+                             {CARDS[selectedIdx].fullStory.content.reference.author}
+                           </cite>
+                        </footer>
+                      </blockquote>
                     </div>
-                  ))}
-                </div>
+                  ) : (
+                    <div className="flex flex-col gap-8 text-left">
+                      {/* Standard View for other cards */}
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-black mb-4">
+                          {CARDS[selectedIdx].fullStory.title}
+                        </h3>
+                        <p className="text-neutral-600 leading-relaxed text-lg">
+                          {CARDS[selectedIdx].fullStory.description}
+                        </p>
+                      </div>
+
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {CARDS[selectedIdx].fullStory.impact?.map((item, i) => (
+                          <div key={i} className="flex gap-3 bg-neutral-50 p-5 rounded-[20px] border border-neutral-100 text-left">
+                            <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
+                            <span className="text-[14px] text-neutral-700 font-medium leading-[1.5]">
+                              {item}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Form - Scrolling target */}
+                  <ExpertFooter />
+                </motion.div>
               </div>
 
-              {/* Fixed Footer */}
-              <div className="shrink-0 px-8 py-6 sm:px-12 sm:py-8 border-t border-neutral-100 flex justify-between items-center text-sm text-neutral-400 bg-white">
-                <span>Think Beyond &copy; 2026</span>
-                <div className="flex items-center gap-6">
-                  <div className="font-bold text-black text-base">
-                    {selectedIdx + 1} / {CARDS.length}
-                  </div>
-                  <div className="flex gap-2">
-                    <button 
-                      onClick={handlePrevCase} 
-                      className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90"
-                      aria-label="Previous case"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button 
-                      onClick={handleNextCase} 
-                      className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90"
-                      aria-label="Next case"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
+              {/* Fixed Footer - Collapses height on scroll toward form */}
+              <motion.div 
+                initial={false}
+                animate={{ 
+                  height: isNearForm ? 0 : (window.innerWidth < 640 ? 76 : 88),
+                  opacity: isNearForm ? 0 : 1,
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="shrink-0 bg-white border-t border-neutral-100 overflow-hidden z-[100]"
+              >
+                <div className="h-[76px] sm:h-[88px] px-8 py-6 sm:px-12 sm:py-8 flex justify-between items-center text-sm text-neutral-400 w-full">
+                  <span>Think Beyond &copy; 2026</span>
+                  <div className="flex items-center gap-6">
+                    <div className="font-bold text-black text-base">
+                      {selectedIdx + 1} / {CARDS.length}
+                    </div>
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={handlePrevCase} 
+                        className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90"
+                        aria-label="Previous case"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button 
+                        onClick={handleNextCase} 
+                        className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90"
+                        aria-label="Next case"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </>
+              </motion.div>
+            </div>
           )}
         </DialogContent>
       </Dialog>
