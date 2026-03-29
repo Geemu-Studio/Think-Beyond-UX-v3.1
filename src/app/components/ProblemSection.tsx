@@ -1,50 +1,58 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from './ConsultationModal';
+import expertMarcin from '../../assets/expert-marcin.jpeg';
 
 import { 
   HubOutlined, 
   HealthAndSafetyOutlined, 
   TrackChangesOutlined 
 } from '@mui/icons-material';
+import svgPaths from '../../imports/svg-fitf5bq036';
 
 const cards = [
   {
     icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'A Seamless Campus Experience',
     body: 'Replace fragmented paper-based processes and overwhelmed systems with a resilient, unified digital infrastructure that scales gracefully with your institution.',
-    videoId: 'v5V6Y0_Q_8k' // Salesforce Education Cloud Intro
+    videoId: 'v5V6Y0_Q_8k', // Salesforce Education Cloud Intro
+    expertImage: expertMarcin
   },
   {
     icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Proactive Retention & Student Wellbeing',
     body: 'Move from reactive to proactive. Identify students who need support before they\'re lost — and build the sense of belonging that sustains their academic journey to completion.',
-    videoId: 'qL6R8Z9W4_8' // Student Success
+    videoId: 'qL6R8Z9W4_8', // Student Success
+    expertImage: expertMarcin
   },
   {
     icon: <TrackChangesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Purpose-Driven Recruitment',
     body: 'Attract and enrol candidates who align with your institution\'s values and mission — enhancing academic prestige and fostering a genuinely engaged student community.',
-    videoId: '8_v1-cE9kkw' // Recruitment
+    videoId: '8_v1-cE9kkw', // Recruitment
+    expertImage: expertMarcin
   },
 ];
 
 export function ProblemSection() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
+  const [activeCard, setActiveCard] = useState<typeof cards[0] | null>(null);
+  const [videoStarted, setVideoStarted] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const openVideo = (e: React.MouseEvent, videoId: string) => {
+  const openVideo = (e: React.MouseEvent, card: typeof cards[0]) => {
     e.stopPropagation();
-    setCurrentVideoId(videoId);
+    setActiveCard(card);
+    setVideoStarted(false);
     dialogRef.current?.showModal();
     document.body.style.overflow = 'hidden';
   };
 
   const closeVideo = () => {
     dialogRef.current?.close();
-    setCurrentVideoId(null);
+    setActiveCard(null);
+    setVideoStarted(false);
     document.body.style.overflow = '';
   };
 
@@ -78,8 +86,7 @@ export function ProblemSection() {
           {cards.map((card) => (
             <div
               key={card.title}
-              onClick={() => setIsModalOpen(true)}
-              className="p-8 flex flex-col gap-5 rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] hover:scale-[1.01] transition-all duration-300 cursor-pointer group"
+              className="p-8 flex flex-col gap-5 rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group"
             >
               {/* Icon tinted lightly */}
               <div className="text-neutral-400 group-hover:scale-110 transition-transform duration-300 group-hover:text-black">{card.icon}</div>
@@ -92,7 +99,7 @@ export function ProblemSection() {
               
               {/* Video Trigger Button */}
               <button
-                onClick={(e) => openVideo(e, card.videoId)}
+                onClick={(e) => openVideo(e, card)}
                 className="mt-1 flex items-center gap-2.5 text-[13px] font-semibold text-neutral-800 hover:text-black transition-all duration-300 group/btn w-fit"
               >
                 <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-200 group-hover/btn:border-black group-hover/btn:bg-neutral-100 transition-all">
@@ -145,16 +152,78 @@ export function ProblemSection() {
             </svg>
           </button>
           
-          {currentVideoId && (
-            <iframe
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/${currentVideoId}?autoplay=1&rel=0&modestbranding=1`}
-              title="Expert Insight Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="w-full h-full"
-            ></iframe>
+          {activeCard && (
+            <div className="w-full h-full relative">
+              {/* Video Facade (Thumbnail Overlay) */}
+              {!videoStarted && (
+                <div 
+                  className="absolute inset-0 z-30 cursor-pointer group/facade flex items-center justify-center transition-opacity duration-500"
+                  onClick={() => setVideoStarted(true)}
+                >
+                  {/* Expert Image */}
+                  <img 
+                    src={activeCard.expertImage} 
+                    alt={`Expert insight for ${activeCard.title}`}
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/facade:scale-105"
+                  />
+                  
+                  {/* Project Logo - Top Left */}
+                  <div className="absolute top-8 left-8 flex items-center gap-2.5 z-40">
+                    <div className="bg-white/10 backdrop-blur-md rounded-[6px] flex items-center justify-center w-7 h-7 border border-white/20">
+                      <svg fill="none" viewBox="0 0 13 13" className="w-[13px] h-[13px]">
+                        <path
+                          d={svgPaths.p1cfaff00}
+                          stroke="white"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.2"
+                        />
+                      </svg>
+                    </div>
+                    <span className="text-white/90 text-[15px] tracking-[-0.4px] font-semibold">
+                      Think Beyond
+                    </span>
+                  </div>
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                  
+                  {/* Title and Badge */}
+                  <div className="absolute bottom-10 left-10 text-left">
+                    <span className="text-[11px] text-white/70 uppercase tracking-[1.4px] font-semibold block mb-2">Expert Insight</span>
+                    <h3 className="text-white text-2xl sm:text-3xl font-bold tracking-tight max-w-xl leading-tight">
+                      {activeCard.title}
+                    </h3>
+                  </div>
+
+                  {/* Glassmorphic Play Button */}
+                  <div className="absolute inset-0 m-auto w-24 h-24 flex items-center justify-center rounded-full backdrop-blur-md bg-white/20 border border-white/30 shadow-2xl transition-all duration-500 group-hover/facade:scale-110 group-hover/facade:bg-white/30 group-hover/facade:border-white/50">
+                    <svg 
+                      width="32" 
+                      height="32" 
+                      viewBox="0 0 24 24" 
+                      fill="white" 
+                      className="ml-1.5 transition-transform duration-500 group-hover/facade:scale-110"
+                    >
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                </div>
+              )}
+
+              {/* Actual Video Iframe */}
+              {videoStarted && (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${activeCard.videoId}?autoplay=1&rel=0&modestbranding=1&mute=0`}
+                  title="Expert Insight Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="w-full h-full animate-in fade-in duration-1000"
+                ></iframe>
+              )}
+            </div>
           )}
         </div>
       </dialog>
