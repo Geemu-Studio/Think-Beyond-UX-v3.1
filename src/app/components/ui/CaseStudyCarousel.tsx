@@ -1,5 +1,14 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import { motion } from 'motion/react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogDescription,
+  DialogClose,
+} from './dialog';
+import { ArrowRight, CheckCircle2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const CARDS = [
   {
@@ -10,7 +19,17 @@ const CARDS = [
       "95% Prospective Student Satisfaction Score"
     ],
     button: "Discover the SWPS Story",
-    initial: "S"
+    initial: "S",
+    fullStory: {
+      title: "Transformacja Cyfrowa Rekrutacji na Uniwersytecie SWPS",
+      description: "Przed wdrożeniem Salesforce Education Cloud, Uniwersytet SWPS zmagał się z rozproszonymi procesami rekrutacyjnymi i dużą ilością dokumentacji papierowej. Dzięki transformacji cyfrowej, uczelnia stworzyła zintegrowane centrum obsługi, które pozwala na płynne procesowanie ponad 15 000 wniosków rocznie.",
+      impact: [
+        "Automatyzacja powtarzalnych zadań skróciła czas rozpatrywania skomplikowanych aplikacji o 40%",
+        "Wzrost satysfakcji kandydatów do rekordowego poziomu 95%",
+        "Ujednolicenie procesów dla 5 wydziałów w całej Polsce",
+        "Pełna transparentność statusu aplikacji dla kandydata w czasie rzeczywistym"
+      ]
+    }
   },
   {
     university: "ALD Warsaw (Akademia Leona Koźmińskiego)",
@@ -20,7 +39,17 @@ const CARDS = [
       "92% Alumni Engagement Score"
     ],
     button: "Discover the ALD Story",
-    initial: "A"
+    initial: "A",
+    fullStory: {
+      title: "Globalna Skala i Prestiż: Case Study ALD Warsaw",
+      description: "Akademia Leona Koźmińskiego postawiła na wzmocnienie swojej pozycji na arenie międzynarodowej. Implementacja nowoczesnego systemu CRM pozwoliła na ujednolicenie obsługi kandydatów z całego świata, eliminując bariery językowe i czasowe.",
+      impact: [
+        "35% redukcji kosztów administracyjnych dzięki automatyzacji weryfikacji dokumentów",
+        "Skuteczne zarządzanie rekrutacją ponad 12 000 kandydatów zagranicznych rocznie",
+        "Wzrost zaangażowania absolwentów (Alumni Engagement) do poziomu 92%",
+        "Personalizacja ścieżki kandydata w zależności od kraju pochodzenia i wybranego programu"
+      ]
+    }
   },
   {
     university: "CDV Poznań (Collegium Da Vinci)",
@@ -30,7 +59,17 @@ const CARDS = [
       "98% Timely Outreach for Career Opportunities"
     ],
     button: "Explore the CDV Campus",
-    initial: "C"
+    initial: "C",
+    fullStory: {
+      title: "Proaktywne Wsparcie Studenta: Sukces CDV Poznań",
+      description: "W Collegium Da Vinci kluczowym wyzwaniem była retencja studentów i proaktywne wsparcie ich ścieżki edukacyjnej. Wykorzystując analitykę predykcyjną Salesforce, uczelnia wdrożyła system wczesnego ostrzegania Welfare Alerts.",
+      impact: [
+        "25-procentowy wzrost wskaźnika utrzymania studentów rok do roku",
+        "Identyfikacja studentów zagrożonych rezygnacją przed wystąpieniem problemu",
+        "98% skuteczności w terminowym dostarczaniu spersonalizowanych ofert kariery",
+        "Budowa kultury opartej na danych i realnym wsparciu dobrostanu studenta"
+      ]
+    }
   }
 ];
 
@@ -46,6 +85,16 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
   const [activeIdx, setActiveIdx] = useState(initialActiveIdx + CARDS.length);
   const [isPaused, setIsPaused] = useState(false);
   const [isJumping, setIsJumping] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedIdx, setSelectedIdx] = useState<number>(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Reset scroll on case study change
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
+    }
+  }, [selectedIdx, openModal]);
 
   // Responsive settings
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
@@ -94,6 +143,13 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
     return () => clearInterval(interval);
   }, [isPaused, isMobile, nextSlide, isJumping]);
 
+  // Synchronize carousel with modal selection
+  useEffect(() => {
+    if (openModal) {
+      setActiveIdx(selectedIdx + CARDS.length);
+    }
+  }, [selectedIdx, openModal]);
+
   const handleDragEnd = (event: any, info: any) => {
     const threshold = 50;
     if (info.offset.x < -threshold) {
@@ -109,8 +165,21 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
     setActiveIdx(idx + CARDS.length);
   };
 
-  // Logical Display Index (0, 1, or 2)
   const logicalIdx = activeIdx % CARDS.length;
+
+  const handleOpenModal = (idx: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSelectedIdx(idx % CARDS.length);
+    setOpenModal(true);
+  };
+
+  const handleNextCase = () => {
+    setSelectedIdx((prev) => (prev + 1) % CARDS.length);
+  };
+
+  const handlePrevCase = () => {
+    setSelectedIdx((prev) => (prev - 1 + CARDS.length) % CARDS.length);
+  };
 
   return (
     <div
@@ -140,8 +209,10 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
             return (
               <motion.div
                 key={`${card.university}-${idx}`}
-                onClick={() => {
-                  if (!isActive && !isJumping) {
+                onClick={(e) => {
+                  if (isActive) {
+                    handleOpenModal(idx, e);
+                  } else if (!isJumping) {
                     setActiveIdx(idx);
                   }
                 }}
@@ -188,11 +259,12 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                 </div>
 
                 <div className="mt-2 text-left">
-                  <div
-                    className={`inline-flex items-center justify-center bg-white text-black border border-black px-8 py-4 text-[13px] group-hover:bg-black group-hover:text-white transition-all duration-300 rounded-full font-bold shadow-sm ${!isActive ? 'pointer-events-none opacity-50' : ''}`}
+                  <button
+                    onClick={(e) => handleOpenModal(idx, e)}
+                    className={`inline-flex items-center justify-center bg-white text-black border border-black px-8 py-4 text-[13px] group-hover:bg-black group-hover:text-white transition-all duration-300 rounded-full font-bold shadow-sm cursor-pointer ${!isActive ? 'pointer-events-none opacity-50' : ''}`}
                   >
-                    {card.button} →
-                  </div>
+                    {card.button} <ArrowRight className="ml-2 w-4 h-4" />
+                  </button>
                 </div>
               </motion.div>
             );
@@ -212,6 +284,89 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
           ></button>
         ))}
       </div>
+
+      <Dialog open={openModal} onOpenChange={setOpenModal}>
+        <DialogContent className="sm:max-w-[750px] p-0 overflow-hidden rounded-[24px] sm:rounded-[40px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
+          {selectedIdx !== null && (
+            <>
+              {/* Fixed Header with gradient/image area */}
+              <div className="relative shrink-0 h-32 sm:h-48 bg-neutral-900 flex items-end p-8 sm:p-12 overflow-hidden">
+                {/* Custom Close Button */}
+                <DialogClose className="absolute top-6 right-6 z-[110] w-10 h-10 flex items-center justify-center rounded-full bg-white text-neutral-500 hover:text-black hover:bg-neutral-50 transition-all shadow-sm active:scale-95 outline-none cursor-pointer">
+                  <X className="w-5 h-5" strokeWidth={2.5} />
+                  <span className="sr-only">Zamknij</span>
+                </DialogClose>
+
+                <div className="absolute top-0 right-0 p-12 opacity-10">
+                   <div className="text-[120px] font-black text-white select-none leading-none">
+                     {CARDS[selectedIdx].initial}
+                   </div>
+                </div>
+                <div className="relative z-10 w-full">
+                  <span className="text-neutral-400 text-[11px] uppercase tracking-[2px] font-bold mb-2 block">
+                    Case Study Success Story
+                  </span>
+                  <h2 className="text-white text-2xl sm:text-4xl font-bold tracking-tight">
+                    {CARDS[selectedIdx].university}
+                  </h2>
+                </div>
+              </div>
+
+              {/* Scrollable Middle Content */}
+              <div 
+                ref={scrollContainerRef}
+                className="flex-1 overflow-y-auto p-8 sm:p-12 flex flex-col gap-8 bg-white min-h-0"
+              >
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-black mb-4">
+                    {CARDS[selectedIdx].fullStory.title}
+                  </h3>
+                  <p className="text-neutral-600 leading-relaxed text-lg">
+                    {CARDS[selectedIdx].fullStory.description}
+                  </p>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {CARDS[selectedIdx].fullStory.impact.map((item, i) => (
+                    <div key={i} className="flex gap-3 bg-neutral-50 p-5 rounded-[20px] border border-neutral-100">
+                      <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
+                      <span className="text-[14px] text-neutral-700 font-medium leading-[1.5]">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Fixed Footer */}
+              <div className="shrink-0 px-8 py-6 sm:px-12 sm:py-8 border-t border-neutral-100 flex justify-between items-center text-sm text-neutral-400 bg-white">
+                <span>Think Beyond &copy; 2026</span>
+                <div className="flex items-center gap-6">
+                  <div className="font-bold text-black text-base">
+                    {selectedIdx + 1} / {CARDS.length}
+                  </div>
+                  <div className="flex gap-2">
+                    <button 
+                      onClick={handlePrevCase} 
+                      className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90"
+                      aria-label="Previous case"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button 
+                      onClick={handleNextCase} 
+                      className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90"
+                      aria-label="Next case"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

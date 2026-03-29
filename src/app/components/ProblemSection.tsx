@@ -8,6 +8,7 @@ import {
   HealthAndSafetyOutlined, 
   TrackChangesOutlined 
 } from '@mui/icons-material';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import svgPaths from '../../imports/svg-fitf5bq036';
 
 const cards = [
@@ -54,6 +55,22 @@ export function ProblemSection() {
     setActiveCard(null);
     setVideoStarted(false);
     document.body.style.overflow = '';
+  };
+
+  const nextVideo = () => {
+    if (!activeCard) return;
+    const currentIndex = cards.findIndex(c => c.title === activeCard.title);
+    const nextIndex = (currentIndex + 1) % cards.length;
+    setActiveCard(cards[nextIndex]);
+    setVideoStarted(false);
+  };
+
+  const prevVideo = () => {
+    if (!activeCard) return;
+    const currentIndex = cards.findIndex(c => c.title === activeCard.title);
+    const prevIndex = (currentIndex - 1 + cards.length) % cards.length;
+    setActiveCard(cards[prevIndex]);
+    setVideoStarted(false);
   };
 
   useEffect(() => {
@@ -208,20 +225,74 @@ export function ProblemSection() {
                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
                     </svg>
                   </div>
+
+                  {/* Video Navigation Bar (Floating at bottom) */}
+                  <div className="absolute bottom-8 right-8 z-40 bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 border border-white/20 flex items-center gap-6 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <div className="flex items-center gap-2">
+                       <span className="text-white/40 text-[11px] font-bold uppercase tracking-wider">Step</span>
+                       <span className="text-white font-bold text-sm tracking-tight">
+                         {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
+                       </span>
+                    </div>
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); prevVideo(); }}
+                        className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                        aria-label="Previous video"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); nextVideo(); }}
+                        className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                        aria-label="Next video"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {/* Actual Video Iframe */}
               {videoStarted && (
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${activeCard.videoId}?autoplay=1&rel=0&modestbranding=1&mute=0`}
-                  title="Expert Insight Video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="w-full h-full animate-in fade-in duration-1000"
-                ></iframe>
+                <div className="w-full h-full relative group/player">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${activeCard.videoId}?autoplay=1&rel=0&modestbranding=1&mute=0`}
+                    title="Expert Insight Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="w-full h-full animate-in fade-in duration-1000"
+                  ></iframe>
+
+                  {/* Player Navigation Overlays (Visible on hover) */}
+                  <div className="absolute inset-x-0 bottom-8 px-8 flex justify-end opacity-0 group-hover/player:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-black/60 backdrop-blur-md rounded-full px-5 py-2.5 border border-white/10 flex items-center gap-6 shadow-2xl pointer-events-auto">
+                      <div className="flex items-center gap-2">
+                         <span className="text-white/40 text-[11px] font-bold uppercase tracking-wider">Step</span>
+                         <span className="text-white font-bold text-sm tracking-tight">
+                           {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
+                         </span>
+                      </div>
+                      <div className="flex gap-2">
+                        <button 
+                          onClick={prevVideo} 
+                          className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                        >
+                          <ChevronLeft className="w-5 h-5" />
+                        </button>
+                        <button 
+                          onClick={nextVideo} 
+                          className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                        >
+                          <ChevronRight className="w-5 h-5" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
           )}
