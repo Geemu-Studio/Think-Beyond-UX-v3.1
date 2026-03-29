@@ -92,6 +92,84 @@ const SWPS_DETAILED_CONTENT: SWPSContent = {
   }
 };
 
+const KOZMINSKI_DETAILED_CONTENT: SWPSContent = {
+  title: "Global Scale and Prestige: International Recruitment at Kozminski University.",
+  sections: [
+    {
+      icon: <GraduationCap className="w-5 h-5 text-black" />,
+      title: "About the University:",
+      items: [
+        "Client: Kozminski University (ALK Warsaw).",
+        "Prestige: Triple Crown accreditation (AACSB, AMBA, EQUIS).",
+        "Reach: Over 12,000 international candidates from 60+ countries annually."
+      ]
+    },
+    {
+      icon: <AlertCircle className="w-5 h-5 text-black" />,
+      title: "Challenges:",
+      description: "As a premier international business school, Kozminski faced complex global recruitment hurdles:",
+      items: [
+        "Global Scalability: Managing candidate journeys across multiple time zones and languages.",
+        "Administrative Overhead: High manual workload in verifying international secondary and higher education documents.",
+        "Candidate Engagement: Maintaining high engagement throughout long-term international enrolment cycles."
+      ]
+    },
+    {
+      icon: <Lightbulb className="w-5 h-5 text-black" />,
+      title: "Solution (Education Cloud):",
+      description: "Implementation focused on a unified global admissions hub and automated document processing.",
+      subTitle: "Key implementations:",
+      items: [
+        "Global Candidate Portal: A localised application experience for students from 60+ countries.",
+        "Automated Ranking & Scholarship: Rules-based engines that calculate eligibility instantly, reducing response times by 35%."
+      ]
+    }
+  ],
+  reference: {
+    text: "Our international footprint required a system that scales without borders. Think Beyond delivered a world-class environment that truly reflects our global prestige and supports our ambitious growth targets.",
+    author: "Director of International Relations, ALK"
+  }
+};
+
+const CDV_DETAILED_CONTENT: SWPSContent = {
+  title: "Proactive Student Support: Early Warning Systems at CDV Poznań.",
+  sections: [
+    {
+      icon: <GraduationCap className="w-5 h-5 text-black" />,
+      title: "About the University:",
+      items: [
+        "Client: CDV Poznań (Collegium Da Vinci).",
+        "Focus: Practical skill development and strong industry integration.",
+        "Scale: Supporting over 8,000 students in high-tech and creative industries."
+      ]
+    },
+    {
+      icon: <AlertCircle className="w-5 h-5 text-black" />,
+      title: "Challenges:",
+      description: "Focusing on student-centric education, CDV identified key areas for proactive intervention:",
+      items: [
+        "Student Retention: Identifying students at risk of drop-out before they reached a critical point.",
+        "Fragmented Welfare Data: Wellbeing information was scattered across different departments.",
+        "Career Alignment: Ensuring every student is actively matched with relevant career opportunities."
+      ]
+    },
+    {
+      icon: <Lightbulb className="w-5 h-5 text-black" />,
+      title: "Solution (Education Cloud):",
+      description: "Deployment of a state-of-the-art Welfare Alerts system and integrated career pathway management.",
+      subTitle: "Key implementations:",
+      items: [
+        "Welfare Alerts Manager: A predictive system that flags early signs of disengagement, enabling 25% higher retention.",
+        "Integrated Career Hub: A direct link between student skill profiles and industry partner requirements, achieving 98% outreach success."
+      ]
+    }
+  ],
+  reference: {
+    text: "Student success is our core metric. The Welfare Alerts system enabled us to support our students exactly when they needed it most, building a culture based on genuine data-driven care.",
+    author: "Student Success Manager, CDV Poznań"
+  }
+};
+
 const PARTNER_CASES: PartnerCase[] = [
   {
     university: "SWPS University",
@@ -109,13 +187,8 @@ const PARTNER_CASES: PartnerCase[] = [
     buttonText: "Discover the ALD Story",
     fullStory: {
       title: "Global Scale and Prestige: ALD Warsaw Case Study",
-      description: "Kozminski University focused on strengthening its international position. The implementation of a modern CRM system allowed for the unification of candidate services worldwide, eliminating language and time zone barriers.",
-      impact: [
-        "35% reduction in administrative costs thanks to document verification automation",
-        "Effective recruitment management for over 12,000 international candidates annually",
-        "Alumni Engagement increased to 92%",
-        "Personalisation of the candidate journey based on country of origin and chosen programme"
-      ]
+      isDetailed: true,
+      content: KOZMINSKI_DETAILED_CONTENT
     }
   },
   {
@@ -124,13 +197,8 @@ const PARTNER_CASES: PartnerCase[] = [
     buttonText: "Explore the CDV Campus",
     fullStory: {
       title: "Proactive Student Support: CDV Poznań Success Story",
-      description: "At Collegium Da Vinci, the key challenge was student retention and proactive support for their educational path. Leveraging Salesforce predictive analytics, the university implemented an early warning Welfare Alerts system.",
-      impact: [
-        "25% increase in student retention rate year-on-year",
-        "Identification of students at risk of drop-out before problems occurred",
-        "98% effective delivery of personalised career opportunities",
-        "Building a culture based on data and real wellbeing support"
-      ]
+      isDetailed: true,
+      content: CDV_DETAILED_CONTENT
     }
   }
 ];
