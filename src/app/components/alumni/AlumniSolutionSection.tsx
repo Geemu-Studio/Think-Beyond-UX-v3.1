@@ -115,7 +115,7 @@ export function AlumniSolutionSection() {
             <div
               key={card.title}
               onClick={(e) => openVideo(e, card)}
-              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group cursor-pointer"
+              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer"
             >
               {/* Icon row: line-art + checkmark badge */}
               <div className="flex items-start justify-between">

@@ -104,7 +104,7 @@ export function ProblemSection() {
             <div
               key={card.title}
               onClick={(e) => openVideo(e, card)}
-              className="p-8 flex flex-col gap-5 rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group cursor-pointer"
+              className="p-8 flex flex-col gap-5 rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer"
             >
               {/* Icon tinted lightly */}
               <div 

@@ -451,7 +451,7 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                   opacity: isActive ? 1 : 0.35,
                   filter: isActive ? "blur(0px)" : "blur(1px)",
                 }}
-                whileHover={isActive ? { scale: 1.02, transition: { duration: 0.2 } } : {}}
+                whileHover={isActive ? { scale: 1.03, transition: { duration: 0.2 } } : {}}
                 transition={isJumping ? { duration: 0 } : { duration: 0.5, ease: "easeInOut" }}
                 className={`group bg-white rounded-[32px] p-8 sm:p-10 flex flex-col gap-6 shrink-0 cursor-pointer select-none border border-neutral-100 transition-shadow duration-300
                   ${isActive

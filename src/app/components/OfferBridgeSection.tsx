@@ -53,7 +53,7 @@ export function OfferBridgeSection() {
             <Link
               key={card.title}
               to={card.href}
-              className="bg-neutral-700 rounded-[20px] p-6 flex flex-col gap-3 group hover:bg-neutral-600 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl cursor-pointer no-underline"
+              className="bg-neutral-900 rounded-[20px] p-6 flex flex-col gap-3 group hover:bg-neutral-800 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl active:scale-[0.98] cursor-pointer no-underline"
             >
               <p className="text-[15px] text-white leading-[1.5] tracking-[-0.3px]" style={{ fontWeight: 600 }}>
                 {card.title}
