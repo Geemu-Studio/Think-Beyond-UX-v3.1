@@ -165,7 +165,7 @@ export function SecurityTrustSection() {
             <div
               key={feat.id}
               onClick={(e) => openVideo(e, feat)}
-              className="rounded-[24px] p-8 flex flex-col gap-6 group transition-all duration-300 cursor-pointer hover:bg-white/[0.05] active:scale-[0.98]"
+              className="rounded-[24px] p-8 flex flex-col gap-6 group transition-all duration-300 cursor-pointer hover:bg-white/[0.05] hover:scale-[1.03] hover:shadow-2xl active:scale-[0.98]"
               style={{ 
                 background: 'rgba(255,255,255,0.03)', 
                 border: '1px solid rgba(255,255,255,0.06)' 
@@ -179,6 +179,7 @@ export function SecurityTrustSection() {
                 }
               }}
             >
+
               {/* Icon */}
               <div
                 className="w-12 h-12 rounded-[14px] flex items-center justify-center text-white flex-shrink-0 transition-all group-hover:scale-110 group-hover:bg-white/10"
