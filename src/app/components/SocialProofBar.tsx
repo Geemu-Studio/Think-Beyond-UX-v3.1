@@ -360,9 +360,6 @@ export function SocialProofBar() {
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px] font-bold" style={{ fontWeight: 600 }}>
             Our Partnerships
           </span>
-          <h2 className="mt-2.5 leading-[1.15] tracking-[-1.5px] text-black text-[30px] mx-auto max-w-2xl">
-            Trusted by Elite European Institutions
-          </h2>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-6">

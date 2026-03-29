@@ -130,7 +130,7 @@ export function SecurityTrustSection() {
   return (
     <section
       id="security-trust"
-      className="bg-neutral-900 py-24 px-6 border-t border-neutral-800"
+      className="bg-neutral-800 py-20 px-6 border-t border-neutral-700/50"
     >
       <div className="mx-auto max-w-5xl flex flex-col gap-14">
 
@@ -165,10 +165,10 @@ export function SecurityTrustSection() {
             <div
               key={feat.id}
               onClick={(e) => openVideo(e, feat)}
-              className="rounded-[24px] p-8 flex flex-col gap-6 group transition-all duration-300 cursor-pointer hover:bg-white/[0.05] hover:scale-[1.03] hover:shadow-2xl active:scale-[0.98]"
+              className="rounded-[20px] p-6 flex flex-col gap-6 group transition-all duration-300 cursor-pointer hover:bg-[#333333] hover:border-transparent hover:scale-[1.03] hover:shadow-2xl active:scale-[0.98]"
               style={{ 
-                background: 'rgba(255,255,255,0.03)', 
-                border: '1px solid rgba(255,255,255,0.06)' 
+                background: 'transparent', 
+                border: '1px solid #3f3f46' 
               }}
               role="button"
               tabIndex={0}
