@@ -66,7 +66,7 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
     // If activeIdx becomes 6, we've just slid from 5 (CDV set 2) to 6 (SWPS set 3).
     // We should allow the animation to finish, then jump.
 
-    let timer: NodeJS.Timeout;
+    let timer: any;
 
     if (activeIdx >= CARDS.length * 2) {
       // Reached Set 3 ( клоны ), jump to Set 2 equivalent
@@ -177,7 +177,11 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                     <div key={mIdx} className="flex items-center gap-3">
                       <div className="h-1.5 w-1.5 rounded-full bg-neutral-200 shrink-0"></div>
                       <span className="text-[14px] text-neutral-600 font-medium leading-tight text-left">
-                        {metric}
+                        {metric.split(/(\d+(?:,\d+)*[\+%]?)/).map((part, i) => 
+                          /(\d+(?:,\d+)*[\+%]?)/.test(part) 
+                            ? <strong key={i} className="font-bold text-black">{part}</strong> 
+                            : part
+                        )}
                       </span>
                     </div>
                   ))}

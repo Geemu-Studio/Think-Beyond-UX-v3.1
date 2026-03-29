@@ -78,34 +78,6 @@ export function SecurityTrustSection() {
         {/* ── Header row ─────────────────────────────────────────── */}
         <div className="flex flex-col sm:flex-row sm:items-start gap-6 sm:gap-12">
 
-          {/* Shield icon badge */}
-          <div
-            className="flex-shrink-0 w-14 h-14 rounded-[14px] flex items-center justify-center"
-            style={{ background: 'rgba(255,255,255,0.07)' }}
-          >
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
-              fill="none"
-              className="text-white"
-              aria-hidden="true"
-            >
-              <path
-                d="M15 2L3 7V15C3 21.627 8.373 27.5 15 29C21.627 27.5 27 21.627 27 15V7L15 2Z"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M10 15.5L13 18.5L20 11.5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
 
           {/* Heading + sub */}
           <div className="flex flex-col gap-4">

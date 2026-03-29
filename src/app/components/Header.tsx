@@ -1,19 +1,16 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router';
+import { motion, AnimatePresence } from 'motion/react';
 import svgPaths from "../../imports/svg-fitf5bq036";
 import { ConsultationModal } from './ConsultationModal';
+import { NAV_LINKS } from '../data/navigationContent';
 
-const NAV_LINKS = [
-  { label: 'Platform', href: '/' },
-  { label: 'Recruitment', href: '/recruitment' },
-  { label: 'Student Success', href: '/student-success' },
-  { label: 'Marketing', href: '/marketing' },
-  { label: 'Alumni', href: '/alumni' },
-];
+const HEADER_NAV_LINKS = NAV_LINKS;
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
   const location = useLocation();
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -68,29 +65,54 @@ export function Header() {
 
         {/* ── Center nav (desktop) ── */}
         <nav className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            link.href.startsWith('#') ? (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-[14px] text-neutral-600 hover:text-black transition-colors"
-                style={{ fontWeight: 500 }}
-              >
-                {link.label}
-              </a>
+          {HEADER_NAV_LINKS.map((link) => {
+            const isActive = location.pathname === link.href;
+            const hasTooltip = !!link.description;
+            
+            const linkProps = {
+              className: `text-[14px] transition-colors py-2 ${isActive ? 'text-black font-semibold' : 'text-neutral-600 hover:text-black'}`,
+              style: { fontWeight: isActive ? 600 : 500 },
+              onMouseEnter: () => hasTooltip && setHoveredLabel(link.label),
+              onMouseLeave: () => setHoveredLabel(null),
+            };
+
+            const NavItem = link.href.startsWith('#') ? (
+              <a {...linkProps} href={link.href} onClick={(e) => handleNavClick(e, link.href)}>{link.label}</a>
             ) : (
-              <Link
-                key={link.label}
-                to={link.href}
-                onClick={() => setMobileOpen(false)}
-                className={`text-[14px] transition-colors ${location.pathname === link.href ? 'text-black font-semibold' : 'text-neutral-600 hover:text-black'}`}
-                style={{ fontWeight: location.pathname === link.href ? 600 : 500 }}
-              >
-                {link.label}
-              </Link>
-            )
-          ))}
+              <Link {...linkProps} to={link.href} onClick={() => setMobileOpen(false)}>{link.label}</Link>
+            );
+
+            return (
+              <div key={link.label} className="relative flex flex-col items-center group">
+                {NavItem}
+                
+                {hasTooltip && (
+                  <AnimatePresence>
+                    {hoveredLabel === link.label && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="absolute top-full mt-2 z-[100] pointer-events-none bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col gap-3 min-w-[260px] max-w-[280px]"
+                      >
+                        <span className="text-[10px] text-neutral-400 uppercase tracking-[1.4px] font-semibold whitespace-nowrap">
+                          Salesforce Education Cloud
+                        </span>
+                        <p className="text-[15px] text-white font-semibold leading-tight">
+                          {link.label}
+                        </p>
+                        <p className="text-[13px] text-neutral-400 leading-[1.65]">
+                          {link.description}
+                        </p>
+                        <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-neutral-800 rotate-45 border-l border-t border-neutral-700/50" />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
+              </div>
+            );
+          })}
         </nav>
 
         {/* ── Right: CTA + mobile hamburger ── */}
@@ -119,7 +141,7 @@ export function Header() {
       {/* ── Mobile drawer ── */}
       {mobileOpen && (
         <div className="md:hidden border-t border-neutral-200 bg-white px-6 py-6 flex flex-col gap-5">
-          {NAV_LINKS.map((link) => (
+          {HEADER_NAV_LINKS.map((link) => (
             link.href.startsWith('#') ? (
               <a
                 key={link.label}
