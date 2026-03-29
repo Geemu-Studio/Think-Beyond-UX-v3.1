@@ -22,8 +22,8 @@ export default function AlumniPage() {
         <CalculatorSection />
         <SecurityTrustSection />
         <AlumniCaseStudySection />
-        <OfferBridgeSection />
         <AlumniCTAFormSection />
+        <OfferBridgeSection />
       </main>
       <Footer />
     </div>

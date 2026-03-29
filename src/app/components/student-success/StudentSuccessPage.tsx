@@ -22,8 +22,8 @@ export function StudentSuccessPage() {
         <CalculatorSection />
         <SecurityTrustSection />
         <StudentSuccessCaseStudySection />
-        <OfferBridgeSection />
         <StudentSuccessCTAFormSection />
+        <OfferBridgeSection />
       </main>
       <Footer />
     </div>

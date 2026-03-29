@@ -22,8 +22,8 @@ export function MarketingPage() {
         <CalculatorSection />
         <SecurityTrustSection />
         <MarketingCaseStudySection />
-        <OfferBridgeSection />
         <MarketingCTAFormSection />
+        <OfferBridgeSection />
       </main>
       <Footer />
     </div>

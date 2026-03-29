@@ -100,7 +100,7 @@ export function ProblemSection() {
               {/* Video Trigger Button */}
               <button
                 onClick={(e) => openVideo(e, card)}
-                className="mt-1 flex items-center gap-2.5 text-[13px] font-semibold text-neutral-800 hover:text-black transition-all duration-300 group/btn w-fit"
+                className="mt-1 flex items-center gap-2.5 text-[13px] font-semibold text-neutral-800 hover:text-black transition-all duration-300 group/btn w-fit cursor-pointer"
               >
                 <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-200 group-hover/btn:border-black group-hover/btn:bg-neutral-100 transition-all">
                   <svg 

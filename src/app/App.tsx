@@ -37,8 +37,8 @@ function HomePage() {
         <CalculatorSection />
         <SecurityTrustSection />
         <CaseStudySection />
-        <OfferBridgeSection />
         <CTAFormSection />
+        <OfferBridgeSection />
       </main>
       <Footer />
     </div>

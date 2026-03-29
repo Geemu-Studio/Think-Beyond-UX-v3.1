@@ -33,23 +33,22 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 
 export function Footer() {
   return (
-    <footer className="bg-neutral-100 border-t border-neutral-200">
-
-      {/* Main grid */}
+    <footer className="bg-neutral-800 border-t border-neutral-700/50">
+      {/* Main grid — if needed later */}
       
-
       {/* Bottom bar */}
-      <div className="border-t border-neutral-200">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div className="border-t border-neutral-700/50">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="text-[12px] text-neutral-400">
             © 2026 Think Beyond. All rights reserved.
           </p>
-          <p className="text-[12px] text-neutral-400">
-            Salesforce Education Cloud · UK & Europe
-          </p>
+          <div className="flex items-center gap-6">
+            <p className="text-[12px] text-neutral-400">
+              Salesforce Education Cloud · UK & Europe
+            </p>
+          </div>
         </div>
       </div>
-
     </footer>
   );
 }
