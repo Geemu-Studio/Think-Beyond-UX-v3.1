@@ -26,17 +26,33 @@ export function StyleGuide() {
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   
-  // Refs for high-performance dragging without re-renders
+  // Refs for tracking and high-performance logic
   const panRef = React.useRef(pan);
   const isDraggingRef = React.useRef(false);
   const startPosRef = React.useRef({ x: 0, y: 0 });
+  const lastMousePosRef = React.useRef({ x: 0, y: 0 });
 
   const [copiedHex, setCopiedHex] = useState<string | null>(null);
 
-  // Sync ref with state for event listeners
+  // Sync ref with state
   React.useEffect(() => {
     panRef.current = pan;
   }, [pan]);
+
+  // Unified Zoom Engine
+  const handleZoomStep = (delta: number, centerX: number, centerY: number) => {
+    setZoom(prevZoom => {
+      const nextZoom = Math.round(Math.min(Math.max(0.1, prevZoom + delta), 2) * 10) / 10;
+      if (nextZoom !== prevZoom) {
+        const scaleRatio = nextZoom / prevZoom;
+        setPan(prevPan => ({
+          x: centerX - (centerX - prevPan.x) * scaleRatio,
+          y: centerY - (centerY - prevPan.y) * scaleRatio
+        }));
+      }
+      return nextZoom;
+    });
+  };
 
   // Native macOS Gestures & Global Mouse Drag Hook
   React.useEffect(() => {
@@ -51,19 +67,8 @@ export function StyleGuide() {
       const mouseY = e.clientY - rect.top - rect.height / 2;
 
       if (e.ctrlKey) {
-        // Zoom-to-Cursor logic
-        const delta = -e.deltaY * 0.01;
-        setZoom(prevZoom => {
-          const nextZoom = Math.round(Math.min(Math.max(0.1, prevZoom + delta), 2) * 10) / 10;
-          if (nextZoom !== prevZoom) {
-            const scaleRatio = nextZoom / prevZoom;
-            setPan(prevPan => ({
-              x: mouseX - (mouseX - prevPan.x) * scaleRatio,
-              y: mouseY - (mouseY - prevPan.y) * scaleRatio
-            }));
-          }
-          return nextZoom;
-        });
+        // Zoom-to-Cursor via wheel
+        handleZoomStep(-e.deltaY * 0.01, mouseX, mouseY);
       } else {
         // Two-finger Pan logic
         setPan(prev => ({
@@ -74,19 +79,22 @@ export function StyleGuide() {
     };
 
     const handleMouseDown = (e: MouseEvent) => {
-      // Left click only + ignore clicks on buttons/interactive elements
       if (e.button !== 0 || (e.target as HTMLElement).closest('button')) return;
-      
       isDraggingRef.current = true;
       setIsDragging(true);
-      startPosRef.current = { 
-        x: e.clientX - panRef.current.x, 
-        y: e.clientY - panRef.current.y 
-      };
+      startPosRef.current = { x: e.clientX - panRef.current.x, y: e.clientY - panRef.current.y };
       container.style.cursor = 'grabbing';
     };
 
     const handleMouseMove = (e: MouseEvent) => {
+      // 1. Update last mouse position for buttons (relative to center)
+      const rect = container.getBoundingClientRect();
+      lastMousePosRef.current = { 
+        x: e.clientX - rect.left - rect.width / 2, 
+        y: e.clientY - rect.top - rect.height / 2 
+      };
+
+      // 2. Dragging logic
       if (!isDraggingRef.current) return;
       setPan({
         x: e.clientX - startPosRef.current.x,
@@ -130,9 +138,7 @@ export function StyleGuide() {
   ];
 
   const getFrameUrl = (path: string) => {
-    // Vite base
     const base = (import.meta as any).env.BASE_URL;
-    // For HashRouter, subpages must be accessed via /#/path
     const cleanPath = path === '/' ? '' : path.startsWith('/') ? path.slice(1) : path;
     const separator = base.endsWith('/') ? '' : '/';
     return `${window.location.origin}${base}${separator}#/${cleanPath}?no-anim=true`;
@@ -156,7 +162,10 @@ export function StyleGuide() {
       {/* Toolbar / Controls - Floating at bottom */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-2xl">
         <button 
-          onClick={(e) => { e.stopPropagation(); setZoom(prev => Math.min(Math.max(0.1, Math.round((prev - 0.1) * 10) / 10), 2)); }}
+          onClick={(e) => { 
+            e.stopPropagation(); 
+            handleZoomStep(-0.1, lastMousePosRef.current.x, lastMousePosRef.current.y); 
+          }}
           className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white cursor-pointer"
         >
           <Minus className="w-4 h-4" />
@@ -165,7 +174,10 @@ export function StyleGuide() {
           {Math.round(zoom * 100)}%
         </div>
         <button 
-          onClick={(e) => { e.stopPropagation(); setZoom(prev => Math.min(Math.max(0.1, Math.round((prev + 0.1) * 10) / 10), 2)); }}
+          onClick={(e) => { 
+            e.stopPropagation(); 
+            handleZoomStep(0.1, lastMousePosRef.current.x, lastMousePosRef.current.y); 
+          }}
           className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white cursor-pointer"
         >
           <Plus className="w-4 h-4" />
