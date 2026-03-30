@@ -22,9 +22,37 @@ function cn(...classes: (string | undefined | null | false)[]) {
 
 export function StyleGuide() {
   const [activeTab, setActiveTab] = useState<'canvas' | 'colors' | 'typography' | 'components' | 'patterns' | 'icons'>('canvas');
-  const [zoom, setZoom] = useState(0.4);
+  const [zoom, setZoom] = useState(0.35);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
   
   const [copiedHex, setCopiedHex] = useState<string | null>(null);
+
+  // Native macOS Gestures Hook
+  React.useEffect(() => {
+    if (activeTab !== 'canvas') return;
+
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+
+      if (e.ctrlKey) {
+        // Pinch-to-Zoom logic
+        const delta = -e.deltaY * 0.01;
+        setZoom(prev => Math.min(Math.max(0.05, prev + delta), 2));
+      } else {
+        // Two-finger Pan logic
+        setPan(prev => ({
+          x: prev.x - e.deltaX,
+          y: prev.y - e.deltaY
+        }));
+      }
+    };
+
+    const container = document.getElementById('canvas-container');
+    if (container) {
+      container.addEventListener('wheel', handleWheel, { passive: false });
+    }
+    return () => container?.removeEventListener('wheel', handleWheel);
+  }, [activeTab]);
 
   const copyToClipboard = (hex: string) => {
     navigator.clipboard.writeText(hex);
@@ -48,13 +76,17 @@ export function StyleGuide() {
   };
 
   const renderCanvas = () => (
-    <div className="relative w-full h-[calc(100vh-160px)] bg-neutral-100 overflow-hidden">
+    <div 
+      id="canvas-container"
+      className="relative w-full h-[calc(100vh-160px)] bg-neutral-100 overflow-hidden"
+    >
       {/* Figma-style Grid Background */}
       <div 
-        className="absolute inset-0 opacity-[0.05]" 
+        className="absolute inset-0 opacity-[0.4]" 
         style={{ 
-          backgroundImage: `radial-gradient(#000 1px, transparent 0)`, 
-          backgroundSize: '24px 24px',
+          backgroundImage: `radial-gradient(#000000 1px, transparent 0)`, 
+          backgroundSize: '32px 32px',
+          backgroundPosition: `${pan.x}px ${pan.y}px`,
         }} 
       />
 
@@ -70,64 +102,65 @@ export function StyleGuide() {
           {Math.round(zoom * 100)}%
         </div>
         <button 
-          onClick={() => setZoom(Math.min(1.5, zoom + 0.1))}
+          onClick={() => setZoom(Math.min(2, zoom + 0.1))}
           className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white"
         >
           <Plus className="w-4 h-4" />
         </button>
         <button 
-          onClick={() => setZoom(0.35)}
+          onClick={() => { setZoom(0.35); setPan({ x: 0, y: 0 }); }}
           className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white ml-1 border-l border-white/5"
-          title="Reset Zoom"
+          title="Reset View"
         >
           <Maximize className="w-4 h-4" />
         </button>
       </div>
 
       {/* Zoomable Content Area */}
-      <div className="w-full h-full flex items-center justify-center p-0">
+      <div className="w-full h-full flex items-center justify-center">
         <motion.div 
           drag
           dragMomentum={false}
-          className="flex gap-40 items-start cursor-grab active:cursor-grabbing p-[800px]"
-          animate={{ scale: zoom }}
+          onDrag={(_, info) => {
+            setPan(prev => ({
+              x: prev.x + info.delta.x,
+              y: prev.y + info.delta.y
+            }));
+          }}
+          className="flex gap-40 items-start cursor-grab active:cursor-grabbing"
+          animate={{ 
+            x: pan.x, 
+            y: pan.y,
+            scale: zoom 
+          }}
           initial={{ scale: 0.1 }}
-          transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+          transition={{ type: 'spring', damping: 30, stiffness: 250, mass: 0.8 }}
           style={{ originX: 0.5, originY: 0.5 }}
         >
           {pages.map((page) => (
-            <div key={page.path} className="flex flex-col gap-6 shrink-0">
-               <div className="flex flex-col gap-1.5 ml-2">
-                 <div className="flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-neutral-400" />
-                    <h3 className="text-[20px] font-bold text-black tracking-tight">{page.title}</h3>
+            <div key={page.path} className="flex flex-col gap-8 shrink-0">
+               <div className="flex flex-col gap-2 ml-2">
+                 <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center font-bold text-[14px]">
+                       {page.title.charAt(0)}
+                    </div>
+                    <h3 className="text-[24px] font-bold text-black tracking-tight">{page.title}</h3>
                  </div>
-                 <p className="text-[13px] text-neutral-500 max-w-[300px]">{page.description}</p>
+                 <p className="text-[14px] text-neutral-500 max-w-[340px] leading-relaxed">{page.description}</p>
                </div>
                
-               {/* Frame Wrapper */}
-               <div className="w-[1240px] h-[860px] bg-white rounded-[24px] shadow-[0_32px_64px_rgba(0,0,0,0.12)] border border-neutral-200 overflow-hidden relative group">
-                  {/* Browser Header UI */}
-                  <div className="h-12 bg-neutral-50 border-b border-neutral-200 flex items-center px-6 gap-6">
-                     <div className="flex gap-2">
-                        <div className="w-3 h-3 rounded-full bg-neutral-200" />
-                        <div className="w-3 h-3 rounded-full bg-neutral-200" />
-                        <div className="w-3 h-3 rounded-full bg-neutral-200" />
-                     </div>
-                     <div className="flex-1 bg-white border border-neutral-200 rounded-lg h-7 flex items-center px-4">
-                        <span className="text-[11px] text-neutral-400 font-mono tracking-tight">{getFrameUrl(page.path)}</span>
-                     </div>
-                  </div>
-                  
+               {/* Full Page Frame */}
+               <div className="w-[1440px] h-[5000px] bg-white shadow-[0_60px_120px_rgba(0,0,0,0.12)] border border-neutral-100 overflow-hidden relative group rounded-sm">
                   {/* Page Preview (Iframe) */}
                   <iframe 
                     src={getFrameUrl(page.path)}
                     className="w-full h-full pointer-events-none"
                     style={{ border: 'none' }}
+                    scrolling="no"
                   />
                   
-                  {/* Grid Lines on Frame during load */}
-                  <div className="absolute inset-x-0 bottom-0 top-12 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                  {/* Passive Overlay for interaction safety */}
+                  <div className="absolute inset-0 bg-transparent pointer-events-none" />
                </div>
             </div>
           ))}
