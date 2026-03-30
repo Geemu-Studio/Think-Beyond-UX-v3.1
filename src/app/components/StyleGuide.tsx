@@ -132,8 +132,10 @@ export function StyleGuide() {
   const getFrameUrl = (path: string) => {
     // Vite base
     const base = (import.meta as any).env.BASE_URL;
+    // For HashRouter, subpages must be accessed via /#/path
     const cleanPath = path === '/' ? '' : path.startsWith('/') ? path.slice(1) : path;
-    return `${window.location.origin}${base}${cleanPath}?no-anim=true`;
+    const separator = base.endsWith('/') ? '' : '/';
+    return `${window.location.origin}${base}${separator}#/${cleanPath}?no-anim=true`;
   };
 
   const renderCanvas = () => (
