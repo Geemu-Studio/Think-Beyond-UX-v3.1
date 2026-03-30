@@ -449,7 +449,7 @@ export function StyleGuide() {
       <div className="flex flex-col gap-4 border-b border-neutral-100 pb-8">
         <h1 className="text-[36px] md:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">Skala Typograficzna (Type Scale)</h1>
         <p className="text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-          <strong>OutfitBold</strong> dla nagłówków oraz <strong>Inter Regular</strong> dla treści podstawowej. Konfiguracja rozmiarów oparta o system 4px/8px.
+          <strong><a href="https://fonts.google.com/specimen/Outfit" target="_blank" rel="noreferrer" className="hover:underline text-black decoration-black underline-offset-4 transition-all">Outfit Bold</a></strong> dla nagłówków oraz <strong><a href="https://fonts.google.com/specimen/Inter" target="_blank" rel="noreferrer" className="hover:underline text-black decoration-black underline-offset-4 transition-all">Inter Regular</a></strong> dla treści podstawowej. Konfiguracja rozmiarów oparta o system 4px/8px.
         </p>
       </div>
 
@@ -458,7 +458,9 @@ export function StyleGuide() {
         <section className="flex flex-col gap-12">
           <div className="flex flex-col gap-2">
             <h2 className="text-[20px] font-bold tracking-tight text-black">Nagłówki (Headings)</h2>
-            <p className="text-[14px] text-neutral-400">Font: Outfit Bold / sans-serif</p>
+            <p className="text-[14px] text-neutral-400">
+              Font: <a href="https://fonts.google.com/specimen/Outfit" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-black transition-colors">Outfit Bold</a> / sans-serif
+            </p>
           </div>
 
           <div className="flex flex-col gap-10">
@@ -494,7 +496,9 @@ export function StyleGuide() {
         <section className="flex flex-col gap-12">
           <div className="flex flex-col gap-2">
             <h2 className="text-[20px] font-bold tracking-tight text-black">Treść (Body Copy)</h2>
-            <p className="text-[14px] text-neutral-400">Font: Inter Regular</p>
+            <p className="text-[14px] text-neutral-400">
+              Font: <a href="https://fonts.google.com/specimen/Inter" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-black transition-colors">Inter Regular</a>
+            </p>
           </div>
 
           <div className="flex flex-col gap-10">
@@ -783,7 +787,7 @@ export function StyleGuide() {
   );
 
   const renderIcons = () => {
-    const iconGrid = (title: string, icons: { name: string, Icon: any, source: string }[]) => (
+    const iconGrid = (title: React.ReactNode, icons: { name: string, Icon: any, source: string }[]) => (
       <div className="flex flex-col gap-6">
         <h3 className="text-[14px] text-neutral-400 font-bold uppercase tracking-wider">{title}</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -813,7 +817,12 @@ export function StyleGuide() {
         </div>
 
         <section className="flex flex-col gap-16">
-          {iconGrid("Logistyka & Akcje (Lucide React)", [
+          {iconGrid(
+            <span className="flex items-center gap-1.5 flex-wrap">
+              Logistyka & Akcje 
+              <a href="https://lucide.dev/icons/" target="_blank" rel="noreferrer" className="text-black underline underline-offset-4 hover:opacity-70 transition-opacity ml-1">(Lucide React)</a>
+            </span>, 
+            [
             { name: "Phone", Icon: Phone, source: "Interakcja" },
             { name: "Mail", Icon: Mail, source: "Kontakt" },
             { name: "CheckCircle2", Icon: CheckCircle2, source: "Sukces" },
@@ -826,7 +835,12 @@ export function StyleGuide() {
             { name: "Play", Icon: Play, source: "Wideo" },
           ])}
 
-          {iconGrid("Ikony Tematyczne (Material Outlined)", [
+          {iconGrid(
+            <span className="flex items-center gap-1.5 flex-wrap">
+              Ikony Tematyczne 
+              <a href="https://fonts.google.com/icons?icon.set=Material+Icons" target="_blank" rel="noreferrer" className="text-black underline underline-offset-4 hover:opacity-70 transition-opacity ml-1">(Material Outlined)</a>
+            </span>, 
+            [
             { name: "Campaign", Icon: (props: any) => <CampaignOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Marketing" },
             { name: "DataUsage", Icon: (props: any) => <DataUsageOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Marketing" },
             { name: "VolunteerActivism", Icon: (props: any) => <VolunteerActivismOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Marketing" },
@@ -947,7 +961,7 @@ export function StyleGuide() {
       {/* Systemowy Footer Płótna */}
       <footer className="w-full border-t border-neutral-200 bg-neutral-50 px-6 sm:px-12 py-8 mt-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-neutral-500 font-medium shrink-0">
         <div>
-          &copy; 2026 Design System
+          &copy; 2026 Geemu Studio
         </div>
         <div className="flex items-center gap-4 sm:gap-6">
           <span>Design System Canvas</span>
