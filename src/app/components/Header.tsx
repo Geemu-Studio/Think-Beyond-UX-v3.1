@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react';
 import svgPaths from "../../imports/svg-fitf5bq036";
 import { ConsultationModal } from './ConsultationModal';
 import { NAV_LINKS } from '../data/navigationContent';
@@ -10,20 +10,29 @@ const HEADER_NAV_LINKS = NAV_LINKS;
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
+  const [hoveredLink, setHoveredLink] = useState<any | null>(null);
   const location = useLocation();
   
   // Mouse tracking for floating tooltips
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springConfig = { damping: 20, stiffness: 150, mass: 0.5 };
+  const springConfig = { damping: 25, stiffness: 250, mass: 0.5 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    mouseX.set(e.clientX);
-    mouseY.set(e.clientY);
-  };
+  // Offset transformation to keep tooltip away from cursor
+  const tooltipX = useTransform(smoothX, (v: number) => v + 20);
+  const tooltipY = useTransform(smoothY, (v: number) => v + 20);
+
+  React.useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+
+    window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+  }, [mouseX, mouseY]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
@@ -76,7 +85,7 @@ export function Header() {
         </div>
 
         {/* ── Center nav (desktop) ── */}
-        <nav className="hidden md:flex items-center gap-8" onMouseMove={handleMouseMove}>
+        <nav className="hidden md:flex items-center gap-8">
           {HEADER_NAV_LINKS.map((link) => {
             const isActive = location.pathname === link.href;
             const hasTooltip = !!link.description;
@@ -84,46 +93,44 @@ export function Header() {
             const linkProps = {
               className: `text-[14px] transition-colors py-2 ${isActive ? 'text-black font-semibold' : 'text-neutral-600 hover:text-black'}`,
               style: { fontWeight: isActive ? 600 : 500 },
-              onMouseEnter: () => hasTooltip && setHoveredLabel(link.label),
-              onMouseLeave: () => setHoveredLabel(null),
+              onMouseEnter: () => hasTooltip && setHoveredLink(link),
+              onMouseLeave: () => setHoveredLink(null),
             };
 
-            const NavItem = link.href.startsWith('#') ? (
-              <a {...linkProps} href={link.href} onClick={(e) => handleNavClick(e, link.href)}>{link.label}</a>
-            ) : (
-              <Link {...linkProps} to={link.href} onClick={() => setMobileOpen(false)}>{link.label}</Link>
-            );
-
             return (
-              <div key={link.label} className="relative flex flex-col items-center group">
-                {NavItem}
-                
-                {hasTooltip && (
-                  <AnimatePresence>
-                    {hoveredLabel === link.label && (
-                      <motion.div 
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.15 }}
-                        style={{ 
-                          left: smoothX, 
-                          top: smoothY,
-                          x: 20, // Offset from cursor
-                          y: 20
-                        }}
-                        className="fixed z-[100] pointer-events-none bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col min-w-[260px] max-w-[280px]"
-                      >
-                        <p className="text-[13px] text-neutral-400 leading-[1.65]">
-                          {link.description}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+              <div key={link.label} className="relative flex flex-col items-center">
+                {link.href.startsWith('#') ? (
+                  <a {...linkProps} href={link.href} onClick={(e) => handleNavClick(e, link.href)}>{link.label}</a>
+                ) : (
+                  <Link {...linkProps} to={link.href} onClick={() => setMobileOpen(false)}>{link.label}</Link>
                 )}
               </div>
             );
           })}
+
+          <AnimatePresence>
+            {hoveredLink && (
+              <motion.div 
+                key={hoveredLink.label}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.15 }}
+                style={{ 
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  x: tooltipX, 
+                  y: tooltipY,
+                }}
+                className="z-[100] pointer-events-none bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col min-w-[260px] max-w-[280px]"
+              >
+                <p className="text-[13px] text-neutral-400 leading-[1.65]">
+                  {hoveredLink.description}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
 
         {/* ── Right: CTA + mobile hamburger ── */}
