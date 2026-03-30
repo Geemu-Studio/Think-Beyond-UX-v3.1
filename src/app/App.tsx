@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router';
+import { HashRouter, Routes, Route, useLocation } from 'react-router';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { SocialProofBar } from './components/SocialProofBar';
@@ -49,7 +49,7 @@ function HomePage() {
 
 export default function App() {
   return (
-    <BrowserRouter basename="/Think-Beyond-UX-v3">
+    <HashRouter>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -59,6 +59,6 @@ export default function App() {
         <Route path="/alumni" element={<AlumniPage />} />
         <Route path="/style-guide" element={<StyleGuide />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

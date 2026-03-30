@@ -22,21 +22,30 @@ function cn(...classes: (string | undefined | null | false)[]) {
 
 export function StyleGuide() {
   const [activeTab, setActiveTab] = useState<'canvas' | 'colors' | 'typography' | 'components' | 'patterns' | 'icons'>('canvas');
-  const [zoom, setZoom] = useState(0.35);
+  const [zoom, setZoom] = useState(0.4);
   const [pan, setPan] = useState({ x: 0, y: 0 });
-  
   const [isDragging, setIsDragging] = useState(false);
+  
+  // Refs for high-performance dragging without re-renders
+  const panRef = React.useRef(pan);
+  const isDraggingRef = React.useRef(false);
+  const startPosRef = React.useRef({ x: 0, y: 0 });
+
   const [copiedHex, setCopiedHex] = useState<string | null>(null);
 
-  // Native macOS Gestures Hook
+  // Sync ref with state for event listeners
+  React.useEffect(() => {
+    panRef.current = pan;
+  }, [pan]);
+
+  // Native macOS Gestures & Global Mouse Drag Hook
   React.useEffect(() => {
     if (activeTab !== 'canvas') return;
+    const container = document.getElementById('canvas-container');
+    if (!container) return;
 
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
-      const container = document.getElementById('canvas-container');
-      if (!container) return;
-
       const rect = container.getBoundingClientRect();
       const mouseX = e.clientX - rect.left - rect.width / 2;
       const mouseY = e.clientY - rect.top - rect.height / 2;
@@ -46,9 +55,7 @@ export function StyleGuide() {
         const delta = -e.deltaY * 0.01;
         setZoom(prevZoom => {
           const nextZoom = Math.round(Math.min(Math.max(0.1, prevZoom + delta), 2) * 10) / 10;
-          
           if (nextZoom !== prevZoom) {
-            // Adjust pan to keep point under mouse stable
             const scaleRatio = nextZoom / prevZoom;
             setPan(prevPan => ({
               x: mouseX - (mouseX - prevPan.x) * scaleRatio,
@@ -66,11 +73,46 @@ export function StyleGuide() {
       }
     };
 
-    const container = document.getElementById('canvas-container');
-    if (container) {
-      container.addEventListener('wheel', handleWheel, { passive: false });
-    }
-    return () => container?.removeEventListener('wheel', handleWheel);
+    const handleMouseDown = (e: MouseEvent) => {
+      // Left click only + ignore clicks on buttons/interactive elements
+      if (e.button !== 0 || (e.target as HTMLElement).closest('button')) return;
+      
+      isDraggingRef.current = true;
+      setIsDragging(true);
+      startPosRef.current = { 
+        x: e.clientX - panRef.current.x, 
+        y: e.clientY - panRef.current.y 
+      };
+      container.style.cursor = 'grabbing';
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDraggingRef.current) return;
+      setPan({
+        x: e.clientX - startPosRef.current.x,
+        y: e.clientY - startPosRef.current.y
+      });
+    };
+
+    const handleMouseUp = () => {
+      if (isDraggingRef.current) {
+        isDraggingRef.current = false;
+        setIsDragging(false);
+        container.style.cursor = 'grab';
+      }
+    };
+
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    container.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      container.removeEventListener('wheel', handleWheel);
+      container.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
   }, [activeTab]);
 
   const copyToClipboard = (hex: string) => {
@@ -89,23 +131,19 @@ export function StyleGuide() {
 
   const getFrameUrl = (path: string) => {
     // Vite base
-    const base = import.meta.env.BASE_URL;
+    const base = (import.meta as any).env.BASE_URL;
     const cleanPath = path === '/' ? '' : path.startsWith('/') ? path.slice(1) : path;
-    const url = `${window.location.origin}${base}${cleanPath}`;
-    return url.includes('?') ? `${url}&no-anim=true` : `${url}?no-anim=true`;
+    return `${window.location.origin}${base}${cleanPath}?no-anim=true`;
   };
 
   const renderCanvas = () => (
     <div 
       id="canvas-container"
-      className="relative w-full h-[calc(100vh-160px)] bg-neutral-100 overflow-hidden"
+      className="relative w-full h-[calc(100vh-160px)] bg-neutral-100 overflow-hidden cursor-grab"
     >
-      {/* Global Drag Shield - Prevents iframe interference */}
-      {isDragging && <div className="absolute inset-0 z-[100] cursor-grabbing" />}
-
       {/* Figma-style Grid Background */}
       <div 
-        className="absolute inset-0 opacity-[0.4]" 
+        className="absolute inset-0 opacity-[0.4] pointer-events-none" 
         style={{ 
           backgroundImage: `radial-gradient(#000000 1px, transparent 0)`, 
           backgroundSize: '32px 32px',
@@ -114,10 +152,10 @@ export function StyleGuide() {
       />
 
       {/* Toolbar / Controls - Floating at bottom */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-[110] flex items-center gap-2 bg-black/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-2xl">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-2xl">
         <button 
-          onClick={() => setZoom(prev => Math.min(Math.max(0.1, Math.round((prev - 0.1) * 10) / 10), 2))}
-          className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white"
+          onClick={(e) => { e.stopPropagation(); setZoom(prev => Math.min(Math.max(0.1, Math.round((prev - 0.1) * 10) / 10), 2)); }}
+          className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white cursor-pointer"
         >
           <Minus className="w-4 h-4" />
         </button>
@@ -125,14 +163,14 @@ export function StyleGuide() {
           {Math.round(zoom * 100)}%
         </div>
         <button 
-          onClick={() => setZoom(prev => Math.min(Math.max(0.1, Math.round((prev + 0.1) * 10) / 10), 2))}
-          className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white"
+          onClick={(e) => { e.stopPropagation(); setZoom(prev => Math.min(Math.max(0.1, Math.round((prev + 0.1) * 10) / 10), 2)); }}
+          className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white cursor-pointer"
         >
           <Plus className="w-4 h-4" />
         </button>
         <button 
-          onClick={() => { setZoom(0.4); setPan({ x: 0, y: 0 }); }}
-          className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white ml-1 border-l border-white/5"
+          onClick={(e) => { e.stopPropagation(); setZoom(0.4); setPan({ x: 0, y: 0 }); }}
+          className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white ml-1 border-l border-white/5 cursor-pointer"
           title="Reset View"
         >
           <Maximize className="w-4 h-4" />
@@ -140,27 +178,16 @@ export function StyleGuide() {
       </div>
 
       {/* Zoomable Content Area */}
-      <div className="w-full h-full flex items-center justify-center">
+      <div className="w-full h-full flex items-center justify-center pointer-events-none">
         <motion.div 
-          drag
-          dragMomentum={true}
-          dragElastic={0.05}
-          onDragStart={() => setIsDragging(true)}
-          onDragEnd={() => setIsDragging(false)}
-          onDrag={(_, info) => {
-            setPan(prev => ({
-              x: prev.x + info.delta.x,
-              y: prev.y + info.delta.y
-            }));
-          }}
-          className="flex gap-40 items-start cursor-grab active:cursor-grabbing"
+          className="flex gap-40 items-start select-none"
           animate={{ 
             x: pan.x, 
             y: pan.y,
             scale: zoom 
           }}
           initial={{ scale: 0.1 }}
-          transition={{ type: 'spring', damping: 35, stiffness: 350, mass: 0.5 }}
+          transition={isDragging ? { duration: 0 } : { type: 'spring', damping: 30, stiffness: 250, mass: 0.8 }}
           style={{ originX: 0.5, originY: 0.5 }}
         >
           {pages.map((page) => (
@@ -178,7 +205,7 @@ export function StyleGuide() {
                {/* Dynamic Full Page Frame */}
                <div 
                  className="w-[1440px] bg-white shadow-[0_60px_120px_rgba(0,0,0,0.12)] border border-neutral-100 overflow-hidden relative group rounded-sm transition-[height] duration-700 ease-out"
-                 style={{ height: '3000px' }} // Fallback initial height
+                 style={{ height: '3000px' }} 
                >
                   {/* Page Preview (Iframe) */}
                   <iframe 
@@ -192,14 +219,11 @@ export function StyleGuide() {
                         try {
                           const doc = iframe.contentWindow?.document;
                           if (doc) {
-                            // Calculate full length of the loaded document
                             const contentHeight = Math.max(
                               doc.body.scrollHeight, 
                               doc.documentElement.scrollHeight, 
                               doc.body.offsetHeight
                             );
-                            
-                            // Apply precisely to 100% of its length
                             if (contentHeight > 1000) {
                               iframe.style.height = `${contentHeight}px`;
                               if (iframe.parentElement) {
@@ -207,12 +231,8 @@ export function StyleGuide() {
                               }
                             }
                           }
-                        } catch(err) {
-                           // Silent catch in case of unexpected cross-origin errors
-                        }
+                        } catch(err) {}
                       };
-                      
-                      // Measure immediately and after a short delay for React mounting
                       setTimeout(measureAndApply, 100);
                       setTimeout(measureAndApply, 1500);
                     }}
