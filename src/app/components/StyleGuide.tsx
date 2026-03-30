@@ -12,7 +12,7 @@ import {
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { GlassPlayButton } from './ui/GlassPlayButton';
-import { ExpertFooterAccordion } from './ui/ExpertFooterAccordion';
+import { ExpertFooter } from './ui/ExpertFooterAccordion';
 
 function cn(...classes: (string | undefined | null | false)[]) {
   return classes.filter(Boolean).join(' ');
@@ -392,8 +392,9 @@ export function StyleGuide() {
               </footer>
             </blockquote>
 
-            {/* Nowy Expert Footer Accordion */}
-            <ExpertFooterAccordion />
+            <div className="border border-neutral-100 rounded-[32px] p-10 bg-neutral-50/30">
+              <ExpertFooter />
+            </div>
           </div>
         </div>
       </section>

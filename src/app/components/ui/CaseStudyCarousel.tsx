@@ -233,7 +233,7 @@ interface CaseStudyCarouselProps {
   initialActiveIdx?: number;
 }
 
-import { ExpertFooterAccordion } from './ExpertFooterAccordion';
+import { ExpertFooter } from './ExpertFooterAccordion';
 
 export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselProps) {
   const [activeIdx, setActiveIdx] = useState(initialActiveIdx + CARDS.length);
@@ -574,7 +574,7 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                   )}
 
                   {/* Form - Scrolling target */}
-                  <ExpertFooterAccordion />
+                  <ExpertFooter />
                 </motion.div>
               </div>
 

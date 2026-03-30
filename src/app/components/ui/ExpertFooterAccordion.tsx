@@ -4,8 +4,7 @@ import { Input } from './input';
 import { Button } from './button';
 import { motion, AnimatePresence } from 'motion/react';
 
-export function ExpertFooterAccordion() {
-  const [isExpanded, setIsExpanded] = useState(false);
+export function ExpertFooter() {
   const [form, setForm] = useState({ name: '', university: '', email: '', gdpr: false });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -85,92 +84,80 @@ export function ExpertFooterAccordion() {
               </h3>
             </div>
             
-            {!isExpanded ? (
-              <Button size="lg" onClick={() => setIsExpanded(true)}>
-                Zapytaj o podobne wdrożenie
+            <form 
+              onSubmit={handleSubmit} 
+              className="flex flex-col gap-6 w-full text-left overflow-hidden" 
+              noValidate
+            >
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[13px] text-neutral-700 font-medium">Full name</label>
+                <Input
+                  type="text"
+                  placeholder="Professor Jane Smith"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  error={!!errors.name}
+                />
+                {errors.name && <p className="text-[12px] text-black font-semibold mt-0.5">{errors.name}</p>}
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[13px] text-neutral-700 font-medium">Institution name</label>
+                <Input
+                  type="text"
+                  placeholder="Your university"
+                  list="uk-universities"
+                  value={form.university}
+                  onChange={(e) => setForm({ ...form, university: e.target.value })}
+                  error={!!errors.university}
+                />
+                {errors.university && <p className="text-[12px] text-black font-semibold mt-0.5">{errors.university}</p>}
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[13px] text-neutral-700 font-medium">Institutional email address</label>
+                <Input
+                  type="email"
+                  placeholder="j.smith@university.ac.uk"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  error={!!errors.email}
+                />
+                {errors.email && <p className="text-[12px] text-black font-semibold mt-0.5">{errors.email}</p>}
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={form.gdpr}
+                    onChange={(e) => setForm({ ...form, gdpr: e.target.checked })}
+                    className="mt-1 accent-black w-4 h-4 shrink-0 cursor-pointer"
+                  />
+                  <span className="text-[13px] text-neutral-600 leading-[1.6]">
+                    I consent to the processing of my personal data in accordance with GDPR for the purpose of responding to my enquiry.
+                  </span>
+                </label>
+                {errors.gdpr && <p className="text-[12px] text-black font-semibold ml-7 mt-0.5">{errors.gdpr}</p>}
+              </div>
+
+              <Button
+                type="submit"
+                disabled={!isFormValid}
+                size="lg"
+                fullWidth={true}
+              >
+                Speak with Our Team
               </Button>
-            ) : (
-              <AnimatePresence>
-                <motion.form 
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  onSubmit={handleSubmit} 
-                  className="flex flex-col gap-6 w-full text-left overflow-hidden" 
-                  noValidate
-                >
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[13px] text-neutral-700 font-medium">Full name</label>
-                    <Input
-                      type="text"
-                      placeholder="Professor Jane Smith"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      error={!!errors.name}
-                    />
-                    {errors.name && <p className="text-[12px] text-black font-semibold mt-0.5">{errors.name}</p>}
-                  </div>
 
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[13px] text-neutral-700 font-medium">Institution name</label>
-                    <Input
-                      type="text"
-                      placeholder="Your university"
-                      list="uk-universities"
-                      value={form.university}
-                      onChange={(e) => setForm({ ...form, university: e.target.value })}
-                      error={!!errors.university}
-                    />
-                    {errors.university && <p className="text-[12px] text-black font-semibold mt-0.5">{errors.university}</p>}
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[13px] text-neutral-700 font-medium">Institutional email address</label>
-                    <Input
-                      type="email"
-                      placeholder="j.smith@university.ac.uk"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      error={!!errors.email}
-                    />
-                    {errors.email && <p className="text-[12px] text-black font-semibold mt-0.5">{errors.email}</p>}
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={form.gdpr}
-                        onChange={(e) => setForm({ ...form, gdpr: e.target.checked })}
-                        className="mt-1 accent-black w-4 h-4 shrink-0 cursor-pointer"
-                      />
-                      <span className="text-[13px] text-neutral-600 leading-[1.6]">
-                        I consent to the processing of my personal data in accordance with GDPR for the purpose of responding to my enquiry.
-                      </span>
-                    </label>
-                    {errors.gdpr && <p className="text-[12px] text-black font-semibold ml-7 mt-0.5">{errors.gdpr}</p>}
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={!isFormValid}
-                    size="lg"
-                    fullWidth={true}
-                  >
-                    Speak with Our Team
-                  </Button>
-
-                  <div className="flex items-center justify-center gap-2 text-[12px] text-neutral-400 mt-2">
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="5.5" width="9" height="6.5" rx="1" />
-                      <path d="M4.5 5.5V3.5a2 2 0 0 1 4 0v2" />
-                    </svg>
-                    <span>Your data is 100% secure and will never be shared. No spam, ever.</span>
-                  </div>
-                </motion.form>
-              </AnimatePresence>
-            )}
+              <div className="flex items-center justify-center gap-2 text-[12px] text-neutral-400 mt-2">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="5.5" width="9" height="6.5" rx="1" />
+                  <path d="M4.5 5.5V3.5a2 2 0 0 1 4 0v2" />
+                </svg>
+                <span>Your data is 100% secure and will never be shared. No spam, ever.</span>
+              </div>
+            </form>
           </div>
         )}
       </div>
