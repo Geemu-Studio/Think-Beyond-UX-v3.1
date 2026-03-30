@@ -284,12 +284,15 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
     return () => clearTimeout(timer);
   }, [activeIdx]);
 
+  // Check for canvas preview mode
+  const isNoAnim = typeof window !== 'undefined' ? window.location.search.includes('no-anim=true') : false;
+
   // Auto-play logic
   useEffect(() => {
-    if (isPaused || isMobile || isJumping) return;
+    if (isPaused || isMobile || isJumping || isNoAnim) return;
     const interval = setInterval(nextSlide, 3500);
     return () => clearInterval(interval);
-  }, [isPaused, isMobile, nextSlide, isJumping]);
+  }, [isPaused, isMobile, nextSlide, isJumping, isNoAnim]);
 
   // Synchronize carousel with modal selection
   useEffect(() => {

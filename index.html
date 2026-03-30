@@ -16,35 +16,44 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
       
-      <!-- Logic & Animation Kill-Switch for Canvas -->
+      <!-- Absolute Motion & Logic Kill-Switch for Style Guide Canvas -->
       <script>
         (function() {
           if (window.location.search.includes('no-anim=true')) {
-            // Kill CSS
+            // 1. Hard CSS Lockdown
             const style = document.createElement('style');
             style.innerHTML = `
               *, *::before, *::after {
-                animation: none !important;
                 transition: none !important;
-                animation-duration: 0s !important;
-                transition-duration: 0s !important;
+                animation: none !important;
+                animation-duration: 0ms !important;
+                transition-duration: 0ms !important;
                 scroll-behavior: auto !important;
               }
-              body { pointer-events: none !important; }
+              body { pointer-events: none !important; overflow: hidden !important; }
+              [data-framer-component-type] { animation: none !important; transform: none !important; }
             `;
             document.head.appendChild(style);
 
-            // Kill JS Timers (Carousel auto-play, etc.)
-            const noop = () => 0;
-            const originalSetInterval = window.setInterval;
-            window.setInterval = noop;
-            window.setTimeout = noop;
+            // 2. Kill Main Browser Loops (Framer Motion Logic)
+            window.requestAnimationFrame = function() { return 0; };
+            window.cancelAnimationFrame = function() { return 0; };
+            window.setInterval = function() { return 0; };
+            window.setTimeout = function() { return 0; };
+
+            // 3. Recursive Timer Cleanup (for React mounts)
+            let cleanupCount = 0;
+            const forceCleanup = () => {
+              for (let i = 1; i < 5000; i++) {
+                window.clearInterval(i);
+                window.clearTimeout(i);
+              }
+              if (cleanupCount++ < 50) setTimeout(forceCleanup, 50); // Keep cleaning for ~2.5s
+            };
             
-            // Clear any existing timers
-            for (let i = 1; i < 1000; i++) {
-              window.clearInterval(i);
-              window.clearTimeout(i);
-            }
+            // We need a tiny native timeout to kick off the cleanup
+            const nativeTimeout = window.setTimeout;
+            forceCleanup();
           }
         })();
       </script>
