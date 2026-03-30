@@ -93,16 +93,43 @@ export function Header() {
             const linkProps = {
               className: `text-[14px] transition-colors py-2 ${isActive ? 'text-black font-semibold' : 'text-neutral-600 hover:text-black'}`,
               style: { fontWeight: isActive ? 600 : 500 },
-              onMouseEnter: () => hasTooltip && setHoveredLink(link),
+              onMouseEnter: (e: React.MouseEvent) => {
+                if (hasTooltip) {
+                  // Pre-set coordinates to event location to avoid starting at 0,0
+                  mouseX.set(e.clientX);
+                  mouseY.set(e.clientY);
+                  smoothX.set(e.clientX);
+                  smoothY.set(e.clientY);
+                  setHoveredLink(link);
+                }
+              },
               onMouseLeave: () => setHoveredLink(null),
             };
 
             return (
               <div key={link.label} className="relative flex flex-col items-center">
                 {link.href.startsWith('#') ? (
-                  <a {...linkProps} href={link.href} onClick={(e) => handleNavClick(e, link.href)}>{link.label}</a>
+                  <a 
+                    {...linkProps} 
+                    href={link.href} 
+                    onClick={(e) => {
+                      setHoveredLink(null);
+                      handleNavClick(e, link.href);
+                    }}
+                  >
+                    {link.label}
+                  </a>
                 ) : (
-                  <Link {...linkProps} to={link.href} onClick={() => setMobileOpen(false)}>{link.label}</Link>
+                  <Link 
+                    {...linkProps} 
+                    to={link.href} 
+                    onClick={() => {
+                      setHoveredLink(null);
+                      setMobileOpen(false);
+                    }}
+                  >
+                    {link.label}
+                  </Link>
                 )}
               </div>
             );
