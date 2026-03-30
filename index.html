@@ -16,11 +16,10 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
       
-      <!-- Absolute Motion & Logic Kill-Switch for Style Guide Canvas -->
+      <!-- Static Rendering Mode for Style Guide Canvas -->
       <script>
         (function() {
-          if (window.location.search.includes('no-anim=true')) {
-            // 1. Hard CSS Lockdown
+          if (window.self !== window.top || window.location.href.includes('no-anim=true')) {
             const style = document.createElement('style');
             style.innerHTML = `
               *, *::before, *::after {
@@ -28,32 +27,30 @@
                 animation: none !important;
                 animation-duration: 0ms !important;
                 transition-duration: 0ms !important;
+                animation-delay: 0ms !important;
+                transition-delay: 0ms !important;
                 scroll-behavior: auto !important;
               }
+              /* Disable pointer events on the body to prevent interactions in the canvas */
               body { pointer-events: none !important; overflow: hidden !important; }
-              [data-framer-component-type] { animation: none !important; transform: none !important; }
+              /* Force viewport height components to behave like a standard 900px desktop screen */
+              .min-h-screen { min-height: 900px !important; }
+              .h-screen { height: 900px !important; }
+              .h-\\[100vh\\] { height: 900px !important; }
+              .h-\\[calc\\(100vh-80px\\)\\] { height: 820px !important; }
             `;
             document.head.appendChild(style);
-
-            // 2. Kill Main Browser Loops (Framer Motion Logic)
-            window.requestAnimationFrame = function() { return 0; };
-            window.cancelAnimationFrame = function() { return 0; };
-            window.setInterval = function() { return 0; };
-            window.setTimeout = function() { return 0; };
-
-            // 3. Recursive Timer Cleanup (for React mounts)
-            let cleanupCount = 0;
-            const forceCleanup = () => {
-              for (let i = 1; i < 5000; i++) {
-                window.clearInterval(i);
-                window.clearTimeout(i);
-              }
-              if (cleanupCount++ < 50) setTimeout(forceCleanup, 50); // Keep cleaning for ~2.5s
-            };
             
-            // We need a tiny native timeout to kick off the cleanup
-            const nativeTimeout = window.setTimeout;
-            forceCleanup();
+            // Tell Framer Motion to instantly complete all animations by mocking reduced motion
+            Object.defineProperty(window, 'matchMedia', {
+              writable: true,
+              value: jest => {
+                if (jest === '(prefers-reduced-motion: reduce)') {
+                  return { matches: true, addListener: () => {}, removeListener: () => {} };
+                }
+                return { matches: false, addListener: () => {}, removeListener: () => {} };
+              }
+            });
           }
         })();
       </script>

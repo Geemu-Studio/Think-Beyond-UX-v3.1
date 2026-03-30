@@ -284,8 +284,8 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
     return () => clearTimeout(timer);
   }, [activeIdx]);
 
-  // Check for canvas preview mode
-  const isNoAnim = typeof window !== 'undefined' ? window.location.search.includes('no-anim=true') : false;
+  // Check for canvas preview mode (Iframe detection is 100% reliable)
+  const isNoAnim = typeof window !== 'undefined' ? (window.self !== window.top || window.location.href.includes('no-anim=true')) : false;
 
   // Auto-play logic
   useEffect(() => {

@@ -167,14 +167,47 @@ export function StyleGuide() {
                  <p className="text-[14px] text-neutral-500 max-w-[340px] leading-relaxed">{page.description}</p>
                </div>
                
-               {/* Full Page Frame */}
-               <div className="w-[1440px] h-[5000px] bg-white shadow-[0_60px_120px_rgba(0,0,0,0.12)] border border-neutral-100 overflow-hidden relative group rounded-sm">
+               {/* Dynamic Full Page Frame */}
+               <div 
+                 className="w-[1440px] bg-white shadow-[0_60px_120px_rgba(0,0,0,0.12)] border border-neutral-100 overflow-hidden relative group rounded-sm transition-[height] duration-700 ease-out"
+                 style={{ height: '3000px' }} // Fallback initial height
+               >
                   {/* Page Preview (Iframe) */}
                   <iframe 
                     src={getFrameUrl(page.path)}
-                    className="w-full h-full pointer-events-none"
-                    style={{ border: 'none' }}
+                    className="w-full pointer-events-none"
+                    style={{ border: 'none', height: '100%', minHeight: '3000px' }}
                     scrolling="no"
+                    onLoad={(e) => {
+                      const iframe = e.target as HTMLIFrameElement;
+                      const measureAndApply = () => {
+                        try {
+                          const doc = iframe.contentWindow?.document;
+                          if (doc) {
+                            // Calculate full length of the loaded document
+                            const contentHeight = Math.max(
+                              doc.body.scrollHeight, 
+                              doc.documentElement.scrollHeight, 
+                              doc.body.offsetHeight
+                            );
+                            
+                            // Apply precisely to 100% of its length
+                            if (contentHeight > 1000) {
+                              iframe.style.height = `${contentHeight}px`;
+                              if (iframe.parentElement) {
+                                iframe.parentElement.style.height = `${contentHeight}px`;
+                              }
+                            }
+                          }
+                        } catch(err) {
+                           // Silent catch in case of unexpected cross-origin errors
+                        }
+                      };
+                      
+                      // Measure immediately and after a short delay for React mounting
+                      setTimeout(measureAndApply, 100);
+                      setTimeout(measureAndApply, 1500);
+                    }}
                   />
                   
                   {/* Passive Overlay for interaction safety */}
