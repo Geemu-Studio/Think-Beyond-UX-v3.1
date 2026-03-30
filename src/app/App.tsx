@@ -15,6 +15,8 @@ import RecruitmentPage from './components/recruitment/RecruitmentPage';
 import { StudentSuccessPage } from './components/student-success/StudentSuccessPage';
 import MarketingPage from './components/marketing/MarketingPage';
 import AlumniPage from './components/alumni/AlumniPage';
+import { StyleGuide } from './components/StyleGuide';
+
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -55,6 +57,7 @@ export default function App() {
         <Route path="/student-success" element={<StudentSuccessPage />} />
         <Route path="/marketing" element={<MarketingPage />} />
         <Route path="/alumni" element={<AlumniPage />} />
+        <Route path="/style-guide" element={<StyleGuide />} />
       </Routes>
     </BrowserRouter>
   );

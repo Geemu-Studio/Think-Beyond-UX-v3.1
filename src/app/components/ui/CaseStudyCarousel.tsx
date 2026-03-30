@@ -590,10 +590,20 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
         <DialogContent className="sm:max-w-[750px] p-0 overflow-hidden rounded-[24px] sm:rounded-[40px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
           {selectedIdx !== null && (
             <div className="relative h-full flex flex-col overflow-hidden">
-              {/* Floating Global Close Button - Persistent */}
-              <DialogClose className="absolute right-8 sm:right-12 top-6 z-[130] w-8 h-8 flex items-center justify-center rounded-full bg-white text-black hover:bg-neutral-200 transition-all shadow-lg active:scale-95 outline-none cursor-pointer">
-                <X className="w-4 h-4" strokeWidth={2.5} />
-                <span className="sr-only">Close</span>
+              {/* Floating Global Close Button - Persistent with dynamic contrast */}
+              <DialogClose asChild>
+                <motion.button 
+                  animate={{ 
+                    backgroundColor: isNearForm ? "#000000" : "#ffffff",
+                    color: isNearForm ? "#ffffff" : "#000000",
+                    borderColor: isNearForm ? "#000000" : "#e5e5e5"
+                  }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="absolute right-8 sm:right-12 top-6 z-[130] w-10 h-10 flex items-center justify-center rounded-full shadow-lg active:scale-95 outline-none cursor-pointer border transition-shadow hover:shadow-xl"
+                >
+                  <X className="w-5 h-5" strokeWidth={2.5} />
+                  <span className="sr-only">Close</span>
+                </motion.button>
               </DialogClose>
 
               {/* Header - Collapses height on scroll toward form */}
