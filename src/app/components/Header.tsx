@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react';
 import svgPaths from "../../imports/svg-fitf5bq036";
 import { ConsultationModal } from './ConsultationModal';
 import { NAV_LINKS } from '../data/navigationContent';
@@ -12,6 +12,18 @@ export function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
   const location = useLocation();
+  
+  // Mouse tracking for floating tooltips
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springConfig = { damping: 20, stiffness: 150, mass: 0.5 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    mouseX.set(e.clientX);
+    mouseY.set(e.clientY);
+  };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
@@ -64,7 +76,7 @@ export function Header() {
         </div>
 
         {/* ── Center nav (desktop) ── */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8" onMouseMove={handleMouseMove}>
           {HEADER_NAV_LINKS.map((link) => {
             const isActive = location.pathname === link.href;
             const hasTooltip = !!link.description;
@@ -90,16 +102,21 @@ export function Header() {
                   <AnimatePresence>
                     {hoveredLabel === link.label && (
                       <motion.div 
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="absolute top-full mt-2 z-[100] pointer-events-none bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col min-w-[260px] max-w-[280px]"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.15 }}
+                        style={{ 
+                          left: smoothX, 
+                          top: smoothY,
+                          x: 20, // Offset from cursor
+                          y: 20
+                        }}
+                        className="fixed z-[100] pointer-events-none bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col min-w-[260px] max-w-[280px]"
                       >
                         <p className="text-[13px] text-neutral-400 leading-[1.65]">
                           {link.description}
                         </p>
-                        <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-neutral-800 rotate-45 border-l border-t border-neutral-700/50" />
                       </motion.div>
                     )}
                   </AnimatePresence>
