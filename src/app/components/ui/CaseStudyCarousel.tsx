@@ -372,10 +372,11 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                   filter: isActive ? "blur(0px)" : "blur(1px)",
                 }}
                 whileHover={isActive ? { scale: 1.03, transition: { duration: 0.2 } } : {}}
+                whileTap={isActive ? { scale: 0.98 } : {}}
                 transition={isJumping ? { duration: 0 } : { duration: 0.5, ease: "easeInOut" }}
                 className={`group bg-white rounded-[32px] p-8 sm:p-10 flex flex-col gap-6 shrink-0 cursor-pointer select-none border border-neutral-100 transition-shadow duration-300
                   ${isActive
-                    ? "w-[85vw] sm:w-[620px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)] z-10"
+                    ? "w-[85vw] sm:w-[620px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-2xl z-10"
                     : "w-[85vw] sm:w-[620px]"
                   }`}
               >

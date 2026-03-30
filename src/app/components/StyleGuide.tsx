@@ -15,6 +15,7 @@ import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { GlassPlayButton } from './ui/GlassPlayButton';
 import { ExpertFooter } from './ui/ExpertFooterAccordion';
+import { NAVIGATION_CONTENT } from '../data/navigationContent';
 
 function cn(...classes: (string | undefined | null | false)[]) {
   return classes.filter(Boolean).join(' ');
@@ -130,11 +131,11 @@ export function StyleGuide() {
   };
 
   const pages = [
-    { title: "Home Page", path: "/", description: "Główna strona landingowa z systemem scroll-aware." },
-    { title: "Recruitment", path: "/recruitment", description: "Procesy rekrutacyjne i integracja systemowa." },
-    { title: "Marketing", path: "/marketing", description: "Segmentacja i kampanie oparte o dane studenckie." },
-    { title: "Student Success", path: "/student-success", description: "Wsparcie ścieżek edukacyjnych i retencja." },
-    { title: "Alumni", path: "/alumni", description: "Budowanie relacji z absolwentami i fundraising." }
+    { title: "Home Page", path: "/", description: "A unified student lifecycle ecosystem. Seamlessly connect every touchpoint into one intelligent, purpose-driven Salesforce environment." },
+    { title: "Recruitment", path: "/recruitment", description: "Empower your institution to attract global talent. Eliminate application barriers and build frictionless, highly personalized enrolment journeys." },
+    { title: "Student Success", path: "/student-success", description: "Shift from reactive support to proactive care. Leverage data-driven early alerts to boost retention and ensure holistic student wellbeing." },
+    { title: "Marketing", path: "/marketing", description: "Break down data silos and cut through the digital noise. Build automated, omnichannel engagement paths driven by authentic storytelling." },
+    { title: "Alumni", path: "/alumni", description: "Cultivate a loyal global community. Transform transactional fundraising into lifelong relationships and executive education opportunities." }
   ];
 
   const getFrameUrl = (path: string) => {
@@ -694,8 +695,11 @@ export function StyleGuide() {
           {/* Light Marketing Problem Card */}
           <div className="bg-white border border-neutral-100 p-8 rounded-[32px] flex flex-col gap-6 justify-center relative overflow-hidden">
              <span className="text-[12px] text-neutral-400 font-mono">MarketingProblem Card (Light)</span>
-             <div className="p-8 flex flex-col gap-5 rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group max-w-sm mx-auto w-full text-left">
-                <div className="text-neutral-400 group-hover:scale-110 transition-transform duration-300 group-hover:text-black">
+             <div className="p-8 flex flex-col gap-5 rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer max-w-sm mx-auto w-full text-left">
+                {/* Icon tinted lightly */}
+                <div 
+                  className="w-12 h-12 rounded-[14px] flex items-center justify-center text-neutral-400 bg-neutral-100 border border-neutral-200 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
+                >
                   <CampaignOutlined sx={{ fontSize: 36, color: 'inherit' }} />
                 </div>
                 <h3 className="text-[18px] text-black tracking-[-0.4px]" style={{ fontWeight: 700 }}>
@@ -704,6 +708,30 @@ export function StyleGuide() {
                 <p className="text-[14px] text-neutral-500 leading-[1.7]">
                   Prospective students are overwhelmed by generic marketing. Standing out requires deeply relevant and authentic storytelling.
                 </p>
+                
+                {/* Video Trigger Button */}
+                <button
+                  onClick={(e) => e.preventDefault()}
+                  className="mt-1 flex items-center gap-2.5 text-[13px] font-semibold text-neutral-800 hover:text-black transition-all duration-300 group/btn w-fit cursor-pointer"
+                >
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-200 group-hover/btn:border-black group-hover/btn:bg-neutral-100 transition-all">
+                    <svg 
+                      width="10" 
+                      height="10" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2.5" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      aria-hidden="true"
+                      className="ml-0.5"
+                    >
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                  <span>Hear Expert Insight</span>
+                </button>
              </div>
           </div>
         </div>
