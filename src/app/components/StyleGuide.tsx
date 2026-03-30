@@ -25,6 +25,7 @@ export function StyleGuide() {
   const [zoom, setZoom] = useState(0.35);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   
+  const [isDragging, setIsDragging] = useState(false);
   const [copiedHex, setCopiedHex] = useState<string | null>(null);
 
   // Native macOS Gestures Hook
@@ -90,7 +91,8 @@ export function StyleGuide() {
     // Vite base
     const base = import.meta.env.BASE_URL;
     const cleanPath = path === '/' ? '' : path.startsWith('/') ? path.slice(1) : path;
-    return `${window.location.origin}${base}${cleanPath}`;
+    const url = `${window.location.origin}${base}${cleanPath}`;
+    return url.includes('?') ? `${url}&no-anim=true` : `${url}?no-anim=true`;
   };
 
   const renderCanvas = () => (
@@ -98,6 +100,9 @@ export function StyleGuide() {
       id="canvas-container"
       className="relative w-full h-[calc(100vh-160px)] bg-neutral-100 overflow-hidden"
     >
+      {/* Global Drag Shield - Prevents iframe interference */}
+      {isDragging && <div className="absolute inset-0 z-[100] cursor-grabbing" />}
+
       {/* Figma-style Grid Background */}
       <div 
         className="absolute inset-0 opacity-[0.4]" 
@@ -109,7 +114,7 @@ export function StyleGuide() {
       />
 
       {/* Toolbar / Controls - Floating at bottom */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-2xl">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-[110] flex items-center gap-2 bg-black/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-2xl">
         <button 
           onClick={() => setZoom(prev => Math.min(Math.max(0.1, Math.round((prev - 0.1) * 10) / 10), 2))}
           className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white"
@@ -138,7 +143,10 @@ export function StyleGuide() {
       <div className="w-full h-full flex items-center justify-center">
         <motion.div 
           drag
-          dragMomentum={false}
+          dragMomentum={true}
+          dragElastic={0.05}
+          onDragStart={() => setIsDragging(true)}
+          onDragEnd={() => setIsDragging(false)}
           onDrag={(_, info) => {
             setPan(prev => ({
               x: prev.x + info.delta.x,
@@ -152,7 +160,7 @@ export function StyleGuide() {
             scale: zoom 
           }}
           initial={{ scale: 0.1 }}
-          transition={{ type: 'spring', damping: 30, stiffness: 250, mass: 0.8 }}
+          transition={{ type: 'spring', damping: 35, stiffness: 350, mass: 0.5 }}
           style={{ originX: 0.5, originY: 0.5 }}
         >
           {pages.map((page) => (
