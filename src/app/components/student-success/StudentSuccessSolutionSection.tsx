@@ -58,7 +58,7 @@ export function StudentSuccessSolutionSection() {
           {cards.map((card) => (
             <div
               key={card.title}
-              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] transition-all duration-300 group"
+              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group"
             >
               {/* Icon row: line-art + checkmark badge */}
               <div className="flex items-start justify-between">
