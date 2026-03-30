@@ -96,7 +96,7 @@ const SWPS_DETAILED_CONTENT: SWPSContent = {
 };
 
 const KOZMINSKI_DETAILED_CONTENT: SWPSContent = {
-  title: "Optimizing Global Admissions: The ALD Warsaw Ecosystem",
+  title: "Optimising Global Admissions: The ALD Warsaw Ecosystem",
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
@@ -149,7 +149,7 @@ const CDV_DETAILED_CONTENT: SWPSContent = {
     {
       icon: <AlertCircle className="w-5 h-5 text-black" />,
       title: "The Challenge: Redefining Student Retention",
-      description: "CDV Poznań recognized a critical need to shift from reactive student administration to proactive welfare and career guidance. Without early-alert mechanisms, identifying students at risk of dropping out or struggling with their academic path was highly inefficient.",
+      description: "CDV Poznań recognized a critical need to shift from reactive student administration to proactive welfare and career guidance. Without early-alert mechanisms, identifying students at risk of discontinuation or struggling with their academic path was highly inefficient.",
       items: []
     },
     {

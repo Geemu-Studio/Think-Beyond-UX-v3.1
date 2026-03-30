@@ -688,7 +688,7 @@ export function StyleGuide() {
                 Recruitment & Admissions
               </h3>
               <p className="text-[13px] text-neutral-400 leading-[1.65]">
-                Find, engage, and enroll the right students. Create frictionless application journeys.
+                Find, engage, and enrol the right students. Create frictionless application journeys.
               </p>
               <div className="mt-auto text-[13px] text-neutral-300 group-hover:text-white transition-colors" style={{ fontWeight: 500 }}>
                 Discover Recruitment

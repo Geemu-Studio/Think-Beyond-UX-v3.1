@@ -12,7 +12,7 @@ const cards = [
   {
     icon: <SensorsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Detecting the Invisible Signals',
-    body: 'Students rarely raise their hands before dropping out. Disjointed systems mean early warning signs are missed. Proactive identification is essential to intervene before a learner feels lost.',
+    body: 'Students rarely raise their hands before reaching a crisis point. Disjointed systems mean early warning signs are missed. Proactive identification is essential to intervene before a learner feels lost.',
   },
   {
     icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,

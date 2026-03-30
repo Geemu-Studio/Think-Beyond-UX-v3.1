@@ -101,7 +101,7 @@ const SWPS_DETAILED_CONTENT: SWPSContent = {
 };
 
 const KOZMINSKI_DETAILED_CONTENT: SWPSContent = {
-  title: "Optimizing Global Admissions: The ALD Warsaw Ecosystem",
+  title: "Optimising Global Admissions: The ALD Warsaw Ecosystem",
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
@@ -204,7 +204,7 @@ const CARDS: Card[] = [
     button: "Discover the ALD Story",
     initial: "A",
     fullStory: {
-      title: "Optimizing Global Admissions: The ALD Warsaw Ecosystem",
+      title: "Optimising Global Admissions: The ALD Warsaw Ecosystem",
       isDetailed: true,
       content: KOZMINSKI_DETAILED_CONTENT
     }

@@ -71,7 +71,7 @@ const features = [
     ),
     heading: 'Uncompromising Data Privacy',
     body:
-      'From rigorous GDPR compliance to granular, role-based access controls, ensure that sensitive student, applicant, and faculty information remains strictly confidential and fully governed.',
+      'From rigorous GDPR compliance to granular, role-based access controls, ensure that sensitive student, applicant, and staff information remains strictly confidential and fully governed.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
     videoLabel: 'Data Governance Insights'
