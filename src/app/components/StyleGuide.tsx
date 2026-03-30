@@ -33,11 +33,29 @@ export function StyleGuide() {
 
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
+      const container = document.getElementById('canvas-container');
+      if (!container) return;
+
+      const rect = container.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left - rect.width / 2;
+      const mouseY = e.clientY - rect.top - rect.height / 2;
 
       if (e.ctrlKey) {
-        // Pinch-to-Zoom logic
+        // Zoom-to-Cursor logic
         const delta = -e.deltaY * 0.01;
-        setZoom(prev => Math.min(Math.max(0.05, prev + delta), 2));
+        setZoom(prevZoom => {
+          const nextZoom = Math.round(Math.min(Math.max(0.1, prevZoom + delta), 2) * 10) / 10;
+          
+          if (nextZoom !== prevZoom) {
+            // Adjust pan to keep point under mouse stable
+            const scaleRatio = nextZoom / prevZoom;
+            setPan(prevPan => ({
+              x: mouseX - (mouseX - prevPan.x) * scaleRatio,
+              y: mouseY - (mouseY - prevPan.y) * scaleRatio
+            }));
+          }
+          return nextZoom;
+        });
       } else {
         // Two-finger Pan logic
         setPan(prev => ({
@@ -69,7 +87,7 @@ export function StyleGuide() {
   ];
 
   const getFrameUrl = (path: string) => {
-    // Vite base always starts and ends with / (e.g., /Think-Beyond-UX-v3/)
+    // Vite base
     const base = import.meta.env.BASE_URL;
     const cleanPath = path === '/' ? '' : path.startsWith('/') ? path.slice(1) : path;
     return `${window.location.origin}${base}${cleanPath}`;
@@ -90,10 +108,10 @@ export function StyleGuide() {
         }} 
       />
 
-      {/* Toolbar / Controls */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-2xl">
+      {/* Toolbar / Controls - Floating at bottom */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-2xl">
         <button 
-          onClick={() => setZoom(Math.max(0.1, zoom - 0.1))}
+          onClick={() => setZoom(prev => Math.min(Math.max(0.1, Math.round((prev - 0.1) * 10) / 10), 2))}
           className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white"
         >
           <Minus className="w-4 h-4" />
@@ -102,13 +120,13 @@ export function StyleGuide() {
           {Math.round(zoom * 100)}%
         </div>
         <button 
-          onClick={() => setZoom(Math.min(2, zoom + 0.1))}
+          onClick={() => setZoom(prev => Math.min(Math.max(0.1, Math.round((prev + 0.1) * 10) / 10), 2))}
           className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white"
         >
           <Plus className="w-4 h-4" />
         </button>
         <button 
-          onClick={() => { setZoom(0.35); setPan({ x: 0, y: 0 }); }}
+          onClick={() => { setZoom(0.4); setPan({ x: 0, y: 0 }); }}
           className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white ml-1 border-l border-white/5"
           title="Reset View"
         >
