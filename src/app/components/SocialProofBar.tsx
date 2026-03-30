@@ -1,21 +1,21 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Dialog, 
-  DialogContent, 
+import {
+  Dialog,
+  DialogContent,
   DialogClose,
 } from './ui/dialog';
-import { 
-  X, 
-  ChevronLeft, 
-  ChevronRight, 
-  GraduationCap, 
-  AlertCircle, 
-  Lightbulb, 
-  Quote, 
-  CheckCircle2, 
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  GraduationCap,
+  AlertCircle,
+  Lightbulb,
+  Quote,
+  CheckCircle2,
   ArrowRight,
-  Target 
+  Target
 } from 'lucide-react';
 import { ExpertFooter } from './ui/ExpertFooterAccordion';
 
@@ -212,14 +212,14 @@ function PartnerCard({ partner, onClick }: { partner: PartnerCase; onClick: () =
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.div 
+    <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
       whileHover={{ y: -4 }}
       className="p-6 flex flex-row items-center gap-5 rounded-[20px] bg-white shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group cursor-pointer w-[300px] sm:w-[340px]"
     >
-      <div 
+      <div
         className="w-12 h-10 rounded-[12px] flex items-center justify-center text-neutral-400 bg-neutral-50 border border-neutral-100 flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] px-2"
       >
         <span className="font-bold text-[10px] sm:text-[11px] tracking-tight">{partner.initial}</span>
@@ -229,7 +229,7 @@ function PartnerCard({ partner, onClick }: { partner: PartnerCase; onClick: () =
         <h3 className="text-[17px] text-black tracking-[-0.4px] font-[700] text-left leading-tight line-clamp-1 pr-2">
           {partner.university}
         </h3>
-        
+
         <div className="shrink-0 w-8 h-8 flex items-center justify-center">
           <AnimatePresence>
             {isHovered && (
@@ -288,7 +288,7 @@ export function SocialProofBar() {
 
         <div className="flex flex-wrap items-center justify-center gap-6">
           {PARTNER_CASES.map((pc, idx) => (
-            <PartnerCard 
+            <PartnerCard
               key={pc.university}
               partner={pc}
               onClick={() => handleOpenModal(idx)}
@@ -300,11 +300,11 @@ export function SocialProofBar() {
       <Dialog open={openModal} onOpenChange={setOpenModal}>
         <DialogContent className="sm:max-w-[750px] p-0 overflow-hidden rounded-[24px] sm:rounded-[40px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
           <div className="relative h-full flex flex-col overflow-hidden">
-            
+
             {/* Floating Global Close Button - Persistent with dynamic contrast */}
             <DialogClose asChild>
-              <motion.button 
-                animate={{ 
+              <motion.button
+                animate={{
                   backgroundColor: isNearForm ? "#000000" : "#ffffff",
                   color: isNearForm ? "#ffffff" : "#000000",
                   borderColor: isNearForm ? "#000000" : "#e5e5e5"
@@ -317,9 +317,9 @@ export function SocialProofBar() {
               </motion.button>
             </DialogClose>
 
-            <motion.div 
+            <motion.div
               initial={false}
-              animate={{ 
+              animate={{
                 height: isNearForm ? 0 : (window.innerWidth < 640 ? 80 : 112),
                 opacity: isNearForm ? 0 : 1,
               }}
@@ -341,21 +341,21 @@ export function SocialProofBar() {
               </div>
             </motion.div>
 
-            <div 
+            <div
               ref={scrollContainerRef}
               onScroll={(e) => {
                 const target = e.currentTarget;
                 const scrollPos = target.scrollTop;
                 const scrollHeight = target.scrollHeight;
                 const clientHeight = target.clientHeight;
-                
+
                 const nearBottom = scrollHeight - scrollPos <= clientHeight + 450;
                 setIsNearForm(scrollPos > 100 && nearBottom);
               }}
               className="flex-1 overflow-y-auto w-full bg-white min-h-0 relative z-[50] scroll-smooth"
             >
-              <motion.div 
-                animate={{ 
+              <motion.div
+                animate={{
                   paddingTop: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48),
                   paddingBottom: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48)
                 }}
@@ -429,9 +429,9 @@ export function SocialProofBar() {
               </motion.div>
             </div>
 
-            <motion.div 
+            <motion.div
               initial={false}
-              animate={{ 
+              animate={{
                 height: isNearForm ? 0 : (window.innerWidth < 640 ? 76 : 88),
                 opacity: isNearForm ? 0 : 1,
               }}
