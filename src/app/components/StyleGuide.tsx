@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
-  Phone, Mail, CheckCircle2, Quote, Lightbulb, Play, AlertCircle, X, ChevronLeft, ChevronRight 
+  Phone, Mail, CheckCircle2, Quote, Lightbulb, Play, AlertCircle, X, ChevronLeft, ChevronRight, Copy,
+  Minus, Plus, Maximize, MousePointer2, Layers
 } from 'lucide-react';
 import { 
   CampaignOutlined, DataUsageOutlined, VolunteerActivismOutlined, 
@@ -9,6 +10,7 @@ import {
   FavoriteBorderOutlined, SupportAgentOutlined, 
   HealthAndSafetyOutlined, TrackChangesOutlined 
 } from '@mui/icons-material';
+import { motion } from 'framer-motion';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { GlassPlayButton } from './ui/GlassPlayButton';
@@ -19,14 +21,127 @@ function cn(...classes: (string | undefined | null | false)[]) {
 }
 
 export function StyleGuide() {
-  const [activeTab, setActiveTab] = useState<'colors' | 'typography' | 'components' | 'patterns' | 'icons'>('colors');
+  const [activeTab, setActiveTab] = useState<'canvas' | 'colors' | 'typography' | 'components' | 'patterns' | 'icons'>('canvas');
+  const [zoom, setZoom] = useState(0.4);
+  
+  const [copiedHex, setCopiedHex] = useState<string | null>(null);
+
+  const copyToClipboard = (hex: string) => {
+    navigator.clipboard.writeText(hex);
+    setCopiedHex(hex);
+    setTimeout(() => setCopiedHex(null), 2000);
+  };
+
+  const pages = [
+    { title: "Home Page", path: "/", description: "Główna strona landingowa z systemem scroll-aware." },
+    { title: "Recruitment", path: "/recruitment", description: "Procesy rekrutacyjne i integracja systemowa." },
+    { title: "Marketing", path: "/marketing", description: "Segmentacja i kampanie oparte o dane studenckie." },
+    { title: "Student Success", path: "/student-success", description: "Wsparcie ścieżek edukacyjnych i retencja." },
+    { title: "Alumni", path: "/alumni", description: "Budowanie relacji z absolwentami i fundraising." }
+  ];
+
+  const getFrameUrl = (path: string) => {
+    // Vite base always starts and ends with / (e.g., /Think-Beyond-UX-v3/)
+    const base = import.meta.env.BASE_URL;
+    const cleanPath = path === '/' ? '' : path.startsWith('/') ? path.slice(1) : path;
+    return `${window.location.origin}${base}${cleanPath}`;
+  };
+
+  const renderCanvas = () => (
+    <div className="relative w-full h-[calc(100vh-160px)] bg-neutral-100 overflow-hidden">
+      {/* Figma-style Grid Background */}
+      <div 
+        className="absolute inset-0 opacity-[0.05]" 
+        style={{ 
+          backgroundImage: `radial-gradient(#000 1px, transparent 0)`, 
+          backgroundSize: '24px 24px',
+        }} 
+      />
+
+      {/* Toolbar / Controls */}
+      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-2xl">
+        <button 
+          onClick={() => setZoom(Math.max(0.1, zoom - 0.1))}
+          className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white"
+        >
+          <Minus className="w-4 h-4" />
+        </button>
+        <div className="px-4 text-[13px] font-bold text-white min-w-[60px] text-center border-x border-white/5">
+          {Math.round(zoom * 100)}%
+        </div>
+        <button 
+          onClick={() => setZoom(Math.min(1.5, zoom + 0.1))}
+          className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white"
+        >
+          <Plus className="w-4 h-4" />
+        </button>
+        <button 
+          onClick={() => setZoom(0.35)}
+          className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white ml-1 border-l border-white/5"
+          title="Reset Zoom"
+        >
+          <Maximize className="w-4 h-4" />
+        </button>
+      </div>
+
+      {/* Zoomable Content Area */}
+      <div className="w-full h-full flex items-center justify-center p-0">
+        <motion.div 
+          drag
+          dragMomentum={false}
+          className="flex gap-40 items-start cursor-grab active:cursor-grabbing p-[800px]"
+          animate={{ scale: zoom }}
+          initial={{ scale: 0.1 }}
+          transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+          style={{ originX: 0.5, originY: 0.5 }}
+        >
+          {pages.map((page) => (
+            <div key={page.path} className="flex flex-col gap-6 shrink-0">
+               <div className="flex flex-col gap-1.5 ml-2">
+                 <div className="flex items-center gap-2">
+                    <Layers className="w-4 h-4 text-neutral-400" />
+                    <h3 className="text-[20px] font-bold text-black tracking-tight">{page.title}</h3>
+                 </div>
+                 <p className="text-[13px] text-neutral-500 max-w-[300px]">{page.description}</p>
+               </div>
+               
+               {/* Frame Wrapper */}
+               <div className="w-[1240px] h-[860px] bg-white rounded-[24px] shadow-[0_32px_64px_rgba(0,0,0,0.12)] border border-neutral-200 overflow-hidden relative group">
+                  {/* Browser Header UI */}
+                  <div className="h-12 bg-neutral-50 border-b border-neutral-200 flex items-center px-6 gap-6">
+                     <div className="flex gap-2">
+                        <div className="w-3 h-3 rounded-full bg-neutral-200" />
+                        <div className="w-3 h-3 rounded-full bg-neutral-200" />
+                        <div className="w-3 h-3 rounded-full bg-neutral-200" />
+                     </div>
+                     <div className="flex-1 bg-white border border-neutral-200 rounded-lg h-7 flex items-center px-4">
+                        <span className="text-[11px] text-neutral-400 font-mono tracking-tight">{getFrameUrl(page.path)}</span>
+                     </div>
+                  </div>
+                  
+                  {/* Page Preview (Iframe) */}
+                  <iframe 
+                    src={getFrameUrl(page.path)}
+                    className="w-full h-full pointer-events-none"
+                    style={{ border: 'none' }}
+                  />
+                  
+                  {/* Grid Lines on Frame during load */}
+                  <div className="absolute inset-x-0 bottom-0 top-12 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+               </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
 
   const renderColors = () => (
     <div className="flex flex-col gap-16 animate-in fade-in duration-500 text-left">
       <div className="flex flex-col gap-4 border-b border-neutral-100 pb-8">
         <h1 className="text-[36px] md:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">Kolory (Colors)</h1>
         <p className="text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-          Inwentaryzacja palety "Greybox". Wykorzystujemy wyłącznie odcienie szarości i czerni dla zachowania minimalistycznego charakteru Premium.
+          Inwentaryzacja palety "Greybox". Wykorzystujemy wyłącznie odcienie szarości i czerni dla zachowania minimalistycznego charakteru Premium. Kliknij ikonę, aby skopiować HEX.
         </p>
       </div>
 
@@ -35,18 +150,39 @@ export function StyleGuide() {
         <div className="flex flex-col gap-4">
           <h3 className="text-[13px] uppercase tracking-[1.2px] text-neutral-400 font-bold mb-2">Tła (Backgrounds)</h3>
           {[
-            { name: 'bg-white', cls: 'bg-white border border-neutral-200' },
-            { name: 'bg-neutral-50', cls: 'bg-neutral-50 border border-neutral-200' },
-            { name: 'bg-neutral-100', cls: 'bg-neutral-100 border border-neutral-200' },
-            { name: 'bg-neutral-200', cls: 'bg-neutral-200 border border-neutral-300' },
-            { name: 'bg-neutral-800', cls: 'bg-neutral-800' },
-            { name: 'bg-neutral-900', cls: 'bg-neutral-900' },
-            { name: 'bg-[#333333]', cls: 'bg-[#333333]' },
-            { name: 'bg-black', cls: 'bg-black' }
+            { name: 'bg-white', cls: 'bg-white border border-neutral-200', hex: '#FFFFFF' },
+            { name: 'bg-neutral-50', cls: 'bg-neutral-50 border border-neutral-200', hex: '#FAFAFA' },
+            { name: 'bg-neutral-100', cls: 'bg-neutral-100 border border-neutral-200', hex: '#F5F5F5' },
+            { name: 'bg-neutral-200', cls: 'bg-neutral-200 border border-neutral-300', hex: '#E5E5E5' },
+            { name: 'bg-neutral-800', cls: 'bg-neutral-800', hex: '#262626' },
+            { name: 'bg-neutral-900', cls: 'bg-neutral-900', hex: '#171717' },
+            { name: 'bg-[#333333]', cls: 'bg-[#333333]', hex: '#333333' },
+            { name: 'bg-black', cls: 'bg-black', hex: '#000000' }
           ].map((color) => (
-            <div key={color.name} className="flex items-center gap-4">
-              <div className={`w-12 h-12 rounded-lg shrink-0 shadow-sm ${color.cls}`}></div>
-              <code className="text-[13px] text-neutral-600 font-mono bg-neutral-50 px-2 py-1 rounded">{color.name}</code>
+            <div key={color.name} className="flex items-center justify-between gap-4 p-2 hover:bg-neutral-50 rounded-xl transition-colors group">
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 rounded-lg shrink-0 shadow-sm ${color.cls}`}></div>
+                <div className="flex flex-col">
+                   <code className="text-[13px] text-black font-bold font-mono">{color.name}</code>
+                   <span className="text-[11px] text-neutral-400 font-mono">{color.hex}</span>
+                </div>
+              </div>
+              <button 
+                onClick={() => copyToClipboard(color.hex)}
+                className="p-2 hover:bg-white hover:shadow-sm rounded-lg transition-all relative"
+                title="Copy HEX"
+              >
+                {copiedHex === color.hex ? (
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                ) : (
+                  <Copy className="w-4 h-4 text-neutral-400 group-hover:text-black" />
+                )}
+                {copiedHex === color.hex && (
+                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2 py-1 rounded whitespace-nowrap anim-fade-in-up">
+                    Copied!
+                  </span>
+                )}
+              </button>
             </div>
           ))}
         </div>
@@ -55,17 +191,33 @@ export function StyleGuide() {
         <div className="flex flex-col gap-4">
           <h3 className="text-[13px] uppercase tracking-[1.2px] text-neutral-400 font-bold mb-2">Krawędzie (Borders)</h3>
           {[
-            { name: 'border-transparent', cls: 'border border-transparent bg-neutral-50' },
-            { name: 'border-[#F0F0F0]', cls: 'border-2 border-[#F0F0F0] bg-white' },
-            { name: 'border-neutral-100', cls: 'border-2 border-neutral-100 bg-white' },
-            { name: 'border-neutral-200', cls: 'border-2 border-neutral-200 bg-white' },
-            { name: 'border-neutral-400', cls: 'border-2 border-neutral-400 bg-white' },
-            { name: 'border-neutral-700', cls: 'border-2 border-neutral-700 bg-neutral-800' },
-            { name: 'border-black', cls: 'border-2 border-black bg-white' }
+            { name: 'border-transparent', cls: 'border border-transparent bg-neutral-50', hex: 'rgba(0,0,0,0)' },
+            { name: 'border-[#F0F0F0]', cls: 'border-2 border-[#F0F0F0] bg-white', hex: '#F0F0F0' },
+            { name: 'border-neutral-100', cls: 'border-2 border-neutral-100 bg-white', hex: '#F5F5F5' },
+            { name: 'border-neutral-200', cls: 'border-2 border-neutral-200 bg-white', hex: '#E5E5E5' },
+            { name: 'border-neutral-400', cls: 'border-2 border-neutral-400 bg-white', hex: '#A3A3A3' },
+            { name: 'border-neutral-700', cls: 'border-2 border-neutral-700 bg-neutral-800', hex: '#404040' },
+            { name: 'border-black', cls: 'border-2 border-black bg-white', hex: '#000000' }
           ].map((color) => (
-            <div key={color.name} className="flex items-center gap-4">
-              <div className={`w-12 h-12 rounded-lg shrink-0 ${color.cls}`}></div>
-              <code className="text-[13px] text-neutral-600 font-mono bg-neutral-50 px-2 py-1 rounded">{color.name}</code>
+            <div key={color.name} className="flex items-center justify-between gap-4 p-2 hover:bg-neutral-50 rounded-xl transition-colors group">
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 rounded-lg shrink-0 ${color.cls}`}></div>
+                <div className="flex flex-col">
+                   <code className="text-[13px] text-black font-bold font-mono">{color.name}</code>
+                   <span className="text-[11px] text-neutral-400 font-mono">{color.hex}</span>
+                </div>
+              </div>
+              <button 
+                onClick={() => copyToClipboard(color.hex)}
+                className="p-2 hover:bg-white hover:shadow-sm rounded-lg transition-all relative"
+                title="Copy HEX"
+              >
+                {copiedHex === color.hex ? (
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                ) : (
+                  <Copy className="w-4 h-4 text-neutral-400 group-hover:text-black" />
+                )}
+              </button>
             </div>
           ))}
         </div>
@@ -73,18 +225,39 @@ export function StyleGuide() {
         {/* Texts */}
         <div className="flex flex-col gap-4">
           <h3 className="text-[13px] uppercase tracking-[1.2px] text-neutral-400 font-bold mb-2">Teksty (Texts)</h3>
-          <div className="bg-neutral-50 p-6 rounded-[20px] flex flex-col gap-5 border border-neutral-100">
-            <div className="text-black text-[18px] font-bold">text-black</div>
-            <div className="text-neutral-800 text-[18px] font-bold">text-neutral-800</div>
-            <div className="text-neutral-700 text-[18px] font-bold">text-neutral-700</div>
-            <div className="text-neutral-600 text-[18px] font-bold">text-neutral-600</div>
-            <div className="text-neutral-500 text-[18px] font-bold">text-neutral-500</div>
-            <div className="text-neutral-400 text-[18px] font-bold">text-neutral-400</div>
-            <div className="bg-black p-4 rounded-xl flex flex-col gap-3">
-              <div className="text-neutral-300 text-[18px] font-bold">text-neutral-300</div>
-              <div className="text-white text-[18px] font-bold">text-white</div>
+          {[
+            { name: 'text-black', hex: '#000000', label: 'text-black' },
+            { name: 'text-neutral-800', hex: '#262626', label: 'text-neutral-800' },
+            { name: 'text-neutral-700', hex: '#404040', label: 'text-neutral-700' },
+            { name: 'text-neutral-600', hex: '#525252', label: 'text-neutral-600' },
+            { name: 'text-neutral-500', hex: '#737373', label: 'text-neutral-500' },
+            { name: 'text-neutral-400', hex: '#A3A3A3', label: 'text-neutral-400' },
+            { name: 'text-neutral-300', hex: '#D4D4D4', label: 'text-neutral-300' },
+            { name: 'text-white', hex: '#FFFFFF', label: 'text-white', dark: true },
+          ].map((color) => (
+            <div key={color.name} className="flex items-center justify-between gap-4 p-2 hover:bg-neutral-50 rounded-xl transition-colors group">
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 flex items-center justify-center rounded-lg shrink-0 border border-neutral-100 ${color.dark ? 'bg-black' : 'bg-white'}`}>
+                   <span className={`text-[14px] font-bold ${color.name}`}>Aa</span>
+                </div>
+                <div className="flex flex-col">
+                   <code className="text-[13px] text-black font-bold font-mono">{color.name}</code>
+                   <span className="text-[11px] text-neutral-400 font-mono">{color.hex}</span>
+                </div>
+              </div>
+              <button 
+                onClick={() => copyToClipboard(color.hex)}
+                className="p-2 hover:bg-white hover:shadow-sm rounded-lg transition-all relative"
+                title="Copy HEX"
+              >
+                {copiedHex === color.hex ? (
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                ) : (
+                  <Copy className="w-4 h-4 text-neutral-400 group-hover:text-black" />
+                )}
+              </button>
             </div>
-          </div>
+          ))}
         </div>
       </section>
     </div>
@@ -492,13 +665,23 @@ export function StyleGuide() {
 
           <nav className="flex items-center gap-2 shrink-0">
             <button 
+              onClick={() => setActiveTab('canvas')} 
+              className={cn(
+                "px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-200 cursor-pointer border whitespace-nowrap flex items-center gap-2", 
+                activeTab === 'canvas' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
+              )}
+            >
+              <MousePointer2 className="w-4 h-4" />
+              Płótno
+            </button>
+            <button 
               onClick={() => setActiveTab('colors')} 
               className={cn(
                 "px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-200 cursor-pointer border whitespace-nowrap", 
                 activeTab === 'colors' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
               )}
             >
-              A) Kolory
+              Kolory
             </button>
             <button 
               onClick={() => setActiveTab('typography')} 
@@ -507,7 +690,7 @@ export function StyleGuide() {
                 activeTab === 'typography' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
               )}
             >
-              B) Typografia
+              Typografia
             </button>
             <button 
               onClick={() => setActiveTab('components')} 
@@ -516,7 +699,7 @@ export function StyleGuide() {
                 activeTab === 'components' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
               )}
             >
-              C) Komponenty
+              Komponenty
             </button>
             <button 
               onClick={() => setActiveTab('patterns')} 
@@ -525,7 +708,7 @@ export function StyleGuide() {
                 activeTab === 'patterns' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
               )}
             >
-              D) Wzorce UX
+              Wzorce UX
             </button>
             <button 
               onClick={() => setActiveTab('icons')} 
@@ -534,13 +717,17 @@ export function StyleGuide() {
                 activeTab === 'icons' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
               )}
             >
-              E) Ikony
+              Ikony
             </button>
           </nav>
         </div>
 
         {/* Główny panel treści */}
-        <main className="flex-1 w-full max-w-7xl bg-white px-6 py-12 md:py-16 md:px-16 mx-auto overflow-y-visible hidden-scrollbar">
+        <main className={cn(
+          "flex-1 w-full overflow-y-visible hidden-scrollbar transition-all duration-300",
+          activeTab === 'canvas' ? "p-0" : "max-w-7xl mx-auto px-6 py-12 md:py-16 md:px-16"
+        )}>
+          {activeTab === 'canvas' && renderCanvas()}
           {activeTab === 'colors' && renderColors()}
           {activeTab === 'typography' && renderTypography()}
           {activeTab === 'components' && renderComponents()}

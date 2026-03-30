@@ -176,7 +176,7 @@ const CDV_DETAILED_CONTENT: SWPSContent = {
 const PARTNER_CASES: PartnerCase[] = [
   {
     university: "SWPS University",
-    initial: "S",
+    initial: "SWPS",
     buttonText: "Discover the SWPS Story",
     fullStory: {
       title: "Digital Recruitment Transformation at SWPS University",
@@ -185,17 +185,17 @@ const PARTNER_CASES: PartnerCase[] = [
     }
   },
   {
-    university: "ALD Warsaw (Kozminski University)",
+    university: "Kozminski University (ALK)",
     initial: "ALK",
-    buttonText: "Discover the ALD Story",
+    buttonText: "Discover the ALK Story",
     fullStory: {
-      title: "Global Scale and Prestige: ALD Warsaw Case Study",
+      title: "Global Scale and Prestige: Kozminski University Case Study",
       isDetailed: true,
       content: KOZMINSKI_DETAILED_CONTENT
     }
   },
   {
-    university: "CDV Poznań (Collegium Da Vinci)",
+    university: "Collegium Da Vinci (CDV)",
     initial: "CDV",
     buttonText: "Explore the CDV Campus",
     fullStory: {
@@ -220,9 +220,9 @@ function PartnerCard({ partner, onClick }: { partner: PartnerCase; onClick: () =
       className="p-6 flex flex-row items-center gap-5 rounded-[20px] bg-white shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group cursor-pointer w-[300px] sm:w-[340px]"
     >
       <div 
-        className="w-10 h-10 rounded-[12px] flex items-center justify-center text-neutral-400 bg-neutral-50 border border-neutral-100 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
+        className="w-12 h-10 rounded-[12px] flex items-center justify-center text-neutral-400 bg-neutral-50 border border-neutral-100 flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] px-2"
       >
-        <span className="font-bold text-xs sm:text-sm">{partner.initial}</span>
+        <span className="font-bold text-[10px] sm:text-[11px] tracking-tight">{partner.initial}</span>
       </div>
 
       <div className="flex flex-1 items-center justify-between overflow-hidden">
