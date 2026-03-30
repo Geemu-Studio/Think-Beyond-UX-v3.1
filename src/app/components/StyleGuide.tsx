@@ -195,6 +195,11 @@ export function StyleGuide() {
       <div 
         id="minimap-nav"
         className="absolute bottom-10 right-10 z-[100] w-64 h-36 bg-white border border-neutral-200 rounded-2xl overflow-hidden cursor-crosshair select-none shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+        onWheel={(e) => {
+          e.preventDefault();
+          const zoomStep = e.deltaY > 0 ? -0.1 : 0.1;
+          handleZoomStep(zoomStep, lastMousePosRef.current.x, lastMousePosRef.current.y);
+        }}
         onMouseDown={(e) => {
           const container = e.currentTarget;
           const handleMove = (moveEvent: MouseEvent) => {
