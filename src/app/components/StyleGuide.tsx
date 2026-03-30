@@ -191,7 +191,56 @@ export function StyleGuide() {
         </button>
       </div>
 
-      {/* Zoomable Content Area */}
+      {/* Minimap - Light Sheet Mode */}
+      <div 
+        id="minimap-nav"
+        className="absolute bottom-10 right-10 z-[100] w-64 h-36 bg-white border border-neutral-200 rounded-2xl overflow-hidden cursor-crosshair select-none shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+        onMouseDown={(e) => {
+          const container = e.currentTarget;
+          const handleMove = (moveEvent: MouseEvent) => {
+            const rect = container.getBoundingClientRect();
+            // Use 16px effective padding from p-4
+            const x = Math.min(Math.max(16, moveEvent.clientX - rect.left), rect.width - 16) - 16;
+            const y = Math.min(Math.max(16, moveEvent.clientY - rect.top), rect.height - 16) - 16;
+            
+            // Map 0...224/112 range to virtual coordinates relative to center using 0.025 scale
+            const targetX = (x - 112) / 0.025;
+            const targetY = (y - 56) / 0.025;
+            
+            setPan({ x: -targetX * zoom, y: -targetY * zoom });
+          };
+
+          const handleUp = () => {
+            window.removeEventListener('mousemove', handleMove);
+            window.removeEventListener('mouseup', handleUp);
+          };
+
+          window.addEventListener('mousemove', handleMove);
+          window.addEventListener('mouseup', handleUp);
+          handleMove(e.nativeEvent);
+        }}
+      >
+        <div className="absolute inset-0 p-4">
+           {/* Abstract Page Blocks - Optimized Scale (0.025) */}
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-40 items-start scale-[0.025]">
+              {pages.map((_, i) => (
+                <div key={i} className="w-[1440px] h-[3400px] bg-neutral-200 rounded-3xl shadow-sm" />
+              ))}
+           </div>
+
+           {/* Viewport Navigator - Synchronized with 0.025 Scale */}
+           <motion.div 
+              className="absolute border-black/80 border-[1.5px] bg-black/2 rounded-sm pointer-events-none"
+              animate={{
+                x: 112 - (pan.x / zoom) * 0.025 - ((1440 / zoom) * 0.025) / 2,
+                y: 56 - (pan.y / zoom) * 0.025 - ((1440 / zoom) * 0.025) / 2,
+                width: (1440 / zoom) * 0.025,
+                height: (1440 / zoom) * 0.025,
+              }}
+              transition={{ type: 'spring', damping: 40, stiffness: 400, mass: 0.5 }}
+           />
+        </div>
+      </div>
       <div className="w-full h-full flex items-center justify-center pointer-events-none">
         <motion.div 
           className="flex gap-40 items-start select-none"
