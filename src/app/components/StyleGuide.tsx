@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
-import { Phone, Mail, CheckCircle2, Quote, Lightbulb } from 'lucide-react';
-import { CampaignOutlined } from '@mui/icons-material';
+import { 
+  Phone, Mail, CheckCircle2, Quote, Lightbulb, Play, AlertCircle, X, ChevronLeft, ChevronRight 
+} from 'lucide-react';
+import { 
+  CampaignOutlined, DataUsageOutlined, VolunteerActivismOutlined, 
+  TrendingUpOutlined, MenuBookOutlined, HubOutlined, 
+  DevicesOutlined, PublicOutlined, SensorsOutlined, 
+  FavoriteBorderOutlined, SupportAgentOutlined, 
+  HealthAndSafetyOutlined, TrackChangesOutlined 
+} from '@mui/icons-material';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { GlassPlayButton } from './ui/GlassPlayButton';
@@ -11,153 +19,178 @@ function cn(...classes: (string | undefined | null | false)[]) {
 }
 
 export function StyleGuide() {
-  const [activeTab, setActiveTab] = useState<'foundations' | 'components' | 'patterns'>('foundations');
+  const [activeTab, setActiveTab] = useState<'colors' | 'typography' | 'components' | 'patterns' | 'icons'>('colors');
 
-  const renderFoundations = () => (
+  const renderColors = () => (
     <div className="flex flex-col gap-16 animate-in fade-in duration-500 text-left">
       <div className="flex flex-col gap-4 border-b border-neutral-100 pb-8">
-        <h1 className="text-[36px] md:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">Podstawy (Foundations)</h1>
+        <h1 className="text-[36px] md:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">Kolory (Colors)</h1>
         <p className="text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-          Kolorystyka oraz układ typograficzny. Inwentaryzacja bazowego systemu wizualnego "Greybox".
+          Inwentaryzacja palety "Greybox". Wykorzystujemy wyłącznie odcienie szarości i czerni dla zachowania minimalistycznego charakteru Premium.
         </p>
       </div>
 
-      {/* STRUKTURA KOLORYSTYCZNA */}
-      <section className="flex flex-col gap-8">
-        <div className="flex flex-col gap-2">
-          <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">1. Struktura Kolorystyczna</h2>
-          <p className="text-[14px] text-neutral-500">Wyciągnięte odcienie szarości i czerni używane w tłach, ramkach i tekstach.</p>
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {/* Backgrounds */}
+        <div className="flex flex-col gap-4">
+          <h3 className="text-[13px] uppercase tracking-[1.2px] text-neutral-400 font-bold mb-2">Tła (Backgrounds)</h3>
+          {[
+            { name: 'bg-white', cls: 'bg-white border border-neutral-200' },
+            { name: 'bg-neutral-50', cls: 'bg-neutral-50 border border-neutral-200' },
+            { name: 'bg-neutral-100', cls: 'bg-neutral-100 border border-neutral-200' },
+            { name: 'bg-neutral-200', cls: 'bg-neutral-200 border border-neutral-300' },
+            { name: 'bg-neutral-800', cls: 'bg-neutral-800' },
+            { name: 'bg-neutral-900', cls: 'bg-neutral-900' },
+            { name: 'bg-[#333333]', cls: 'bg-[#333333]' },
+            { name: 'bg-black', cls: 'bg-black' }
+          ].map((color) => (
+            <div key={color.name} className="flex items-center gap-4">
+              <div className={`w-12 h-12 rounded-lg shrink-0 shadow-sm ${color.cls}`}></div>
+              <code className="text-[13px] text-neutral-600 font-mono bg-neutral-50 px-2 py-1 rounded">{color.name}</code>
+            </div>
+          ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {/* Backgrounds */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-[13px] uppercase tracking-[1.2px] text-neutral-400 font-bold mb-2">Tła (Backgrounds)</h3>
-            {[
-              { name: 'bg-white', cls: 'bg-white border border-neutral-200' },
-              { name: 'bg-neutral-50', cls: 'bg-neutral-50 border border-neutral-200' },
-              { name: 'bg-neutral-100', cls: 'bg-neutral-100 border border-neutral-200' },
-              { name: 'bg-neutral-200', cls: 'bg-neutral-200 border border-neutral-300' },
-              { name: 'bg-neutral-800', cls: 'bg-neutral-800' },
-              { name: 'bg-neutral-900', cls: 'bg-neutral-900' },
-              { name: 'bg-[#333333]', cls: 'bg-[#333333]' },
-              { name: 'bg-black', cls: 'bg-black' }
-            ].map((color) => (
-              <div key={color.name} className="flex items-center gap-4">
-                <div className={`w-12 h-12 rounded-lg shrink-0 shadow-sm ${color.cls}`}></div>
-                <code className="text-[13px] text-neutral-600 font-mono bg-neutral-50 px-2 py-1 rounded">{color.name}</code>
-              </div>
-            ))}
-          </div>
+        {/* Borders */}
+        <div className="flex flex-col gap-4">
+          <h3 className="text-[13px] uppercase tracking-[1.2px] text-neutral-400 font-bold mb-2">Krawędzie (Borders)</h3>
+          {[
+            { name: 'border-transparent', cls: 'border border-transparent bg-neutral-50' },
+            { name: 'border-[#F0F0F0]', cls: 'border-2 border-[#F0F0F0] bg-white' },
+            { name: 'border-neutral-100', cls: 'border-2 border-neutral-100 bg-white' },
+            { name: 'border-neutral-200', cls: 'border-2 border-neutral-200 bg-white' },
+            { name: 'border-neutral-400', cls: 'border-2 border-neutral-400 bg-white' },
+            { name: 'border-neutral-700', cls: 'border-2 border-neutral-700 bg-neutral-800' },
+            { name: 'border-black', cls: 'border-2 border-black bg-white' }
+          ].map((color) => (
+            <div key={color.name} className="flex items-center gap-4">
+              <div className={`w-12 h-12 rounded-lg shrink-0 ${color.cls}`}></div>
+              <code className="text-[13px] text-neutral-600 font-mono bg-neutral-50 px-2 py-1 rounded">{color.name}</code>
+            </div>
+          ))}
+        </div>
 
-          {/* Borders */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-[13px] uppercase tracking-[1.2px] text-neutral-400 font-bold mb-2">Krawędzie (Borders)</h3>
-            {[
-              { name: 'border-transparent', cls: 'border border-transparent bg-neutral-50' },
-              { name: 'border-[#F0F0F0]', cls: 'border-2 border-[#F0F0F0] bg-white' },
-              { name: 'border-neutral-100', cls: 'border-2 border-neutral-100 bg-white' },
-              { name: 'border-neutral-200', cls: 'border-2 border-neutral-200 bg-white' },
-              { name: 'border-neutral-400', cls: 'border-2 border-neutral-400 bg-white' },
-              { name: 'border-neutral-700', cls: 'border-2 border-neutral-700 bg-neutral-800' },
-              { name: 'border-black', cls: 'border-2 border-black bg-white' }
-            ].map((color) => (
-              <div key={color.name} className="flex items-center gap-4">
-                <div className={`w-12 h-12 rounded-lg shrink-0 ${color.cls}`}></div>
-                <code className="text-[13px] text-neutral-600 font-mono bg-neutral-50 px-2 py-1 rounded">{color.name}</code>
-              </div>
-            ))}
-          </div>
-
-          {/* Texts */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-[13px] uppercase tracking-[1.2px] text-neutral-400 font-bold mb-2">Teksty (Texts)</h3>
-            <div className="bg-neutral-50 p-6 rounded-[20px] flex flex-col gap-5 border border-neutral-100">
-              <div className="text-black text-[18px] font-bold">text-black</div>
-              <div className="text-neutral-800 text-[18px] font-bold">text-neutral-800</div>
-              <div className="text-neutral-700 text-[18px] font-bold">text-neutral-700</div>
-              <div className="text-neutral-600 text-[18px] font-bold">text-neutral-600</div>
-              <div className="text-neutral-500 text-[18px] font-bold">text-neutral-500</div>
-              <div className="text-neutral-400 text-[18px] font-bold">text-neutral-400</div>
-              <div className="bg-black p-4 rounded-xl flex flex-col gap-3">
-                <div className="text-neutral-300 text-[18px] font-bold">text-neutral-300</div>
-                <div className="text-white text-[18px] font-bold">text-white</div>
-              </div>
+        {/* Texts */}
+        <div className="flex flex-col gap-4">
+          <h3 className="text-[13px] uppercase tracking-[1.2px] text-neutral-400 font-bold mb-2">Teksty (Texts)</h3>
+          <div className="bg-neutral-50 p-6 rounded-[20px] flex flex-col gap-5 border border-neutral-100">
+            <div className="text-black text-[18px] font-bold">text-black</div>
+            <div className="text-neutral-800 text-[18px] font-bold">text-neutral-800</div>
+            <div className="text-neutral-700 text-[18px] font-bold">text-neutral-700</div>
+            <div className="text-neutral-600 text-[18px] font-bold">text-neutral-600</div>
+            <div className="text-neutral-500 text-[18px] font-bold">text-neutral-500</div>
+            <div className="text-neutral-400 text-[18px] font-bold">text-neutral-400</div>
+            <div className="bg-black p-4 rounded-xl flex flex-col gap-3">
+              <div className="text-neutral-300 text-[18px] font-bold">text-neutral-300</div>
+              <div className="text-white text-[18px] font-bold">text-white</div>
             </div>
           </div>
         </div>
       </section>
+    </div>
+  );
 
-      {/* TYPOGRAFIA INTERFEJSU */}
-      <section className="flex flex-col gap-8">
-        <div className="flex flex-col gap-2">
-          <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">2. Typografia Interfejsu</h2>
-          <p className="text-[14px] text-neutral-500">Zestaw nagłówków, tekstów podtytułów oraz opisów.</p>
-        </div>
+  const renderTypography = () => (
+    <div className="flex flex-col gap-16 animate-in fade-in duration-500 text-left">
+      <div className="flex flex-col gap-4 border-b border-neutral-100 pb-8">
+        <h1 className="text-[36px] md:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">Skala Typograficzna (Type Scale)</h1>
+        <p className="text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
+          <strong>OutfitBold</strong> dla nagłówków oraz <strong>Inter Regular</strong> dla treści podstawowej. Konfiguracja rozmiarów oparta o system 4px/8px.
+        </p>
+      </div>
 
-        <div className="flex flex-col gap-12 bg-white rounded-[24px] border border-neutral-100 p-8 sm:p-12 shadow-sm">
-          {/* Dark Mode Typography (OfferBridge) */}
-          <div className="bg-neutral-800 p-10 rounded-[20px] flex flex-col gap-6">
-            <div className="mb-4">
-              <code className="text-[11px] text-neutral-400 font-mono bg-neutral-900 px-2 py-1 rounded">Dark Section (OfferBridge)</code>
-            </div>
-            <span className="text-[11px] text-neutral-400 uppercase tracking-[1.6px] font-semibold">
-              Overline / Pre-title
-            </span>
-            <h2 className="text-[30px] sm:text-[38px] leading-[1.15] tracking-[-1.2px] text-white">
-              A unified ecosystem for the entire student lifecycle.
-            </h2>
-            <p className="text-[15px] text-neutral-400 leading-[1.75] max-w-xl">
-              Discover the core pillars of a transformed institution powered by Salesforce Education Cloud.
-            </p>
-            
-            <div className="mt-4 pt-4 border-t border-neutral-700">
-              <h3 className="text-[15px] text-white leading-[1.5] tracking-[-0.3px] font-semibold">
-                Card Title (Dark)
-              </h3>
-              <p className="text-[13px] text-neutral-400 leading-[1.65] mt-2">
-                Content description inside the dark card.
-              </p>
-            </div>
+      <div className="flex flex-col gap-24">
+        {/* Headings Section */}
+        <section className="flex flex-col gap-12">
+          <div className="flex flex-col gap-2">
+            <h2 className="text-[20px] font-bold tracking-tight text-black">Nagłówki (Headings)</h2>
+            <p className="text-[14px] text-neutral-400">Font: Outfit Bold / sans-serif</p>
           </div>
 
-          {/* Light Mode Typography */}
-          <div className="p-4 flex flex-col gap-6">
-            <div className="mb-4">
-              <code className="text-[11px] text-neutral-500 font-mono bg-neutral-100 px-2 py-1 rounded">Light Section (MarketingProblem / Case Study)</code>
-            </div>
-            <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-              Opportunity (Light Overline)
-            </span>
-            <h2 className="text-[32px] leading-[1.15] tracking-[-1.5px] text-black">
-              Orchestrating authentic connections at scale.
-            </h2>
-            <p className="text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-              Move beyond generic mass communication. Empower your marketing teams to craft compelling, data-driven narratives that resonate across every digital touchpoint.
-            </p>
-
-            <div className="mt-8 grid sm:grid-cols-2 gap-10">
-              <div className="flex flex-col gap-3">
-                <h3 className="text-[24px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black">
-                  Let's talk about the complete student experience at your institution.
-                </h3>
-                <code className="text-[11px] text-neutral-400 font-mono">Case study let's talk header</code>
+          <div className="flex flex-col gap-10">
+            {[
+              { label: 'Heading - XXL', size: '64px (4rem)', lh: '72px', cls: 'text-[64px] leading-[72px] font-bold' },
+              { label: 'Heading - XL', size: '56px (3.5rem)', lh: '64px', cls: 'text-[56px] leading-[64px] font-bold' },
+              { label: 'Heading - LG', size: '48px (3rem)', lh: '56px', cls: 'text-[48px] leading-[56px] font-bold' },
+              { label: 'Heading - MD', size: '40px (2.5rem)', lh: '44px', cls: 'text-[40px] leading-[44px] font-bold' },
+              { label: 'Heading - SM', size: '32px (2rem)', lh: '36px', cls: 'text-[32px] leading-[36px] font-bold' },
+              { label: 'Heading - XS', size: '24px (1.5rem)', lh: '28px', cls: 'text-[24px] leading-[28px] font-bold' },
+              { label: 'Heading - XXS', size: '20px (1.25rem)', lh: '24px', cls: 'text-[20px] leading-[24px] font-bold' },
+              { label: 'Heading - XXXS', size: '16px (1rem)', lh: '20px', cls: 'text-[16px] leading-[20px] font-bold' },
+            ].map((item) => (
+              <div key={item.label} className="grid grid-cols-1 md:grid-cols-[1fr_250px] gap-6 items-start pb-6 border-b border-neutral-50 last:border-0 hover:bg-neutral-50/50 transition-colors px-2 -mx-2 rounded-xl">
+                <div className={`${item.cls} text-black tracking-tight`}>{item.label}</div>
+                <div className="flex flex-col gap-1.5 md:pt-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Size:</span>
+                    <span className="text-[13px] text-black font-medium">{item.size}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Line height:</span>
+                    <span className="text-[13px] text-black font-medium">{item.lh}*</span>
+                  </div>
+                </div>
               </div>
-              
-              <div className="flex flex-col gap-3">
-                <h3 className="text-[18px] text-black tracking-[-0.4px] font-bold">
-                  Breaking Through the Digital Noise
-                </h3>
-                <p className="text-[14px] text-neutral-500 leading-[1.7]">
+            ))}
+            <p className="text-[11px] text-neutral-400 mt-4 italic">*(110% rounded to a multiple of 4)</p>
+          </div>
+        </section>
+
+        {/* Body Section */}
+        <section className="flex flex-col gap-12">
+          <div className="flex flex-col gap-2">
+            <h2 className="text-[20px] font-bold tracking-tight text-black">Treść (Body Copy)</h2>
+            <p className="text-[14px] text-neutral-400">Font: Inter Regular</p>
+          </div>
+
+          <div className="flex flex-col gap-10">
+            {[
+              { label: 'Body LG', size: '18px (1.125rem)', lh: '36px', cls: 'text-[18px] leading-[36px]' },
+              { label: 'Body MD', size: '16px (1rem)', lh: '24px', cls: 'text-[16px] leading-[24px]' },
+              { label: 'Body SM', size: '14px (0.875rem)', lh: '22px', cls: 'text-[14px] leading-[22px]' },
+              { label: 'Body XS', size: '12px (0.75rem)', lh: '18px', cls: 'text-[12px] leading-[18px]' },
+            ].map((item) => (
+              <div key={item.label} className="grid grid-cols-1 md:grid-cols-[1fr_250px] gap-6 items-start pb-6 border-b border-neutral-50 last:border-0 hover:bg-neutral-50/50 transition-colors px-2 -mx-2 rounded-xl">
+                <div className={`${item.cls} text-neutral-700`}>{item.label}</div>
+                <div className="flex flex-col gap-1.5 md:pt-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Size:</span>
+                    <span className="text-[13px] text-black font-medium">{item.size}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Line height:</span>
+                    <span className="text-[13px] text-black font-medium">{item.lh}*</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <p className="text-[11px] text-neutral-400 mt-4 italic">*(150% rounded to a multiple of 2)</p>
+          </div>
+        </section>
+
+        {/* Visual Samples */}
+        <section className="flex flex-col gap-8 bg-black p-10 md:p-14 rounded-[32px]">
+          <div className="flex flex-col gap-2 mb-4">
+             <span className="text-[11px] text-neutral-500 uppercase tracking-[1.6px] font-bold">Visual Examples</span>
+             <h3 className="text-white text-2xl font-bold tracking-tight">System w akcji</h3>
+          </div>
+          
+          <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-4">
+               <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]">Heading XXL Example</span>
+               <h1 className="text-[64px] leading-[72px] font-bold text-white tracking-[-2px]">Experience Education.</h1>
+            </div>
+
+            <div className="flex flex-col gap-4 border-t border-white/10 pt-8">
+               <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]">Heading MD & Body MD</span>
+               <h2 className="text-[40px] leading-[44px] font-bold text-white tracking-[-1px]">Designed for the learners of tomorrow.</h2>
+               <p className="text-[16px] leading-[24px] text-neutral-400 max-w-xl">
                   Prospective students are overwhelmed by generic marketing. Standing out requires deeply relevant, timely, and authentic storytelling across their preferred channels.
-                </p>
-                <code className="text-[11px] text-neutral-400 font-mono">Problem card typography</code>
-              </div>
+               </p>
             </div>
           </div>
-
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 
@@ -367,6 +400,83 @@ export function StyleGuide() {
     </div>
   );
 
+  const renderIcons = () => {
+    const iconGrid = (title: string, icons: { name: string, Icon: any, source: string }[]) => (
+      <div className="flex flex-col gap-6">
+        <h3 className="text-[14px] text-neutral-400 font-bold uppercase tracking-wider">{title}</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {icons.map((item, idx) => (
+            <div key={idx} className="group relative bg-neutral-50 rounded-2xl p-6 border border-neutral-100 flex flex-col items-center justify-center gap-4 hover:bg-white hover:shadow-xl hover:scale-[1.05] transition-all duration-300 cursor-pointer">
+              <div className="text-neutral-400 group-hover:text-black transition-colors duration-300">
+                <item.Icon size={32} />
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <span className="text-[11px] font-bold text-black break-all text-center">{item.name}</span>
+                <span className="text-[9px] text-neutral-400 uppercase font-mono">{item.source}</span>
+              </div>
+              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-black/5 pointer-events-none"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+
+    return (
+      <div className="flex flex-col gap-16 animate-in fade-in duration-500 text-left">
+        <div className="flex flex-col gap-4 border-b border-neutral-100 pb-8">
+          <h1 className="text-[36px] md:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">Ikony Systemowe (Used Icons)</h1>
+          <p className="text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
+            Inwentaryzacja symboli wykorzystywanych w projekcie. Wyświetlane są <strong>wyłącznie</strong> ikony wdrożone w aktualnych komponentach serwisu.
+          </p>
+        </div>
+
+        <section className="flex flex-col gap-16">
+          {iconGrid("Logistyka & Akcje (Lucide React)", [
+            { name: "Phone", Icon: Phone, source: "Interakcja" },
+            { name: "Mail", Icon: Mail, source: "Kontakt" },
+            { name: "CheckCircle2", Icon: CheckCircle2, source: "Sukces" },
+            { name: "AlertCircle", Icon: AlertCircle, source: "Błąd/Uwaga" },
+            { name: "Quote", Icon: Quote, source: "Referencje" },
+            { name: "Lightbulb", Icon: Lightbulb, source: "Wnioski" },
+            { name: "ChevronLeft", Icon: ChevronLeft, source: "Nawigacja" },
+            { name: "ChevronRight", Icon: ChevronRight, source: "Nawigacja" },
+            { name: "X / Close", Icon: X, source: "Zamknij" },
+            { name: "Play", Icon: Play, source: "Wideo" },
+          ])}
+
+          {iconGrid("Ikony Tematyczne (Material Outlined)", [
+            { name: "Campaign", Icon: (props: any) => <CampaignOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Marketing" },
+            { name: "DataUsage", Icon: (props: any) => <DataUsageOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Marketing" },
+            { name: "VolunteerActivism", Icon: (props: any) => <VolunteerActivismOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Marketing" },
+            { name: "TrendingUp", Icon: (props: any) => <TrendingUpOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Growth" },
+            { name: "MenuBook", Icon: (props: any) => <MenuBookOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Edukacja" },
+            { name: "Hub", Icon: (props: any) => <HubOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Platforma" },
+            { name: "Devices", Icon: (props: any) => <DevicesOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Technologia" },
+            { name: "Public", Icon: (props: any) => <PublicOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Zasięg" },
+            { name: "Sensors", Icon: (props: any) => <SensorsOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Analiza" },
+            { name: "FavoriteBorder", Icon: (props: any) => <FavoriteBorderOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "StudentCare" },
+            { name: "SupportAgent", Icon: (props: any) => <SupportAgentOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Support" },
+            { name: "HealthAndSafety", Icon: (props: any) => <HealthAndSafetyOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Security" },
+            { name: "TrackChanges", Icon: (props: any) => <TrackChangesOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Cele" },
+          ])}
+
+          <div className="flex flex-col gap-6">
+            <h3 className="text-[14px] text-neutral-400 font-bold uppercase tracking-wider">Komponenty Specjalne</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              <div className="group relative bg-neutral-900 rounded-2xl p-6 border border-neutral-800 flex flex-col items-center justify-center gap-4 hover:shadow-2xl hover:scale-[1.05] transition-all duration-300">
+                <GlassPlayButton variant="light" />
+                <div className="flex flex-col items-center gap-1">
+                  <span className="text-[11px] font-bold text-white text-center">GlassPlayButton</span>
+                  <span className="text-[9px] text-neutral-400 uppercase font-mono">Custom UI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-white flex flex-col font-sans">
       
@@ -381,13 +491,22 @@ export function StyleGuide() {
 
           <nav className="flex items-center gap-2 shrink-0">
             <button 
-              onClick={() => setActiveTab('foundations')} 
+              onClick={() => setActiveTab('colors')} 
               className={cn(
                 "px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-200 cursor-pointer border whitespace-nowrap", 
-                activeTab === 'foundations' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
+                activeTab === 'colors' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
               )}
             >
-              A) Podstawy UI
+              A) Kolory
+            </button>
+            <button 
+              onClick={() => setActiveTab('typography')} 
+              className={cn(
+                "px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-200 cursor-pointer border whitespace-nowrap", 
+                activeTab === 'typography' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
+              )}
+            >
+              B) Typografia
             </button>
             <button 
               onClick={() => setActiveTab('components')} 
@@ -396,7 +515,7 @@ export function StyleGuide() {
                 activeTab === 'components' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
               )}
             >
-              B) Interakcje & Formularze
+              C) Komponenty
             </button>
             <button 
               onClick={() => setActiveTab('patterns')} 
@@ -405,16 +524,27 @@ export function StyleGuide() {
                 activeTab === 'patterns' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
               )}
             >
-              C) Wzorce UX
+              D) Wzorce UX
+            </button>
+            <button 
+              onClick={() => setActiveTab('icons')} 
+              className={cn(
+                "px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-200 cursor-pointer border whitespace-nowrap", 
+                activeTab === 'icons' ? "bg-black border-black shadow-md text-white" : "border-transparent bg-neutral-100 text-neutral-600 hover:text-black hover:bg-neutral-200"
+              )}
+            >
+              E) Ikony
             </button>
           </nav>
         </div>
 
         {/* Główny panel treści */}
         <main className="flex-1 w-full max-w-7xl bg-white px-6 py-12 md:py-16 md:px-16 mx-auto overflow-y-visible hidden-scrollbar">
-          {activeTab === 'foundations' && renderFoundations()}
+          {activeTab === 'colors' && renderColors()}
+          {activeTab === 'typography' && renderTypography()}
           {activeTab === 'components' && renderComponents()}
           {activeTab === 'patterns' && renderPatterns()}
+          {activeTab === 'icons' && renderIcons()}
         </main>
       </div>
 
