@@ -111,11 +111,10 @@ export function Header() {
           <AnimatePresence>
             {hoveredLink && (
               <motion.div 
-                key={hoveredLink.label}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.1 }}
                 style={{ 
                   position: 'fixed',
                   top: 0,
@@ -125,9 +124,18 @@ export function Header() {
                 }}
                 className="z-[100] pointer-events-none bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col min-w-[260px] max-w-[280px]"
               >
-                <p className="text-[13px] text-neutral-400 leading-[1.65]">
-                  {hoveredLink.description}
-                </p>
+                <AnimatePresence mode="wait">
+                  <motion.p 
+                    key={hoveredLink.label}
+                    initial={{ opacity: 0, y: 2 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -2 }}
+                    transition={{ duration: 0.15 }}
+                    className="text-[13px] text-neutral-400 leading-[1.65]"
+                  >
+                    {hoveredLink.description}
+                  </motion.p>
+                </AnimatePresence>
               </motion.div>
             )}
           </AnimatePresence>
