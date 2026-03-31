@@ -575,15 +575,15 @@ export function StyleGuide() {
           </div>
 
           <div className="bg-neutral-50 rounded-[24px] p-8 border border-neutral-100 flex flex-col gap-8">
-            <h3 className="text-[14px] text-black font-bold uppercase tracking-wider">Glassmorphism Play</h3>
-            <p className="text-[13px] text-neutral-500 mb-2 leading-relaxed">Przycisk odtworzenia video do stosowania na obrazkach, zajawkach i kartach.</p>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-neutral-900 rounded-2xl p-8 flex items-center justify-center relative overflow-hidden h-40">
-                <GlassPlayButton variant="light" />
-              </div>
-              <div className="bg-white border border-neutral-200 rounded-2xl p-8 flex items-center justify-center relative overflow-hidden h-40">
-                <GlassPlayButton variant="dark" />
+            <h3 className="text-[14px] text-black font-bold uppercase tracking-wider">Floating Strategic Tooltip</h3>
+            <p className="text-[13px] text-neutral-500 mb-2 leading-relaxed">Pływający opis podążający za kursorem, używany w nawigacji do progresywnego ujawniania celów strategicznych.</p>
+            
+            <div className="relative h-40 bg-white border border-neutral-200 rounded-2xl flex items-center justify-center overflow-hidden">
+              <div className="text-[14px] text-neutral-400 font-medium italic underline decoration-neutral-200 underline-offset-4">Hover over Nav Link</div>
+              <div className="absolute top-10 left-10 z-[100] bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col min-w-[200px] max-w-[240px]">
+                <p className="text-[12px] text-neutral-400 leading-[1.65]">
+                  Strategic guidance on institutional enrolment excellence and applicant journey optimisation.
+                </p>
               </div>
             </div>
           </div>
@@ -603,24 +603,95 @@ export function StyleGuide() {
 
       <section className="flex flex-col gap-12">
         <div className="flex flex-col gap-2">
-          <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">1. Impact Calculator</h2>
-          <p className="text-[14px] text-neutral-500">ROI visualization tool using interactive sliders and a metrics grid for strategic planning.</p>
+          <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">1. Institutional Solution Cards</h2>
+          <p className="text-[14px] text-neutral-500">The primary modular pattern for presenting strategic capabilities. Includes high-performance hover scaling and integrated interactive triggers.</p>
         </div>
-
-        <div className="bg-white rounded-[32px] p-10 border border-neutral-200 shadow-xl flex flex-col gap-10 max-w-3xl">
-          <div className="flex justify-between items-center gap-4">
-            <p className="text-[14px] text-neutral-600 font-medium">Annual Student Intake</p>
-            <span className="bg-black text-white text-[20px] px-5 py-1.5 rounded-full font-bold tracking-tight text-center min-w-[100px]">1,250</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div className="bg-white rounded-[24px] p-10 flex flex-col gap-8 shadow-[0_4px_24px_rgba(0,0,0,0.05)] border border-neutral-100">
+            <div className="flex items-start justify-between">
+              <div className="w-14 h-14 rounded-2xl bg-neutral-50 border border-neutral-100 flex items-center justify-center text-neutral-400">
+                <HubOutlined sx={{ fontSize: 32 }} />
+              </div>
+              <div className="w-10 h-10 rounded-full border border-black flex items-center justify-center">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8l3.5 3.5L13 4.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <h3 className="text-[22px] text-black font-bold tracking-tight">Institutional Intelligence</h3>
+              <p className="text-[14px] text-neutral-500 leading-[1.7]">
+                A single, unified institutional view empowering decision-makers with real-time academic flourishing metrics.
+              </p>
+              <div className="flex items-center gap-3 text-[13px] font-bold text-black mt-2">
+                <div className="w-7 h-7 rounded-full border border-neutral-200 flex items-center justify-center">
+                  <Play className="w-2.5 h-2.5 fill-black" />
+                </div>
+                Watch solution in action
+              </div>
+            </div>
           </div>
-          <div className="h-[3px] bg-black rounded-full relative">
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-black rounded-full shadow-lg border-2 border-white"></div>
+          <div className="p-8 border border-neutral-200 border-dashed rounded-[32px] flex items-center justify-center h-full">
+            <p className="text-[13px] text-neutral-400 text-center max-w-[200px]">Pattern utilizes 3-column grid layout on production desktop view.</p>
           </div>
         </div>
       </section>
 
       <section className="flex flex-col gap-12">
         <div className="flex flex-col gap-2">
-          <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">2. Strategic Mission Centre (Principal Pattern)</h2>
+          <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">2. Impact Calculator</h2>
+          <p className="text-[14px] text-neutral-500">ROI visualization tool using interactive sliders and a metrics grid for strategic planning.</p>
+        </div>
+
+        <div className="bg-white rounded-[32px] p-10 border border-neutral-200 shadow-xl flex flex-col gap-10 max-w-3xl">
+          <div className="flex justify-between items-center gap-4">
+            <p className="text-[14px] text-neutral-600 font-medium">Annual Student Population</p>
+            <span className="bg-black text-white text-[20px] px-5 py-1.5 rounded-full font-bold tracking-tight text-center min-w-[100px]">15,000</span>
+          </div>
+          <div className="h-[3px] bg-black rounded-full relative">
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-black rounded-full shadow-lg border-2 border-white"></div>
+          </div>
+          <div className="grid grid-cols-3 gap-6 pt-4 border-t border-neutral-100">
+            <div className="flex flex-col gap-1">
+              <span className="text-[24px] font-bold text-black tracking-tight">+3,250</span>
+              <span className="text-[11px] text-neutral-400 uppercase font-bold">Secured Retention</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-[24px] font-bold text-black tracking-tight">£4.2M</span>
+              <span className="text-[11px] text-neutral-400 uppercase font-bold">Preserved Capital</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-[24px] font-bold text-black tracking-tight">+15%</span>
+              <span className="text-[11px] text-neutral-400 uppercase font-bold">NSS Uplift</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-12">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">3. Institutional Bridge Cards (Dark Theme)</h2>
+          <p className="text-[14px] text-neutral-500">Navigation patterns for secondary conversion paths. Utilises high-contrast dark surfaces with sophisticated hover scaling.</p>
+        </div>
+        <div className="bg-neutral-800 rounded-[40px] p-16 flex items-center justify-center border border-neutral-700">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+            <div className="bg-transparent border border-neutral-700 rounded-[24px] p-8 flex flex-col gap-4 group hover:bg-[#333333] transition-all duration-300 hover:scale-[1.05] cursor-pointer">
+              <div className="h-6 w-32 bg-white/20 rounded-full" />
+              <div className="h-10 w-full bg-white/5 rounded-xl" />
+              <div className="mt-auto h-4 w-24 bg-white/40 rounded-full" />
+            </div>
+            <div className="bg-transparent border border-neutral-700 rounded-[24px] p-8 flex flex-col gap-4 group hover:bg-[#333333] transition-all duration-300 hover:scale-[1.05] cursor-pointer">
+              <div className="h-6 w-32 bg-white/20 rounded-full" />
+              <div className="h-10 w-full bg-white/5 rounded-xl" />
+              <div className="mt-auto h-4 w-24 bg-white/40 rounded-full" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-12">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">4. Strategic Mission Centre (Principal Pattern)</h2>
           <p className="text-[14px] text-neutral-500">The primary institutional lead-generation architecture. A 12-column grid partitioning authority signals (5/12) and the direct conversion interface (7/12).</p>
         </div>
         <div className="border border-neutral-100 rounded-[32px] overflow-hidden bg-neutral-50 shadow-xl scale-[0.7] origin-top -mb-56 p-12">
