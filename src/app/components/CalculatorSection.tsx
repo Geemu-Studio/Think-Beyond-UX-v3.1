@@ -15,13 +15,15 @@ export function CalculatorSection() {
     setValue(config.initialValue);
   }, [config.initialValue]);
 
-  const results = useMemo(() => {
-    return config.calculate(value);
+  const { results, displayValues } = useMemo(() => {
+    const res = config.calculate(value);
+    const fmt = config.formatDisplay(res);
+    return { results: res, displayValues: fmt };
   }, [value, config]);
 
-  const displayValues: Record<string, string> = config.formatDisplay(results);
-
-  const sliderPct = ((value - config.min) / (config.max - config.min)) * 100;
+  const sliderPct = useMemo(() => {
+    return ((value - config.min) / (config.max - config.min)) * 100;
+  }, [value, config.min, config.max]);
 
   return (
     <section id="calculator" className="bg-neutral-100 py-20 px-6 border-t border-b border-neutral-200">
