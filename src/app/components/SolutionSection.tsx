@@ -193,9 +193,9 @@ export function SolutionSection() {
         onClick={(e) => {
           if (e.target === dialogRef.current) closeVideo();
         }}
-        className="fixed inset-0 m-auto p-0 rounded-2xl border-none bg-transparent shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] max-w-4xl w-[95%] aspect-video backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center transition-all duration-300"
+        className="fixed inset-0 m-auto p-0 rounded-[24px] sm:rounded-[32px] border-none bg-transparent shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] max-w-6xl w-[95%] aspect-video backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center transition-all duration-300"
       >
-        <div className="relative w-full h-full bg-black rounded-2xl overflow-hidden ring-1 ring-white/10">
+        <div className="relative w-full h-full bg-black rounded-[24px] sm:rounded-[32px] overflow-hidden ring-1 ring-white/10">
           <button 
             onClick={closeVideo}
             className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-all border border-white/10 group"
