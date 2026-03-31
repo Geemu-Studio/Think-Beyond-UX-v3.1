@@ -137,10 +137,10 @@ export function StyleGuide() {
 
   const pages = [
     { title: "Home Page (Platform)", path: "/", description: NAVIGATION_CONTENT.PLATFORM.body },
-    { title: "Recruitment", path: "/recruitment", description: NAVIGATION_CONTENT.RECRUITMENT.body },
-    { title: "Student Success", path: "/student-success", description: NAVIGATION_CONTENT.SUCCESS.body },
-    { title: "Marketing", path: "/marketing", description: NAVIGATION_CONTENT.MARKETING.body },
-    { title: "Alumni", path: "/alumni", description: NAVIGATION_CONTENT.ALUMNI.body }
+    { title: "Enrolment Excellence", path: "/enrolment", description: NAVIGATION_CONTENT.RECRUITMENT.body },
+    { title: "Academic Flourishing", path: "/flourishing", description: NAVIGATION_CONTENT.SUCCESS.body },
+    { title: "Strategic Engagement", path: "/engagement", description: NAVIGATION_CONTENT.MARKETING.body },
+    { title: "Institutional Advancement", path: "/advancement", description: NAVIGATION_CONTENT.ALUMNI.body }
   ];
 
   const getFrameUrl = (path: string) => {
@@ -548,11 +548,12 @@ export function StyleGuide() {
             <h3 className="text-[14px] text-black font-bold uppercase tracking-wider">Podstawowe (Primary)</h3>
 
             <div className="flex flex-col items-start gap-5 w-full max-w-sm">
-              <Button>
+              <Button className="shadow-xl hover:shadow-2xl transition-all">
                 Primary CTA (Default)
               </Button>
-              <Button size="lg" fullWidth>
-                Full Width Primary CTA
+              <Button size="lg" fullWidth className="shadow-xl hover:shadow-2xl transition-all">
+                Initiate Strategic Review
+                <Send className="ml-2 w-4 h-4" />
               </Button>
             </div>
 
@@ -647,7 +648,10 @@ export function StyleGuide() {
                 <div className="h-10 w-full bg-neutral-100 rounded-xl" />
                 <div className="h-10 w-full bg-neutral-100 rounded-xl" />
                 <div className="h-10 w-full bg-neutral-100 rounded-xl" />
-                <div className="h-12 w-full bg-black rounded-full mt-4" />
+                <div className="h-12 w-full bg-black rounded-full mt-4 flex items-center justify-center gap-2">
+                  <div className="h-2 w-24 bg-white/20 rounded" />
+                  <Send className="w-3 h-3 text-white/40" />
+                </div>
               </div>
             </div>
           </div>
