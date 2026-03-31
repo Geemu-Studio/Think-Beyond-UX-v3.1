@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 import { 
-  AutoGraphOutlined, 
-  SchoolOutlined, 
-  LanguageOutlined 
+  FavoriteBorderOutlined, 
+  WebOutlined, 
+  InsightsOutlined 
 } from '@mui/icons-material';
+
+/* Enrolment Solution grid — 3-column cards with checkmark icons */
 
 function CheckIcon() {
   return (
@@ -19,23 +21,23 @@ function CheckIcon() {
 
 const cards = [
   {
-    icon: <AutoGraphOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Holistic Advancement',
-    body: 'Transform your fundraising strategy. Gain a comprehensive view of donor readiness, track engagement, and build deeply personalised philanthropic campaigns.',
+    icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Resonant Candidate Engagement',
+    body: 'Anticipate candidate aspirations. Deliver hyper-personalised communication that reflects your university’s mission and secures the world’s brightest academic talent.',
   },
   {
-    icon: <SchoolOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Frictionless Learning',
-    body: 'Deliver a seamless digital storefront for executive education. Empower returning learners to easily discover, enrol in, and manage their continuous development.',
+    icon: <WebOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Premium Enrolment Infrastructure',
+    body: 'Eliminate friction at the threshold. Provide an intuitive, elite enrolment gateway that mirrors the academic excellence and heritage of your institution.',
   },
   {
-    icon: <LanguageOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Community Portals',
-    body: 'Create exclusive digital spaces where graduates can connect. Facilitate global networking, peer-to-peer mentorship, and lifelong career support.',
+    icon: <InsightsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Institutional Planning Intelligence',
+    body: "Lead with data-informed confidence. Leverage predictive analytics to refine your global admissions funnel and secure high-intent applicant cohorts.",
   },
 ];
 
-export function AlumniSolutionSection() {
+export function EnrolmentSolutionSection() {
   const location = useLocation();
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
@@ -43,13 +45,13 @@ export function AlumniSolutionSection() {
     <section id="solution" className="bg-neutral-50 py-24 px-6 border-t border-neutral-200">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
-        {/* Headline */}
+        {/* Headline - identical to master SolutionSection */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Solution Ecosystem
+            Solution
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
-            The core pillars of alumni engagement.
+            The unified ecosystem for the modern, globally minded university.
           </h2>
         </div>
 

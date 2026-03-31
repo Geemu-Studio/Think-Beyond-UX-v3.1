@@ -1,31 +1,31 @@
 import { Header } from '../Header';
-import { AlumniHeroSection } from './AlumniHeroSection';
+import { AdvancementHeroSection } from './AdvancementHeroSection';
 import { SocialProofBar } from '../SocialProofBar';
-import { AlumniProblemSection } from './AlumniProblemSection';
-import { AlumniSolutionSection } from './AlumniSolutionSection';
+import { AdvancementProblemSection } from './AdvancementProblemSection';
+import { AdvancementSolutionSection } from './AdvancementSolutionSection';
 import { CalculatorSection } from '../CalculatorSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
-import { AlumniCaseStudySection } from './AlumniCaseStudySection';
+import { AdvancementCaseStudySection } from './AdvancementCaseStudySection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
 import { CTAFormSection } from '../CTAFormSection';
 import { Footer } from '../Footer';
 
-export default function AlumniPage() {
+export default function AdvancementPage() {
   return (
     <div className="bg-white text-black selection:bg-black selection:text-white" style={{ fontFamily: 'var(--font-inter)' }}>
       <Header />
       <main>
-        <AlumniHeroSection />
+        <AdvancementHeroSection />
         <SocialProofBar />
-        <AlumniProblemSection />
-        <AlumniSolutionSection />
+        <AdvancementProblemSection />
+        <AdvancementSolutionSection />
         <CalculatorSection />
         <SecurityTrustSection />
-        <AlumniCaseStudySection />
+        <AdvancementCaseStudySection />
         <CTAFormSection 
           title="About us: Your dedicated alumni relations and advancement team."
           formTitle="Let's talk about alumni engagement and lifelong learning at your institution."
-          buttonText="Request an Alumni Strategy Call"
+          buttonText="Request an Advancement Strategy Call"
         />
         <OfferBridgeSection />
       </main>

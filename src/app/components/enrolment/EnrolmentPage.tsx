@@ -4,24 +4,24 @@ import { CalculatorSection } from '../CalculatorSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
 import { Footer } from '../Footer';
-import { RecruitmentHeroSection } from './RecruitmentHeroSection';
-import { RecruitmentProblemSection } from './RecruitmentProblemSection';
-import { RecruitmentSolutionSection } from './RecruitmentSolutionSection';
-import { RecruitmentCaseStudySection } from './RecruitmentCaseStudySection';
+import { EnrolmentHeroSection } from './EnrolmentHeroSection';
+import { EnrolmentProblemSection } from './EnrolmentProblemSection';
+import { EnrolmentSolutionSection } from './EnrolmentSolutionSection';
+import { EnrolmentCaseStudySection } from './EnrolmentCaseStudySection';
 import { CTAFormSection } from '../CTAFormSection';
 
-export default function RecruitmentPage() {
+export default function EnrolmentPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <RecruitmentHeroSection />
+        <EnrolmentHeroSection />
         <SocialProofBar />
-        <RecruitmentProblemSection />
-        <RecruitmentSolutionSection />
+        <EnrolmentProblemSection />
+        <EnrolmentSolutionSection />
         <CalculatorSection />
         <SecurityTrustSection />
-        <RecruitmentCaseStudySection />
+        <EnrolmentCaseStudySection />
         <CTAFormSection 
           title="About us: Your dedicated student recruitment and enrolment team."
           formTitle="Let's talk about your student recruitment and enrolment strategy."

@@ -87,10 +87,11 @@ const SWPS_DETAILED_CONTENT: SWPSContent = {
     },
     {
       icon: <Target className="w-5 h-5 text-black" />,
-      title: "Transformational Impact",
+      title: "Strategic Impact",
       items: [
-        "Centralised Student Hub: A highly responsive, digital portal empowering students to manage their academic journey from any device.",
-        "360-Degree Visibility: Breaking down data silos to provide staff with a single, holistic view of every student—aggregating communication history, applications, and academic milestones in one place."
+        "NSS Improvement: Projected 8.5% increase in 'Learning Resources' satisfaction scoring within 18 months.",
+        "TEF Excellence: Reinforced the institutional evidence base for 'Student Experience' and 'Student Outcomes' under the TEF Gold framework.",
+        "Operational Resilience: Eliminated 100% of paper-reliant critical paths in the first year of deployment."
       ]
     }
   ],
@@ -126,10 +127,11 @@ const KOZMINSKI_DETAILED_CONTENT: SWPSContent = {
     },
     {
       icon: <Target className="w-5 h-5 text-black" />,
-      title: "Transformational Impact",
+      title: "Strategic Impact",
       items: [
-        "Unprecedented Efficiency: Achieved a 35% reduction in administrative overhead per enrolment.",
-        "Candidate-Centric Journey: Reached a 92% positive candidate experience score through highly personalized, timely engagement."
+        "Enrolment Yield: 35% reduction in administrative overhead per enrolment, allowing for higher strategic investment in faculty recruitment.",
+        "Global Positioning: Established a premier digital-first gateway for international applicants, supporting the university's mission to attract elite global talent.",
+        "Data Sovereignty: Secured full, real-time transparency across the application funnel, directly informing the institutional growth strategy."
       ]
     }
   ],
@@ -165,10 +167,11 @@ const CDV_DETAILED_CONTENT: SWPSContent = {
     },
     {
       icon: <Target className="w-5 h-5 text-black" />,
-      title: "Transformational Impact",
+      title: "Strategic Impact",
       items: [
-        "Increased Retention: Achieved a 25% increase in the student retention rate year-over-year.",
-        "Career Readiness: Delivered 98% timely outreach for relevant career opportunities, bridging the gap between education and industry."
+        "Student Retention: Achieved a 25% increase in retention rate YOY, directly translating to a sustained NSS 'Academic Support' rating.",
+        "Academic Flourishing: Provided the digital foundation for a 'Whole University' approach to mental health and proactive academic care.",
+        "Employment Outcomes: 98% timely outreach for career opportunities, strengthening the university's Graduate Outcomes dataset for TEF assessment."
       ]
     }
   ],

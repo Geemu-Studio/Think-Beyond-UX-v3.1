@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 import { 
-  FilterAltOutlined, 
-  RouteOutlined, 
-  AnalyticsOutlined 
+  AutoGraphOutlined, 
+  SchoolOutlined, 
+  LanguageOutlined 
 } from '@mui/icons-material';
 
 function CheckIcon() {
@@ -19,23 +19,23 @@ function CheckIcon() {
 
 const cards = [
   {
-    icon: <FilterAltOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Intelligent Segmentation',
-    body: 'Transform raw data into actionable audiences. Deliver hyper-targeted campaigns based on individual interests, academic goals, and behavioural signals.',
+    icon: <AutoGraphOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Strategic Philanthropic Intelligence',
+    body: 'Secure the future of your institution. Gain comprehensive visibility into donor readiness and orchestrate hyper-personalised, mission-driven advancement campaigns.',
   },
   {
-    icon: <RouteOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Automated Omnichannel Journeys',
-    body: 'Engage constituents exactly where they are. Seamlessly orchestrate email, SMS, social, and web interactions to create cohesive brand experiences.',
+    icon: <SchoolOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Lifelong Academic Upskilling',
+    body: 'Provide a premium storefront for continuous professional development. Empower returning academic cohorts to easily discover and manage their lifelong learning journey.',
   },
   {
-    icon: <AnalyticsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Real-Time Campaign Analytics',
-    body: 'Measure what matters. Gain instant visibility into engagement metrics and campaign ROI, allowing your team to continuously optimise their strategic outreach.',
+    icon: <LanguageOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Elite Alumnus Ecosystems',
+    body: 'Foster a prestigious, global network for your graduates. Facilitate high-value mentoring, corporate synergy, and enduring institutional advocacy.',
   },
 ];
 
-export function MarketingSolutionSection() {
+export function AdvancementSolutionSection() {
   const location = useLocation();
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
@@ -49,7 +49,7 @@ export function MarketingSolutionSection() {
             Solution Ecosystem
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
-            The unified ecosystem for the modern, globally minded university.
+            The core pillars of alumni engagement.
           </h2>
         </div>
 

@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 import { 
-  GroupsOutlined, 
-  NotificationsActiveOutlined, 
-  PhoneIphoneOutlined 
+  FilterAltOutlined, 
+  RouteOutlined, 
+  AnalyticsOutlined 
 } from '@mui/icons-material';
 
 function CheckIcon() {
@@ -19,23 +19,23 @@ function CheckIcon() {
 
 const cards = [
   {
-    icon: <GroupsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: '360-Degree Student Visibility',
-    body: 'Break down departmental silos. Provide advisors with a comprehensive, real-time view of every student\'s academic, financial, and wellbeing status to offer immediate, relevant guidance.',
+    icon: <FilterAltOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Strategic Audience Intelligence',
+    body: 'Convert raw institutional data into actionable insights. Deliver resonant, mission-driven engagement based on the unique academic goals and aspirations of every constituent.',
   },
   {
-    icon: <NotificationsActiveOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Intelligent Early Alerts',
-    body: 'Harness the power of predictive analytics. Automatically identify students who may be at risk and orchestrate timely, empathetic interventions that keep them on track to graduate.',
+    icon: <RouteOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Coordinated Brand Storytelling',
+    body: 'Overcome administrative fragmentation. Orchestrate authentic institutional narratives across every touchpoint to create a cohesive, prestigious brand experience.',
   },
   {
-    icon: <PhoneIphoneOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Seamless Access to Support',
-    body: 'Empower students with an intuitive, mobile-first portal. From booking appointments with advisors to accessing critical wellbeing resources, ensure help is always just a tap away.',
+    icon: <AnalyticsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Institutional Impact Metrics',
+    body: 'Focus on the metrics that matter. Gain real-time visibility into engagement ROI and NSS-relevant performance indicators to continuously optimise your strategic outreach.',
   },
 ];
 
-export function StudentSuccessSolutionSection() {
+export function EngagementSolutionSection() {
   const location = useLocation();
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
@@ -46,7 +46,7 @@ export function StudentSuccessSolutionSection() {
         {/* Headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Solution
+            Solution Ecosystem
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
             The unified ecosystem for the modern, globally minded university.

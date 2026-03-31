@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from './ConsultationModal';
-import expertMarcin from '../../assets/expert-marcin.jpeg';
+import expertMarcin from '@/assets/expert-marcin.jpeg';
 
 import { 
   HubOutlined, 
@@ -14,22 +14,22 @@ import svgPaths from '../../imports/svg-fitf5bq036';
 const cards = [
   {
     icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'A Seamless Campus Experience',
-    body: 'Replace fragmented paper-based processes and overwhelmed systems with a resilient, unified digital infrastructure that scales gracefully with your institution.',
+    title: 'Institutional Resilience',
+    body: 'Overcome administrative fragmentation. Replace legacy constraints with a unified, resilient digital infrastructure that scales with your academic vision.',
     videoId: 'v5V6Y0_Q_8k', // Salesforce Education Cloud Intro
     expertImage: expertMarcin
   },
   {
     icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Proactive Retention & Student Wellbeing',
-    body: 'Move from reactive to proactive. Identify students who need support before they\'re lost — and build the sense of belonging that sustains their academic journey to completion.',
+    title: 'Academic Flourishing & Retention',
+    body: 'Proactively nurture institutional belonging. Identify students at risk before they are lost, and build the holistic support structures that secure their academic journey.',
     videoId: 'qL6R8Z9W4_8', // Student Success
     expertImage: expertMarcin
   },
   {
     icon: <TrackChangesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Purpose-Driven Recruitment',
-    body: 'Attract and enrol candidates who align with your institution\'s values and mission — enhancing academic prestige and fostering a genuinely engaged student community.',
+    title: 'Mission-Driven Enrolment',
+    body: 'Engage candidates who align with your institution’s prestige. Deliver frictionless, personalised enrolment journeys that secure the world’s brightest academic talent.',
     videoId: '8_v1-cE9kkw', // Recruitment
     expertImage: expertMarcin
   },
@@ -93,9 +93,9 @@ export function ProblemSection() {
         {/* Section headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Opportunity
+            Institutional Opportunity
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Cultivating student success. Build lasting relationships that proactively foster retention, wellbeing, and the pride of graduation.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Securing academic excellence. Build the strategic foundations that proactively foster institutional resilience and student flourishing.</h2>
         </div>
 
         {/* 3-col agitation grid */}

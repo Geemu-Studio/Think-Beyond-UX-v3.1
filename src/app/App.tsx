@@ -11,10 +11,10 @@ import { CaseStudySection } from './components/CaseStudySection';
 import { CTAFormSection } from './components/CTAFormSection';
 import { OfferBridgeSection } from './components/OfferBridgeSection';
 import { Footer } from './components/Footer';
-import RecruitmentPage from './components/recruitment/RecruitmentPage';
-import { StudentSuccessPage } from './components/student-success/StudentSuccessPage';
-import MarketingPage from './components/marketing/MarketingPage';
-import AlumniPage from './components/alumni/AlumniPage';
+import EnrolmentPage from './components/enrolment/EnrolmentPage';
+import { FlourishingPage } from './components/flourishing/FlourishingPage';
+import EngagementPage from './components/engagement/EngagementPage';
+import AdvancementPage from './components/advancement/AdvancementPage';
 import { StyleGuide } from './components/StyleGuide';
 
 function ScrollToTop() {
@@ -53,10 +53,10 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/recruitment" element={<RecruitmentPage />} />
-        <Route path="/student-success" element={<StudentSuccessPage />} />
-        <Route path="/marketing" element={<MarketingPage />} />
-        <Route path="/alumni" element={<AlumniPage />} />
+        <Route path="/enrolment" element={<EnrolmentPage />} />
+        <Route path="/flourishing" element={<FlourishingPage />} />
+        <Route path="/engagement" element={<EngagementPage />} />
+        <Route path="/advancement" element={<AdvancementPage />} />
         <Route path="/style-guide" element={<StyleGuide />} />
       </Routes>
     </HashRouter>

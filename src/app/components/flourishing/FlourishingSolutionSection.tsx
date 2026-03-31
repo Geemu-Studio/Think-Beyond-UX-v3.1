@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 import { 
-  FavoriteBorderOutlined, 
-  WebOutlined, 
-  InsightsOutlined 
+  GroupsOutlined, 
+  NotificationsActiveOutlined, 
+  PhoneIphoneOutlined 
 } from '@mui/icons-material';
-
-/* Recruitment Solution grid — 3-column cards with checkmark icons */
 
 function CheckIcon() {
   return (
@@ -21,23 +19,23 @@ function CheckIcon() {
 
 const cards = [
   {
-    icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Intelligent Lead Nurturing',
-    body: 'Anticipate candidate needs. Deliver highly personalised, omnichannel communication that resonates with the unique aspirations of every prospective student.',
+    icon: <GroupsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Holistic Institutional Visibility',
+    body: 'Overcome departmental silos. Provide advisors with the comprehensive, real-time insights required to deliver proactive, mission-driven academic support.',
   },
   {
-    icon: <WebOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'A Frictionless Application Journey',
-    body: 'Remove barriers to entry. Provide a seamless, intuitive digital application portal that reflects the prestige and excellence of your university brand.',
+    icon: <NotificationsActiveOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Predictive Academic Intervention',
+    body: 'Harness the power of institutional intelligence. Automatically identify high-risk scenarios and orchestrate timely, empathetic interventions that secure student progression.',
   },
   {
-    icon: <InsightsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Strategic Enrolment Insights',
-    body: "Make confident, data-driven decisions. Leverage predictive analytics to identify high-intent applicants and optimise your global recruitment investments.",
+    icon: <PhoneIphoneOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Empowered Student Self-Service',
+    body: 'Foster student agency through an intuitive, mobile-first ecosystem. Accelerate access to critical welfare and academic resources, ensuring support is always present.',
   },
 ];
 
-export function RecruitmentSolutionSection() {
+export function FlourishingSolutionSection() {
   const location = useLocation();
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
@@ -45,7 +43,7 @@ export function RecruitmentSolutionSection() {
     <section id="solution" className="bg-neutral-50 py-24 px-6 border-t border-neutral-200">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
-        {/* Headline - identical to master SolutionSection */}
+        {/* Headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
             Solution

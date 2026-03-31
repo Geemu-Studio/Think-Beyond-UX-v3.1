@@ -3,30 +3,30 @@ import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 
 import { 
-  TrendingUpOutlined, 
-  MenuBookOutlined, 
-  HubOutlined 
+  DevicesOutlined, 
+  PublicOutlined, 
+  TrendingUpOutlined 
 } from '@mui/icons-material';
 
 const cards = [
   {
+    icon: <DevicesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Institutional Digital Resonance',
+    body: 'Legacy systems create friction that risk institutional prestige. Secure the world’s brightest talent through a seamless, hyper-personalised digital experience that reflects your academic standing.',
+  },
+  {
+    icon: <PublicOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Global Academic Standing',
+    body: 'Maintain a distinct competitive advantage in an intensely contested global market. Leverage proactive, mission-driven outreach to connect with candidates who align with your core values.',
+  },
+  {
     icon: <TrendingUpOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Cultivating Enduring Philanthropy',
-    body: 'Today\'s graduates seek genuine relationships, not just funding requests. Cultivating philanthropic growth requires understanding their unique academic journeys, passions, and professional milestones.',
-  },
-  {
-    icon: <MenuBookOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Focus on Enduring Academic Achievement',
-    body: 'The traditional degree is evolving into a foundational academic qualification. Graduates continuously seek to upskill through microcredentials and postgraduate programmes to stay competitive.',
-  },
-  {
-    icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Legacy & Connection',
-    body: 'Siloed institutional insights prevent meaningful outreach. A disconnected approach means missed opportunities for mentorship, corporate partnerships, and community advocacy.',
+    title: 'Yield Optimisation & Legacy',
+    body: 'Mitigate the risks of candidate drop-off. Nurture the critical window between offer and enrolment through consistent, meaningful engagement that fosters early institutional belonging.',
   },
 ];
 
-export function AlumniProblemSection() {
+export function EnrolmentProblemSection() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,11 +37,11 @@ export function AlumniProblemSection() {
         {/* Section headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Opportunity
+            Institutional Opportunity
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Building an institutional legacy of continuous engagement.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Fostering institutional belonging from day one.</h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-            Move beyond transactional fundraising. Equip your philanthropic advancement teams with the insights needed to foster a lifelong connection with every graduate.
+            Overcome administrative fragmentation. Provide your admissions team with the intelligent tools required to identify, nurture, and secure elite global talent.
           </p>
         </div>
 

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import expertMarcin from '../../assets/expert-marcin.jpeg';
+import expertMarcin from '@/assets/expert-marcin.jpeg';
 import svgPaths from '../../imports/svg-fitf5bq036';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -31,12 +31,12 @@ const features = [
         />
       </svg>
     ),
-    heading: 'Resilience Against Institutional Risk',
+    heading: 'Institutional Cyber Sovereignty',
     body:
-      'Fortify your digital campus against evolving cyber threats. Our architecture provides continuous, advanced protection so your institution can focus on academic innovation without disruption.',
+      'Fortify your digital campus against evolving systemic risks. Our architecture provides continuous, advanced protection that secures institutional prestige and ensures academic continuity.',
     videoId: 'v5V6Y0_Q_8k',
     expertImage: expertMarcin,
-    videoLabel: 'Cyber Security Overview'
+    videoLabel: 'Strategic Security Overview'
   },
   {
     id: 'privacy',
@@ -69,12 +69,12 @@ const features = [
         <circle cx="14" cy="19.5" r="1.25" fill="currentColor" />
       </svg>
     ),
-    heading: 'Academic Data Governance & Sovereignty',
+    heading: 'Institutional Integrity & Governance',
     body:
-      'From rigorous GDPR compliance to granular, role-based access controls, ensure that sensitive student, applicant, and staff information remains strictly confidential and fully governed.',
+      'From rigorous GDPR compliance to advanced data sovereignty protocols, ensure that sensitive student and staff information remains strictly governed and aligned with statutory requirements.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
-    videoLabel: 'Data Governance Insights'
+    videoLabel: 'Governance Insights'
   },
 ];
 

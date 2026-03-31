@@ -12,7 +12,7 @@ export function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<any | null>(null);
   const location = useLocation();
-  
+
   // Mouse tracking for floating tooltips
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -89,7 +89,7 @@ export function Header() {
           {HEADER_NAV_LINKS.map((link) => {
             const isActive = location.pathname === link.href;
             const hasTooltip = !!link.description;
-            
+
             const linkProps = {
               className: `text-[14px] transition-colors py-2 ${isActive ? 'text-black font-semibold' : 'text-neutral-600 hover:text-black'}`,
               style: { fontWeight: isActive ? 600 : 500 },
@@ -109,9 +109,9 @@ export function Header() {
             return (
               <div key={link.label} className="relative flex flex-col items-center">
                 {link.href.startsWith('#') ? (
-                  <a 
-                    {...linkProps} 
-                    href={link.href} 
+                  <a
+                    {...linkProps}
+                    href={link.href}
                     onClick={(e) => {
                       setHoveredLink(null);
                       handleNavClick(e, link.href);
@@ -120,9 +120,9 @@ export function Header() {
                     {link.label}
                   </a>
                 ) : (
-                  <Link 
-                    {...linkProps} 
-                    to={link.href} 
+                  <Link
+                    {...linkProps}
+                    to={link.href}
                     onClick={() => {
                       setHoveredLink(null);
                       setMobileOpen(false);
@@ -137,22 +137,22 @@ export function Header() {
 
           <AnimatePresence>
             {hoveredLink && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.1 }}
-                style={{ 
+                style={{
                   position: 'fixed',
                   top: 0,
                   left: 0,
-                  x: tooltipX, 
+                  x: tooltipX,
                   y: tooltipY,
                 }}
                 className="z-[100] pointer-events-none bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col min-w-[260px] max-w-[280px]"
               >
                 <AnimatePresence mode="wait">
-                  <motion.p 
+                  <motion.p
                     key={hoveredLink.label}
                     initial={{ opacity: 0, y: 2 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -228,9 +228,9 @@ export function Header() {
       )}
 
       {/* Global Contact Modal */}
-      <ConsultationModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <ConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         pathname={location.pathname}
       />
     </header>

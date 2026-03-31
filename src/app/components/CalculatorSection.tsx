@@ -1,56 +1,27 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from './ConsultationModal';
-
-const stats = [
-  {
-    key: 'dropouts',
-    microcopy: 'Based on average UK HE at-risk student withdrawal rates.',
-    suffix: (v: number) => (
-      <p className="text-[13px] text-neutral-600 leading-[1.6]">
-        Academic journeys requiring <span style={{ fontWeight: 600 }} className="text-black">strategic intervention and enablement</span>
-      </p>
-    ),
-  },
-  {
-    key: 'saved',
-    microcopy: 'Modelled on securing as few as 10% of at-risk academic journeys through early action.',
-    suffix: (v: number) => (
-      <p className="text-[13px] text-neutral-600 leading-[1.6]">
-        Individual student outcomes secured through a <span style={{ fontWeight: 600 }} className="text-black">10% uplift in engagement</span>
-      </p>
-    ),
-  },
-  {
-    key: 'tuition',
-    microcopy: 'Average annual tuition cycle, adjusted for programme type.',
-    suffix: (v: number) => (
-      <p className="text-[13px] text-neutral-600 leading-[1.6]">
-        <span style={{ fontWeight: 600 }} className="text-black">Months of sustained academic investment realised</span> per student
-      </p>
-    ),
-  },
-];
+import { CALCULATOR_CONFIGS } from '../data/calculatorContent';
 
 export function CalculatorSection() {
   const location = useLocation();
-  const [students, setStudents] = useState(1000);
+  const config = CALCULATOR_CONFIGS[location.pathname] || CALCULATOR_CONFIGS.default;
+
+  const [value, setValue] = useState(config.initialValue);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Sync value when config changes (e.g. navigation between pages)
+  useEffect(() => {
+    setValue(config.initialValue);
+  }, [config.initialValue]);
+
   const results = useMemo(() => {
-    const dropouts = Math.round(students * 0.5);
-    const saved = Math.round(students * 0.1);
-    const tuition = 12;
-    return { dropouts, saved, tuition };
-  }, [students]);
+    return config.calculate(value);
+  }, [value, config]);
 
-  const displayValues: Record<string, string> = {
-    dropouts: results.dropouts.toLocaleString('en-GB'),
-    saved: `+${results.saved.toLocaleString('en-GB')}`,
-    tuition: `×${results.tuition}`,
-  };
+  const displayValues: Record<string, string> = config.formatDisplay(results);
 
-  const sliderPct = ((students - 200) / (5000 - 200)) * 100;
+  const sliderPct = ((value - config.min) / (config.max - config.min)) * 100;
 
   return (
     <section id="calculator" className="bg-neutral-100 py-20 px-6 border-t border-b border-neutral-200">
@@ -62,10 +33,10 @@ export function CalculatorSection() {
             className="text-[11px] text-neutral-400 uppercase tracking-[1.4px] text-left"
             style={{ fontWeight: 600 }}
           >
-            Institutional Impact
+            {config.tagline}
           </span>
           <h2 className="mt-3 text-[32px] sm:text-[40px] leading-[1.15] tracking-[-1.4px] text-black text-left">
-            Measuring the institutional value of academic flourishing.
+            {config.title}
           </h2>
         </div>
 
@@ -75,13 +46,13 @@ export function CalculatorSection() {
           {/* Slider label + value badge */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <p className="text-[14px] text-neutral-600" style={{ fontWeight: 500 }}>
-              Annual Student Intake
+              {config.inputLabel}
             </p>
             <span
               className="self-start sm:self-auto bg-black text-white text-[20px] tracking-[-0.8px] px-5 py-1.5 rounded-full"
               style={{ fontWeight: 700 }}
             >
-              {students.toLocaleString('en-GB')}
+              {value.toLocaleString('en-GB')}
             </span>
           </div>
 
@@ -99,11 +70,11 @@ export function CalculatorSection() {
             </style>
             <input
               type="range"
-              min={200}
-              max={5000}
-              step={50}
-              value={students}
-              onChange={(e) => setStudents(Number(e.target.value))}
+              min={config.min}
+              max={config.max}
+              step={config.step}
+              value={value}
+              onChange={(e) => setValue(Number(e.target.value))}
               className="w-full h-[3px] appearance-none cursor-pointer rounded-full"
               style={{
                 background: `linear-gradient(to right, #000 0%, #000 ${sliderPct}%, #d1d5db ${sliderPct}%, #d1d5db 100%)`,
@@ -111,20 +82,20 @@ export function CalculatorSection() {
               }}
             />
             <div className="flex justify-between mt-2">
-              <span className="text-[12px] text-neutral-400">200</span>
-              <span className="text-[12px] text-neutral-400">5,000</span>
+              <span className="text-[12px] text-neutral-400">{config.min.toLocaleString('en-GB')}</span>
+              <span className="text-[12px] text-neutral-400">{config.max.toLocaleString('en-GB')}</span>
             </div>
           </div>
 
           {/* Results — stack on mobile, 3-col on sm+ */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 pt-4 border-t border-neutral-200">
-            {stats.map((stat, idx) => (
+            {config.stats.map((stat, idx) => (
               <div
                 key={stat.key}
                 className={[
                   'flex flex-col gap-2 py-6 px-0',
                   idx > 0 ? 'sm:border-l sm:border-neutral-200 sm:pl-6 border-t border-neutral-100 sm:border-t-0' : '',
-                  idx < stats.length - 1 ? 'sm:pr-6' : '',
+                  idx < config.stats.length - 1 ? 'sm:pr-6' : '',
                 ].join(' ')}
               >
                 {/* Big number */}
@@ -136,7 +107,7 @@ export function CalculatorSection() {
                 </span>
 
                 {/* Bold sentence */}
-                {stat.suffix(results[stat.key as keyof typeof results] as number)}
+                {stat.suffix(results[stat.key] as number)}
 
                 {/* Microcopy */}
                 <p className="text-[11px] leading-[1.55] mt-1 text-[#6a6a6a]">
@@ -157,7 +128,7 @@ export function CalculatorSection() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-black px-6 py-3 text-[14px] text-black hover:bg-black hover:text-white transition-colors rounded-full"
               style={{ fontWeight: 600 }}
             >
-              Secure Your Institutional Legacy
+              {config.ctaText}
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2 7h10M8 3l4 4-4 4" />
               </svg>

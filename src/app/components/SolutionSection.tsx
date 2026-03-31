@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from './ConsultationModal';
-import expertMarcin from '../../assets/expert-marcin.jpeg';
+import expertMarcin from '@/assets/expert-marcin.jpeg';
 import svgPaths from '../../imports/svg-fitf5bq036';
 import { 
   AnalyticsOutlined, 
@@ -25,22 +25,22 @@ function CheckIcon() {
 const cards = [
   {
     icon: <AnalyticsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Holistic Student Understanding',
-    body: 'From first enquiry to engaged alumnus — every interaction, milestone, and relationship held within one compassionate, intelligent system.',
+    title: 'Institutional Intelligence',
+    body: 'One unified, compassionate system. From first enquiry to engaged alumnus — transform fragmented interactions into a single, holistic view of your academic community.',
     videoId: 'qL6R8Z9W4_8', // Student Success
     expertImage: expertMarcin
   },
   {
     icon: <RouteOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Personalised Engagement',
-    body: 'Attract candidates who share your institution\'s mission. Enrich your academic community with purpose-driven, data-informed admissions.',
+    title: 'Mission-Driven Admissions',
+    body: 'Secure the future of your institution. Attract brightest global talent through data-informed strategies that align every candidate with your academic values.',
     videoId: '8_v1-cE9kkw', // Recruitment
     expertImage: expertMarcin
   },
   {
     icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Empowered Academic Journeys',
-    body: 'Surface early signals of disengagement and respond with empathy — before a student is lost. Turn retention into a reflection of your institution\'s commitment to every individual.',
+    title: 'Academic Resilience & Flourishing',
+    body: 'Surmount the barriers to retention. Proactively identify and respond to early signals of disengagement, ensuring every student has the support to complete their journey.',
     videoId: 'v5V6Y0_Q_8k', // Salesforce Education Cloud Intro
     expertImage: expertMarcin
   },

@@ -3,30 +3,30 @@ import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 
 import { 
-  SensorsOutlined, 
-  FavoriteBorderOutlined, 
-  SupportAgentOutlined 
+  TrendingUpOutlined, 
+  MenuBookOutlined, 
+  HubOutlined 
 } from '@mui/icons-material';
 
 const cards = [
   {
-    icon: <SensorsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Evidence-Led Early Warning',
-    body: 'At-risk students rarely raise their hands before reaching a crisis point. Disjointed institutional systems mean early warning signs are missed. Proactive identification is essential for timely academic intervention.',
+    icon: <TrendingUpOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Strategic Institutional Advancement',
+    body: 'Cultivating philanthropic growth requires more than funding requests. Build deep, resonant relationships by understanding the unique academic journey and passions of every graduate.',
   },
   {
-    icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Fostering Academic Flourishing',
-    body: 'True success encompasses mental health, financial stability, and a deep sense of belonging. Institutions must offer integrated enablement that addresses the complete lived experience of their learners.',
+    icon: <MenuBookOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Lifelong Academic Partnership',
+    body: 'The traditional degree is an evolving foundation. Secure your institution’s role as a lifelong partner through bespoke microcredentials and postgraduate paths that meet graduate aspirations.',
   },
   {
-    icon: <SupportAgentOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Enablement for Advisors',
-    body: 'Academic advisors are often overwhelmed by administrative burdens. Mitigating manual processes allows for deeply personalised, meaningful engagement that secures student progression.',
+    icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Administrative Fragmentation',
+    body: 'Siloed institutional insights prevent meaningful outreach. Surmount the barriers to connection, unlocking high-value opportunities for mentorship, corporate partnerships, and advocacy.',
   },
 ];
 
-export function StudentSuccessProblemSection() {
+export function AdvancementProblemSection() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,11 +37,11 @@ export function StudentSuccessProblemSection() {
         {/* Section headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Opportunity
+            Institutional Opportunity
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Cultivating an environment for academic flourishing.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Building an institutional legacy of continuous engagement.</h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-            Eliminating barriers to academic progression. Equip your advising and enablement teams with the insights needed to foster a truly inclusive academic community.
+            Surmount transactional fundraising constraints. Equip your advancement teams with the strategic insights required to foster a lifelong connection with every graduate.
           </p>
         </div>
 

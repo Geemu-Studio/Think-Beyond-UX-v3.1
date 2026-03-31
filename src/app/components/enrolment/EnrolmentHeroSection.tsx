@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 
-export function RecruitmentHeroSection() {
+export function EnrolmentHeroSection() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -46,7 +46,7 @@ export function RecruitmentHeroSection() {
           className="mt-1 w-full sm:w-auto inline-flex items-center justify-center bg-black text-white px-8 py-4 text-[15px] transition-colors hover:bg-neutral-800 rounded-full animate-in slide-in-from-bottom-4 fade-in duration-700"
           style={{ fontWeight: 600 }}
         >
-          Redefine Your Recruitment Strategy →
+          Redefine Your Enrolment Strategy →
         </a>
 
         {/* Trust signal */}

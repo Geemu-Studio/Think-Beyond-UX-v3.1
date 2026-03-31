@@ -1,31 +1,31 @@
 import { Header } from '../Header';
-import { MarketingHeroSection } from './MarketingHeroSection';
+import { EngagementHeroSection } from './EngagementHeroSection';
 import { SocialProofBar } from '../SocialProofBar';
-import { MarketingProblemSection } from './MarketingProblemSection';
+import { EngagementProblemSection } from './EngagementProblemSection';
 import { CalculatorSection } from '../CalculatorSection';
-import { MarketingSolutionSection } from './MarketingSolutionSection';
+import { EngagementSolutionSection } from './EngagementSolutionSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
-import { MarketingCaseStudySection } from './MarketingCaseStudySection';
+import { EngagementCaseStudySection } from './EngagementCaseStudySection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
 import { CTAFormSection } from '../CTAFormSection';
 import { Footer } from '../Footer';
 
-export function MarketingPage() {
+export function EngagementPage() {
   return (
     <div className="bg-white text-black selection:bg-black selection:text-white" style={{ fontFamily: 'var(--font-inter)' }}>
       <Header />
       <main>
-        <MarketingHeroSection />
+        <EngagementHeroSection />
         <SocialProofBar />
-        <MarketingProblemSection />
-        <MarketingSolutionSection />
+        <EngagementProblemSection />
+        <EngagementSolutionSection />
         <CalculatorSection />
         <SecurityTrustSection />
-        <MarketingCaseStudySection />
+        <EngagementCaseStudySection />
         <CTAFormSection 
           title="About us: Your dedicated university marketing and communications team."
           formTitle="Let's talk about your university's marketing and communications strategy."
-          buttonText="Request a Marketing Consultation"
+          buttonText="Request a Engagement Consultation"
         />
         <OfferBridgeSection />
       </main>
@@ -34,4 +34,4 @@ export function MarketingPage() {
   );
 }
 
-export default MarketingPage;
+export default EngagementPage;

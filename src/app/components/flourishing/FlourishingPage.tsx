@@ -1,27 +1,27 @@
 import { Header } from '../Header';
-import { StudentSuccessHeroSection } from './StudentSuccessHeroSection';
+import { FlourishingHeroSection } from './FlourishingHeroSection';
 import { SocialProofBar } from '../SocialProofBar';
-import { StudentSuccessProblemSection } from './StudentSuccessProblemSection';
+import { FlourishingProblemSection } from './FlourishingProblemSection';
 import { CalculatorSection } from '../CalculatorSection';
-import { StudentSuccessSolutionSection } from './StudentSuccessSolutionSection';
+import { FlourishingSolutionSection } from './FlourishingSolutionSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
-import { StudentSuccessCaseStudySection } from './StudentSuccessCaseStudySection';
+import { FlourishingCaseStudySection } from './FlourishingCaseStudySection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
 import { CTAFormSection } from '../CTAFormSection';
 import { Footer } from '../Footer';
 
-export function StudentSuccessPage() {
+export function FlourishingPage() {
   return (
     <div className="bg-white text-black selection:bg-black selection:text-white" style={{ fontFamily: 'var(--font-inter)' }}>
       <Header />
       <main>
-        <StudentSuccessHeroSection />
+        <FlourishingHeroSection />
         <SocialProofBar />
-        <StudentSuccessProblemSection />
-        <StudentSuccessSolutionSection />
+        <FlourishingProblemSection />
+        <FlourishingSolutionSection />
         <CalculatorSection />
         <SecurityTrustSection />
-        <StudentSuccessCaseStudySection />
+        <FlourishingCaseStudySection />
         <CTAFormSection 
           title="About us: Your dedicated student success and retention team."
           formTitle="Let's talk about student success and retention at your institution."

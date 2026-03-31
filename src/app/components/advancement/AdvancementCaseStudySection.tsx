@@ -1,6 +1,6 @@
 import { CaseStudyCarousel } from '../ui/CaseStudyCarousel';
 
-export function RecruitmentCaseStudySection() {
+export function AdvancementCaseStudySection() {
   return (
     <section id="case-study" className="bg-neutral-50 py-24 border-t border-neutral-100 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">

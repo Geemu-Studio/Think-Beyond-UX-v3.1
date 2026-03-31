@@ -5,14 +5,14 @@ import { ConsultationModal } from '../ConsultationModal';
 const slides = [
   {
     badge: "Salesforce Education Cloud · Certified Partner",
-    h1: "Connect with purpose. Deliver the right message to every future world changer.",
-    p: "Cut through the noise. Leverage Salesforce Education Cloud to orchestrate highly personalised, omnichannel journeys that build lifelong institutional loyalty.",
-    cta: "Elevate Your Engagement →",
+    h1: "Nurture every potential. Guide every learner to the pride of graduation.",
+    p: "Move from reactive support to proactive care. Build a connected campus where every student feels seen, supported, and empowered to succeed with Salesforce Education Cloud.",
+    cta: "Transform Student Support →",
     micro: "Trusted by universities across the UK and Central Europe."
   }
 ];
 
-export function MarketingHeroSection() {
+export function FlourishingHeroSection() {
   const location = useLocation();
   const [activeIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);

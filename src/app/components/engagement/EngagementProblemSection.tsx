@@ -11,22 +11,22 @@ import {
 const cards = [
   {
     icon: <CampaignOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Resonating in a Global Academic Market',
-    body: 'Prospective students are overwhelmed by generic outreach. Standing out requires deeply relevant, timely, and authentic storytelling that aligns with their personal academic aspirations.',
+    title: 'Authentic Institutional Resonance',
+    body: 'Overcome the noise of generic mass communication. Deliver timely, evidence-led narratives that reflect your university’s prestige and align with student aspirations.',
   },
   {
     icon: <DataUsageOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Siloed Institutional Insights',
-    body: 'Personalised communication is impossible when student data is fragmented across departments. Unified insights are the foundation of impactful institutional engagement.',
+    title: 'Administrative Fragmentation',
+    body: 'Impactful engagement is impossible when student data is siloed. Unified institutional insights are the foundation of a coherent, purpose-driven brand narrative.',
   },
   {
     icon: <VolunteerActivismOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Enduring Institutional Affinity',
-    body: 'Engagement extends far beyond enrolment. Sustaining a vibrant university brand means continuously inspiring students, staff, and alumni throughout their full institutional journey.',
+    title: 'Lifelong Institutional Belonging',
+    body: 'Sustain a vibrant academic community far beyond enrolment. Continuously inspire students and alumni through a connected, value-based institutional journey.',
   },
 ];
 
-export function MarketingProblemSection() {
+export function EngagementProblemSection() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,11 +37,11 @@ export function MarketingProblemSection() {
         {/* Section headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Opportunity
+            Institutional Opportunity
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Orchestrating authentic institutional connections at scale.</h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-            Move beyond generic mass communication. Empower your marketing teams to craft compelling, evidence-led narratives that resonate across every digital touchpoint.
+            Surmount the limitations of generic outreach. Empower your engagement teams to craft compelling, mission-driven narratives that resonate across every institutional touchpoint.
           </p>
         </div>
 

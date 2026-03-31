@@ -3,30 +3,30 @@ import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 
 import { 
-  DevicesOutlined, 
-  PublicOutlined, 
-  TrendingUpOutlined 
+  SensorsOutlined, 
+  FavoriteBorderOutlined, 
+  SupportAgentOutlined 
 } from '@mui/icons-material';
 
 const cards = [
   {
-    icon: <DevicesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Meeting Digital Expectations',
-    body: 'Today’s applicants demand the seamless, hyper-personalised digital experiences they encounter in everyday e-commerce. Legacy systems create friction that drives top talent away.',
+    icon: <SensorsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Predictive Academic Resilience',
+    body: 'Overcome the risks of reactive administration. Leverage data-informed early warning signals to identify students requiring strategic support before they reach a crisis point.',
   },
   {
-    icon: <PublicOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Global Talent Acquisition',
-    body: 'In an intensely competitive, borderless education market, relying on passive application portals is no longer viable. Proactive, targeted outreach is essential to attract international candidates.',
+    icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Holistic Institutional Belonging',
+    body: 'Academic flourishing extends beyond the lecture theatre. Deliver integrated enablement that addresses the complete academic, social, and wellbeing journey of every learner.',
   },
   {
-    icon: <TrendingUpOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Maximising Enrolment Yield',
-    body: 'An offer of admission does not guarantee a student on campus. Maintaining continuous, meaningful engagement during the critical window between offer and enrolment is vital to prevent drop-offs.',
+    icon: <SupportAgentOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Optimising Academic Support',
+    body: 'Empower your advisors to lead with impact. Reduce administrative fragmentation, allowing for deeply personalised, high-value engagement that secures student progression.',
   },
 ];
 
-export function RecruitmentProblemSection() {
+export function FlourishingProblemSection() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,11 +37,11 @@ export function RecruitmentProblemSection() {
         {/* Section headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Opportunity
+            Institutional Opportunity
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Empowering prospective students from day one.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Cultivating an environment for academic flourishing.</h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-            Eliminate administrative friction. Give your admissions team the intelligent tools they need to focus on what matters most: discovering and nurturing global talent.
+            Surmounting the barriers to academic progression. Equip your advising and enablement teams with the strategic insights required to foster a truly resilient academic community.
           </p>
         </div>
 
