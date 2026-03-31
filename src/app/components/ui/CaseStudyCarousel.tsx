@@ -1,20 +1,20 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Dialog, 
-  DialogContent, 
+import {
+  Dialog,
+  DialogContent,
   DialogClose,
 } from './dialog';
 import { Input } from './input';
 import { Button } from './button';
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  X, 
-  ChevronLeft, 
-  ChevronRight, 
-  Mail, 
-  Phone, 
+import {
+  ArrowRight,
+  CheckCircle2,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Mail,
+  Phone,
   SendHorizonal,
   GraduationCap,
   AlertCircle,
@@ -233,7 +233,7 @@ interface CaseStudyCarouselProps {
   initialActiveIdx?: number;
 }
 
-import { ExpertFooter } from './ExpertFooterAccordion';
+import { ExpertFooterAccordion } from './ExpertFooterAccordion';
 
 export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselProps) {
   const [activeIdx, setActiveIdx] = useState(initialActiveIdx + CARDS.length);
@@ -272,7 +272,7 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
         setIsJumping(true);
         setActiveIdx(activeIdx - CARDS.length);
         setTimeout(() => setIsJumping(false), 50);
-      }, 500); 
+      }, 500);
     } else if (activeIdx < CARDS.length) {
       timer = setTimeout(() => {
         setIsJumping(true);
@@ -284,15 +284,12 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
     return () => clearTimeout(timer);
   }, [activeIdx]);
 
-  // Check for canvas preview mode (Iframe detection is 100% reliable)
-  const isNoAnim = typeof window !== 'undefined' ? (window.self !== window.top || window.location.href.includes('no-anim=true')) : false;
-
   // Auto-play logic
   useEffect(() => {
-    if (isPaused || isMobile || isJumping || isNoAnim) return;
+    if (isPaused || isMobile || isJumping) return;
     const interval = setInterval(nextSlide, 3500);
     return () => clearInterval(interval);
-  }, [isPaused, isMobile, nextSlide, isJumping, isNoAnim]);
+  }, [isPaused, isMobile, nextSlide, isJumping]);
 
   // Synchronize carousel with modal selection
   useEffect(() => {
@@ -372,11 +369,10 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                   filter: isActive ? "blur(0px)" : "blur(1px)",
                 }}
                 whileHover={isActive ? { scale: 1.03, transition: { duration: 0.2 } } : {}}
-                whileTap={isActive ? { scale: 0.98 } : {}}
                 transition={isJumping ? { duration: 0 } : { duration: 0.5, ease: "easeInOut" }}
                 className={`group bg-white rounded-[32px] p-8 sm:p-10 flex flex-col gap-6 shrink-0 cursor-pointer select-none border border-neutral-100 transition-shadow duration-300
                   ${isActive
-                    ? "w-[85vw] sm:w-[620px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-2xl z-10"
+                    ? "w-[85vw] sm:w-[620px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)] z-10"
                     : "w-[85vw] sm:w-[620px]"
                   }`}
               >
@@ -398,9 +394,9 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                     <div key={mIdx} className="flex items-center gap-3">
                       <div className="h-1.5 w-1.5 rounded-full bg-neutral-200 shrink-0"></div>
                       <span className="text-[14px] text-neutral-600 font-medium leading-tight text-left">
-                        {metric.split(/(\d+(?:,\d+)*[\+%]?)/).map((part, i) => 
-                          /(\d+(?:,\d+)*[\+%]?)/.test(part) 
-                            ? <strong key={i} className="font-bold text-black">{part}</strong> 
+                        {metric.split(/(\d+(?:,\d+)*[\+%]?)/).map((part, i) =>
+                          /(\d+(?:,\d+)*[\+%]?)/.test(part)
+                            ? <strong key={i} className="font-bold text-black">{part}</strong>
                             : part
                         )}
                       </span>
@@ -428,7 +424,7 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
           <button
             key={i}
             onClick={() => handleSelect(i)}
-            aria-label={`Go to slide ${i+1}`}
+            aria-label={`Go to slide ${i + 1}`}
             className={`h-[4px] rounded-full transition-all duration-500 ease-in-out cursor-pointer border-none p-0 outline-none
               ${i === logicalIdx ? 'w-10 bg-black' : 'w-5 bg-neutral-100 hover:bg-neutral-200'}`}
           ></button>
@@ -436,13 +432,13 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
       </div>
 
       <Dialog open={openModal} onOpenChange={setOpenModal}>
-        <DialogContent className="sm:max-w-[750px] p-0 overflow-hidden rounded-[24px] sm:rounded-[40px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
+        <DialogContent className="sm:max-w-6xl w-full p-0 overflow-hidden rounded-[24px] sm:rounded-[32px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
           {selectedIdx !== null && (
             <div className="relative h-full flex flex-col overflow-hidden">
               {/* Floating Global Close Button - Persistent with dynamic contrast */}
               <DialogClose asChild>
-                <motion.button 
-                  animate={{ 
+                <motion.button
+                  animate={{
                     backgroundColor: isNearForm ? "#000000" : "#ffffff",
                     color: isNearForm ? "#ffffff" : "#000000",
                     borderColor: isNearForm ? "#000000" : "#e5e5e5"
@@ -456,9 +452,9 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
               </DialogClose>
 
               {/* Header - Collapses height on scroll toward form */}
-              <motion.div 
+              <motion.div
                 initial={false}
-                animate={{ 
+                animate={{
                   height: isNearForm ? 0 : (window.innerWidth < 640 ? 80 : 112),
                   opacity: isNearForm ? 0 : 1,
                 }}
@@ -470,7 +466,7 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                   <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[100px] font-bold text-white/[0.05] pointer-events-none select-none">
                     {CARDS[selectedIdx].initial}
                   </div>
-                  
+
                   <div className="relative z-10 w-full text-left">
                     <span className="text-neutral-500 text-[9px] uppercase tracking-[2px] font-bold mb-0.5 block">
                       Case Study Success Story
@@ -483,22 +479,22 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
               </motion.div>
 
               {/* Scrollable Middle Content */}
-              <div 
+              <div
                 ref={scrollContainerRef}
                 onScroll={(e) => {
                   const target = e.currentTarget;
                   const scrollPos = target.scrollTop;
                   const scrollHeight = target.scrollHeight;
                   const clientHeight = target.clientHeight;
-                  
+
                   // Refined logic: hide when user scrolls down and is in the bottom area
                   const nearBottom = scrollHeight - scrollPos <= clientHeight + 450;
                   setIsNearForm(scrollPos > 100 && nearBottom);
                 }}
                 className="flex-1 overflow-y-auto w-full bg-white min-h-0 relative z-[50] scroll-smooth"
               >
-                <motion.div 
-                  animate={{ 
+                <motion.div
+                  animate={{
                     paddingTop: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48),
                     paddingBottom: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48)
                   }}
@@ -545,10 +541,10 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                           "{CARDS[selectedIdx].fullStory.content.reference.text}"
                         </p>
                         <footer className="flex items-center gap-4 relative z-10">
-                           <div className="h-px w-8 bg-neutral-200"></div>
-                           <cite className="not-italic font-bold text-black text-sm">
-                             {CARDS[selectedIdx].fullStory.content.reference.author}
-                           </cite>
+                          <div className="h-px w-8 bg-neutral-200"></div>
+                          <cite className="not-italic font-bold text-black text-sm">
+                            {CARDS[selectedIdx].fullStory.content.reference.author}
+                          </cite>
                         </footer>
                       </blockquote>
                     </div>
@@ -578,14 +574,14 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                   )}
 
                   {/* Form - Scrolling target */}
-                  <ExpertFooter />
+                  <ExpertFooterAccordion />
                 </motion.div>
               </div>
 
               {/* Fixed Footer - Collapses height on scroll toward form */}
-              <motion.div 
+              <motion.div
                 initial={false}
-                animate={{ 
+                animate={{
                   height: isNearForm ? 0 : (window.innerWidth < 640 ? 76 : 88),
                   opacity: isNearForm ? 0 : 1,
                 }}
@@ -599,15 +595,15 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                       {selectedIdx + 1} / {CARDS.length}
                     </div>
                     <div className="flex gap-2">
-                      <button 
-                        onClick={handlePrevCase} 
+                      <button
+                        onClick={handlePrevCase}
                         className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90"
                         aria-label="Previous case"
                       >
                         <ChevronLeft className="w-5 h-5" />
                       </button>
-                      <button 
-                        onClick={handleNextCase} 
+                      <button
+                        onClick={handleNextCase}
                         className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90"
                         aria-label="Next case"
                       >

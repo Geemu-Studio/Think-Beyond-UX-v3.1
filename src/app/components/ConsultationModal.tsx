@@ -1,341 +1,303 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Send, CheckCircle2, Lock, X } from 'lucide-react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { ImageWithFallback } from './figma/ImageWithFallback';
+import { useConsultationForm } from '../hooks/useConsultationForm';
+import { 
+  UK_UNIVERSITIES, 
+  IconEmail, 
+  IconPhone, 
+  IconWhatsApp, 
+  IconMessenger 
+} from './ui/consultation/SharedConsultationUI';
 
-function AvatarSilhouette({ initials, offset }: { initials: string; offset: string }) {
-  return (
-    <div
-      className="w-11 h-11 rounded-full border-2 border-white bg-neutral-200 flex items-center justify-center shrink-0 absolute"
-      style={{ left: offset }}
-    >
-      <span className="text-[12px] text-neutral-600 select-none" style={{ fontWeight: 700 }}>
-        {initials}
-      </span>
-    </div>
-  );
-}
+const EXPERT_PHOTO =
+  'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS11c2VyLWljb24gbHVjaWRlLWNpcmNsZS11c2VyIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTAiIHI9IjMiLz48cGF0aCBkPSJNNyAyMC42NjJWMTlhMiAyIDAgMCAxIDItMmg2YTIgMiAwIDAgMSAyIDJ2MS42NjIiLz48L3N2Zz4=';
 
-function IconEmail() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="1" y="3" width="12" height="8" rx="1.5" />
-      <path d="M1 4.5l6 4 6-4" />
-    </svg>
-  );
-}
-function IconPhone() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M2 2c0 0 1-1.5 2-1.5.4 0 .8.4 1.2.9L6.5 3.5c.4.5.4.9 0 1.3L5.6 5.8C6 7 7 8 8.2 8.4l.9-.9c.4-.4.8-.4 1.3 0l2 1.5c.5.4.9.8.9 1.2 0 1-1.5 2-1.5 2C5.5 13.5.5 8.5.5 2z" />
-    </svg>
-  );
-}
-function IconWhatsApp() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="1.4" />
-      <path d="M9.5 8.8c-.2.5-.7.9-1.2 1-1.2.2-3.3-1.3-3.8-2.5-.2-.5-.1-.9.2-1.3l.3-.3c.1-.2.1-.4 0-.5L4.5 4.7c-.2-.2-.4-.2-.6-.1-.6.4-1 1.1-.9 1.9.2 1.5 1.9 3.4 3.6 4 .8.3 1.7.1 2.3-.5.2-.2.3-.4.2-.6l-.4-.4c-.1-.2-.3-.2-.5-.1l-.3.3" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
-    </svg>
-  );
-}
-function IconMessenger() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="1.4" />
-      <path d="M3.5 9.5l2-2.5 1.5 1.5 2.5-3" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-const CONTACTS = [
-  { icon: <IconEmail />, label: 'marcin@thinkbeyond.cloud', href: 'mailto:marcin@thinkbeyond.cloud' },
-  { icon: <IconPhone />, label: '+48 502 227 174', href: 'tel:+48502227174' },
-  { icon: <IconWhatsApp />, label: 'WhatsApp', href: 'https://wa.me/48502227174' },
-  { icon: <IconMessenger />, label: 'Messenger', href: 'https://m.me/thinkbeyond' },
-];
-
-const CONTENT_MAP: Record<string, { h2: string, formTitle: string, button: string }> = {
-  '/': {
-    h2: "About us: Your dedicated higher education transformation team.",
-    formTitle: "Let's talk about the complete student experience at your institution.",
-    button: "Speak with Our Team"
-  },
-  '/recruitment': {
-    h2: "About us: Your dedicated student recruitment and enrolment team.",
-    formTitle: "Let's talk about your student recruitment and enrolment strategy.",
-    button: "Schedule a Strategic Review"
-  },
-  '/student-success': {
-    h2: "About us: Your dedicated student success and retention team.",
-    formTitle: "Let's talk about student success and retention at your institution.",
-    button: "Schedule a Strategic Review"
-  },
-  '/marketing': {
-    h2: "About us: Your dedicated university marketing and communications team.",
-    formTitle: "Let's talk about your university's marketing and communications strategy.",
-    button: "Request a Marketing Consultation"
-  },
-  '/alumni': {
-    h2: "About us: Your dedicated alumni relations and advancement team.",
-    formTitle: "Let's talk about alumni engagement and lifelong learning at your institution.",
-    button: "Request an Alumni Strategy Call"
-  }
-};
 
 interface ConsultationModalProps {
   isOpen: boolean;
   onClose: () => void;
-  pathname: string;
+  pathname?: string;
+}
+
+/* ── Avatar stack component for Trust ── */
+function AvatarStack() {
+  const avatars = [
+    { initials: 'AK', color: 'bg-neutral-200' },
+    { initials: 'MB', color: 'bg-neutral-300' },
+    { initials: 'PW', color: 'bg-neutral-100' },
+  ];
+
+  return (
+    <div className="flex -space-x-2 mb-1">
+      {avatars.map((avatar, i) => (
+        <div
+          key={i}
+          className={`w-10 h-10 rounded-full border-2 border-white ${avatar.color} flex items-center justify-center shrink-0 shadow-sm`}
+        >
+          <span className="text-[10px] text-neutral-600 font-bold select-none">
+            {avatar.initials}
+          </span>
+        </div>
+      ))}
+      <div className="w-10 h-10 rounded-full border-2 border-white bg-black flex items-center justify-center shrink-0 shadow-sm z-10">
+        <span className="text-[9px] text-white font-bold">+17</span>
+      </div>
+    </div>
+  );
+}
+
+/* ── Standardized Contact Links ── */
+function ContactLink({ icon: Icon, label, href }: { icon: any; label: string; href: string }) {
+  return (
+    <a
+      href={href}
+      target={href.startsWith('http') ? '_blank' : undefined}
+      rel="noopener noreferrer"
+      className="flex items-center gap-3 text-[13px] text-neutral-600 hover:text-black transition-all group py-1"
+    >
+      <div className="w-8 h-8 flex items-center justify-center border border-zinc-200 bg-white rounded-full group-hover:border-black group-hover:bg-neutral-50 transition-all shrink-0">
+        <Icon className="w-3.5 h-3.5" />
+      </div>
+      <span className="font-medium tracking-tight whitespace-nowrap">{label}</span>
+    </a>
+  );
 }
 
 export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationModalProps) {
-  const [form, setForm] = useState({ name: '', university: '', email: '', gdpr: false });
-  const [submitted, setSubmitted] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const {
+    form,
+    setForm,
+    submitted,
+    setSubmitted,
+    errors,
+    isFormValid,
+    handleSubmit,
+    resetForm
+  } = useConsultationForm();
 
+  // Reset form when modal opens/closes
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-      setSubmitted(false);
+    if (!isOpen) {
+      setTimeout(resetForm, 300); // Wait for exit animation
     }
-    return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
+  }, [isOpen, resetForm]);
 
   if (!isOpen) return null;
 
-  const content = CONTENT_MAP[pathname] || CONTENT_MAP['/'];
-
-  const validate = () => {
-    const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = 'This field is required';
-    if (!form.university.trim()) e.university = 'This field is required';
-    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Please enter a valid email address';
-    if (!form.gdpr) e.gdpr = 'Your consent is required to proceed';
-    return e;
-  };
-
-  const isFormValid = 
-    form.name.trim() !== '' && 
-    form.university.trim() !== '' && 
-    form.email.trim() !== '' && 
-    /\S+@\S+\.\S+/.test(form.email) && 
-    form.gdpr;
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length) { setErrors(errs); return; }
-    setSubmitted(true);
-  };
-
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-      
+
       {/* Modal Container */}
-      <div className="relative w-full max-w-5xl bg-neutral-100 rounded-3xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden animate-in zoom-in-95 duration-300">
-        
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        className="relative w-full max-w-6xl bg-neutral-100 rounded-[24px] sm:rounded-[32px] shadow-2xl flex flex-col max-h-[90vh] overflow-hidden"
+      >
+
         {/* Close Button UI */}
-        <button 
+        <button
           onClick={onClose}
-          className="absolute top-6 right-6 z-[110] w-10 h-10 flex items-center justify-center rounded-full bg-white text-neutral-500 hover:text-black hover:bg-neutral-50 transition-all shadow-sm active:scale-95"
-          aria-label="Close modal"
+          className="absolute right-8 top-8 z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white text-black hover:scale-105 transition-all shadow-lg active:scale-95 cursor-pointer backdrop-blur-md border border-black/5"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M15 5L5 15M5 5l10 10" />
-          </svg>
+          <X className="w-6 h-6" strokeWidth={2.5} />
         </button>
 
-        {/* Scrollable Content Area */}
-        <div className="overflow-y-auto w-full p-8 sm:p-12">
-          
-          {/* Header */}
-          <div className="text-left mb-10 pr-12">
-            <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-              Free Strategic Consultation
-            </span>
-            <h2 className="mt-3 text-[30px] sm:text-[36px] lg:text-[40px] leading-[1.15] tracking-[-1.5px] text-black">
-              {content.h2}
-            </h2>
-          </div>
+        <div className="flex-1 flex flex-col lg:flex-row overflow-hidden h-full">
+          {/* Left Column (Content) - 5/12 */}
+          <div className="lg:w-[42%] bg-zinc-50 p-10 sm:p-14 flex flex-col gap-10 overflow-y-auto border-r border-zinc-200 scroll-smooth">
+            <div className="text-left">
+              <span className="text-[11px] text-neutral-400 uppercase tracking-[2px] font-bold block mb-4">
+                Strategic Mission Centre
+              </span>
+              <h2 className="text-[32px] sm:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">
+                Strategic Mission: Student Success & Institutional Growth.
+              </h2>
+            </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-            
-            {/* Left Column (Experts Info) */}
-            <div className="flex flex-col gap-8">
-              <div className="bg-white rounded-[20px] border border-[#F0F0F0] p-7 flex flex-col gap-5">
+            <div className="flex flex-col gap-10">
+              <div className="bg-white p-8 rounded-[28px] border border-zinc-200 shadow-sm flex flex-col gap-5 text-left">
                 <div className="flex items-center gap-5">
-                  <div className="relative h-11 shrink-0" style={{ width: '84px' }}>
-                    <AvatarSilhouette initials="AK" offset="0px" />
-                    <AvatarSilhouette initials="MB" offset="26px" />
-                    <AvatarSilhouette initials="PW" offset="52px" />
+                  <AvatarStack />
+                  <div>
+                    <h3 className="text-[20px] font-bold tracking-tight text-black mb-0.5">20+ Experts</h3>
+                    <p className="text-[13px] text-neutral-500 font-medium uppercase tracking-[0.5px]">Institutional Strategy Architects</p>
                   </div>
-                  <p className="text-[22px] text-black tracking-[-0.6px]" style={{ fontWeight: 800 }}>
-                    20+ Experts<br />
-                    <span style={{ fontWeight: 400 }} className="text-neutral-500 text-[15px] tracking-normal">Salesforce</span>
-                  </p>
                 </div>
-                <p className="text-[14px] text-neutral-600 leading-[1.7]">
-                  Your institution's transformation will be guided by our full team of certified Salesforce architects and developers.
+                <p className="text-[14px] text-neutral-600 leading-relaxed font-medium">
+                  Your institution&apos;s transformation will be guided by our full team of certified Salesforce architects.
                 </p>
               </div>
 
-              <div className="border-t border-neutral-300" />
-
-              <div className="flex flex-col gap-5">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-neutral-300 shrink-0 bg-neutral-200 flex items-center justify-center">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="20" cy="15" r="8" fill="#9CA3AF" />
-                      <path d="M4 38c0-8.837 7.163-16 16-16s16 7.163 16 16" fill="#9CA3AF" />
-                    </svg>
+              <div className="flex flex-col gap-4 text-left">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-200 bg-zinc-100 flex items-center justify-center shadow-sm shrink-0">
+                    <ImageWithFallback 
+                      src={EXPERT_PHOTO} 
+                      alt="Marcin Pieńkowski"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
-                    <p className="text-[15px] text-black" style={{ fontWeight: 700 }}>Marcin Pieńkowski</p>
-                    <p className="text-[13px] text-neutral-500 leading-[1.5] mt-0.5">
-                      Digital Transformation Strategist
-                    </p>
+                    <h4 className="text-[14px] font-bold text-black tracking-tight">Marcin Pieńkowski</h4>
+                    <p className="text-[11px] text-neutral-500 uppercase tracking-[0.5px]">Lead Institutional Strategist</p>
                   </div>
                 </div>
 
-                <div className="relative bg-white rounded-[16px] border border-[#F0F0F0] p-5">
-                  <div className="absolute -top-3 left-8 w-5 h-3 overflow-hidden">
-                    <div className="w-4 h-4 bg-white border-t border-l border-[#F0F0F0] rotate-45 translate-y-1 translate-x-1" />
-                  </div>
-                  <p className="text-[14px] text-neutral-700 leading-[1.75] italic">
-                    "Let's start with strategy. I won't sell you another IT system. I'll show you how to build the institutional foundation your ambitions deserve."
+                <div className="relative bg-white border border-zinc-200 rounded-[20px] p-6 shadow-sm">
+                  <div className="absolute -top-[7px] left-6 w-3.5 h-3.5 bg-white border-t border-l border-zinc-200 rotate-45" />
+                  <p className="text-[14px] text-neutral-700 leading-relaxed italic">
+                    &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
                   </p>
                 </div>
               </div>
 
-              <div className="border-t border-neutral-200 pt-6 flex flex-col gap-4">
-                <p className="text-[12px] text-neutral-400 uppercase tracking-[1.2px]" style={{ fontWeight: 700 }}>
+              <div className="border-t border-zinc-200 pt-6 flex flex-col gap-4 text-left">
+                <p className="text-[12px] text-neutral-400 uppercase tracking-[1.2px] font-bold">
                   Prefer direct contact?
                 </p>
-                <ul className="flex flex-col gap-2.5">
-                  {CONTACTS.map((item) => (
-                    <li key={item.label}>
-                      <a
-                        href={item.href}
-                        target={item.href.startsWith('http') ? '_blank' : undefined}
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 text-[14px] text-neutral-700 hover:text-black transition-colors group"
-                        style={{ fontWeight: 500 }}
-                      >
-                        <span className="w-8 h-8 flex items-center justify-center border border-neutral-300 bg-white rounded-full group-hover:border-black transition-colors shrink-0">
-                          {item.icon}
-                        </span>
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Right Column (Form) */}
-            <div className="bg-white rounded-[24px] border border-[#F0F0F0] p-8 flex flex-col gap-6 shadow-sm">
-              <div>
-                <h3 className="text-[24px] sm:text-[26px] leading-[1.2] tracking-[-0.8px] text-black">
-                  {content.formTitle}
-                </h3>
-              </div>
-
-              {submitted ? (
-                <div className="flex flex-col items-center gap-4 py-8 text-center">
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <circle cx="24" cy="24" r="24" fill="#111" />
-                    <path d="M14 24l8 8 12-12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <p className="text-[18px] text-black" style={{ fontWeight: 700 }}>Thank you!</p>
-                  <p className="text-[14px] text-neutral-500">
-                    Marcin will be in touch within 24 business hours.
-                  </p>
+                <div className="flex flex-col gap-1.5">
+                  <ContactLink icon={IconEmail} label="marcin@thinkbeyond.cloud" href="mailto:marcin@thinkbeyond.cloud" />
+                  <ContactLink icon={IconPhone} label="+48 502 227 174" href="tel:+48502227174" />
+                  <ContactLink icon={IconWhatsApp} label="WhatsApp" href="https://wa.me/48502227174" />
+                  <ContactLink icon={IconMessenger} label="Messenger" href="https://m.me/thinkbeyond" />
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[13px] text-neutral-700" style={{ fontWeight: 500 }}>
-                      Full name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Professor Jane Smith"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className={`rounded-xl px-4 py-3 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.name ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
-                    />
-                    {errors.name && <p className="text-[12px] text-neutral-700">{errors.name}</p>}
-                  </div>
+              </div>
 
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[13px] text-neutral-700" style={{ fontWeight: 500 }}>
-                      Institution name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Your university"
-                      list="uk-universities"
-                      value={form.university}
-                      onChange={(e) => setForm({ ...form, university: e.target.value })}
-                      className={`rounded-xl px-4 py-3 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.university ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
-                    />
-                    {errors.university && <p className="text-[12px] text-neutral-700">{errors.university}</p>}
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[13px] text-neutral-700" style={{ fontWeight: 500 }}>
-                      Institutional email address
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="j.smith@university.ac.uk"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className={`rounded-xl px-4 py-3 text-[14px] text-black outline-none transition-colors placeholder:text-neutral-400 border ${errors.email ? 'border-neutral-400 bg-neutral-50' : 'border-transparent bg-neutral-100 focus:border-black focus:bg-white'}`}
-                    />
-                    {errors.email && <p className="text-[12px] text-neutral-700">{errors.email}</p>}
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={form.gdpr}
-                        onChange={(e) => setForm({ ...form, gdpr: e.target.checked })}
-                        className="mt-0.5 accent-black w-4 h-4 shrink-0"
-                      />
-                      <span className="text-[13px] text-neutral-600 leading-[1.6]">
-                        I consent to the processing of my personal data in accordance with GDPR for the purpose of responding to my enquiry.
-                      </span>
-                    </label>
-                    {errors.gdpr && <p className="text-[12px] text-neutral-700 ml-7">{errors.gdpr}</p>}
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={!isFormValid}
-                    className={`w-full py-4 text-[15px] transition-all duration-300 rounded-full font-semibold shadow-sm
-                      ${isFormValid 
-                        ? 'bg-black text-white hover:bg-neutral-800 border border-black cursor-pointer' 
-                        : 'bg-neutral-200 text-neutral-400 border border-neutral-200 cursor-not-allowed opacity-70'}`}
-                  >
-                    {content.button}
-                  </button>
-
-                  <div className="flex items-center justify-center gap-2 text-[12px] text-neutral-400">
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="5.5" width="9" height="6.5" rx="1" />
-                      <path d="M4.5 5.5V3.5a2 2 0 0 1 4 0v2" />
-                    </svg>
-                    <span>Your data is 100% secure.</span>
-                  </div>
-                </form>
-              )}
             </div>
+          </div>
 
+          {/* Right Column (Form) - 7/12 */}
+          <div className="flex-1 bg-white p-10 sm:p-14 overflow-y-auto overflow-x-hidden min-h-0 flex flex-col items-center justify-center">
+            <AnimatePresence mode="wait">
+              {submitted ? (
+                <motion.div 
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.1 }}
+                  className="w-full max-w-md flex flex-col items-center text-center gap-8 py-10"
+                >
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", damping: 12, stiffness: 200 }}
+                    className="w-24 h-24 bg-black rounded-full flex items-center justify-center shadow-2xl mb-2"
+                  >
+                    <CheckCircle2 className="w-12 h-12 text-white" />
+                  </motion.div>
+                  <div>
+                    <h3 className="text-[32px] font-bold tracking-tight text-black mb-4">Strategic Dialogue Initiated</h3>
+                    <p className="text-neutral-500 text-lg leading-relaxed">
+                      A dedicated strategist will coordinate your strategy session within 24 business hours.
+                    </p>
+                  </div>
+                  <Button
+                    variant="link"
+                    size="lg"
+                    onClick={() => setSubmitted(false)}
+                    className="text-neutral-400 hover:text-black transition-colors"
+                  >
+                    Send another message
+                  </Button>
+                </motion.div>
+              ) : (
+                <motion.div 
+                  key="form"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="w-full max-w-[480px] flex flex-col gap-10"
+                >
+                  <div className="flex flex-col gap-3 text-left">
+                   <h3 className="text-[28px] font-bold tracking-tight text-black text-left">
+                      Initiate Strategic Review
+                    </h3>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full text-left" noValidate>
+                    <div className="flex flex-col gap-6">
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-[13px] text-neutral-700 font-bold ml-1">Full name</label>
+                        <Input
+                          placeholder="Professor Jane Smith"
+                          value={form.name}
+                          onChange={(e) => setForm({ ...form, name: e.target.value })}
+                          error={!!errors.name}
+                        />
+                        {errors.name && <p className="text-[12px] text-black font-bold ml-1">{errors.name}</p>}
+                      </div>
+
+                      <div className="flex flex-col gap-1.5 text-black">
+                        <label className="text-[13px] text-neutral-700 font-bold ml-1">Institution name</label>
+                        <Input
+                          placeholder="Start typing institution name..."
+                          list="modal-universities"
+                          value={form.university}
+                          onChange={(e) => setForm({ ...form, university: e.target.value })}
+                          error={!!errors.university}
+                        />
+                        {errors.university && <p className="text-[12px] text-black font-bold ml-1">{errors.university}</p>}
+                        <datalist id="modal-universities">
+                          {UK_UNIVERSITIES.map((name) => (
+                            <option key={name} value={name} />
+                          ))}
+                        </datalist>
+                      </div>
+
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-[13px] text-neutral-700 font-bold ml-1">Institutional email address</label>
+                        <Input
+                          type="email"
+                          placeholder="j.smith@university.ac.uk"
+                          value={form.email}
+                          onChange={(e) => setForm({ ...form, email: e.target.value })}
+                          error={!!errors.email}
+                        />
+                        {errors.email && <p className="text-[12px] text-black font-bold ml-1">{errors.email}</p>}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-2 py-1">
+                      <label className="flex items-start gap-4 cursor-pointer group">
+                        <input
+                          type="checkbox"
+                          checked={form.gdpr}
+                          onChange={(e) => setForm({ ...form, gdpr: e.target.checked })}
+                          className="mt-1 accent-black w-4 h-4 shrink-0 cursor-pointer"
+                        />
+                        <span className="text-[13px] text-neutral-500 leading-relaxed group-hover:text-black transition-colors">
+                          I consent to the processing of data in accordance with GDPR.
+                        </span>
+                      </label>
+                      {errors.gdpr && <p className="text-[12px] text-black font-bold ml-8">{errors.gdpr}</p>}
+                    </div>
+
+                    <Button
+                      type="submit"
+                      disabled={!isFormValid}
+                      size="lg"
+                      fullWidth={true}
+                      className="py-8 shadow-xl hover:shadow-2xl transition-all"
+                    >
+                      Initiate Strategic Review
+                      <Send className="ml-2 w-4 h-4" />
+                    </Button>
+
+                    <div className="flex items-center justify-center gap-2 text-[11px] text-neutral-400 mt-2">
+                      <Lock className="w-3 h-3" />
+                      <span>Your data is 100% secure. No spam, ever.</span>
+                    </div>
+                  </form>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -11,18 +11,18 @@ import {
 const cards = [
   {
     icon: <TrendingUpOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Transcending Transactional Giving',
-    body: 'Modern alumni expect genuine relationships, not just funding requests. Cultivating philanthropic growth requires understanding their unique journeys, passions, and professional milestones.',
+    title: 'Cultivating Enduring Philanthropy',
+    body: 'Today\'s graduates seek genuine relationships, not just funding requests. Cultivating philanthropic growth requires understanding their unique academic journeys, passions, and professional milestones.',
   },
   {
     icon: <MenuBookOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'The Rise of Lifelong Learning',
-    body: 'The traditional degree is evolving. Alumni continuously seek to upskill through microcredentials and short programmes to stay competitive in a dynamic global economy.',
+    title: 'Focus on Enduring Academic Achievement',
+    body: 'The traditional degree is evolving into a foundational academic qualification. Graduates continuously seek to upskill through microcredentials and postgraduate programmes to stay competitive.',
   },
   {
     icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Unifying the Graduate Experience',
-    body: 'Fragmented data prevents meaningful outreach. A disconnected approach means missed opportunities for mentorship, corporate partnerships, and community advocacy.',
+    title: 'Institutional Legacy & Connection',
+    body: 'Siloed institutional insights prevent meaningful outreach. A disconnected approach means missed opportunities for mentorship, corporate partnerships, and community advocacy.',
   },
 ];
 
@@ -39,9 +39,9 @@ export function AlumniProblemSection() {
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
             Opportunity
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Building a legacy of continuous engagement.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Building an institutional legacy of continuous engagement.</h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-            Move beyond transactional fundraising. Equip your advancement teams with the insights needed to foster a meaningful, lifelong connection with every graduate.
+            Move beyond transactional fundraising. Equip your philanthropic advancement teams with the insights needed to foster a lifelong connection with every graduate.
           </p>
         </div>
 

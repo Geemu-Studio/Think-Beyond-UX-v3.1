@@ -7,7 +7,7 @@ import { StudentSuccessSolutionSection } from './StudentSuccessSolutionSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
 import { StudentSuccessCaseStudySection } from './StudentSuccessCaseStudySection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
-import { StudentSuccessCTAFormSection } from './StudentSuccessCTAFormSection';
+import { CTAFormSection } from '../CTAFormSection';
 import { Footer } from '../Footer';
 
 export function StudentSuccessPage() {
@@ -22,7 +22,11 @@ export function StudentSuccessPage() {
         <CalculatorSection />
         <SecurityTrustSection />
         <StudentSuccessCaseStudySection />
-        <StudentSuccessCTAFormSection />
+        <CTAFormSection 
+          title="About us: Your dedicated student success and retention team."
+          formTitle="Let's talk about student success and retention at your institution."
+          buttonText="Schedule a Strategic Review"
+        />
         <OfferBridgeSection />
       </main>
       <Footer />

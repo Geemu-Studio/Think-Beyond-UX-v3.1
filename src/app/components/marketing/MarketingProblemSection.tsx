@@ -11,18 +11,18 @@ import {
 const cards = [
   {
     icon: <CampaignOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Breaking Through the Digital Noise',
-    body: 'Prospective students are overwhelmed by generic marketing. Standing out requires deeply relevant, timely, and authentic storytelling across their preferred channels.',
+    title: 'Resonating in a Global Academic Market',
+    body: 'Prospective students are overwhelmed by generic outreach. Standing out requires deeply relevant, timely, and authentic storytelling that aligns with their personal academic aspirations.',
   },
   {
     icon: <DataUsageOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Overcoming Data Silos',
-    body: 'Truly personalised communication is impossible when student data is fragmented across departments. Unified insights are the foundation of impactful engagement.',
+    title: 'Siloed Institutional Insights',
+    body: 'Personalised communication is impossible when student data is fragmented across departments. Unified insights are the foundation of impactful institutional engagement.',
   },
   {
     icon: <VolunteerActivismOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Building Lifelong Advocacy',
-    body: 'Marketing doesn\'t end at enrolment. Sustaining a vibrant university brand means continuously engaging students, staff, and alumni throughout their entire institutional journey.',
+    title: 'Enduring Institutional Affinity',
+    body: 'Engagement extends far beyond enrolment. Sustaining a vibrant university brand means continuously inspiring students, staff, and alumni throughout their full institutional journey.',
   },
 ];
 
@@ -39,9 +39,9 @@ export function MarketingProblemSection() {
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
             Opportunity
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Orchestrating authentic connections at scale.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Orchestrating authentic institutional connections at scale.</h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-            Move beyond generic mass communication. Empower your marketing teams to craft compelling, data-driven narratives that resonate across every digital touchpoint.
+            Move beyond generic mass communication. Empower your marketing teams to craft compelling, evidence-led narratives that resonate across every digital touchpoint.
           </p>
         </div>
 

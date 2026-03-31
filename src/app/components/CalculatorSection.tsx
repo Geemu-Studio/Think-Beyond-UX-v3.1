@@ -5,19 +5,19 @@ import { ConsultationModal } from './ConsultationModal';
 const stats = [
   {
     key: 'dropouts',
-    microcopy: 'Based on the European average student non-completion rate of 50%.',
+    microcopy: 'Based on average UK HE at-risk student withdrawal rates.',
     suffix: (v: number) => (
       <p className="text-[13px] text-neutral-600 leading-[1.6]">
-        Students at risk of missing their <span style={{ fontWeight: 600 }} className="text-black">full potential without proactive support</span>
+        Academic journeys requiring <span style={{ fontWeight: 600 }} className="text-black">strategic intervention and enablement</span>
       </p>
     ),
   },
   {
     key: 'saved',
-    microcopy: 'Modelled on retaining as few as 10% of at-risk students through early intervention.',
+    microcopy: 'Modelled on securing as few as 10% of at-risk academic journeys through early action.',
     suffix: (v: number) => (
       <p className="text-[13px] text-neutral-600 leading-[1.6]">
-        Students empowered to graduate through a <span style={{ fontWeight: 600 }} className="text-black">10% uplift in engagement</span>
+        Individual student outcomes secured through a <span style={{ fontWeight: 600 }} className="text-black">10% uplift in engagement</span>
       </p>
     ),
   },
@@ -65,7 +65,7 @@ export function CalculatorSection() {
             Institutional Impact
           </span>
           <h2 className="mt-3 text-[32px] sm:text-[40px] leading-[1.15] tracking-[-1.4px] text-black text-left">
-            Measuring the immense value of a fully supported, thriving student community.
+            Measuring the institutional value of academic flourishing.
           </h2>
         </div>
 
@@ -157,7 +157,7 @@ export function CalculatorSection() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-black px-6 py-3 text-[14px] text-black hover:bg-black hover:text-white transition-colors rounded-full"
               style={{ fontWeight: 600 }}
             >
-              Maximise Your Institutional Potential
+              Secure Your Institutional Legacy
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2 7h10M8 3l4 4-4 4" />
               </svg>
@@ -166,9 +166,9 @@ export function CalculatorSection() {
 
         </div>
       </div>
-      <ConsultationModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <ConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         pathname={location.pathname}
       />
     </section>

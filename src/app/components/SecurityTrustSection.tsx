@@ -31,7 +31,7 @@ const features = [
         />
       </svg>
     ),
-    heading: 'Proactive Cyber Resilience',
+    heading: 'Resilience Against Institutional Risk',
     body:
       'Fortify your digital campus against evolving cyber threats. Our architecture provides continuous, advanced protection so your institution can focus on academic innovation without disruption.',
     videoId: 'v5V6Y0_Q_8k',
@@ -69,7 +69,7 @@ const features = [
         <circle cx="14" cy="19.5" r="1.25" fill="currentColor" />
       </svg>
     ),
-    heading: 'Uncompromising Data Privacy',
+    heading: 'Academic Data Governance & Sovereignty',
     body:
       'From rigorous GDPR compliance to granular, role-based access controls, ensure that sensitive student, applicant, and staff information remains strictly confidential and fully governed.',
     videoId: 'qL6R8Z9W4_8',
@@ -143,18 +143,17 @@ export function SecurityTrustSection() {
                 className="text-[11px] text-neutral-500 uppercase tracking-[1.4px]"
                 style={{ fontWeight: 600 }}
               >
-                Security &amp; Compliance
+                Governance &amp; Security
               </span>
               <h2
                 className="mt-3 text-[30px] sm:text-[38px] leading-[1.15] tracking-[-1.2px] text-white"
                 style={{ fontWeight: 700 }}
               >
-                Enterprise-grade security and compliance.
+                Institutional Integrity &amp; Data Sovereignty.
               </h2>
             </div>
             <p className="text-[15px] text-neutral-400 leading-[1.75] max-w-xl text-balance">
-              Safeguarding your academic community's data with a robust,
-              GDPR-compliant infrastructure.
+              Protecting the sanctity of institutional data through advanced cyber resilience and rigorous governance.
             </p>
           </div>
         </div>
@@ -222,7 +221,7 @@ export function SecurityTrustSection() {
                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
                     </svg>
                   </div>
-                  <span>Discover our approach</span>
+                  <span>Review Governance Framework</span>
                 </div>
               </div>
             </div>
@@ -279,9 +278,9 @@ export function SecurityTrustSection() {
         onClick={(e) => {
           if (e.target === dialogRef.current) closeVideo();
         }}
-        className="fixed inset-0 m-auto p-0 rounded-2xl border-none bg-transparent shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] max-w-4xl w-[95%] aspect-video backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center transition-all duration-300"
+        className="fixed inset-0 m-auto p-0 rounded-[24px] sm:rounded-[32px] border-none bg-transparent shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] max-w-6xl w-[95%] aspect-video backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center transition-all duration-300"
       >
-        <div className="relative w-full h-full bg-black rounded-2xl overflow-hidden ring-1 ring-white/10">
+        <div className="relative w-full h-full bg-black rounded-[24px] sm:rounded-[32px] overflow-hidden ring-1 ring-white/10">
           <button 
             onClick={closeVideo}
             className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-all border border-white/10 group"

@@ -5,23 +5,23 @@ import { ConsultationModal } from './ConsultationModal';
 const slides = [
   {
     badge: "Salesforce Education Cloud · Certified Partner",
-    h1: "Empowering your academic community. Redefining the student journey from first enquiry to proud alumnus.",
-    p: "Move beyond administrative constraints. Build a connected, purpose-driven campus with Salesforce Education Cloud — unifying every touchpoint across the student lifecycle into one seamless, intelligent ecosystem.",
-    cta: "Begin Your Transformation →",
+    h1: "Institutional strategy for your academic community. Redefining the student journey from first enquiry to proud alumnus.",
+    p: "Move beyond administrative constraints. Build a connected, purpose-driven campus with Salesforce Education Cloud — unifying every touchpoint across the academic lifecycle into one seamless, intelligent ecosystem.",
+    cta: "Initiate Institutional Evolution →",
     micro: "Trusted by universities across the UK and Central Europe."
   },
   {
     badge: "Ethical AI for Higher Education · Powered by Agentforce",
     h1: "Academic heritage deserves a modern foundation. Lead with intelligence, guided by purpose.",
-    p: "From elite postgraduate programmes to expansive online learning communities — build truly data-informed experiences. Elevate recruitment outcomes, empower your staff with AI, and cultivate the belonging that keeps students thriving throughout their academic journey.",
-    cta: "Arrange a Strategic Consultation →",
+    p: "From elite postgraduate programmes to expansive online learning communities — build truly evidence-led academic experiences. Elevate recruitment outcomes, empower your staff with Agentforce, and cultivate the belonging that secures academic flourishing.",
+    cta: "Request Strategy Review →",
     micro: "Built on verified case studies from leading universities."
   },
   {
     badge: "A 360° Partnership for Your Institution",
     h1: "Every student deserves a university that walks beside them. Build relationships that endure beyond graduation.",
-    p: "A unified student view is the cornerstone of belonging. Deploy self-service portals, 24/7 AI-powered support, and connect your Admissions, Student Services, and Careers teams in one compassionate, responsive Salesforce environment.",
-    cta: "Discover Your Opportunity →",
+    p: "A unified view is the cornerstone of institutional belonging. Deploy self-service portals, 24/7 AI-powered enablement, and connect your Admissions, Student Services, and Careers teams in one compassionate, responsive environment.",
+    cta: "Explore Institutional Legacy →",
     micro: "No commitment required · We respond within 24 hours."
   }
 ];
@@ -93,9 +93,9 @@ export function HeroSection() {
 
       </div>
 
-      <ConsultationModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <ConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         pathname={location.pathname}
       />
     </section>

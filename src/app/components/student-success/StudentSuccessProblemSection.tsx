@@ -11,18 +11,18 @@ import {
 const cards = [
   {
     icon: <SensorsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Detecting the Invisible Signals',
-    body: 'Students rarely raise their hands before reaching a crisis point. Disjointed systems mean early warning signs are missed. Proactive identification is essential to intervene before a learner feels lost.',
+    title: 'Evidence-Led Early Warning',
+    body: 'At-risk students rarely raise their hands before reaching a crisis point. Disjointed institutional systems mean early warning signs are missed. Proactive identification is essential for timely academic intervention.',
   },
   {
     icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Championing Holistic Wellbeing',
-    body: 'True success encompasses mental health, financial stability, and a deep sense of belonging. Institutions must offer holistic support that addresses the complete lived experience of their students.',
+    title: 'Fostering Academic Flourishing',
+    body: 'True success encompasses mental health, financial stability, and a deep sense of belonging. Institutions must offer integrated enablement that addresses the complete lived experience of their learners.',
   },
   {
     icon: <SupportAgentOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Empowering Advisory Teams',
-    body: 'Dedicated support staff are often overwhelmed by administrative burdens. Freeing their time from manual processes allows for deeply personalised, meaningful advising that changes student trajectories.',
+    title: 'Institutional Enablement for Advisors',
+    body: 'Academic advisors are often overwhelmed by administrative burdens. Mitigating manual processes allows for deeply personalised, meaningful engagement that secures student progression.',
   },
 ];
 
@@ -39,9 +39,9 @@ export function StudentSuccessProblemSection() {
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
             Opportunity
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Cultivating resilience and academic excellence.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Cultivating an environment for academic flourishing.</h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-            Identify barriers before they become roadblocks. Equip your advising and support teams with the insights needed to foster a truly inclusive academic environment.
+            Eliminating barriers to academic progression. Equip your advising and enablement teams with the insights needed to foster a truly inclusive academic community.
           </p>
         </div>
 

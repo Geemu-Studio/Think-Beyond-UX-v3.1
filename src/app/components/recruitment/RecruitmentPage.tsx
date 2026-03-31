@@ -8,7 +8,7 @@ import { RecruitmentHeroSection } from './RecruitmentHeroSection';
 import { RecruitmentProblemSection } from './RecruitmentProblemSection';
 import { RecruitmentSolutionSection } from './RecruitmentSolutionSection';
 import { RecruitmentCaseStudySection } from './RecruitmentCaseStudySection';
-import { RecruitmentCTAFormSection } from './RecruitmentCTAFormSection';
+import { CTAFormSection } from '../CTAFormSection';
 
 export default function RecruitmentPage() {
   return (
@@ -22,7 +22,11 @@ export default function RecruitmentPage() {
         <CalculatorSection />
         <SecurityTrustSection />
         <RecruitmentCaseStudySection />
-        <RecruitmentCTAFormSection />
+        <CTAFormSection 
+          title="About us: Your dedicated student recruitment and enrolment team."
+          formTitle="Let's talk about your student recruitment and enrolment strategy."
+          buttonText="Schedule a Strategic Review"
+        />
         <OfferBridgeSection />
       </main>
       <Footer />

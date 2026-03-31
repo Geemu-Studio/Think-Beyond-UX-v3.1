@@ -17,7 +17,7 @@ import {
   ArrowRight,
   Target
 } from 'lucide-react';
-import { ExpertFooter } from './ui/ExpertFooterAccordion';
+import { ExpertFooterAccordion } from './ui/ExpertFooterAccordion';
 
 /* --- Shared Types --- */
 interface SWPSSection {
@@ -299,7 +299,7 @@ export function SocialProofBar() {
       </div>
 
       <Dialog open={openModal} onOpenChange={setOpenModal}>
-        <DialogContent className="sm:max-w-[750px] p-0 overflow-hidden rounded-[24px] sm:rounded-[40px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
+        <DialogContent className="sm:max-w-6xl p-0 overflow-hidden rounded-[24px] sm:rounded-[32px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
           <div className="relative h-full flex flex-col overflow-hidden">
 
             {/* Floating Global Close Button - Persistent with dynamic contrast */}
@@ -426,7 +426,7 @@ export function SocialProofBar() {
                     </div>
                   </div>
                 )}
-                <ExpertFooter />
+                <ExpertFooterAccordion />
               </motion.div>
             </div>
 

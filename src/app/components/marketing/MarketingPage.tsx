@@ -7,7 +7,7 @@ import { MarketingSolutionSection } from './MarketingSolutionSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
 import { MarketingCaseStudySection } from './MarketingCaseStudySection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
-import { MarketingCTAFormSection } from './MarketingCTAFormSection';
+import { CTAFormSection } from '../CTAFormSection';
 import { Footer } from '../Footer';
 
 export function MarketingPage() {
@@ -22,7 +22,11 @@ export function MarketingPage() {
         <CalculatorSection />
         <SecurityTrustSection />
         <MarketingCaseStudySection />
-        <MarketingCTAFormSection />
+        <CTAFormSection 
+          title="About us: Your dedicated university marketing and communications team."
+          formTitle="Let's talk about your university's marketing and communications strategy."
+          buttonText="Request a Marketing Consultation"
+        />
         <OfferBridgeSection />
       </main>
       <Footer />

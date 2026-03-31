@@ -1,165 +1,261 @@
-import React, { useState } from 'react';
-import { Mail, Phone, CheckCircle2 } from 'lucide-react';
+import React from 'react';
 import { Input } from './input';
 import { Button } from './button';
 import { motion, AnimatePresence } from 'motion/react';
+import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { Send, CheckCircle2, Lock, X, Plus, Minus } from 'lucide-react';
+import { useConsultationForm } from '../../hooks/useConsultationForm';
+import { 
+  UK_UNIVERSITIES, 
+  IconEmail, 
+  IconPhone, 
+  IconWhatsApp, 
+  IconMessenger 
+} from './consultation/SharedConsultationUI';
 
-export function ExpertFooter() {
-  const [form, setForm] = useState({ name: '', university: '', email: '', gdpr: false });
-  const [submitted, setSubmitted] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+const EXPERT_PHOTO =
+  'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS11c2VyLWljb24gbHVjaWRlLWNpcmNsZS11c2VyIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTAiIHI9IjMiLz48cGF0aCBkPSJNNyAyMC42NjJWMTlhMiAyIDAgMCAxIDItMmg2YTIgMiAwIDAgMSAyIDJ2MS42NjIiLz48L3N2Zz4=';
 
-  const validate = () => {
-    const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = 'This field is required';
-    if (!form.university.trim()) e.university = 'This field is required';
-    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Please enter a valid email address';
-    if (!form.gdpr) e.gdpr = 'Your consent is required to proceed';
-    return e;
-  };
+/* ── Avatar stack component for Trust ── */
+function AvatarStack() {
+  const avatars = [
+    { initials: 'AK', color: 'bg-neutral-200' },
+    { initials: 'MB', color: 'bg-neutral-300' },
+    { initials: 'PW', color: 'bg-neutral-100' },
+  ];
 
-  const isFormValid = 
-    form.name.trim() !== '' && 
-    form.university.trim() !== '' && 
-    form.email.trim() !== '' && 
-    /\S+@\S+\.\S+/.test(form.email) && 
-    form.gdpr;
+  return (
+    <div className="flex -space-x-2 mb-3">
+      {avatars.map((avatar, i) => (
+        <div
+          key={i}
+          className={`w-10 h-10 rounded-full border-2 border-white ${avatar.color} flex items-center justify-center shrink-0 shadow-sm`}
+        >
+          <span className="text-[10px] text-neutral-600 font-bold select-none">
+            {avatar.initials}
+          </span>
+        </div>
+      ))}
+      <div className="w-10 h-10 rounded-full border-2 border-white bg-black flex items-center justify-center shrink-0 shadow-sm z-10">
+        <span className="text-[9px] text-white font-bold">+17</span>
+      </div>
+    </div>
+  );
+}
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length) { setErrors(errs); return; }
-    setSubmitted(true);
-  };
+/* ── Standardized Contact Links ── */
+function ContactLink({ icon: Icon, label, href }: { icon: any; label: string; href: string }) {
+  return (
+    <a
+      href={href}
+      target={href.startsWith('http') ? '_blank' : undefined}
+      rel="noopener noreferrer"
+      className="flex items-center gap-3 text-[13px] text-neutral-600 hover:text-black transition-all group py-1"
+    >
+      <div className="w-8 h-8 flex items-center justify-center border border-zinc-200 bg-white rounded-full group-hover:border-black group-hover:bg-neutral-50 transition-all shrink-0">
+        <Icon className="w-3.5 h-3.5" />
+      </div>
+      <span className="font-medium tracking-tight whitespace-nowrap">{label}</span>
+    </a>
+  );
+}
+
+export function ExpertFooterAccordion() {
+  const {
+    form,
+    setForm,
+    submitted,
+    setSubmitted,
+    errors,
+    isFormValid,
+    handleSubmit
+  } = useConsultationForm();
 
   return (
     <div className="mt-16 pt-12 border-t border-neutral-100 flex flex-col gap-10">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-        <div className="flex items-center gap-5">
-          <div className="w-16 h-16 rounded-full bg-neutral-100 border border-neutral-200 flex items-center justify-center overflow-hidden shrink-0">
-             <div className="w-12 h-12 bg-neutral-200 rounded-full flex items-center justify-center text-neutral-500 font-bold text-lg">
-               MP
-             </div>
-          </div>
-          <div className="flex flex-col text-left">
-            <h5 className="font-bold text-black text-lg">Marcin Pieńkowski</h5>
-            <p className="text-sm text-neutral-500">Digital Transformation Strategist</p>
-          </div>
-        </div>
 
-        <div className="flex items-center gap-4">
-          <a href="tel:+48502227174" className="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:bg-black hover:text-white transition-all cursor-pointer">
-            <Phone className="w-5 h-5" />
-          </a>
-          <a href="mailto:marcin@thinkbeyond.cloud" className="w-11 h-11 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:bg-black hover:text-white transition-all cursor-pointer">
-            <Mail className="w-5 h-5" />
-          </a>
-        </div>
-      </div>
+      {/* Strategic Hub Transition Area */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
 
-      <div className="w-full">
-        {submitted ? (
-          <div className="bg-white rounded-[24px] border border-[#F0F0F0] p-12 flex flex-col items-center gap-6 text-center shadow-[0_4px_24px_rgba(0,0,0,0.05)] animate-in fade-in zoom-in-95 duration-500">
-            <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center shadow-xl mb-2">
-              <CheckCircle2 className="w-10 h-10 text-white" />
-            </div>
-            <div>
-              <h6 className="font-bold text-black text-2xl mb-2">Thank you!</h6>
-              <p className="text-neutral-500 max-w-sm">
-                Marcin will be in touch within 24 business hours to talk about the details.
+        {/* LEFT COLUMN: Authority & Trust (5/12) */}
+        <div className="lg:col-span-5 flex flex-col gap-8">
+          <div className="text-left">
+            <span className="text-[11px] text-neutral-400 uppercase tracking-[2px] font-bold block mb-4">
+              Strategic Mission Centre
+            </span>
+            <h2 className="text-[28px] sm:text-[34px] leading-[1.1] tracking-[-1.5px] text-black font-bold">
+              Architecting the Institutional Foundation for Academic Excellence.
+            </h2>
+          </div>
+
+          <div className="flex flex-col gap-8">
+            <div className="bg-zinc-50 rounded-[24px] border border-zinc-100 p-6 flex flex-col gap-4 shadow-sm text-left">
+              <div className="flex items-center gap-5">
+                <AvatarStack />
+                <div>
+                  <h4 className="text-[18px] font-bold tracking-tight text-black mb-0.5">20+ Experts</h4>
+                  <p className="text-[11px] text-neutral-400 uppercase tracking-[1px] font-bold">Institutional Strategy Architects</p>
+                </div>
+              </div>
+              <p className="text-[13px] text-neutral-600 leading-relaxed font-medium">
+                Your institution&apos;s evolution will be guided by our full team of certified Salesforce architects.
               </p>
             </div>
-            <button 
-              onClick={() => setSubmitted(false)}
-              className="mt-4 text-sm font-bold text-black hover:underline cursor-pointer"
-            >
-              Send another message
-            </button>
-          </div>
-        ) : (
-          <div className="bg-white rounded-[24px] border border-[#F0F0F0] p-8 sm:p-10 flex flex-col gap-8 shadow-[0_4px_24px_rgba(0,0,0,0.05)] text-left">
-            <div>
-              <h3 className="text-[24px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black">
-                Let's talk about the complete student experience at your institution.
-              </h3>
-            </div>
-            
-            <form 
-              onSubmit={handleSubmit} 
-              className="flex flex-col gap-6 w-full text-left overflow-hidden" 
-              noValidate
-            >
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[13px] text-neutral-700 font-medium">Full name</label>
-                <Input
-                  type="text"
-                  placeholder="Professor Jane Smith"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  error={!!errors.name}
-                />
-                {errors.name && <p className="text-[12px] text-black font-semibold mt-0.5">{errors.name}</p>}
-              </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[13px] text-neutral-700 font-medium">Institution name</label>
-                <Input
-                  type="text"
-                  placeholder="Your university"
-                  list="uk-universities"
-                  value={form.university}
-                  onChange={(e) => setForm({ ...form, university: e.target.value })}
-                  error={!!errors.university}
-                />
-                {errors.university && <p className="text-[12px] text-black font-semibold mt-0.5">{errors.university}</p>}
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[13px] text-neutral-700 font-medium">Institutional email address</label>
-                <Input
-                  type="email"
-                  placeholder="j.smith@university.ac.uk"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  error={!!errors.email}
-                />
-                {errors.email && <p className="text-[12px] text-black font-semibold mt-0.5">{errors.email}</p>}
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={form.gdpr}
-                    onChange={(e) => setForm({ ...form, gdpr: e.target.checked })}
-                    className="mt-1 accent-black w-4 h-4 shrink-0 cursor-pointer"
+            <div className="flex flex-col gap-4 text-left">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-200 bg-zinc-100 flex items-center justify-center shrink-0 shadow-sm">
+                  <ImageWithFallback
+                    src={EXPERT_PHOTO}
+                    alt="Marcin Pieńkowski"
+                    className="w-full h-full object-cover"
                   />
-                  <span className="text-[13px] text-neutral-600 leading-[1.6]">
-                    I consent to the processing of my personal data in accordance with GDPR for the purpose of responding to my enquiry.
-                  </span>
-                </label>
-                {errors.gdpr && <p className="text-[12px] text-black font-semibold ml-7 mt-0.5">{errors.gdpr}</p>}
+                </div>
+                <div>
+                  <h4 className="text-[14px] font-bold text-black tracking-tight">Marcin Pieńkowski</h4>
+                  <p className="text-[11px] text-neutral-500 uppercase tracking-[0.5px]">Lead Institutional Strategist</p>
+                </div>
               </div>
-
-              <Button
-                type="submit"
-                disabled={!isFormValid}
-                size="lg"
-                fullWidth={true}
-              >
-                Speak with Our Team
-              </Button>
-
-              <div className="flex items-center justify-center gap-2 text-[12px] text-neutral-400 mt-2">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="5.5" width="9" height="6.5" rx="1" />
-                  <path d="M4.5 5.5V3.5a2 2 0 0 1 4 0v2" />
-                </svg>
-                <span>Your data is 100% secure and will never be shared. No spam, ever.</span>
+              <div className="relative bg-white border border-zinc-200 rounded-[16px] p-5 shadow-sm">
+                <div className="absolute -top-[7px] left-5 w-3.5 h-3.5 bg-white border-t border-l border-zinc-200 rotate-45" />
+                <p className="text-[13px] text-neutral-700 leading-relaxed italic">
+                  &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
+                </p>
               </div>
-            </form>
+            </div>
+
+            <div className="pt-2 text-left">
+              <p className="text-[10px] text-neutral-400 uppercase tracking-[1.5px] font-bold mb-4">Direct Communication Channels</p>
+              <div className="flex flex-col gap-1.5">
+                <ContactLink icon={IconEmail} label="marcin@thinkbeyond.cloud" href="mailto:marcin@thinkbeyond.cloud" />
+                <ContactLink icon={IconPhone} label="+48 502 227 174" href="tel:+48502227174" />
+                <ContactLink icon={IconWhatsApp} label="WhatsApp" href="https://wa.me/48502227174" />
+                <ContactLink icon={IconMessenger} label="Messenger" href="https://m.me/thinkbeyond" />
+              </div>
+            </div>
           </div>
-        )}
+        </div>
+
+        {/* RIGHT COLUMN: Action & Conversion (7/12) */}
+        <div className="lg:col-span-7 w-full shrink-0">
+          <AnimatePresence mode="wait">
+            {submitted ? (
+              <motion.div 
+                key="success"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                className="bg-white rounded-[32px] border border-zinc-200 p-12 flex flex-col items-center gap-6 text-center shadow-[0_32px_64px_-12px_rgba(0,0,0,0.06)] min-h-[400px] justify-center"
+              >
+                <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center shadow-xl mb-2">
+                  <CheckCircle2 className="w-10 h-10 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-[28px] font-bold tracking-tight text-black mb-3">Strategy Review Initiated</h3>
+                  <p className="text-neutral-500 max-w-sm mx-auto leading-relaxed">
+                    A dedicated strategist will coordinate your strategy session within 24 business hours.
+                  </p>
+                </div>
+                <Button
+                  variant="link"
+                  onClick={() => setSubmitted(false)}
+                  className="mt-4"
+                >
+                  Send another message
+                </Button>
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="form"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="bg-white rounded-[32px] border border-zinc-200 p-8 sm:p-10 flex flex-col gap-8 shadow-[0_12px_48px_rgba(0,0,0,0.04)] text-left"
+              >
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[24px] font-bold tracking-[-0.5px] text-black">
+                    Initiate Strategic Review
+                  </h3>
+                </div>
+
+                <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full text-left" noValidate>
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-1.5 text-left">
+                      <label className="text-[13px] text-neutral-700 font-bold ml-1">Full name</label>
+                      <Input
+                        placeholder="Professor Jane Smith"
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        error={!!errors.name}
+                      />
+                      {errors.name && <p className="text-[12px] text-black font-bold ml-1">{errors.name}</p>}
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 text-left text-black">
+                      <label className="text-[13px] text-neutral-700 font-bold ml-1">Institution name</label>
+                      <Input
+                        placeholder="Start typing institution name..."
+                        list="footer-universities"
+                        value={form.university}
+                        onChange={(e) => setForm({ ...form, university: e.target.value })}
+                        error={!!errors.university}
+                      />
+                      {errors.university && <p className="text-[12px] text-black font-bold ml-1">{errors.university}</p>}
+                      <datalist id="footer-universities">
+                        {UK_UNIVERSITIES.map((name) => (
+                          <option key={name} value={name} />
+                        ))}
+                      </datalist>
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 text-left">
+                      <label className="text-[13px] text-neutral-700 font-bold ml-1">Institutional email address</label>
+                      <Input
+                        type="email"
+                        placeholder="j.smith@university.ac.uk"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        error={!!errors.email}
+                      />
+                      {errors.email && <p className="text-[12px] text-black font-bold ml-1">{errors.email}</p>}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-2 py-1 text-left">
+                    <label className="flex items-start gap-4 cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        checked={form.gdpr}
+                        onChange={(e) => setForm({ ...form, gdpr: e.target.checked })}
+                        className="mt-1 accent-black w-4 h-4 shrink-0 cursor-pointer"
+                      />
+                      <span className="text-[13px] text-neutral-500 leading-relaxed group-hover:text-black transition-colors">
+                        I consent to the processing of data in accordance with GDPR.
+                      </span>
+                    </label>
+                    {errors.gdpr && <p className="text-[12px] text-black font-bold ml-8">{errors.gdpr}</p>}
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={!isFormValid}
+                    size="lg"
+                    fullWidth={true}
+                    className="py-7 mt-2 shadow-lg"
+                  >
+                    Initiate Strategic Review
+                    <Send className="ml-2 w-4 h-4" />
+                  </Button>
+
+                  <div className="flex items-center justify-center gap-2 text-[11px] text-neutral-400 mt-2">
+                    <Lock className="w-3 h-3" />
+                    <span>Your data is 100% secure.</span>
+                  </div>
+                </form>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
       </div>
     </div>
   );

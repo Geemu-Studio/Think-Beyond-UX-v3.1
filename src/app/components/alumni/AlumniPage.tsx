@@ -7,7 +7,7 @@ import { CalculatorSection } from '../CalculatorSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
 import { AlumniCaseStudySection } from './AlumniCaseStudySection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
-import { AlumniCTAFormSection } from './AlumniCTAFormSection';
+import { CTAFormSection } from '../CTAFormSection';
 import { Footer } from '../Footer';
 
 export default function AlumniPage() {
@@ -22,7 +22,11 @@ export default function AlumniPage() {
         <CalculatorSection />
         <SecurityTrustSection />
         <AlumniCaseStudySection />
-        <AlumniCTAFormSection />
+        <CTAFormSection 
+          title="About us: Your dedicated alumni relations and advancement team."
+          formTitle="Let's talk about alumni engagement and lifelong learning at your institution."
+          buttonText="Request an Alumni Strategy Call"
+        />
         <OfferBridgeSection />
       </main>
       <Footer />
