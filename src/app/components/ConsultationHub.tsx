@@ -271,7 +271,9 @@ export function ConsultationHub({
                           <Button
                             type="submit"
                             disabled={!isFormValid}
-                            className="py-7 mt-2"
+                            size="lg"
+                            fullWidth={true}
+                            className="mt-2 shadow-xl hover:shadow-2xl transition-all"
                           >
                             {submitButtonText}
                             <Send className="ml-2 w-4 h-4" />

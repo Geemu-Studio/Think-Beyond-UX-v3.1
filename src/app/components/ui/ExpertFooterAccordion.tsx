@@ -240,7 +240,7 @@ export function ExpertFooterAccordion() {
                     disabled={!isFormValid}
                     size="lg"
                     fullWidth={true}
-                    className="py-7 mt-2 shadow-lg"
+                    className="mt-2 shadow-xl hover:shadow-2xl transition-all"
                   >
                     Initiate Strategic Review
                     <Send className="ml-2 w-4 h-4" />

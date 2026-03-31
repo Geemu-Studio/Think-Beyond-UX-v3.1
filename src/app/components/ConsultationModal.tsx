@@ -281,7 +281,7 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
                       disabled={!isFormValid}
                       size="lg"
                       fullWidth={true}
-                      className="py-8 shadow-xl hover:shadow-2xl transition-all"
+                      className="mt-2 shadow-xl hover:shadow-2xl transition-all"
                     >
                       Initiate Strategic Review
                       <Send className="ml-2 w-4 h-4" />

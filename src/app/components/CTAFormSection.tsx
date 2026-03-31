@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Send, CheckCircle2, Lock } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
@@ -249,9 +250,12 @@ export function CTAFormSection({
                 <Button
                   type="submit"
                   disabled={!isFormValid}
-                  className="py-7 mt-2"
+                  size="lg"
+                  fullWidth={true}
+                  className="mt-2 shadow-xl hover:shadow-2xl transition-all"
                 >
                   {buttonText}
+                  <Send className="ml-2 w-4 h-4" />
                 </Button>
 
                 {/* Trust line */}
