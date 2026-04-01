@@ -5,12 +5,12 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { useConsultationForm } from '../hooks/useConsultationForm';
-import { 
-  UK_UNIVERSITIES, 
-  IconEmail, 
-  IconPhone, 
-  IconWhatsApp, 
-  IconMessenger 
+import {
+  UK_UNIVERSITIES,
+  IconEmail,
+  IconPhone,
+  IconWhatsApp,
+  IconMessenger
 } from './ui/consultation/SharedConsultationUI';
 
 const EXPERT_PHOTO =
@@ -84,7 +84,7 @@ export function ConsultationHub({
   } = useConsultationForm();
 
   return (
-    <section className={`bg-white border-t border-zinc-200 overflow-hidden ${showH2 ? 'py-24 px-6' : 'py-12 px-0'}`}>
+    <section className={`bg-white border-t border-zinc-200 overflow-hidden ${showH2 ? 'py-24 px-3 lg:px-6' : 'py-12 px-0'}`}>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
 
@@ -116,8 +116,8 @@ export function ConsultationHub({
               <div className="bg-white p-6 rounded-[24px] border border-zinc-200 shadow-sm flex flex-col gap-4 text-left">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-200 bg-zinc-100 flex items-center justify-center shrink-0 shadow-sm">
-                    <ImageWithFallback 
-                      src={EXPERT_PHOTO} 
+                    <ImageWithFallback
+                      src={EXPERT_PHOTO}
                       alt="Marcin Pieńkowski"
                       className="w-full h-full object-cover"
                     />
@@ -161,11 +161,10 @@ export function ConsultationHub({
             <div className="flex flex-col gap-6">
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className={`w-full p-8 rounded-[32px] border transition-all duration-300 text-left group flex items-center justify-between cursor-pointer ${
-                  isExpanded 
-                    ? "bg-black border-black text-white shadow-xl translate-y-[-4px]" 
+                className={`w-full p-8 rounded-[32px] border transition-all duration-300 text-left group flex items-center justify-between cursor-pointer ${isExpanded
+                    ? "bg-black border-black text-white shadow-xl translate-y-[-4px]"
                     : "bg-white border-zinc-200 text-black hover:border-black hover:shadow-lg"
-                }`}
+                  }`}
               >
                 <div className="flex flex-col gap-1">
                   <span className={`text-[12px] uppercase tracking-[1.5px] font-bold transition-colors ${isExpanded ? "text-white/60" : "text-neutral-400"}`}>
@@ -175,11 +174,10 @@ export function ConsultationHub({
                     Coordinate your institutional strategy review.
                   </h3>
                 </div>
-                <div className={`w-12 h-12 rounded-full border transition-all flex items-center justify-center shrink-0 ${
-                  isExpanded 
-                    ? "bg-white border-white text-black rotate-180" 
+                <div className={`w-12 h-12 rounded-full border transition-all flex items-center justify-center shrink-0 ${isExpanded
+                    ? "bg-white border-white text-black rotate-180"
                     : "bg-black border-black text-white group-hover:scale-110"
-                }`}>
+                  }`}>
                   {isExpanded ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                 </div>
               </button>
@@ -232,7 +230,7 @@ export function ConsultationHub({
                                 onChange={(e) => setForm({ ...form, university: e.target.value })}
                                 error={!!errors.university}
                               />
-                               {errors.university && <p className="text-[12px] text-black font-bold ml-1">{errors.university}</p>}
+                              {errors.university && <p className="text-[12px] text-black font-bold ml-1">{errors.university}</p>}
                               <datalist id="hub-universities">
                                 {UK_UNIVERSITIES.map((name) => (
                                   <option key={name} value={name} />
@@ -249,7 +247,7 @@ export function ConsultationHub({
                                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                                 error={!!errors.email}
                               />
-                               {errors.email && <p className="text-[12px] text-black font-bold ml-1">{errors.email}</p>}
+                              {errors.email && <p className="text-[12px] text-black font-bold ml-1">{errors.email}</p>}
                             </div>
                           </div>
 

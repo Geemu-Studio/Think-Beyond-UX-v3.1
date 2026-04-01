@@ -53,7 +53,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-neutral-200">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
+      <div className="mx-auto max-w-7xl px-3 lg:px-6 py-4 flex items-center justify-between gap-6">
 
         {/* ── Logo ── */}
         <div className="flex items-center gap-2.5 shrink-0">
@@ -193,7 +193,7 @@ export function Header() {
 
       {/* ── Mobile drawer ── */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-neutral-200 bg-white px-6 py-6 flex flex-col gap-5">
+        <div className="md:hidden border-t border-neutral-200 bg-white px-3 py-6 flex flex-col gap-5">
           {HEADER_NAV_LINKS.map((link) => (
             link.href.startsWith('#') ? (
               <a

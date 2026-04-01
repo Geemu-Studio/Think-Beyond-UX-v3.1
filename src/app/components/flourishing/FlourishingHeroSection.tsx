@@ -25,7 +25,7 @@ export function FlourishingHeroSection() {
   const currentSlide = slides[activeIndex];
 
   return (
-    <section className="bg-white pt-10 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 px-6 min-h-[600px] flex items-center justify-center relative overflow-hidden">
+    <section className="bg-white pt-10 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 px-3 lg:px-6 min-h-[600px] flex items-center justify-center relative overflow-hidden">
       <div className="mx-auto max-w-4xl flex flex-col items-center text-center gap-4 sm:gap-6 relative w-full z-10 transition-opacity duration-500">
 
         {/* Badge — hidden on very small screens to save fold space */}

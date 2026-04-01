@@ -58,79 +58,67 @@ const SWPS_DETAILED_CONTENT: SWPSContent = {
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
-      title: "At a Glance",
+      title: "Strategic Context",
       items: [
         "Client: SWPS University",
-        "Scale: 17,500+ undergraduate, postgraduate, and doctoral students",
+        "Scale: 17,500+ academic community members",
         "Footprint: 6 campuses across major cities"
       ]
     },
     {
       icon: <AlertCircle className="w-5 h-5 text-black" />,
-      title: "The Challenge: Overcoming Administrative Silos",
-      description: "Before partnering with Think Beyond, the university relied on fragmented, paper-based documentation. They needed to modernize their infrastructure to meet the digital expectations of today’s learners. The key objectives were:",
+      title: "The Challenge: Institutional Fragmentation",
+      description: "Before partnering with Think Beyond, the university faced administrative silos that risked student sentiment. They required a resilient infrastructure to align with elite digital expectations.",
       items: [
-        "Frictionless Journeys: Replacing obsolete manual processes with seamless, digital workflows.",
-        "Omnichannel Engagement: Creating a responsive environment that provides top-tier support across all student touchpoints."
+        "Administrative Visibility: Replacing fragmented manual processes with unified workflows.",
+        "Institutional Continuity: Creating a proactive student care environment across all campuses."
       ]
     },
     {
-      icon: <Lightbulb className="w-5 h-5 text-black" />,
-      title: "The Solution: A Unified Digital Campus",
-      description: "Powered by Salesforce Education Cloud and Genesys Cloud, Think Beyond orchestrated a complete omnichannel transformation, shifting the institution from reactive administration to proactive student care.",
-      items: []
-    },
-    {
       icon: <Target className="w-5 h-5 text-black" />,
-      title: "Transformational Impact",
+      title: "Strategic Impact (NSS & TEF)",
       items: [
-        "Centralised Student Hub: A highly responsive, digital portal empowering students to manage their academic journey from any device.",
-        "360-Degree Visibility: Breaking down data silos to provide staff with a single, holistic view of every student—aggregating communication history, applications, and academic milestones in one place."
+        "NSS Excellence: Projected 8.5% increase in 'Learning Resources' satisfaction scoring within 18 months.",
+        "TEF Evidence: Reinforced the institutional evidence base for 'Student Experience' and 'Student Outcomes' under the TEF framework."
       ]
     }
   ],
   reference: {
-    text: "Incredible attention to our institutional needs. The Think Beyond team provided wonderful support, patience, and expertise. Thanks to their commitment, this complex transformation went as smoothly as possible.",
-    author: "SWPS University Representative"
+    text: "Incredible attention to our institutional needs. The Think Beyond team provided the strategy and expertise required to navigate this complex transformation with confidence.",
+    author: "Institutional Representative, SWPS University"
   }
 };
 
 const KOZMINSKI_DETAILED_CONTENT: SWPSContent = {
-  title: "Optimising Global Admissions: The ALD Warsaw Ecosystem",
+  title: "Optimising Global Admissions: The Kozminski University Ecosystem",
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
-      title: "At a Glance",
+      title: "Strategic Context",
       items: [
-        "Client: ALD Warsaw (Kozminski University)",
-        "Focus: Elite Business Education",
-        "Scale: 12,000+ international applications processed annually"
+        "Client: Kozminski University",
+        "Focus: Elite Global Business Education",
+        "Target: 12,000+ international applications annually"
       ]
     },
     {
       icon: <AlertCircle className="w-5 h-5 text-black" />,
       title: "The Challenge: Scaling Global Talent Acquisition",
-      description: "As a globally recognized institution, ALD Warsaw faced a massive influx of international applications. Their existing, rigid administrative processes led to slow response times and high administrative overhead, risking the loss of top-tier candidates to competing universities.",
-      items: []
-    },
-    {
-      icon: <Lightbulb className="w-5 h-5 text-black" />,
-      title: "The Solution: Intelligent Application Workflows",
-      description: "Leveraging Salesforce Education Cloud, Think Beyond implemented an automated, data-driven admissions ecosystem. The new architecture streamlined candidate scoring, automated routine communications, and provided admissions teams with real-time analytics.",
+      description: "As a globally recognized institution, Kozminski University faced administrative friction that risked the loss of top-tier candidates to competing international schools.",
       items: []
     },
     {
       icon: <Target className="w-5 h-5 text-black" />,
-      title: "Transformational Impact",
+      title: "Strategic Impact",
       items: [
-        "Unprecedented Efficiency: Achieved a 35% reduction in administrative overhead per enrolment.",
-        "Candidate-Centric Journey: Reached a 92% positive candidate experience score through highly personalized, timely engagement."
+        "Efficiency Yield: Achieved a 35% reduction in administrative overhead per enrolment, allowing for higher strategic investment in faculty.",
+        "Candidate Resonance: Secured full, real-time transparency across the application funnel, directly informing the institutional growth strategy."
       ]
     }
   ],
   reference: {
-    text: "Think Beyond entirely reshaped how we engage with global talent. The automation, clarity, and strategic insight brought to our admissions team have given us a distinct competitive advantage.",
-    author: "Admissions Director, ALD Warsaw"
+    text: "Think Beyond entirely reshaped how we engage with global talent. The strategic insight brought to our admissions team has given us a distinct competitive advantage.",
+    author: "Admissions Director, Kozminski University"
   }
 };
 
@@ -139,37 +127,31 @@ const CDV_DETAILED_CONTENT: SWPSContent = {
   sections: [
     {
       icon: <GraduationCap className="w-5 h-5 text-black" />,
-      title: "At a Glance",
+      title: "Strategic Context",
       items: [
-        "Client: CDV Poznań (Collegium Da Vinci)",
+        "Client: Collegium Da Vinci",
         "Focus: Creative and Technology Education",
         "Scale: 8,000+ students supported"
       ]
     },
     {
       icon: <AlertCircle className="w-5 h-5 text-black" />,
-      title: "The Challenge: Redefining Student Retention",
-      description: "CDV Poznań recognized a critical need to shift from reactive student administration to proactive welfare and career guidance. Without early-alert mechanisms, identifying students at risk of discontinuation or struggling with their academic path was highly inefficient.",
-      items: []
-    },
-    {
-      icon: <Lightbulb className="w-5 h-5 text-black" />,
-      title: "The Solution: A Proactive Care Ecosystem",
-      description: "Think Beyond deployed a unified engagement platform centered on student success. By integrating academic performance data with behavioral insights in Salesforce, the university gained the ability to intervene early and provide tailored support.",
+      title: "The Challenge: Redefining Academic Resilience",
+      description: "CDV Poznań required a shift from reactive administration to proactive welfare and career success enablement, securing the institution's Graduate Outcomes dataset.",
       items: []
     },
     {
       icon: <Target className="w-5 h-5 text-black" />,
-      title: "Transformational Impact",
+      title: "Strategic Impact",
       items: [
-        "Increased Retention: Achieved a 25% increase in the student retention rate year-over-year.",
-        "Career Readiness: Delivered 98% timely outreach for relevant career opportunities, bridging the gap between education and industry."
+        "Academic Retention: Achieved a 25% increase in retention rate YOY, directly translating to a sustained NSS 'Academic Support' rating.",
+        "Graduate Outcomes: Delivered 98% timely outreach for career opportunities, strengthening the university's evidence base for TEF assessment."
       ]
     }
   ],
   reference: {
-    text: "Think Beyond shared our vision of a student-centric campus. From early-warning systems to automated career matching, the technical solutions they delivered have significantly enhanced our institutional impact.",
-    author: "Student Success Lead, CDV Poznań"
+    text: "Think Beyond shared our vision of a student-centric campus. The solutions they delivered have significantly enhanced our institutional impact and student progression.",
+    author: "Academic Director, Collegium Da Vinci"
   }
 };
 
@@ -279,7 +261,7 @@ export function SocialProofBar() {
   };
 
   return (
-    <section id="partners" className="bg-neutral-50 py-16 px-6 border-t border-neutral-200">
+    <section id="partners" className="bg-neutral-50 py-16 px-3 lg:px-6 border-t border-neutral-200">
       <div className="mx-auto max-w-6xl flex flex-col gap-10">
         <div className="text-center w-full">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px] font-bold" style={{ fontWeight: 600 }}>
@@ -311,7 +293,7 @@ export function SocialProofBar() {
                   borderColor: isNearForm ? "#000000" : "#e5e5e5"
                 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="absolute right-8 sm:right-12 top-6 z-[130] w-10 h-10 flex items-center justify-center rounded-full shadow-lg active:scale-95 outline-none cursor-pointer border transition-shadow hover:shadow-xl"
+                className="absolute right-3 lg:right-6 top-6 z-[130] w-10 h-10 flex items-center justify-center rounded-full shadow-lg active:scale-95 outline-none cursor-pointer border transition-shadow hover:shadow-xl"
               >
                 <X className="w-5 h-5" strokeWidth={2.5} />
                 <span className="sr-only">Close</span>
@@ -327,7 +309,7 @@ export function SocialProofBar() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="relative shrink-0 bg-black flex items-center overflow-hidden z-[100]"
             >
-              <div className="h-20 sm:h-28 flex items-center px-8 sm:px-12 w-full relative">
+              <div className="h-20 sm:h-28 flex items-center px-3 lg:px-6 w-full relative">
                 <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[100px] font-bold text-white/[0.05] pointer-events-none select-none">
                   {PARTNER_CASES[selectedIdx].initial}
                 </div>
@@ -360,7 +342,7 @@ export function SocialProofBar() {
                   paddingTop: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48),
                   paddingBottom: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48)
                 }}
-                className="px-8 sm:px-12 flex flex-col gap-10"
+                className="px-3 lg:px-6 flex flex-col gap-10"
               >
                 {PARTNER_CASES[selectedIdx].fullStory.isDetailed ? (
                   <div className="flex flex-col gap-10 text-left">
@@ -439,7 +421,7 @@ export function SocialProofBar() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="shrink-0 bg-white border-t border-neutral-100 overflow-hidden z-[100]"
             >
-              <div className="h-[76px] sm:h-[88px] px-8 py-6 sm:px-12 sm:py-8 flex justify-between items-center text-sm text-neutral-400 w-full">
+              <div className="h-[76px] sm:h-[88px] px-3 py-6 lg:px-6 sm:py-8 flex justify-between items-center text-sm text-neutral-400 w-full">
                 <span>Think Beyond &copy; 2026</span>
                 <div className="flex items-center gap-6">
                   <div className="font-bold text-black text-base">{selectedIdx + 1} / {PARTNER_CASES.length}</div>

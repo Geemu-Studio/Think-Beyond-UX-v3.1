@@ -15,6 +15,7 @@ import EnrolmentPage from './components/enrolment/EnrolmentPage';
 import { FlourishingPage } from './components/flourishing/FlourishingPage';
 import EngagementPage from './components/engagement/EngagementPage';
 import AdvancementPage from './components/advancement/AdvancementPage';
+import EnterprisePage from './components/enterprise/EnterprisePage';
 import { StyleGuide } from './components/StyleGuide';
 
 function ScrollToTop() {
@@ -57,6 +58,7 @@ export default function App() {
         <Route path="/flourishing" element={<FlourishingPage />} />
         <Route path="/engagement" element={<EngagementPage />} />
         <Route path="/advancement" element={<AdvancementPage />} />
+        <Route path="/enterprise" element={<EnterprisePage />} />
         <Route path="/style-guide" element={<StyleGuide />} />
       </Routes>
     </HashRouter>

@@ -3,10 +3,10 @@ import { useLocation } from 'react-router';
 import { ConsultationModal } from './ConsultationModal';
 import expertMarcin from '@/assets/expert-marcin.jpeg';
 import svgPaths from '../../imports/svg-fitf5bq036';
-import { 
-  AnalyticsOutlined, 
-  RouteOutlined, 
-  HealthAndSafetyOutlined 
+import {
+  AnalyticsOutlined,
+  RouteOutlined,
+  HealthAndSafetyOutlined
 } from '@mui/icons-material';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -98,7 +98,7 @@ export function SolutionSection() {
   }, []);
 
   return (
-    <section id="solution" className="bg-neutral-50 py-24 px-6 border-t border-neutral-200">
+    <section id="solution" className="bg-neutral-50 py-24 px-3 lg:px-6 border-t border-neutral-200">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
         {/* Headline */}
@@ -121,7 +121,7 @@ export function SolutionSection() {
             >
               {/* Icon row: line-art + checkmark badge */}
               <div className="flex items-start justify-between">
-                <div 
+                <div
                   className="w-12 h-12 rounded-[14px] flex items-center justify-center text-neutral-400 bg-neutral-50 border border-neutral-100 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
                 >
                   {card.icon}
@@ -143,15 +143,15 @@ export function SolutionSection() {
                   className="flex items-center gap-2.5 text-[13px] font-semibold text-neutral-800 hover:text-black transition-all duration-300 group/btn w-fit cursor-pointer"
                 >
                   <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-200 group-hover/btn:border-black group-hover/btn:bg-neutral-100 transition-all">
-                    <svg 
-                      width="10" 
-                      height="10" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2.5" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       aria-hidden="true"
                       className="ml-0.5"
                     >
@@ -181,14 +181,14 @@ export function SolutionSection() {
 
       </div>
 
-      <ConsultationModal 
-        isOpen={isConsultationOpen} 
-        onClose={() => setIsConsultationOpen(false)} 
+      <ConsultationModal
+        isOpen={isConsultationOpen}
+        onClose={() => setIsConsultationOpen(false)}
         pathname={location.pathname}
       />
 
       {/* Video Dialog Modal */}
-      <dialog 
+      <dialog
         ref={dialogRef}
         onClick={(e) => {
           if (e.target === dialogRef.current) closeVideo();
@@ -196,7 +196,7 @@ export function SolutionSection() {
         className="fixed inset-0 m-auto p-0 rounded-[24px] sm:rounded-[32px] border-none bg-transparent shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] max-w-6xl w-[95%] aspect-video backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center transition-all duration-300"
       >
         <div className="relative w-full h-full bg-black rounded-[24px] sm:rounded-[32px] overflow-hidden ring-1 ring-white/10">
-          <button 
+          <button
             onClick={closeVideo}
             className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-all border border-white/10 group"
             aria-label="Close video"
@@ -206,21 +206,21 @@ export function SolutionSection() {
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
-          
+
           {activeCard && (
             <div className="w-full h-full relative">
               {/* Video Facade (Thumbnail Overlay) */}
               {!videoStarted && (
-                <div 
+                <div
                   className="absolute inset-0 z-30 cursor-pointer group/facade flex items-center justify-center transition-opacity duration-500"
                   onClick={() => setVideoStarted(true)}
                 >
-                  <img 
-                    src={activeCard.expertImage} 
+                  <img
+                    src={activeCard.expertImage}
                     alt={activeCard.title}
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/facade:scale-105"
                   />
-                  
+
                   {/* Project Logo - Top Left */}
                   <div className="absolute top-8 left-8 flex items-center gap-2.5 z-40">
                     <div className="bg-white/10 backdrop-blur-md rounded-[6px] flex items-center justify-center w-7 h-7 border border-white/20">
@@ -238,9 +238,9 @@ export function SolutionSection() {
                       Think Beyond
                     </span>
                   </div>
-                  
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                  
+
                   <div className="absolute bottom-10 left-10 text-left">
                     <span className="text-[11px] text-white/70 uppercase tracking-[1.4px] font-semibold block mb-2">Solution Overview</span>
                     <h3 className="text-white text-2xl sm:text-3xl font-bold tracking-tight max-w-xl leading-tight">
@@ -260,13 +260,13 @@ export function SolutionSection() {
                       {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
                     </span>
                     <div className="flex gap-2">
-                      <button 
+                      <button
                         onClick={(e) => { e.stopPropagation(); prevVideo(); }}
                         className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer"
                       >
                         <ChevronLeft className="w-5 h-5" />
                       </button>
-                      <button 
+                      <button
                         onClick={(e) => { e.stopPropagation(); nextVideo(); }}
                         className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer"
                       >

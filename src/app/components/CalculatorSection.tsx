@@ -26,7 +26,7 @@ export function CalculatorSection() {
   }, [value, config.min, config.max]);
 
   return (
-    <section id="calculator" className="bg-neutral-100 py-20 px-6 border-t border-b border-neutral-200">
+    <section id="calculator" className="bg-neutral-100 py-20 px-3 lg:px-6 border-t border-b border-neutral-200">
       <div className="mx-auto max-w-5xl flex flex-col gap-10">
 
         {/* Heading */}

@@ -822,7 +822,7 @@ export function StyleGuide() {
   return (
     <div className="min-h-screen bg-white flex flex-col font-sans">
       <div className="flex flex-col flex-1 relative w-full mx-auto">
-        <div className="sticky top-0 z-[90] w-full bg-white/80 backdrop-blur-md border-b border-neutral-200 px-6 sm:px-12 py-4 flex items-center justify-between gap-6 overflow-x-auto shrink-0 shadow-sm">
+        <div className="sticky top-0 z-[90] w-full bg-white/80 backdrop-blur-md border-b border-neutral-200 px-3 lg:px-6 py-4 flex items-center justify-between gap-6 overflow-x-auto shrink-0 shadow-sm">
           <div className="flex items-center gap-3 shrink-0">
             <span className="text-[18px] md:text-xl font-bold text-black tracking-[-1px]">Interactive Canvas</span>
           </div>
@@ -845,7 +845,7 @@ export function StyleGuide() {
 
         <main className={cn(
           "flex-1 w-full overflow-y-visible transition-all duration-300",
-          activeTab === 'canvas' ? "p-0" : "max-w-7xl mx-auto px-6 py-12 md:py-16 md:px-16"
+          activeTab === 'canvas' ? "p-0" : "max-w-7xl mx-auto px-3 py-12 md:py-16 lg:px-6"
         )}>
           {activeTab === 'canvas' && renderCanvas()}
           {activeTab === 'colors' && renderColors()}
@@ -856,7 +856,7 @@ export function StyleGuide() {
         </main>
       </div>
 
-      <footer className="w-full border-t border-neutral-200 bg-neutral-50 px-6 sm:px-12 py-8 mt-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-neutral-500 font-medium shrink-0">
+      <footer className="w-full border-t border-neutral-200 bg-neutral-50 px-3 lg:px-6 py-8 mt-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-neutral-500 font-medium shrink-0">
         <div>&copy; 2026 Geemu Studio</div>
         <div className="flex items-center gap-4 sm:gap-6">
           <span>Design System Canvas</span>

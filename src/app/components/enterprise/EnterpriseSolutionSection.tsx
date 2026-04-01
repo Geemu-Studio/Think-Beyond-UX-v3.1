@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 import {
-  FavoriteBorderOutlined,
-  WebOutlined,
-  InsightsOutlined
+  HubOutlined,
+  SchoolOutlined,
+  AssignmentOutlined
 } from '@mui/icons-material';
 
-/* Enrolment Solution grid — 3-column cards with checkmark icons */
+/* Enterprise Solution grid — 3-column cards with checkmark icons */
 
 function CheckIcon() {
   return (
@@ -21,23 +21,23 @@ function CheckIcon() {
 
 const cards = [
   {
-    icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Resonant Candidate Engagement',
-    body: 'Anticipate candidate aspirations. Deliver hyper-personalised communication that reflects your university’s mission and secures the world’s brightest academic talent.',
+    icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Institutional Innovation Hubs',
+    body: 'Orchestrate high-value institutional partnerships and commercialise academic research through a unified, strategic CRM ecosystem.',
   },
   {
-    icon: <WebOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Premium Enrolment Infrastructure',
-    body: 'Eliminate friction at the threshold. Provide an intuitive, elite enrolment gateway that mirrors the academic excellence and heritage of your institution.',
+    icon: <SchoolOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Strategic Executive Academy',
+    body: 'Accelerate institutional revenue through premium microcredentials and professional development paths that secure graduate outcomes.',
   },
   {
-    icon: <InsightsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Planning Intelligence',
-    body: "Lead with data-informed confidence. Leverage predictive analytics to refine your global admissions funnel and secure high-intent applicant cohorts.",
+    icon: <AssignmentOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Resonant Partner Alliances',
+    body: 'Simplify the complex tripartite resonance between the university, the employer, and the learner with automated institutional compliance.',
   },
 ];
 
-export function EnrolmentSolutionSection() {
+export function EnterpriseSolutionSection() {
   const location = useLocation();
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
@@ -45,14 +45,16 @@ export function EnrolmentSolutionSection() {
     <section id="solution" className="bg-neutral-50 py-24 px-3 lg:px-6 border-t border-neutral-200">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
-        {/* Headline - identical to master SolutionSection */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
             Solution
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
-            The unified ecosystem for the modern, globally minded university.
+            Transform external relations into a unified enterprise ecosystem.
           </h2>
+          <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-3xl">
+            Salesforce empowers your institution to seamlessly manage corporate partnerships, secure research grant pipelines, and curate highly targeted executive learning cohorts—all through a single, strategic source of truth.
+          </p>
         </div>
 
         {/* 3-col solution cards */}
@@ -91,7 +93,7 @@ export function EnrolmentSolutionSection() {
             className="inline-flex items-center gap-2 text-[14px] text-black hover:opacity-60 transition-opacity px-4 py-2 rounded-full hover:bg-neutral-100"
             style={{ fontWeight: 600 }}
           >
-            Discover the full impact for your institution
+            Discover the full institutional impact
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M2 6.5h9M8 3l3.5 3.5L8 10" />
             </svg>
@@ -108,4 +110,3 @@ export function EnrolmentSolutionSection() {
     </section>
   );
 }
-

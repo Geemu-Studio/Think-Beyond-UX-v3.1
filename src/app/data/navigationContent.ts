@@ -33,6 +33,13 @@ export const NAVIGATION_CONTENT = {
     body: 'Cultivate a loyal global community. Transform transactional fundraising into lifelong relationships and executive education opportunities.',
     linkText: 'Explore Advancement →',
     href: '/advancement',
+  },
+  ENTERPRISE: {
+    label: 'Salesforce Education Cloud',
+    title: 'Enterprise & Research Partnerships',
+    body: 'Catalysing research collaboration and diversifying institutional revenue streams through strategic corporate engagement.',
+    linkText: 'Explore Enterprise →',
+    href: '/enterprise',
   }
 };
 
@@ -42,4 +49,5 @@ export const NAV_LINKS = [
   { label: 'Flourishing', href: NAVIGATION_CONTENT.SUCCESS.href, description: NAVIGATION_CONTENT.SUCCESS.body },
   { label: 'Engagement', href: NAVIGATION_CONTENT.MARKETING.href, description: NAVIGATION_CONTENT.MARKETING.body },
   { label: 'Advancement', href: NAVIGATION_CONTENT.ALUMNI.href, description: NAVIGATION_CONTENT.ALUMNI.body },
+  { label: 'Enterprise', href: NAVIGATION_CONTENT.ENTERPRISE.href, description: NAVIGATION_CONTENT.ENTERPRISE.body },
 ];

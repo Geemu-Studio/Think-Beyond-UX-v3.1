@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 
-import { 
-  SensorsOutlined, 
-  FavoriteBorderOutlined, 
-  SupportAgentOutlined 
+import {
+  SensorsOutlined,
+  FavoriteBorderOutlined,
+  SupportAgentOutlined
 } from '@mui/icons-material';
 
 const cards = [
@@ -31,7 +31,7 @@ export function FlourishingProblemSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section id="problem" className="bg-white py-24 px-6 border-t border-neutral-100">
+    <section id="problem" className="bg-white py-24 px-3 lg:px-6 border-t border-neutral-100">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
         {/* Section headline */}
@@ -52,7 +52,7 @@ export function FlourishingProblemSection() {
               key={card.title}
               className="p-8 flex flex-col gap-5 rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group"
             >
-              <div 
+              <div
                 className="w-12 h-12 rounded-[14px] flex items-center justify-center text-neutral-400 bg-neutral-100 border border-neutral-200 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
               >
                 {card.icon}
@@ -68,9 +68,9 @@ export function FlourishingProblemSection() {
         </div>
       </div>
 
-      <ConsultationModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <ConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         pathname={location.pathname}
       />
     </section>

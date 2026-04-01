@@ -6,7 +6,9 @@ import { Input } from './ui/input';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useConsultationForm } from '../hooks/useConsultationForm';
 import { 
-  UK_UNIVERSITIES, 
+  UK_UNIVERSITIES,
+  UNIVERSITY_OPTIONS,
+  ContactLink,
   IconEmail, 
   IconPhone, 
   IconWhatsApp, 
@@ -50,22 +52,6 @@ function AvatarStack() {
   );
 }
 
-/* ── Standardized Contact Links ── */
-function ContactLink({ icon: Icon, label, href }: { icon: any; label: string; href: string }) {
-  return (
-    <a
-      href={href}
-      target={href.startsWith('http') ? '_blank' : undefined}
-      rel="noopener noreferrer"
-      className="flex items-center gap-3 text-[13px] text-neutral-600 hover:text-black transition-all group py-1"
-    >
-      <div className="w-8 h-8 flex items-center justify-center border border-zinc-200 bg-white rounded-full group-hover:border-black group-hover:bg-neutral-50 transition-all shrink-0">
-        <Icon className="w-3.5 h-3.5" />
-      </div>
-      <span className="font-medium tracking-tight whitespace-nowrap">{label}</span>
-    </a>
-  );
-}
 
 export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationModalProps) {
   const {
@@ -79,17 +65,35 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
     resetForm
   } = useConsultationForm();
 
-  // Reset form when modal opens/closes
+  // Accessibility: ESC key handling & Body scroll lock
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleEsc = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') onClose();
+      };
+      window.addEventListener('keydown', handleEsc);
+      return () => {
+        document.body.style.overflow = 'unset';
+        window.removeEventListener('keydown', handleEsc);
+      };
+    }
+  }, [isOpen, onClose]);
+
+  // Reset form when modal closes
   useEffect(() => {
     if (!isOpen) {
-      setTimeout(resetForm, 300); // Wait for exit animation
+      setTimeout(resetForm, 300);
     }
   }, [isOpen, resetForm]);
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+    <div 
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
 
       {/* Modal Container */}
       <motion.div 
@@ -109,7 +113,7 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
 
         <div className="flex-1 flex flex-col lg:flex-row overflow-hidden h-full">
           {/* Left Column (Content) - 5/12 */}
-          <div className="lg:w-[42%] bg-zinc-50 p-10 sm:p-14 flex flex-col gap-10 overflow-y-auto border-r border-zinc-200 scroll-smooth">
+          <div className="lg:w-[42%] bg-zinc-50 px-3 py-10 lg:px-6 lg:py-14 flex flex-col gap-10 overflow-y-auto border-r border-zinc-200 scroll-smooth">
             <div className="text-left">
               <span className="text-[11px] text-neutral-400 uppercase tracking-[2px] font-bold block mb-4">
                 Strategic Mission Centre
@@ -172,7 +176,7 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
           </div>
 
           {/* Right Column (Form) - 7/12 */}
-          <div className="flex-1 bg-white p-10 sm:p-14 overflow-y-auto overflow-x-hidden min-h-0 flex flex-col items-center justify-center">
+          <div className="flex-1 bg-white px-3 py-10 lg:px-6 lg:py-14 overflow-y-auto overflow-x-hidden min-h-0 flex flex-col items-center justify-center">
             <AnimatePresence mode="wait">
               {submitted ? (
                 <motion.div 
@@ -242,9 +246,7 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
                         />
                         {errors.university && <p className="text-[12px] text-black font-bold ml-1">{errors.university}</p>}
                         <datalist id="modal-universities">
-                          {UK_UNIVERSITIES.map((name) => (
-                            <option key={name} value={name} />
-                          ))}
+                          {UNIVERSITY_OPTIONS}
                         </datalist>
                       </div>
 

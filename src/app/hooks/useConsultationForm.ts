@@ -21,11 +21,11 @@ export function useConsultationForm(initialValues: ConsultationFormData = { name
     return e;
   };
 
-  const isFormValid = 
-    form.name.trim() !== '' && 
-    form.university.trim() !== '' && 
-    form.email.trim() !== '' && 
-    /\S+@\S+\.\S+/.test(form.email) && 
+  const isFormValid =
+    form.name.trim() !== '' &&
+    form.university.trim() !== '' &&
+    form.email.trim() !== '' &&
+    /\S+@\S+\.\S+/.test(form.email) &&
     form.gdpr;
 
   const handleSubmit = (e: React.FormEvent, onSuccess?: () => void) => {

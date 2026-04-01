@@ -5,7 +5,8 @@ import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { useConsultationForm } from '../hooks/useConsultationForm';
 import { 
-  UK_UNIVERSITIES, 
+  UNIVERSITY_OPTIONS,
+  ContactLink,
   IconEmail, 
   IconPhone, 
   IconWhatsApp, 
@@ -43,11 +44,11 @@ function AvatarStack() {
   );
 }
 
-const CONTACTS = [
-  { icon: <IconEmail />, label: 'marcin@thinkbeyond.cloud', href: 'mailto:marcin@thinkbeyond.cloud' },
-  { icon: <IconPhone />, label: '+48 502 227 174', href: 'tel:+48502227174' },
-  { icon: <IconWhatsApp />, label: 'WhatsApp Chat', href: 'https://wa.me/48502227174' },
-  { icon: <IconMessenger />, label: 'Messenger', href: 'https://m.me/thinkbeyond' },
+const CONTACT_ITEMS = [
+  { icon: IconEmail, label: 'marcin@thinkbeyond.cloud', href: 'mailto:marcin@thinkbeyond.cloud' },
+  { icon: IconPhone, label: '+48 502 227 174', href: 'tel:+48502227174' },
+  { icon: IconWhatsApp, label: 'WhatsApp Chat', href: 'https://wa.me/48502227174' },
+  { icon: IconMessenger, label: 'Messenger', href: 'https://m.me/thinkbeyond' },
 ];
 
 interface CTAFormSectionProps {
@@ -74,7 +75,7 @@ export function CTAFormSection({
   } = useConsultationForm();
 
   return (
-    <section id="contact-form" className="bg-neutral-100 py-24 px-6 border-t border-neutral-200">
+    <section id="contact-form" className="bg-neutral-100 py-24 px-3 lg:px-6 border-t border-neutral-200">
       <div className="mx-auto max-w-5xl flex flex-col gap-14">
 
         {/* ── Section headline ── */}
@@ -143,24 +144,16 @@ export function CTAFormSection({
               <p className="text-[12px] text-neutral-400 uppercase tracking-[1.2px]" style={{ fontWeight: 700 }}>
                 Prefer direct contact?
               </p>
-              <ul className="flex flex-col gap-2.5">
-                {CONTACTS.map((item) => (
-                  <li key={item.label}>
-                    <a
-                      href={item.href}
-                      target={item.href.startsWith('http') ? '_blank' : undefined}
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-[14px] text-neutral-700 hover:text-black transition-colors group"
-                      style={{ fontWeight: 500 }}
-                    >
-                      <span className="w-8 h-8 flex items-center justify-center border border-neutral-300 bg-white rounded-full group-hover:border-black transition-colors shrink-0">
-                        {item.icon}
-                      </span>
-                      {item.label}
-                    </a>
-                  </li>
+              <div className="flex flex-col gap-1.5">
+                {CONTACT_ITEMS.map((item) => (
+                  <ContactLink 
+                    key={item.label}
+                    icon={item.icon}
+                    label={item.label}
+                    href={item.href}
+                  />
                 ))}
-              </ul>
+              </div>
             </div>
 
           </div>
@@ -211,9 +204,7 @@ export function CTAFormSection({
                   />
                   {errors.university && <p className="text-[12px] text-black font-bold ml-1">{errors.university}</p>}
                   <datalist id="cta-universities">
-                    {UK_UNIVERSITIES.map((name) => (
-                      <option key={name} value={name} />
-                    ))}
+                    {UNIVERSITY_OPTIONS}
                   </datalist>
                 </div>
 

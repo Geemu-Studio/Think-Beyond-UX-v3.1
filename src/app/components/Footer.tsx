@@ -1,4 +1,5 @@
 import svgPaths from "../../imports/svg-fitf5bq036";
+import { ExpertFooterAccordion } from "./ui/ExpertFooterAccordion";
 
 const col2 = [
   { label: 'Salesforce Education Cloud', href: '#' },
@@ -33,17 +34,19 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 
 export function Footer() {
   return (
-    <footer className="bg-neutral-800 border-t border-neutral-700/50">
-      {/* Main grid — if needed later */}
-      
+    <footer className="bg-white border-t border-neutral-100">
+      <div className="mx-auto max-w-7xl px-3 lg:px-6 pb-20">
+        <ExpertFooterAccordion />
+      </div>
+
       {/* Bottom bar */}
-      <div className="border-t border-neutral-700/50">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="border-t border-neutral-100 py-10 bg-neutral-50/50">
+        <div className="mx-auto max-w-7xl px-[12px] lg:px-[24px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="text-[12px] text-neutral-400">
             © 2026 Think Beyond. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <p className="text-[12px] text-neutral-400">
+            <p className="text-[12px] text-neutral-400 font-medium">
               Salesforce Education Cloud · UK & Europe
             </p>
           </div>

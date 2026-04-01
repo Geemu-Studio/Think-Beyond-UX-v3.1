@@ -130,7 +130,7 @@ export function SecurityTrustSection() {
   return (
     <section
       id="security-trust"
-      className="bg-neutral-800 py-20 px-6 border-t border-neutral-700/50"
+      className="bg-neutral-800 py-20 px-3 lg:px-6 border-t border-neutral-700/50"
     >
       <div className="mx-auto max-w-5xl flex flex-col gap-14">
 
@@ -165,9 +165,9 @@ export function SecurityTrustSection() {
               key={feat.id}
               onClick={(e) => openVideo(e, feat)}
               className="rounded-[20px] p-6 flex flex-col gap-6 group transition-all duration-300 cursor-pointer hover:bg-[#333333] hover:border-transparent hover:scale-[1.03] hover:shadow-2xl active:scale-[0.98]"
-              style={{ 
-                background: 'transparent', 
-                border: '1px solid #3f3f46' 
+              style={{
+                background: 'transparent',
+                border: '1px solid #3f3f46'
               }}
               role="button"
               tabIndex={0}
@@ -206,15 +206,15 @@ export function SecurityTrustSection() {
                   className="flex items-center gap-2.5 text-[13px] font-semibold text-neutral-400 group-hover:text-white transition-all duration-300"
                 >
                   <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-700 group-hover:border-white group-hover:bg-white/10 transition-all">
-                    <svg 
-                      width="10" 
-                      height="10" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2.5" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       aria-hidden="true"
                       className="ml-0.5"
                     >
@@ -273,7 +273,7 @@ export function SecurityTrustSection() {
       </div>
 
       {/* Video Dialog Modal */}
-      <dialog 
+      <dialog
         ref={dialogRef}
         onClick={(e) => {
           if (e.target === dialogRef.current) closeVideo();
@@ -281,7 +281,7 @@ export function SecurityTrustSection() {
         className="fixed inset-0 m-auto p-0 rounded-[24px] sm:rounded-[32px] border-none bg-transparent shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] max-w-6xl w-[95%] aspect-video backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center transition-all duration-300"
       >
         <div className="relative w-full h-full bg-black rounded-[24px] sm:rounded-[32px] overflow-hidden ring-1 ring-white/10">
-          <button 
+          <button
             onClick={closeVideo}
             className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-all border border-white/10 group"
             aria-label="Close video"
@@ -291,21 +291,21 @@ export function SecurityTrustSection() {
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
-          
+
           {activeCard && (
             <div className="w-full h-full relative">
               {/* Video Facade (Thumbnail Overlay) */}
               {!videoStarted && (
-                <div 
+                <div
                   className="absolute inset-0 z-30 cursor-pointer group/facade flex items-center justify-center transition-opacity duration-500"
                   onClick={() => setVideoStarted(true)}
                 >
-                  <img 
-                    src={activeCard.expertImage} 
+                  <img
+                    src={activeCard.expertImage}
                     alt={activeCard.heading}
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/facade:scale-105"
                   />
-                  
+
                   {/* Project Logo - Top Left */}
                   <div className="absolute top-8 left-8 flex items-center gap-2.5 z-40">
                     <div className="bg-white/10 backdrop-blur-md rounded-[6px] flex items-center justify-center w-7 h-7 border border-white/20">
@@ -323,9 +323,9 @@ export function SecurityTrustSection() {
                       Think Beyond
                     </span>
                   </div>
-                  
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                  
+
                   <div className="absolute bottom-10 left-10 text-left">
                     <span className="text-[11px] text-white/70 uppercase tracking-[1.4px] font-semibold block mb-2">{activeCard.videoLabel}</span>
                     <h3 className="text-white text-2xl sm:text-3xl font-bold tracking-tight max-w-xl leading-tight">
@@ -345,13 +345,13 @@ export function SecurityTrustSection() {
                       {features.findIndex(f => f.id === activeCard.id) + 1} / {features.length}
                     </span>
                     <div className="flex gap-2">
-                      <button 
+                      <button
                         onClick={(e) => { e.stopPropagation(); prevVideo(); }}
                         className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer"
                       >
                         <ChevronLeft className="w-5 h-5" />
                       </button>
-                      <button 
+                      <button
                         onClick={(e) => { e.stopPropagation(); nextVideo(); }}
                         className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer"
                       >

@@ -1,41 +1,41 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router';
-import { ConsultationModal } from './ConsultationModal';
+import { ConsultationModal } from '../ConsultationModal';
 import expertMarcin from '@/assets/expert-marcin.jpeg';
 
 import {
   HubOutlined,
-  HealthAndSafetyOutlined,
-  TrackChangesOutlined
+  SchoolOutlined,
+  DescriptionOutlined
 } from '@mui/icons-material';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import svgPaths from '../../imports/svg-fitf5bq036';
+import svgPaths from '../../../imports/svg-fitf5bq036';
 
 const cards = [
   {
     icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Resilience',
-    body: 'Overcome administrative fragmentation. Replace legacy constraints with a unified, resilient digital infrastructure that scales with your academic vision.',
-    videoId: 'v5V6Y0_Q_8k', // Salesforce Education Cloud Intro
+    title: 'Institutional Innovation & Commercialisation',
+    body: 'Surmount the fragmentation of industry touchpoints to foster high-value partnerships and commercialise academic insight across the institution.',
+    videoId: 'v5V6Y0_Q_8k',
     expertImage: expertMarcin
   },
   {
-    icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Academic Flourishing & Retention',
-    body: 'Proactively nurture institutional belonging. Identify students at risk before they are lost, and build the holistic support structures that secure their academic journey.',
-    videoId: 'qL6R8Z9W4_8', // Student Success
+    icon: <SchoolOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Strategic Executive Learning',
+    body: 'Secure institutional revenue through premium microcredentials and professional development paths that align with corporate aspirations.',
+    videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin
   },
   {
-    icon: <TrackChangesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Mission-Driven Enrolment',
-    body: 'Engage candidates who align with your institution’s prestige. Deliver frictionless, personalised enrolment journeys that secure the world’s brightest academic talent.',
-    videoId: '8_v1-cE9kkw', // Recruitment
+    icon: <DescriptionOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Cohesive Partner Ecosystems',
+    body: 'Simplify the complex tripartite resonance between the university, the employer, and the learner with unified institutional visibility.',
+    videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin
   },
 ];
 
-export function ProblemSection() {
+export function EnterpriseProblemSection() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<typeof cards[0] | null>(null);
@@ -93,9 +93,12 @@ export function ProblemSection() {
         {/* Section headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Institutional Opportunity
+            Enterprise & Partnerships
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Securing academic excellence. Build the strategic foundations that proactively foster institutional resilience and student flourishing.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Diversify your revenue streams and scale institutional impact.</h2>
+          <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
+            Fragmented institutional data prevents universities from maximising their commercial potential. Valuable opportunities in executive education and research funding are lost in administrative fragmentation.
+          </p>
         </div>
 
         {/* 3-col agitation grid */}

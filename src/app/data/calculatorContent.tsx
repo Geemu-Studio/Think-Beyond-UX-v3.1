@@ -265,6 +265,55 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
         ),
       },
     ]
+  },
+  '/enterprise': {
+    tagline: "Enterprise ROI",
+    title: "Quantify the potential of institutional commercial partnerships.",
+    inputLabel: "Active Corporate Engagements",
+    min: 50,
+    max: 2500,
+    step: 50,
+    initialValue: 500,
+    ctaText: "Review Enterprise Strategy",
+    calculate: (engagements) => ({
+      revenue: Math.round(engagements * 0.06 * 35000), // 6% conversion, £35k avg value
+      efficiency: 28, // 28% increase in grant admin efficiency
+      velocity: 45 // 45% increase in innovation velocity
+    }),
+    formatDisplay: (results) => ({
+      revenue: `£${(results.revenue / 1000000).toFixed(1)}M`,
+      efficiency: `+${results.efficiency}%`,
+      velocity: `+${results.velocity}%`
+    }),
+    stats: [
+      {
+        key: 'revenue',
+        microcopy: 'Projected commercial revenue from executive education and corporate partnerships.',
+        suffix: () => (
+          <p className="text-[13px] text-neutral-600 leading-[1.6]">
+            Realised <span style={{ fontWeight: 600 }} className="text-black">Commercial Revenue Potential</span> through strategic scaling
+          </p>
+        ),
+      },
+      {
+        key: 'efficiency',
+        microcopy: 'Operational capacity regained through automated research grant administration.',
+        suffix: () => (
+          <p className="text-[13px] text-neutral-600 leading-[1.6]">
+            Improvement in <span style={{ fontWeight: 600 }} className="text-black">Grant Admin Efficiency</span> across the lifecycle
+          </p>
+        ),
+      },
+      {
+        key: 'velocity',
+        microcopy: 'Modelled acceleration in technology transfer and knowledge exchange cycles.',
+        suffix: () => (
+          <p className="text-[13px] text-neutral-600 leading-[1.6]">
+            Uplift in <span style={{ fontWeight: 600 }} className="text-black">Innovation Velocity</span> and philanthropic reach
+          </p>
+        ),
+      },
+    ]
   }
 };
 

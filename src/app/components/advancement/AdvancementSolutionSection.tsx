@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
-import { 
-  AutoGraphOutlined, 
-  SchoolOutlined, 
-  LanguageOutlined 
+import {
+  AutoGraphOutlined,
+  SchoolOutlined,
+  LanguageOutlined
 } from '@mui/icons-material';
 
 function CheckIcon() {
@@ -40,7 +40,7 @@ export function AdvancementSolutionSection() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
   return (
-    <section id="solution" className="bg-neutral-50 py-24 px-6 border-t border-neutral-200">
+    <section id="solution" className="bg-neutral-50 py-24 px-3 lg:px-6 border-t border-neutral-200">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
         {/* Headline */}
@@ -62,7 +62,7 @@ export function AdvancementSolutionSection() {
             >
               {/* Icon row: line-art + checkmark badge */}
               <div className="flex items-start justify-between">
-                <div 
+                <div
                   className="w-12 h-12 rounded-[14px] flex items-center justify-center text-neutral-400 bg-neutral-50 border border-neutral-100 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
                 >
                   {card.icon}
@@ -98,9 +98,9 @@ export function AdvancementSolutionSection() {
 
       </div>
 
-      <ConsultationModal 
-        isOpen={isConsultationOpen} 
-        onClose={() => setIsConsultationOpen(false)} 
+      <ConsultationModal
+        isOpen={isConsultationOpen}
+        onClose={() => setIsConsultationOpen(false)}
         pathname={location.pathname}
       />
     </section>
