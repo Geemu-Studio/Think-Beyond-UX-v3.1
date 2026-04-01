@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 import {
@@ -6,6 +6,8 @@ import {
   RouteOutlined,
   AnalyticsOutlined
 } from '@mui/icons-material';
+import expertMarcin from '@/assets/expert-marcin.jpeg';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 function CheckIcon() {
   return (
@@ -17,27 +19,83 @@ function CheckIcon() {
   );
 }
 
+const svgPaths = {
+  p1cfaff00: "M10.5 4.5V1.5H1.5V10.5H4.5M10.5 4.5H4.5V10.5M10.5 4.5L1.5 1.5M4.5 10.5L1.5 1.5",
+};
+
 const cards = [
   {
     icon: <FilterAltOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Strategic Audience Intelligence',
     body: 'Convert raw institutional data into actionable insights. Deliver resonant, mission-driven engagement based on the unique academic goals and aspirations of every constituent.',
+    videoId: 'v5V6Y0_Q_8k',
+    expertImage: expertMarcin,
   },
   {
     icon: <RouteOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Coordinated Brand Storytelling',
     body: 'Overcome administrative fragmentation. Orchestrate authentic institutional narratives across every touchpoint to create a cohesive, prestigious brand experience.',
+    videoId: 'v5V6Y0_Q_8k',
+    expertImage: expertMarcin,
   },
   {
     icon: <AnalyticsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Institutional Impact Metrics',
     body: 'Focus on the metrics that matter. Gain real-time visibility into engagement ROI and NSS-relevant performance indicators to continuously optimise your strategic outreach.',
+    videoId: 'v5V6Y0_Q_8k',
+    expertImage: expertMarcin,
   },
 ];
 
 export function EngagementSolutionSection() {
   const location = useLocation();
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  const [activeCard, setActiveCard] = useState<typeof cards[0] | null>(null);
+  const [videoStarted, setVideoStarted] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const openVideo = (card: typeof cards[0]) => {
+    setActiveCard(card);
+    setVideoStarted(false);
+    dialogRef.current?.showModal();
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeVideo = () => {
+    dialogRef.current?.close();
+    setActiveCard(null);
+    setVideoStarted(false);
+    document.body.style.overflow = '';
+  };
+
+  const nextVideo = () => {
+    if (!activeCard) return;
+    const currentIndex = cards.findIndex(c => c.title === activeCard.title);
+    const nextIndex = (currentIndex + 1) % cards.length;
+    setActiveCard(cards[nextIndex]);
+    setVideoStarted(false);
+  };
+
+  const prevVideo = () => {
+    if (!activeCard) return;
+    const currentIndex = cards.findIndex(c => c.title === activeCard.title);
+    const prevIndex = (currentIndex - 1 + cards.length) % cards.length;
+    setActiveCard(cards[prevIndex]);
+    setVideoStarted(false);
+  };
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    const handleCancel = (e: Event) => {
+      e.preventDefault();
+      closeVideo();
+    };
+
+    dialog.addEventListener('cancel', handleCancel);
+    return () => dialog.removeEventListener('cancel', handleCancel);
+  }, []);
 
   return (
     <section id="solution" className="bg-neutral-50 py-24 px-3 lg:px-6 border-t border-neutral-200">
@@ -58,7 +116,8 @@ export function EngagementSolutionSection() {
           {cards.map((card) => (
             <div
               key={card.title}
-              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group"
+              onClick={() => openVideo(card)}
+              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer"
             >
               {/* Icon row: line-art + checkmark badge */}
               <div className="flex items-start justify-between">
@@ -77,6 +136,16 @@ export function EngagementSolutionSection() {
                 <p className="text-[14px] text-neutral-500 leading-[1.7] min-h-[4.5rem]">
                   {card.body}
                 </p>
+
+                {/* Watch Solution CTA */}
+                <div className="flex items-center gap-2.5 text-[13px] font-semibold text-neutral-400 group-hover:text-black transition-all">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-200 group-hover:bg-black group-hover:border-black group-hover:text-white transition-all">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="ml-0.5">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                  <span>Watch strategy session</span>
+                </div>
               </div>
             </div>
           ))}
@@ -103,6 +172,115 @@ export function EngagementSolutionSection() {
         onClose={() => setIsConsultationOpen(false)}
         pathname={location.pathname}
       />
+
+      {/* Video Dialog Modal */}
+      <dialog
+        ref={dialogRef}
+        onClick={(e) => {
+          if (e.target === dialogRef.current) closeVideo();
+        }}
+        className="fixed inset-0 m-auto p-0 rounded-2xl border-none bg-transparent shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] max-w-4xl w-[95%] backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center transition-all duration-300"
+      >
+        {activeCard && (
+          <>
+            {/* Player Container */}
+            <div className="relative w-full aspect-video h-auto bg-black rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl transition-all duration-500">
+              <button
+                onClick={closeVideo}
+                className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-all border border-white/10 group active:scale-95"
+                aria-label="Close video"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+
+              <div className="w-full h-full relative">
+                {!videoStarted && (
+                  <div
+                    className="absolute inset-0 z-30 cursor-pointer group/facade flex items-center justify-center"
+                    onClick={() => setVideoStarted(true)}
+                  >
+                    <img
+                      src={activeCard.expertImage}
+                      alt={activeCard.title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/facade:scale-105"
+                    />
+
+                    {/* Project Logo - Top Left */}
+                    <div className="absolute top-8 left-8 flex items-center gap-2.5 z-40">
+                      <div className="bg-white/10 backdrop-blur-md rounded-[6px] flex items-center justify-center w-7 h-7 border border-white/20">
+                        <svg fill="none" viewBox="0 0 13 13" className="w-[13px] h-[13px]">
+                          <path
+                            d={svgPaths.p1cfaff00}
+                            stroke="white"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="1.2"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-white/90 text-[15px] tracking-[-0.4px] font-semibold">
+                        Think Beyond
+                      </span>
+                    </div>
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                    <div className="absolute bottom-10 left-10 text-left pr-10">
+                      <span className="text-[11px] text-white/70 uppercase tracking-[1.4px] font-semibold block mb-2">Expert Session</span>
+                      <h3 className="text-white text-xl sm:text-3xl font-bold tracking-tight max-w-xl leading-tight">
+                        {activeCard.title}
+                      </h3>
+                    </div>
+
+                    <div className="absolute inset-0 m-auto w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center rounded-full backdrop-blur-md bg-white/20 border border-white/30 shadow-2xl transition-all duration-500 group-hover/facade:scale-110 group-hover/facade:bg-white/30 group-hover/facade:border-white/50">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="white" className="ml-1 sm:ml-1.5 transition-transform duration-500 group-hover/facade:scale-110 sm:w-8 sm:h-8">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                      </svg>
+                    </div>
+                  </div>
+                )}
+
+                {videoStarted && (
+                  <div className="w-full h-full relative group/player">
+                    <iframe
+                      width="100%" height="100%"
+                      src={`https://www.youtube.com/embed/${activeCard.videoId}?autoplay=1&rel=0&modestbranding=1&mute=0`}
+                      title={activeCard.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="w-full h-full animate-in fade-in duration-1000"
+                    ></iframe>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Navigation Bar - Outside on mobile */}
+            <div className="fixed sm:absolute bottom-12 sm:bottom-8 left-1/2 -translate-x-1/2 sm:left-auto sm:right-8 sm:translate-x-0 z-50 bg-black/40 sm:bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 border border-white/10 sm:border-white/20 flex items-center gap-6 shadow-2xl transition-all animate-in fade-in slide-in-from-bottom-4 duration-700">
+               <span className="text-white font-bold text-sm tracking-tight w-8 text-center text-neutral-300">
+                 {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
+               </span>
+               <div className="flex gap-2">
+                 <button
+                  onClick={(e) => { e.stopPropagation(); prevVideo(); }}
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                 >
+                  <ChevronLeft className="w-5 h-5" />
+                 </button>
+                 <button
+                  onClick={(e) => { e.stopPropagation(); nextVideo(); }}
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                 >
+                  <ChevronRight className="w-5 h-5" />
+                 </button>
+               </div>
+            </div>
+          </>
+        )}
+      </dialog>
     </section>
   );
 }

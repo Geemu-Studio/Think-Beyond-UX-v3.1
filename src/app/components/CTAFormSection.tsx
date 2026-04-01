@@ -241,7 +241,6 @@ export function CTAFormSection({
                 <Button
                   type="submit"
                   disabled={!isFormValid}
-                  size="lg"
                   fullWidth={true}
                   className="mt-2 shadow-xl hover:shadow-2xl transition-all"
                 >

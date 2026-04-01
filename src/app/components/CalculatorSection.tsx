@@ -47,44 +47,79 @@ export function CalculatorSection() {
         <div className="bg-white rounded-[24px] p-6 sm:p-10 flex flex-col gap-8 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
 
           {/* Slider label + value badge */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <p className="text-[14px] text-neutral-600" style={{ fontWeight: 500 }}>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-start gap-4 flex-wrap">
+            <p className="text-[14px] text-neutral-600 shrink-0" style={{ fontWeight: 500 }}>
               {config.inputLabel}
             </p>
 
-            {/* EXPERT NOTE - SURGICAL INJECTION */}
-            <div className="hidden lg:flex items-center gap-4 bg-neutral-50 px-5 py-3 rounded-2xl border border-neutral-100 max-w-2xl mx-6 flex-1">
+            <span
+              className="bg-black text-white text-[20px] tracking-[-0.8px] px-5 py-1.5 rounded-full font-bold"
+            >
+              {value.toLocaleString('en-GB')}
+            </span>
+
+            {/* EXPERT NOTE - NOW VISIBLE ON MOBILE */}
+            <div className="flex items-center gap-4 bg-neutral-50 px-5 py-3 rounded-2xl border border-neutral-100 flex-1 min-w-[280px] sm:ml-4 mt-4 sm:mt-0">
               <div className="w-10 h-10 rounded-full bg-neutral-200 shrink-0 flex items-center justify-center border border-white shadow-sm text-neutral-400">
                 <User className="w-5 h-5" />
               </div>
               <div className="flex flex-col gap-0.5">
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-bold text-black uppercase tracking-wider">Marcin Pieńkowski</span>
-                    <span className="text-[10px] text-neutral-400 font-medium">Institutional Strategist</span>
+                    <span className="text-[10px] text-neutral-400 font-medium whitespace-nowrap">Institutional Strategist</span>
                   </div>
                   <p className="text-[12px] italic text-neutral-600 leading-snug">
                     &ldquo;{config.expertQuote}&rdquo;
                   </p>
               </div>
             </div>
-
-            <span
-              className="self-start sm:self-auto bg-black text-white text-[20px] tracking-[-0.8px] px-5 py-1.5 rounded-full"
-              style={{ fontWeight: 700 }}
-            >
-              {value.toLocaleString('en-GB')}
-            </span>
           </div>
 
           {/* Slider */}
-          <div className="relative group/slider">
+          <div className="relative group/slider pt-4">
             <style>
               {`
                 input[type='range']::-webkit-slider-thumb {
+                  -webkit-appearance: none;
+                  appearance: none;
+                  width: 32px;
+                  height: 32px;
+                  background: #000;
+                  border-radius: 50%;
+                  cursor: pointer;
+                  border: 3px solid #fff;
+                  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                  transition: transform 0.2s ease, background 0.2s ease;
+                }
+                
+                @media (max-width: 640px) {
+                  input[type='range']::-webkit-slider-thumb {
+                    width: 48px;
+                    height: 48px;
+                  }
+                }
+
+                input[type='range']::-moz-range-thumb {
+                  width: 32px;
+                  height: 32px;
+                  background: #000;
+                  border-radius: 50%;
+                  cursor: pointer;
+                  border: 3px solid #fff;
+                  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
                   transition: transform 0.2s ease;
                 }
-                input[type='range']:hover::-webkit-slider-thumb {
-                  transform: scale(1.25);
+
+                @media (max-width: 640px) {
+                  input[type='range']::-moz-range-thumb {
+                    width: 48px;
+                    height: 48px;
+                  }
+                }
+
+                input[type='range']:active::-webkit-slider-thumb {
+                  transform: scale(1.1);
+                  background: #333;
                 }
               `}
             </style>
@@ -95,15 +130,14 @@ export function CalculatorSection() {
               step={config.step}
               value={value}
               onChange={(e) => setValue(Number(e.target.value))}
-              className="w-full h-[3px] appearance-none cursor-pointer rounded-full"
+              className="w-full h-[6px] appearance-none cursor-pointer rounded-full outline-none"
               style={{
-                background: `linear-gradient(to right, #000 0%, #000 ${sliderPct}%, #d1d5db ${sliderPct}%, #d1d5db 100%)`,
-                accentColor: 'black',
+                background: `linear-gradient(to right, #000 0%, #000 ${sliderPct}%, #e5e7eb ${sliderPct}%, #e5e7eb 100%)`,
               }}
             />
-            <div className="flex justify-between mt-2">
-              <span className="text-[12px] text-neutral-400">{config.min.toLocaleString('en-GB')}</span>
-              <span className="text-[12px] text-neutral-400">{config.max.toLocaleString('en-GB')}</span>
+            <div className="flex justify-between mt-4">
+              <span className="text-[12px] text-neutral-400 font-medium tracking-tight">MIN: {config.min.toLocaleString('en-GB')}</span>
+              <span className="text-[12px] text-neutral-400 font-medium tracking-tight">MAX: {config.max.toLocaleString('en-GB')}</span>
             </div>
           </div>
 

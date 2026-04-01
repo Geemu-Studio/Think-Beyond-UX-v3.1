@@ -53,8 +53,7 @@ export function SolutionSection() {
   const [videoStarted, setVideoStarted] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const openVideo = (e: React.MouseEvent, card: typeof cards[0]) => {
-    e.stopPropagation();
+  const openVideo = (card: typeof cards[0]) => {
     setActiveCard(card);
     setVideoStarted(false);
     dialogRef.current?.showModal();
@@ -116,7 +115,7 @@ export function SolutionSection() {
           {cards.map((card) => (
             <div
               key={card.title}
-              onClick={(e) => openVideo(e, card)}
+              onClick={() => openVideo(card)}
               className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer"
             >
               {/* Icon row: line-art + checkmark badge */}
@@ -137,29 +136,15 @@ export function SolutionSection() {
                   {card.body}
                 </p>
 
-                {/* Video Trigger Button */}
-                <button
-                  onClick={(e) => openVideo(e, card)}
-                  className="flex items-center gap-2.5 text-[13px] font-semibold text-neutral-800 hover:text-black transition-all duration-300 group/btn w-fit cursor-pointer"
-                >
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-200 group-hover/btn:border-black group-hover/btn:bg-neutral-100 transition-all">
-                    <svg
-                      width="10"
-                      height="10"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                      className="ml-0.5"
-                    >
+                {/* Video Trigger CTA */}
+                <div className="flex items-center gap-2.5 text-[13px] font-semibold text-neutral-400 group-hover:text-black transition-all">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-200 group-hover:bg-black group-hover:border-black group-hover:text-white transition-all">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="ml-0.5">
                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
                     </svg>
                   </div>
                   <span>Watch solution in action</span>
-                </button>
+                </div>
               </div>
             </div>
           ))}
@@ -193,117 +178,107 @@ export function SolutionSection() {
         onClick={(e) => {
           if (e.target === dialogRef.current) closeVideo();
         }}
-        className="fixed inset-0 m-auto p-0 rounded-[24px] sm:rounded-[32px] border-none bg-transparent shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] max-w-6xl w-[95%] aspect-video backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center transition-all duration-300"
+        className="fixed inset-0 m-auto p-0 rounded-2xl border-none bg-transparent shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] max-w-4xl w-[95%] backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center transition-all duration-300"
       >
-        <div className="relative w-full h-full bg-black rounded-[24px] sm:rounded-[32px] overflow-hidden ring-1 ring-white/10">
-          <button
-            onClick={closeVideo}
-            className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-all border border-white/10 group"
-            aria-label="Close video"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
+        {activeCard && (
+          <>
+            {/* Player Container */}
+            <div className="relative w-full aspect-video h-auto bg-black rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl transition-all duration-500">
+              <button
+                onClick={closeVideo}
+                className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-all border border-white/10 group active:scale-95"
+                aria-label="Close video"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
 
-          {activeCard && (
-            <div className="w-full h-full relative">
-              {/* Video Facade (Thumbnail Overlay) */}
-              {!videoStarted && (
-                <div
-                  className="absolute inset-0 z-30 cursor-pointer group/facade flex items-center justify-center transition-opacity duration-500"
-                  onClick={() => setVideoStarted(true)}
-                >
-                  <img
-                    src={activeCard.expertImage}
-                    alt={activeCard.title}
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/facade:scale-105"
-                  />
+              <div className="w-full h-full relative">
+                {!videoStarted && (
+                  <div
+                    className="absolute inset-0 z-30 cursor-pointer group/facade flex items-center justify-center"
+                    onClick={() => setVideoStarted(true)}
+                  >
+                    <img
+                      src={activeCard.expertImage}
+                      alt={activeCard.title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/facade:scale-105"
+                    />
 
-                  {/* Project Logo - Top Left */}
-                  <div className="absolute top-8 left-8 flex items-center gap-2.5 z-40">
-                    <div className="bg-white/10 backdrop-blur-md rounded-[6px] flex items-center justify-center w-7 h-7 border border-white/20">
-                      <svg fill="none" viewBox="0 0 13 13" className="w-[13px] h-[13px]">
-                        <path
-                          d={svgPaths.p1cfaff00}
-                          stroke="white"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="1.2"
-                        />
+                    {/* Project Logo - Top Left */}
+                    <div className="absolute top-8 left-8 flex items-center gap-2.5 z-40">
+                      <div className="bg-white/10 backdrop-blur-md rounded-[6px] flex items-center justify-center w-7 h-7 border border-white/20">
+                        <svg fill="none" viewBox="0 0 13 13" className="w-[13px] h-[13px]">
+                          <path
+                            d={svgPaths.p1cfaff00}
+                            stroke="white"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="1.2"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-white/90 text-[15px] tracking-[-0.4px] font-semibold">
+                        Think Beyond
+                      </span>
+                    </div>
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                    <div className="absolute bottom-10 left-10 text-left pr-10">
+                      <span className="text-[11px] text-white/70 uppercase tracking-[1.4px] font-semibold block mb-2">Expert Session</span>
+                      <h3 className="text-white text-xl sm:text-3xl font-bold tracking-tight max-w-xl leading-tight">
+                        {activeCard.title}
+                      </h3>
+                    </div>
+
+                    <div className="absolute inset-0 m-auto w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center rounded-full backdrop-blur-md bg-white/20 border border-white/30 shadow-2xl transition-all duration-500 group-hover/facade:scale-110 group-hover/facade:bg-white/30 group-hover/facade:border-white/50">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="white" className="ml-1 sm:ml-1.5 transition-transform duration-500 group-hover/facade:scale-110 sm:w-8 sm:h-8">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
                       </svg>
                     </div>
-                    <span className="text-white/90 text-[15px] tracking-[-0.4px] font-semibold">
-                      Think Beyond
-                    </span>
                   </div>
+                )}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-
-                  <div className="absolute bottom-10 left-10 text-left">
-                    <span className="text-[11px] text-white/70 uppercase tracking-[1.4px] font-semibold block mb-2">Solution Overview</span>
-                    <h3 className="text-white text-2xl sm:text-3xl font-bold tracking-tight max-w-xl leading-tight">
-                      {activeCard.title}
-                    </h3>
+                {videoStarted && (
+                  <div className="w-full h-full relative group/player">
+                    <iframe
+                      width="100%" height="100%"
+                      src={`https://www.youtube.com/embed/${activeCard.videoId}?autoplay=1&rel=0&modestbranding=1&mute=0`}
+                      title={activeCard.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="w-full h-full animate-in fade-in duration-1000"
+                    ></iframe>
                   </div>
-
-                  <div className="absolute inset-0 m-auto w-24 h-24 flex items-center justify-center rounded-full backdrop-blur-md bg-white/20 border border-white/30 shadow-2xl transition-all duration-500 group-hover/facade:scale-110 group-hover/facade:bg-white/30 group-hover/facade:border-white/50">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white" className="ml-1.5 transition-transform duration-500 group-hover/facade:scale-110">
-                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                  </div>
-
-                  {/* Navigation Bar */}
-                  <div className="absolute bottom-8 right-8 z-40 bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 border border-white/20 flex items-center gap-6 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <span className="text-white font-bold text-sm tracking-tight">
-                      {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
-                    </span>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={(e) => { e.stopPropagation(); prevVideo(); }}
-                        className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer"
-                      >
-                        <ChevronLeft className="w-5 h-5" />
-                      </button>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); nextVideo(); }}
-                        className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer"
-                      >
-                        <ChevronRight className="w-5 h-5" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {videoStarted && (
-                <div className="w-full h-full relative group/player">
-                  <iframe
-                    width="100%" height="100%"
-                    src={`https://www.youtube.com/embed/${activeCard.videoId}?autoplay=1&rel=0&modestbranding=1&mute=0`}
-                    title={activeCard.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="w-full h-full animate-in fade-in duration-1000"
-                  ></iframe>
-
-                  <div className="absolute inset-x-0 bottom-8 px-8 flex justify-end opacity-0 group-hover/player:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <div className="bg-black/60 backdrop-blur-md rounded-full px-5 py-2.5 border border-white/10 flex items-center gap-6 shadow-2xl pointer-events-auto">
-                      <span className="text-white font-bold text-sm tracking-tight">
-                        {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
-                      </span>
-                      <div className="flex gap-2">
-                        <button onClick={prevVideo} className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer"><ChevronLeft className="w-5 h-5" /></button>
-                        <button onClick={nextVideo} className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer"><ChevronRight className="w-5 h-5" /></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
-          )}
-        </div>
+
+            {/* Navigation Bar - Outside on mobile */}
+            <div className="fixed sm:absolute bottom-12 sm:bottom-8 left-1/2 -translate-x-1/2 sm:left-auto sm:right-8 sm:translate-x-0 z-50 bg-black/40 sm:bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 border border-white/10 sm:border-white/20 flex items-center gap-6 shadow-2xl transition-all animate-in fade-in slide-in-from-bottom-4 duration-700">
+               <span className="text-white font-bold text-sm tracking-tight w-8 text-center text-neutral-300">
+                 {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
+               </span>
+               <div className="flex gap-2">
+                 <button
+                  onClick={(e) => { e.stopPropagation(); prevVideo(); }}
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                 >
+                  <ChevronLeft className="w-5 h-5" />
+                 </button>
+                 <button
+                  onClick={(e) => { e.stopPropagation(); nextVideo(); }}
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                 >
+                  <ChevronRight className="w-5 h-5" />
+                 </button>
+               </div>
+            </div>
+          </>
+        )}
       </dialog>
     </section>
   );
