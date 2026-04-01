@@ -46,27 +46,28 @@ export function CalculatorSection() {
         {/* White card */}
         <div className="bg-white rounded-[24px] p-6 sm:p-10 flex flex-col gap-8 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
 
-          {/* Slider label + value badge */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-start gap-4 flex-wrap">
-            <p className="text-[14px] text-neutral-600 shrink-0" style={{ fontWeight: 500 }}>
-              {config.inputLabel}
-            </p>
+          {/* Slider label + value badge - RESPONSIVE SIDE-BY-SIDE */}
+          <div className="flex flex-col lg:flex-row gap-6 items-stretch">
+            
+            {/* Group 1: Value & Label (50/50 split on large) - STRIPPED OUTLINE */}
+            <div className="flex items-center gap-4 flex-1 py-4">
+              <span className="bg-black text-white text-[18px] tracking-[-0.5px] px-4 py-1 rounded-full font-bold shadow-sm shrink-0">
+                {value.toLocaleString('en-GB')}
+              </span>
+              <p className="text-[13px] text-neutral-600 font-bold uppercase tracking-wide">
+                {config.inputLabel}
+              </p>
+            </div>
 
-            <span
-              className="bg-black text-white text-[20px] tracking-[-0.8px] px-5 py-1.5 rounded-full font-bold"
-            >
-              {value.toLocaleString('en-GB')}
-            </span>
-
-            {/* EXPERT NOTE - NOW VISIBLE ON MOBILE */}
-            <div className="flex items-center gap-4 bg-neutral-50 px-5 py-3 rounded-2xl border border-neutral-100 flex-1 min-w-[280px] sm:ml-4 mt-4 sm:mt-0">
+            {/* Group 2: Expert Note (50/50 split on large) */}
+            <div className="flex items-center gap-4 bg-neutral-50 px-5 py-4 rounded-2xl border border-neutral-100 flex-1">
               <div className="w-10 h-10 rounded-full bg-neutral-200 shrink-0 flex items-center justify-center border border-white shadow-sm text-neutral-400">
                 <User className="w-5 h-5" />
               </div>
               <div className="flex flex-col gap-0.5">
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-bold text-black uppercase tracking-wider">Marcin Pieńkowski</span>
-                    <span className="text-[10px] text-neutral-400 font-medium whitespace-nowrap">Institutional Strategist</span>
+                    <span className="text-[11px] text-neutral-400 font-medium whitespace-nowrap">Institutional Strategist</span>
                   </div>
                   <p className="text-[12px] italic text-neutral-600 leading-snug">
                     &ldquo;{config.expertQuote}&rdquo;

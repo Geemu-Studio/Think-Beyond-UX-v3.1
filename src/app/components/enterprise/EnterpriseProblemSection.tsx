@@ -103,13 +103,14 @@ export function EnterpriseProblemSection() {
         {/* 3-col agitation grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {cards.map((card) => (
-            <div
+            <button
               key={card.title}
               onClick={() => openVideo(card)}
-              className="p-8 flex flex-col gap-5 rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+              className="p-8 flex flex-col gap-5 text-left rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer w-full border-none"
             >
               {/* Icon tinted lightly */}
               <div
+                aria-hidden="true"
                 className="w-12 h-12 rounded-[14px] flex items-center justify-center text-neutral-400 bg-neutral-100 border border-neutral-200 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
               >
                 {card.icon}
@@ -130,7 +131,7 @@ export function EnterpriseProblemSection() {
                 </div>
                 <span>Hear Expert Insight</span>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 
@@ -236,12 +237,14 @@ export function EnterpriseProblemSection() {
                  <button
                   onClick={(e) => { e.stopPropagation(); prevVideo(); }}
                   className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                  aria-label="Previous expert session"
                  >
                   <ChevronLeft className="w-5 h-5" />
                  </button>
                  <button
                   onClick={(e) => { e.stopPropagation(); nextVideo(); }}
                   className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                  aria-label="Next expert session"
                  >
                   <ChevronRight className="w-5 h-5" />
                  </button>
