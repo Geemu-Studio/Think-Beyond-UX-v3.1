@@ -95,7 +95,7 @@ export function CTAFormSection({
           <div className="lg:col-span-5 flex flex-col gap-10">
 
             {/* ── TOP: Team block ── */}
-            <div className="bg-white rounded-[24px] border border-zinc-200 p-7 flex flex-col gap-6 shadow-sm text-left">
+            <div className="flex flex-col gap-6 text-left">
               <div className="flex items-center gap-5">
                 <AvatarStack />
                 <div>
@@ -159,7 +159,7 @@ export function CTAFormSection({
           </div>
 
           {/* ════════ RIGHT COLUMN (7/12) ════════ */}
-          <div className="lg:col-span-7 bg-white rounded-[24px] border border-zinc-200 p-8 sm:p-10 flex flex-col gap-6 shadow-sm text-left">
+          <div className="lg:col-span-7 bg-white rounded-[24px] border border-zinc-200 p-8 sm:p-10 flex flex-col gap-6 text-left">
             <div>
               <h3 className="text-[24px] sm:text-[28px] leading-[1.2] tracking-[-0.8px] text-black font-bold">
                 {formTitle}

@@ -111,191 +111,191 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
           <X className="w-6 h-6" strokeWidth={2.5} />
         </button>
 
-        <div className="flex-1 flex flex-col lg:flex-row overflow-hidden h-full">
-          {/* Left Column (Content) - 5/12 */}
-          <div className="lg:w-[42%] bg-zinc-50 px-3 py-10 lg:px-6 lg:py-14 flex flex-col gap-10 overflow-y-auto border-r border-zinc-200 scroll-smooth">
-            <div className="text-left">
-              <span className="text-[11px] text-neutral-400 uppercase tracking-[2px] font-bold block mb-4">
-                Strategic Mission Centre
-              </span>
-              <h2 className="text-[32px] sm:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">
-                Strategic Mission: Student Success & Institutional Growth.
-              </h2>
-            </div>
-
-            <div className="flex flex-col gap-10">
-              <div className="bg-white p-8 rounded-[28px] border border-zinc-200 shadow-sm flex flex-col gap-5 text-left">
-                <div className="flex items-center gap-5">
-                  <AvatarStack />
-                  <div>
-                    <h3 className="text-[20px] font-bold tracking-tight text-black mb-0.5">20+ Experts</h3>
-                    <p className="text-[13px] text-neutral-500 font-medium uppercase tracking-[0.5px]">Institutional Strategy Architects</p>
-                  </div>
-                </div>
-                <p className="text-[14px] text-neutral-600 leading-relaxed font-medium">
-                  Your institution&apos;s transformation will be guided by our full team of certified Salesforce architects.
-                </p>
+        <div className="flex-1 overflow-y-auto min-h-0 h-full scroll-smooth">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
+            {/* Left Column (Content) - 5/12 */}
+            <div className="lg:col-span-5 bg-zinc-50 px-3 py-10 lg:px-8 lg:py-14 flex flex-col gap-10 border-b lg:border-b-0 lg:border-r border-zinc-200">
+              <div className="text-left">
+                <span className="text-[11px] text-neutral-400 uppercase tracking-[2px] font-bold block mb-4">
+                  Strategic Mission Centre
+                </span>
+                <h2 className="text-[32px] sm:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">
+                  Strategic Mission: Student Success & Institutional Growth.
+                </h2>
               </div>
 
-              <div className="flex flex-col gap-4 text-left">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-200 bg-zinc-100 flex items-center justify-center shadow-sm shrink-0">
-                    <ImageWithFallback 
-                      src={EXPERT_PHOTO} 
-                      alt="Marcin Pieńkowski"
-                      className="w-full h-full object-cover"
-                    />
+              <div className="flex flex-col gap-10">
+                <div className="flex flex-col gap-5 text-left">
+                  <div className="flex items-center gap-5">
+                    <AvatarStack />
+                    <div>
+                      <h3 className="text-[20px] font-bold tracking-tight text-black mb-0.5">20+ Experts</h3>
+                      <p className="text-[13px] text-neutral-500 font-medium uppercase tracking-[0.5px]">Institutional Strategy Architects</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-[14px] font-bold text-black tracking-tight">Marcin Pieńkowski</h4>
-                    <p className="text-[11px] text-neutral-500 uppercase tracking-[0.5px]">Lead Institutional Strategist</p>
-                  </div>
-                </div>
-
-                <div className="relative bg-white border border-zinc-200 rounded-[20px] p-6 shadow-sm">
-                  <div className="absolute -top-[7px] left-6 w-3.5 h-3.5 bg-white border-t border-l border-zinc-200 rotate-45" />
-                  <p className="text-[14px] text-neutral-700 leading-relaxed italic">
-                    &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
+                  <p className="text-[14px] text-neutral-600 leading-relaxed font-medium">
+                    Your institution&apos;s transformation will be guided by our full team of certified Salesforce architects.
                   </p>
                 </div>
-              </div>
 
-              <div className="border-t border-zinc-200 pt-6 flex flex-col gap-4 text-left">
-                <p className="text-[12px] text-neutral-400 uppercase tracking-[1.2px] font-bold">
-                  Prefer direct contact?
-                </p>
-                <div className="flex flex-col gap-1.5">
-                  <ContactLink icon={IconEmail} label="marcin@thinkbeyond.cloud" href="mailto:marcin@thinkbeyond.cloud" />
-                  <ContactLink icon={IconPhone} label="+48 502 227 174" href="tel:+48502227174" />
-                  <ContactLink icon={IconWhatsApp} label="WhatsApp" href="https://wa.me/48502227174" />
-                  <ContactLink icon={IconMessenger} label="Messenger" href="https://m.me/thinkbeyond" />
-                </div>
-              </div>
+                <div className="flex flex-col gap-4 text-left">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-200 bg-zinc-100 flex items-center justify-center shrink-0 shadow-sm shrink-0">
+                      <ImageWithFallback 
+                        src={EXPERT_PHOTO} 
+                        alt="Marcin Pieńkowski"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="text-[14px] font-bold text-black tracking-tight">Marcin Pieńkowski</h4>
+                      <p className="text-[11px] text-neutral-500 uppercase tracking-[0.5px]">Lead Institutional Strategist</p>
+                    </div>
+                  </div>
 
-            </div>
-          </div>
-
-          {/* Right Column (Form) - 7/12 */}
-          <div className="flex-1 bg-white px-3 py-10 lg:px-6 lg:py-14 overflow-y-auto overflow-x-hidden min-h-0 flex flex-col items-center justify-center">
-            <AnimatePresence mode="wait">
-              {submitted ? (
-                <motion.div 
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.1 }}
-                  className="w-full max-w-md flex flex-col items-center text-center gap-8 py-10"
-                >
-                  <motion.div 
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", damping: 12, stiffness: 200 }}
-                    className="w-24 h-24 bg-black rounded-full flex items-center justify-center shadow-2xl mb-2"
-                  >
-                    <CheckCircle2 className="w-12 h-12 text-white" />
-                  </motion.div>
-                  <div>
-                    <h3 className="text-[32px] font-bold tracking-tight text-black mb-4">Strategic Dialogue Initiated</h3>
-                    <p className="text-neutral-500 text-lg leading-relaxed">
-                      A dedicated strategist will coordinate your strategy session within 24 business hours.
+                  <div className="relative pt-2">
+                    <div className="absolute -top-[5px] left-6 w-3 h-3 bg-neutral-100 border-t border-l border-zinc-200 rotate-45" />
+                    <p className="text-[14px] text-neutral-700 leading-relaxed italic bg-zinc-50 p-5 rounded-xl border border-zinc-100">
+                      &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
                     </p>
                   </div>
-                  <Button
-                    variant="link"
-                    size="lg"
-                    onClick={() => setSubmitted(false)}
-                    className="text-neutral-400 hover:text-black transition-colors"
-                  >
-                    Send another message
-                  </Button>
-                </motion.div>
-              ) : (
-                <motion.div 
-                  key="form"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="w-full max-w-[480px] flex flex-col gap-10"
-                >
-                  <div className="flex flex-col gap-3 text-left">
-                   <h3 className="text-[28px] font-bold tracking-tight text-black text-left">
-                      Initiate Strategic Review
-                    </h3>
+                </div>
+
+                <div className="border-t border-zinc-200 pt-6 flex flex-col gap-4 text-left pb-4">
+                  <p className="text-[12px] text-neutral-400 uppercase tracking-[1.2px] font-bold">
+                    Prefer direct contact?
+                  </p>
+                  <div className="flex flex-col gap-1.5">
+                    <ContactLink icon={IconEmail} label="marcin@thinkbeyond.cloud" href="mailto:marcin@thinkbeyond.cloud" />
+                    <ContactLink icon={IconPhone} label="+48 502 227 174" href="tel:+48502227174" />
+                    <ContactLink icon={IconWhatsApp} label="WhatsApp" href="https://wa.me/48502227174" />
+                    <ContactLink icon={IconMessenger} label="Messenger" href="https://m.me/thinkbeyond" />
                   </div>
+                </div>
+              </div>
+            </div>
 
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full text-left" noValidate>
-                    <div className="flex flex-col gap-6">
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-[13px] text-neutral-700 font-bold ml-1">Full name</label>
-                        <Input
-                          placeholder="Professor Jane Smith"
-                          value={form.name}
-                          onChange={(e) => setForm({ ...form, name: e.target.value })}
-                          error={!!errors.name}
-                        />
-                        {errors.name && <p className="text-[12px] text-black font-bold ml-1">{errors.name}</p>}
-                      </div>
-
-                      <div className="flex flex-col gap-1.5 text-black">
-                        <label className="text-[13px] text-neutral-700 font-bold ml-1">Institution name</label>
-                        <Input
-                          placeholder="Start typing institution name..."
-                          list="modal-universities"
-                          value={form.university}
-                          onChange={(e) => setForm({ ...form, university: e.target.value })}
-                          error={!!errors.university}
-                        />
-                        {errors.university && <p className="text-[12px] text-black font-bold ml-1">{errors.university}</p>}
-                        <datalist id="modal-universities">
-                          {UNIVERSITY_OPTIONS}
-                        </datalist>
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-[13px] text-neutral-700 font-bold ml-1">Institutional email address</label>
-                        <Input
-                          type="email"
-                          placeholder="j.smith@university.ac.uk"
-                          value={form.email}
-                          onChange={(e) => setForm({ ...form, email: e.target.value })}
-                          error={!!errors.email}
-                        />
-                        {errors.email && <p className="text-[12px] text-black font-bold ml-1">{errors.email}</p>}
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2 py-1">
-                      <label className="flex items-start gap-4 cursor-pointer group">
-                        <input
-                          type="checkbox"
-                          checked={form.gdpr}
-                          onChange={(e) => setForm({ ...form, gdpr: e.target.checked })}
-                          className="mt-1 accent-black w-4 h-4 shrink-0 cursor-pointer"
-                        />
-                        <span className="text-[13px] text-neutral-500 leading-relaxed group-hover:text-black transition-colors">
-                          I consent to the processing of data in accordance with GDPR.
-                        </span>
-                      </label>
-                      {errors.gdpr && <p className="text-[12px] text-black font-bold ml-8">{errors.gdpr}</p>}
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={!isFormValid}
-                      fullWidth={true}
-                      className="mt-2 shadow-xl hover:shadow-2xl transition-all"
+            {/* Right Column (Form) - 7/12 */}
+            <div className="lg:col-span-7 bg-white px-3 py-10 lg:px-10 lg:py-14 flex flex-col items-center justify-start lg:justify-center">
+              <AnimatePresence mode="wait">
+                {submitted ? (
+                  <motion.div 
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.1 }}
+                    className="w-full max-w-md flex flex-col items-center text-center gap-8 py-10"
+                  >
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", damping: 12, stiffness: 200 }}
+                      className="w-24 h-24 bg-black rounded-full flex items-center justify-center shadow-2xl mb-2"
                     >
-                      Initiate Strategic Review
-                      <Send className="ml-2 w-4 h-4" />
-                    </Button>
-
-                    <div className="flex items-center justify-center gap-2 text-[11px] text-neutral-400 mt-2">
-                      <Lock className="w-3 h-3" />
-                      <span>Your data is 100% secure. No spam, ever.</span>
+                      <CheckCircle2 className="w-12 h-12 text-white" />
+                    </motion.div>
+                    <div>
+                      <h3 className="text-[32px] font-bold tracking-tight text-black mb-4">Strategic Dialogue Initiated</h3>
+                      <p className="text-neutral-500 text-lg leading-relaxed">
+                        A dedicated strategist will coordinate your strategy session within 24 business hours.
+                      </p>
                     </div>
-                  </form>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                    <Button
+                      variant="link"
+                      onClick={() => setSubmitted(false)}
+                      className="text-neutral-400 hover:text-black transition-colors"
+                    >
+                      Send another message
+                    </Button>
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    key="form"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="w-full max-w-[480px] flex flex-col gap-10"
+                  >
+                    <div className="flex flex-col gap-3 text-left">
+                     <h3 className="text-[28px] font-bold tracking-tight text-black text-left">
+                        Initiate Strategic Review
+                      </h3>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full text-left" noValidate>
+                      <div className="flex flex-col gap-6">
+                        <div className="flex flex-col gap-1.5">
+                          <label className="text-[13px] text-neutral-700 font-bold ml-1">Full name</label>
+                          <Input
+                            placeholder="Professor Jane Smith"
+                            value={form.name}
+                            onChange={(e) => setForm({ ...form, name: e.target.value })}
+                            error={!!errors.name}
+                          />
+                          {errors.name && <p className="text-[12px] text-black font-bold ml-1">{errors.name}</p>}
+                        </div>
+
+                        <div className="flex flex-col gap-1.5 text-black">
+                          <label className="text-[13px] text-neutral-700 font-bold ml-1">Institution name</label>
+                          <Input
+                            placeholder="Start typing institution name..."
+                            list="modal-universities"
+                            value={form.university}
+                            onChange={(e) => setForm({ ...form, university: e.target.value })}
+                            error={!!errors.university}
+                          />
+                          {errors.university && <p className="text-[12px] text-black font-bold ml-1">{errors.university}</p>}
+                          <datalist id="modal-universities">
+                            {UNIVERSITY_OPTIONS}
+                          </datalist>
+                        </div>
+
+                        <div className="flex flex-col gap-1.5">
+                          <label className="text-[13px] text-neutral-700 font-bold ml-1">Institutional email address</label>
+                          <Input
+                            type="email"
+                            placeholder="j.smith@university.ac.uk"
+                            value={form.email}
+                            onChange={(e) => setForm({ ...form, email: e.target.value })}
+                            error={!!errors.email}
+                          />
+                          {errors.email && <p className="text-[12px] text-black font-bold ml-1">{errors.email}</p>}
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col gap-2 py-1">
+                        <label className="flex items-start gap-4 cursor-pointer group">
+                          <input
+                            type="checkbox"
+                            checked={form.gdpr}
+                            onChange={(e) => setForm({ ...form, gdpr: e.target.checked })}
+                            className="mt-1 accent-black w-4 h-4 shrink-0 cursor-pointer"
+                          />
+                          <span className="text-[13px] text-neutral-500 leading-relaxed group-hover:text-black transition-colors">
+                            I consent to the processing of data in accordance with GDPR.
+                          </span>
+                        </label>
+                        {errors.gdpr && <p className="text-[12px] text-black font-bold ml-8">{errors.gdpr}</p>}
+                      </div>
+
+                      <Button
+                        type="submit"
+                        disabled={!isFormValid}
+                        fullWidth={true}
+                        className="mt-2 shadow-xl hover:shadow-2xl transition-all"
+                      >
+                        Initiate Strategic Review
+                        <Send className="ml-2 w-4 h-4" />
+                      </Button>
+
+                      <div className="flex items-center justify-center gap-2 text-[11px] text-neutral-400 mt-2">
+                        <Lock className="w-3 h-3" />
+                        <span>Your data is 100% secure. No spam, ever.</span>
+                      </div>
+                    </form>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </motion.div>

@@ -103,7 +103,7 @@ export function ConsultationHub({
 
             <div className="grid sm:grid-cols-1 gap-8 text-left">
               {/* Card 1: Expertise signals */}
-              <div className="bg-white p-6 rounded-[24px] border border-zinc-200 shadow-sm flex flex-col items-start text-left">
+              <div className="flex flex-col items-start text-left">
                 <AvatarStack />
                 <h3 className="text-[18px] font-bold text-black mb-1">20+ Experts</h3>
                 <p className="text-[13px] text-neutral-500 font-medium mb-3 uppercase tracking-[0.5px]">Institutional Strategy Architects</p>
@@ -113,7 +113,7 @@ export function ConsultationHub({
               </div>
 
               {/* Card 2: Marcin Profile & Quote */}
-              <div className="bg-white p-6 rounded-[24px] border border-zinc-200 shadow-sm flex flex-col gap-4 text-left">
+              <div className="flex flex-col gap-4 text-left">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-200 bg-zinc-100 flex items-center justify-center shrink-0 shadow-sm">
                     <ImageWithFallback
@@ -162,7 +162,7 @@ export function ConsultationHub({
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
                 className={`w-full p-8 rounded-[32px] border transition-all duration-300 text-left group flex items-center justify-between cursor-pointer ${isExpanded
-                    ? "bg-black border-black text-white shadow-xl translate-y-[-4px]"
+                    ? "bg-black border-black text-white translate-y-[-4px]"
                     : "bg-white border-zinc-200 text-black hover:border-black hover:shadow-lg"
                   }`}
               >
@@ -191,7 +191,7 @@ export function ConsultationHub({
                     transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
                     className="overflow-hidden"
                   >
-                    <div className="bg-white rounded-[32px] border border-zinc-200 p-8 shadow-xl mt-2 overflow-hidden">
+                    <div className="flex flex-col gap-5 text-left">
                       {submitted ? (
                         <div className="flex flex-col items-center text-center gap-6 py-6 animate-in fade-in zoom-in-95 duration-500">
                           <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center shadow-lg mb-2 text-white">
