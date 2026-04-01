@@ -10,6 +10,7 @@ export interface CalculatorConfig {
   tagline: string;
   title: string;
   inputLabel: string;
+  expertQuote: string;
   min: number;
   max: number;
   step: number;
@@ -25,6 +26,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     tagline: "Institutional Impact",
     title: "Measuring the institutional value of academic flourishing.",
     inputLabel: "Annual Student Intake",
+    expertQuote: "Student attrition is an institutional failure, not just an individual one. Proactive, data-driven interventions secure both academic journeys and financial resilience.",
     min: 200,
     max: 10000,
     step: 100,
@@ -74,6 +76,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     tagline: "Recruitment ROI",
     title: "Calculate the strategic value of admission excellence.",
     inputLabel: "Annual Applicant Volume",
+    expertQuote: "Every application you fail to frictionless-enrol is not just a missed fee—it's a lost opportunity to enrich your academic community. Let’s make enrolment a human, strategic moment.",
     min: 500,
     max: 30000,
     step: 500,
@@ -123,6 +126,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     tagline: "Success Scenarios",
     title: "Visualise the impact of pro-active student enablement.",
     inputLabel: "Student Population",
+    expertQuote: "Student attrition is an institutional failure, not just an individual one. Proactive, data-driven interventions secure both academic journeys and financial resilience.",
     min: 1000,
     max: 50000,
     step: 1000,
@@ -172,6 +176,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     tagline: "Engagement ROI",
     title: "Quantify the influence of institutional brand storytelling.",
     inputLabel: "Monthly Digital Engagements",
+    expertQuote: "Generic communication gets lost in the noise. By orchestrating authentic, personalised journeys, we turn passive prospects into proud alumni.",
     min: 5000,
     max: 200000,
     step: 5000,
@@ -221,6 +226,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     tagline: "Advancement ROI",
     title: "Measure the power of lifelong institutional connection.",
     inputLabel: "Active Alumni Database",
+    expertQuote: "Transactional fundraising yields transactional results. Cultivating a lifelong, engaged alumni community unlocks exponential philanthropic potential.",
     min: 10000,
     max: 500000,
     step: 10000,
@@ -270,6 +276,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     tagline: "Enterprise ROI",
     title: "Quantify the potential of institutional commercial partnerships.",
     inputLabel: "Active Corporate Engagements",
+    expertQuote: "Corporate partnerships shouldn't be siloed. Unifying your enterprise relations unlocks new revenue streams and amplifies your institutional impact.",
     min: 50,
     max: 2500,
     step: 50,
@@ -316,4 +323,3 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     ]
   }
 };
-

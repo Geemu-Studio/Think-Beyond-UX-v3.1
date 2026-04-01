@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useLocation } from 'react-router';
+import { User } from 'lucide-react';
 import { ConsultationModal } from './ConsultationModal';
 import { CALCULATOR_CONFIGS } from '../data/calculatorContent';
 
@@ -50,6 +51,23 @@ export function CalculatorSection() {
             <p className="text-[14px] text-neutral-600" style={{ fontWeight: 500 }}>
               {config.inputLabel}
             </p>
+
+            {/* EXPERT NOTE - SURGICAL INJECTION */}
+            <div className="hidden lg:flex items-center gap-4 bg-neutral-50 px-5 py-3 rounded-2xl border border-neutral-100 max-w-2xl mx-6 flex-1">
+              <div className="w-10 h-10 rounded-full bg-neutral-200 shrink-0 flex items-center justify-center border border-white shadow-sm text-neutral-400">
+                <User className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col gap-0.5">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-bold text-black uppercase tracking-wider">Marcin Pieńkowski</span>
+                    <span className="text-[10px] text-neutral-400 font-medium">Institutional Strategist</span>
+                  </div>
+                  <p className="text-[12px] italic text-neutral-600 leading-snug">
+                    &ldquo;{config.expertQuote}&rdquo;
+                  </p>
+              </div>
+            </div>
+
             <span
               className="self-start sm:self-auto bg-black text-white text-[20px] tracking-[-0.8px] px-5 py-1.5 rounded-full"
               style={{ fontWeight: 700 }}
