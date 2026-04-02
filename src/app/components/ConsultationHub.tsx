@@ -20,9 +20,8 @@ const EXPERT_PHOTO =
 /* ── Avatar stack component for Trust ── */
 function AvatarStack() {
   const avatars = [
-    { initials: 'AK', color: 'bg-neutral-200' },
-    { initials: 'MB', color: 'bg-neutral-300' },
-    { initials: 'PW', color: 'bg-neutral-100' },
+    { initials: 'AK', color: 'bg-[#F5F5F5]' },
+    { initials: 'MB', color: 'bg-[#D4D4D4]' },
   ];
 
   return (
@@ -37,7 +36,7 @@ function AvatarStack() {
           </span>
         </div>
       ))}
-      <div className="w-10 h-10 rounded-full border-2 border-white bg-black flex items-center justify-center shrink-0 shadow-sm z-10">
+      <div className="w-10 h-10 rounded-full border-2 border-white bg-[#111111] flex items-center justify-center shrink-0 shadow-sm z-10">
         <span className="text-[9px] text-white font-bold">+17</span>
       </div>
     </div>
@@ -113,23 +112,22 @@ export function ConsultationHub({
               </div>
 
               {/* Card 2: Marcin Profile & Quote */}
-              <div className="flex flex-col gap-4 text-left">
+              <div className="flex flex-col gap-3 text-left">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-200 bg-zinc-100 flex items-center justify-center shrink-0 shadow-sm">
-                    <ImageWithFallback
-                      src={EXPERT_PHOTO}
-                      alt="Marcin Pieńkowski"
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="flex items-center justify-center rounded-full bg-[#E5E7EB] border border-[#D1D5DB] shrink-0 w-10 h-10">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
                   </div>
                   <div>
-                    <h4 className="text-[14px] font-bold text-black tracking-tight">Marcin Pieńkowski</h4>
+                    <h4 className="text-[14px] font-bold text-black tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
                     <p className="text-[11px] text-neutral-500 uppercase tracking-[0.5px]">Lead Institutional Strategist</p>
                   </div>
                 </div>
-                <div className="relative pt-2">
-                  <div className="absolute -top-[5px] left-4 w-3 h-3 bg-white border-t border-l border-zinc-200 rotate-45" />
-                  <p className="text-[13px] text-neutral-700 leading-relaxed italic bg-zinc-50 p-4 rounded-xl border border-zinc-100">
+                {/* Quote bubble (Clean version) */}
+                <div className="flex rounded-2xl bg-white border border-solid border-[#F0F0F0] p-5">
+                  <p className="text-[13px] text-[#404040] leading-relaxed italic">
                     &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
                   </p>
                 </div>
@@ -140,17 +138,11 @@ export function ConsultationHub({
                 <p className="text-[12px] text-neutral-400 uppercase tracking-[1.2px] font-bold">
                   Prefer direct contact?
                 </p>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1.5">
                   <ContactLink icon={IconEmail} label="marcin@thinkbeyond.cloud" href="mailto:marcin@thinkbeyond.cloud" />
                   <ContactLink icon={IconPhone} label="+48 502 227 174" href="tel:+48502227174" />
-                  <div className="flex gap-4 mt-1">
-                    <a href="https://wa.me/48502227174" target="_blank" rel="noreferrer" className="text-neutral-400 hover:text-black transition-colors">
-                      <IconWhatsApp />
-                    </a>
-                    <a href="https://m.me/thinkbeyond" target="_blank" rel="noreferrer" className="text-neutral-400 hover:text-black transition-colors">
-                      <IconMessenger />
-                    </a>
-                  </div>
+                  <ContactLink icon={IconWhatsApp} label="WhatsApp" href="https://wa.me/48502227174" />
+                  <ContactLink icon={IconMessenger} label="Messenger" href="https://m.me/thinkbeyond" />
                 </div>
               </div>
             </div>

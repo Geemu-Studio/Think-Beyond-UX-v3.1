@@ -62,7 +62,6 @@ export function IconWhatsApp({ className }: IconProps) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.8 8.19 8.19 0 0 1 3.3.7l4.1-1.3Z"/>
-      <path d="M9.5 9.5a1.5 1.5 0 1 1 3 0c0 .8-.5 1-1 1.5s-1.5 1-1.5 1.5v.5"/>
       <path d="M12 16h.01"/>
     </svg>
   );

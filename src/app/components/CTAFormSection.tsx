@@ -20,9 +20,8 @@ const EXPERT_PHOTO =
 /* ── Avatar stack component ── */
 function AvatarStack() {
   const avatars = [
-    { initials: 'AK', color: 'bg-neutral-200' },
-    { initials: 'MB', color: 'bg-neutral-300' },
-    { initials: 'PW', color: 'bg-neutral-100' },
+    { initials: 'AK', color: 'bg-[#F5F5F5]' },
+    { initials: 'MB', color: 'bg-[#D4D4D4]' },
   ];
 
   return (
@@ -37,7 +36,7 @@ function AvatarStack() {
           </span>
         </div>
       ))}
-      <div className="w-10 h-10 rounded-full border-2 border-white bg-black flex items-center justify-center shrink-0 shadow-sm z-10">
+      <div className="w-10 h-10 rounded-full border-2 border-white bg-[#111111] flex items-center justify-center shrink-0 shadow-sm z-10">
         <span className="text-[9px] text-white font-bold">+17</span>
       </div>
     </div>
@@ -92,58 +91,53 @@ export function CTAFormSection({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
 
           {/* ════════ LEFT COLUMN (5/12) ════════ */}
-          <div className="lg:col-span-5 flex flex-col gap-10">
-
-            {/* ── TOP: Team block ── */}
-            <div className="flex flex-col gap-6 text-left">
-              <div className="flex items-center gap-5">
+          <div className="lg:col-span-5 flex flex-col gap-10 antialiased">
+            
+            {/* ── TOP: Trust section ── */}
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center">
                 <AvatarStack />
-                <div>
-                  <h3 className="text-[20px] font-bold tracking-tight text-black mb-0.5">20+ Experts</h3>
-                  <p className="text-[11px] text-neutral-400 uppercase tracking-[1px] font-bold">Institutional Strategy Architects</p>
+                <div className="ml-5">
+                  <div className="mb-0.5 text-black font-['Outfit'] font-bold text-xl leading-snug">
+                    20+ Experts
+                  </div>
+                  <div className="uppercase tracking-[1px] text-[#A3A3A3] font-bold text-[11px] leading-tight">
+                    INSTITUTIONAL STRATEGY ARCHITECTS
+                  </div>
                 </div>
               </div>
-
-              <p className="text-[14px] text-neutral-600 leading-relaxed font-medium">
-                Your institution's transformation will be guided by our full team of certified Salesforce architects.
-              </p>
+              <div className="text-[14px] leading-relaxed text-[#525252] font-medium">
+                Your institution&apos;s transformation will be guided by our full team of certified Salesforce architects.
+              </div>
             </div>
 
-            {/* ── Separator ── */}
-            <div className="border-t border-neutral-300" />
-
-            {/* ── MIDDLE: Expert profile ── */}
-            <div className="flex flex-col gap-4 text-left">
+            {/* ── MIDDLE: Lead strategist ── */}
+            <div className="flex flex-col pt-6 gap-3 border-t border-solid border-[#D4D4D4]">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-200 bg-zinc-100 flex items-center justify-center shadow-sm shrink-0">
-                  <ImageWithFallback 
-                    src={EXPERT_PHOTO} 
-                    alt="Marcin Pieńkowski"
-                    className="w-full h-full object-cover"
-                  />
+                <div className="flex items-center justify-center rounded-full bg-[#E5E7EB] border border-solid border-[#D1D5DB] shrink-0 w-10 h-10">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
                 </div>
-                <div>
-                  <h4 className="text-[14px] font-bold text-black tracking-tight">Marcin Pieńkowski</h4>
-                  <p className="text-[11px] text-neutral-500 uppercase tracking-[0.5px]">Lead Institutional Strategist</p>
+                <div className="">
+                  <div className="text-black font-['Outfit'] font-bold text-sm leading-snug">
+                    Marcin Pieńkowski
+                  </div>
+                  <div className="uppercase tracking-[0.5px] text-[#737373] text-[11px] leading-tight">
+                    Lead Institutional Strategist
+                  </div>
                 </div>
               </div>
-
-              {/* Quote bubble */}
-              <div className="relative bg-white rounded-[16px] border border-[#F0F0F0] p-5">
-                <div className="absolute -top-3 left-8 w-5 h-3 overflow-hidden">
-                  <div className="w-4 h-4 bg-white border-t border-l border-[#F0F0F0] rotate-45 translate-y-1 translate-x-1" />
-                </div>
-                <p className="text-[14px] text-neutral-700 leading-[1.75] italic">
+              <div className="flex rounded-2xl bg-white border border-solid border-[#F0F0F0] p-5">
+                <div className="text-[14px] leading-relaxed text-[#404040] italic">
                   &quot;Let&apos;s start with strategy. I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
-                </p>
+                </div>
               </div>
             </div>
 
-            {/* ── BOTTOM: Direct contact ── */}
-            <div className="border-t border-neutral-200 pt-6 flex flex-col gap-4 text-left">
-              <p className="text-[12px] text-neutral-400 uppercase tracking-[1.2px]" style={{ fontWeight: 700 }}>
-                Prefer direct contact?
-              </p>
+            {/* ── BOTTOM: Contact Links ── */}
+            <div className="flex flex-col rounded-2xl gap-3">
               <div className="flex flex-col gap-1.5">
                 {CONTACT_ITEMS.map((item) => (
                   <ContactLink 
@@ -155,7 +149,6 @@ export function CTAFormSection({
                 ))}
               </div>
             </div>
-
           </div>
 
           {/* ════════ RIGHT COLUMN (7/12) ════════ */}
