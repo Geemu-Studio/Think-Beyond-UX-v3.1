@@ -180,15 +180,15 @@ export function SolutionSection() {
         onClick={(e) => {
           if (e.target === dialogRef.current) closeVideo();
         }}
-        className="fixed inset-0 m-auto p-0 rounded-2xl border-none bg-transparent shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] max-w-4xl w-[95%] backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center transition-all duration-300"
+        className="fixed inset-0 m-0 p-0 w-screen h-screen max-w-none border-none bg-transparent backdrop:bg-black/80 backdrop:backdrop-blur-sm open:flex flex-col items-center justify-center z-[9999] overflow-hidden"
       >
         {activeCard && (
           <>
             {/* Player Container */}
-            <div className="relative w-full aspect-video h-auto bg-black rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl transition-all duration-500">
+            <div className="relative w-[95%] max-w-4xl aspect-video h-auto bg-black rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] transition-all duration-500">
               <button
                 onClick={closeVideo}
-                className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-all border border-white/10 group active:scale-95"
+                className="absolute top-4 right-4 z-[90] w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-all border border-white/10 group active:scale-95"
                 aria-label="Close video"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -259,8 +259,8 @@ export function SolutionSection() {
               </div>
             </div>
 
-            {/* Navigation Bar - Outside on mobile */}
-            <div className="fixed sm:absolute bottom-12 sm:bottom-8 left-1/2 -translate-x-1/2 sm:left-auto sm:right-8 sm:translate-x-0 z-50 bg-black/40 sm:bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 border border-white/10 sm:border-white/20 flex items-center gap-6 shadow-2xl transition-all animate-in fade-in slide-in-from-bottom-4 duration-700">
+            {/* Navigation Bar - Stable, centered and 24px from bottom */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black/40 md:bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 border border-white/10 md:border-white/20 flex items-center gap-6 shadow-2xl transition-all">
                <span className="text-white font-bold text-sm tracking-tight w-8 text-center text-neutral-300">
                  {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
                </span>
