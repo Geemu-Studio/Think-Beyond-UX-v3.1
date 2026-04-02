@@ -160,22 +160,15 @@ export function SecurityTrustSection() {
         {/* ── Feature cards ──────────────────────────────────────── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {features.map((feat) => (
-            <div
+            <button
               key={feat.id}
               onClick={() => openVideo(feat)}
-              className="rounded-[20px] p-6 flex flex-col gap-6 group transition-all duration-300 cursor-pointer hover:bg-[#333333] hover:border-transparent hover:scale-[1.03] hover:shadow-2xl active:scale-[0.98]"
+              className="rounded-[20px] p-6 flex flex-col items-start gap-6 group transition-all duration-300 cursor-pointer hover:bg-[#333333] hover:border-transparent hover:scale-[1.03] hover:shadow-2xl active:scale-[0.98] text-left w-full"
               style={{
                 background: 'transparent',
                 border: '1px solid #3f3f46'
               }}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  openVideo(feat);
-                }
-              }}
+              aria-label={`Watch ${feat.videoLabel}: ${feat.heading}`}
             >
 
               {/* Icon */}
@@ -223,7 +216,7 @@ export function SecurityTrustSection() {
                   <span>Review Governance Framework</span>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 
@@ -361,18 +354,20 @@ export function SecurityTrustSection() {
                  {features.findIndex(f => f.id === activeCard.id) + 1} / {features.length}
                </span>
                <div className="flex gap-2">
-                 <button
-                  onClick={(e) => { e.stopPropagation(); prevVideo(); }}
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
-                 >
-                  <ChevronLeft className="w-5 h-5" />
-                 </button>
-                 <button
-                  onClick={(e) => { e.stopPropagation(); nextVideo(); }}
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
-                 >
-                  <ChevronRight className="w-5 h-5" />
-                 </button>
+                  <button
+                   onClick={(e) => { e.stopPropagation(); prevVideo(); }}
+                   className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                   aria-label="Previous security insight"
+                  >
+                   <ChevronLeft className="w-5 h-5" aria-hidden="true" />
+                  </button>
+                  <button
+                   onClick={(e) => { e.stopPropagation(); nextVideo(); }}
+                   className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                   aria-label="Next security insight"
+                  >
+                   <ChevronRight className="w-5 h-5" aria-hidden="true" />
+                  </button>
                </div>
             </div>
           </>

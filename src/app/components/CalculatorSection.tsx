@@ -46,30 +46,30 @@ export function CalculatorSection() {
         {/* White card */}
         <div className="bg-white rounded-[24px] p-6 sm:p-10 flex flex-col gap-8 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
 
-          {/* Slider label + value badge - RESPONSIVE SIDE-BY-SIDE */}
-          <div className="flex flex-col lg:flex-row gap-6 items-stretch">
+          {/* Slider label + value badge - E-0 BALANCED DESIGN */}
+          <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center">
             
-            {/* Group 1: Value & Label (50/50 split on large) - STRIPPED OUTLINE */}
-            <div className="flex items-center gap-4 flex-1 py-4">
-              <span className="bg-black text-white text-[18px] tracking-[-0.5px] px-4 py-1 rounded-full font-bold shadow-sm shrink-0">
+            {/* Group 1: Value & Label (Natural width) */}
+            <div className="flex items-center gap-5 flex-1 py-4 lg:py-0">
+              <span className="bg-black text-white text-[20px] tracking-[-0.8px] px-6 py-1.5 rounded-full font-extrabold shadow-sm shrink-0">
                 {value.toLocaleString('en-GB')}
               </span>
-              <p className="text-[13px] text-neutral-600 font-bold uppercase tracking-wide">
+              <p className="text-[14px] text-neutral-600 font-bold uppercase tracking-[1.4px]">
                 {config.inputLabel}
               </p>
             </div>
 
-            {/* Group 2: Expert Note (50/50 split on large) */}
-            <div className="flex items-center gap-4 bg-neutral-50 px-5 py-4 rounded-2xl border border-neutral-100 flex-1">
-              <div className="w-10 h-10 rounded-full bg-neutral-200 shrink-0 flex items-center justify-center border border-white shadow-sm text-neutral-400">
+            {/* Group 2: Expert Note (Matching E-0 spacing) */}
+            <div className="flex items-start gap-3 bg-neutral-50 p-4 rounded-2xl border border-neutral-100 flex-1 lg:max-w-xl hover:bg-neutral-100/50 transition-colors duration-300">
+              <div className="w-10 h-10 rounded-full bg-neutral-200 shrink-0 flex items-center justify-center border border-white shadow-sm text-neutral-400 mt-0.5">
                 <User className="w-5 h-5" />
               </div>
-              <div className="flex flex-col gap-0.5">
+              <div className="flex flex-col gap-1.5 flex-1">
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-bold text-black uppercase tracking-wider">Marcin Pieńkowski</span>
-                    <span className="text-[11px] text-neutral-400 font-medium whitespace-nowrap">Institutional Strategist</span>
+                    <span className="text-[11px] text-neutral-400 font-medium">Institutional Strategist</span>
                   </div>
-                  <p className="text-[12px] italic text-neutral-600 leading-snug">
+                  <p className="text-[12px] italic text-neutral-600 leading-[1.6]">
                     &ldquo;{config.expertQuote}&rdquo;
                   </p>
               </div>
