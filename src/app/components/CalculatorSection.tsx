@@ -68,9 +68,9 @@ export function CalculatorSection() {
                   <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center border border-neutral-200 shrink-0">
                     <User className="w-5 h-5 text-neutral-400" />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <h4 className="text-[14px] font-bold text-black uppercase tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
-                    <span className="text-[12px] text-neutral-400 font-medium tracking-wide">Institutional Strategist</span>
+                  <div className="flex flex-col">
+                    <h4 className="text-[15px] font-bold text-black uppercase tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
+                    <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategists</span>
                   </div>
                 </div>
 
