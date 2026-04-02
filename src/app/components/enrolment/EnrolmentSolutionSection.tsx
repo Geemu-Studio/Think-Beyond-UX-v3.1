@@ -42,8 +42,8 @@ const cards = [
   },
   {
     icon: <InsightsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Planning Intelligence',
-    body: "Lead with data-informed confidence. Leverage predictive analytics to refine your global admissions funnel and secure high-intent applicant cohorts.",
+    title: 'Institutional Impact Architecture',
+    body: 'Lead with data-informed confidence. Leverage predictive analytics to refine your global admissions funnel and secure high-intent applicant cohorts.',
     videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin,
   },

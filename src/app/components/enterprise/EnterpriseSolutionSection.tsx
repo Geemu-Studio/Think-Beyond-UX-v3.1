@@ -39,7 +39,7 @@ const cards = [
   },
   {
     icon: <AssignmentOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Resonant Partner Alliances',
+    title: 'Institutional Innovation Impact',
     body: 'Simplify the complex tripartite resonance between the university, the employer, and the learner with automated institutional compliance.',
     videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin

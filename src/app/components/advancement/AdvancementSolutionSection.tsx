@@ -40,7 +40,7 @@ const cards = [
   },
   {
     icon: <LanguageOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Elite Alumnus Ecosystems',
+    title: 'Institutional Legacy Impact',
     body: 'Foster a prestigious, global network for your graduates. Facilitate high-value mentoring, corporate synergy, and enduring institutional advocacy.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,

@@ -40,7 +40,7 @@ const cards = [
   },
   {
     icon: <PhoneIphoneOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Empowered Student Self-Service',
+    title: 'Institutional Retention Impact',
     body: 'Foster student agency through an intuitive, mobile-first ecosystem. Accelerate access to critical welfare and academic resources, ensuring support is always present.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
