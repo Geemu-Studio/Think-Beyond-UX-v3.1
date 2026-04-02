@@ -59,19 +59,36 @@ export function CalculatorSection() {
               </p>
             </div>
 
-            {/* Group 2: Expert Note (Matching E-0 spacing) */}
-            <div className="flex items-start gap-3 bg-neutral-50 p-4 rounded-2xl border border-neutral-100 flex-1 lg:max-w-xl hover:bg-neutral-100/50 transition-colors duration-300">
-              <div className="w-10 h-10 rounded-full bg-neutral-200 shrink-0 flex items-center justify-center border border-white shadow-sm text-neutral-400 mt-0.5">
-                <User className="w-5 h-5" />
-              </div>
-              <div className="flex flex-col gap-1.5 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-bold text-black uppercase tracking-wider">Marcin Pieńkowski</span>
-                    <span className="text-[11px] text-neutral-400 font-medium">Institutional Strategist</span>
+            {/* Group 2: Institutional Strategy Architects (NEW TEAM DESIGN) */}
+            <div className="flex-1 lg:max-w-2xl bg-neutral-50 p-5 rounded-2xl border border-neutral-100 hover:bg-neutral-100/50 transition-all duration-300 group">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                
+                {/* Avatar Stack */}
+                <div className="flex -space-x-3 shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-white border-2 border-neutral-100 flex items-center justify-center text-[10px] font-bold text-neutral-400 shadow-sm">
+                    AK
                   </div>
-                  <p className="text-[12px] italic text-neutral-600 leading-[1.6]">
-                    &ldquo;{config.expertQuote}&rdquo;
+                  <div className="w-10 h-10 rounded-full bg-neutral-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-neutral-500 shadow-sm">
+                    MB
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-black border-2 border-white flex items-center justify-center text-[10px] font-bold text-white shadow-md">
+                    +17
+                  </div>
+                </div>
+
+                {/* Team Info */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">20+ Experts</span>
+                    <h4 className="text-[14px] font-extrabold text-black uppercase tracking-tight leading-none pt-0.5">
+                      Institutional Strategy Architects
+                    </h4>
+                  </div>
+                  <p className="text-[12px] text-neutral-500 leading-relaxed font-medium mt-1">
+                    Your institution's transformation will be guided by our full team of certified Salesforce architects.
                   </p>
+                </div>
+
               </div>
             </div>
           </div>
