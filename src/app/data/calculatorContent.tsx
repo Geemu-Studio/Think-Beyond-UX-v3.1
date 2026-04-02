@@ -73,7 +73,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     ]
   },
   '/enrolment': {
-    tagline: "Admissions Value Potential",
+    tagline: "Institutional Impact",
     title: "Calculate the strategic value of admission excellence.",
     inputLabel: "Annual Applicant Volume",
     expertQuote: "Every application you fail to frictionless-enrol is not just a missed fee—it's a lost opportunity to enrich your academic community. Let’s make enrolment a human, strategic moment.",
@@ -123,8 +123,8 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     ]
   },
   '/flourishing': {
-    tagline: "Success Scenarios",
-    title: "Visualise the impact of proactive student enablement.",
+    tagline: "Institutional Impact",
+    title: "Projecting the institutional ROI of proactive support.",
     inputLabel: "Student Population",
     expertQuote: "Student attrition is an institutional failure, not just an individual one. Proactive, data-driven interventions secure both academic journeys and financial resilience.",
     min: 1000,
@@ -173,8 +173,8 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     ]
   },
   '/engagement': {
-    tagline: "Institutional Resonance",
-    title: "Quantify the influence of institutional brand storytelling.",
+    tagline: "Institutional Impact",
+    title: "Quantifying the resonance of authentic engagement.",
     inputLabel: "Monthly Digital Engagements",
     expertQuote: "Generic communication gets lost in the noise. By orchestrating authentic, personalised journeys, we turn passive prospects into proud alumni.",
     min: 5000,
@@ -223,8 +223,8 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     ]
   },
   '/advancement': {
-    tagline: "Institutional Affinity",
-    title: "Measure the power of lifelong institutional connection.",
+    tagline: "Institutional Impact",
+    title: "Evaluating the strategic yield of lifelong affinity.",
     inputLabel: "Active Alumni Database",
     expertQuote: "Transactional fundraising yields transactional results. Cultivating a lifelong, engaged alumni community unlocks exponential philanthropic potential.",
     min: 10000,
@@ -273,8 +273,8 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     ]
   },
   '/enterprise': {
-    tagline: "Innovation Impact",
-    title: "Quantify the potential of institutional commercial partnerships.",
+    tagline: "Institutional Impact",
+    title: "Measuring the innovation velocity of institutional partnerships.",
     inputLabel: "Active Corporate Engagements",
     expertQuote: "Corporate partnerships shouldn't be siloed. Unifying your enterprise relations unlocks new revenue streams and amplifies your institutional impact.",
     min: 50,

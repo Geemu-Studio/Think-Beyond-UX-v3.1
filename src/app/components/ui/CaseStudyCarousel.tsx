@@ -87,7 +87,7 @@ const SWPS_DETAILED_CONTENT: SWPSContent = {
     },
     {
       icon: <Target className="w-5 h-5 text-black" />,
-      title: "Strategic Impact",
+      title: "Institutional Impact",
       items: [
         "NSS Improvement: Projected 8.5% increase in 'Learning Resources' satisfaction scoring within 18 months.",
         "TEF Excellence: Reinforced the institutional evidence base for 'Student Experience' and 'Student Outcomes' under the TEF Gold framework.",
@@ -127,7 +127,7 @@ const KOZMINSKI_DETAILED_CONTENT: SWPSContent = {
     },
     {
       icon: <Target className="w-5 h-5 text-black" />,
-      title: "Strategic Impact",
+      title: "Institutional Impact",
       items: [
         "Enrolment Yield: 35% reduction in administrative overhead per enrolment, allowing for higher strategic investment in faculty recruitment.",
         "Global Positioning: Established a premier digital-first gateway for international applicants, supporting the university's mission to attract elite global talent.",
@@ -167,7 +167,7 @@ const CDV_DETAILED_CONTENT: SWPSContent = {
     },
     {
       icon: <Target className="w-5 h-5 text-black" />,
-      title: "Strategic Impact",
+      title: "Institutional Impact",
       items: [
         "Student Retention: Achieved a 25% increase in retention rate YOY, directly translating to a sustained NSS 'Academic Support' rating.",
         "Academic Flourishing: Provided the digital foundation for a 'Whole University' approach to mental health and proactive academic care.",
