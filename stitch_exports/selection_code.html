@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#fdf7fe",
+              "on-surface": "#34313a",
+              "on-error-container": "#6e0523",
+              "primary-dim": "#594b7c",
+              "inverse-primary": "#d4c3fd",
+              "on-surface-variant": "#615d68",
+              "tertiary-container": "#f4bfe3",
+              "on-secondary": "#fdf7ff",
+              "on-tertiary-fixed-variant": "#694260",
+              "surface-tint": "#655789",
+              "on-tertiary-fixed": "#4a2642",
+              "on-tertiary-container": "#5f3956",
+              "surface-variant": "#e7e0ec",
+              "surface": "#fdf7fe",
+              "on-error": "#fff7f7",
+              "primary-fixed-dim": "#c6b6ee",
+              "secondary-fixed": "#e8def8",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#423c50",
+              "tertiary-fixed-dim": "#e5b2d5",
+              "inverse-on-surface": "#a09ba1",
+              "on-primary-container": "#493c6c",
+              "error": "#a8364b",
+              "secondary-container": "#e8def8",
+              "surface-container-low": "#f8f1fa",
+              "surface-container": "#f2ecf5",
+              "secondary-dim": "#565065",
+              "tertiary": "#7b5270",
+              "tertiary-dim": "#6e4664",
+              "on-tertiary": "#fff7f9",
+              "on-primary": "#fdf7ff",
+              "on-primary-fixed-variant": "#524576",
+              "on-primary-fixed": "#352857",
+              "on-secondary-fixed-variant": "#5f586e",
+              "primary": "#655789",
+              "surface-dim": "#ded8e4",
+              "secondary-fixed-dim": "#dad0ea",
+              "primary-container": "#d4c3fd",
+              "primary-fixed": "#d4c3fd",
+              "surface-container-high": "#ece6f0",
+              "on-secondary-container": "#554f63",
+              "on-background": "#34313a",
+              "tertiary-fixed": "#f4bfe3",
+              "surface-container-highest": "#e7e0ec",
+              "surface-bright": "#fdf7fe",
+              "outline": "#7d7983",
+              "secondary": "#625c71",
+              "error-container": "#f97386",
+              "outline-variant": "#b5b0bb",
+              "error-dim": "#6b0221",
+              "inverse-surface": "#0f0d12"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#fdf7fe]/70 dark:bg-[#1c1b1f]/70 backdrop-blur-3xl flex justify-between items-center px-8 h-16 w-full font-['Inter'] leading-relaxed tracking-tight">
+<div class="text-xl font-bold tracking-tighter text-[#655789] dark:text-[#d4c3fd]">Ethereal Docs</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#615d68] dark:text-[#c9c5d0] hover:text-[#655789] transition-all duration-300" href="#">Foundations</a>
+<a class="text-[#655789] dark:text-[#d4c3fd] border-b-2 border-[#655789] pb-1 transition-all duration-300" href="#">Components</a>
+<a class="text-[#615d68] dark:text-[#c9c5d0] hover:text-[#655789] transition-all duration-300" href="#">Layout</a>
+<a class="text-[#615d68] dark:text-[#c9c5d0] hover:text-[#655789] transition-all duration-300" href="#">Styles</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#f2ecf5] dark:hover:bg-[#49454f] rounded-full transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined text-[#655789] dark:text-[#d4c3fd]">dark_mode</span>
+</button>
+</div>
+</nav>
+<!-- Layout Container -->
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="flex flex-col pt-20 px-4 h-screen fixed left-0 h-full w-72 border-r-0 bg-[#f8f1fa] dark:bg-[#1c1b1f] font-['Inter'] text-sm font-medium uppercase tracking-widest">
+<div class="px-4 mb-8">
+<div class="text-[#655789] dark:text-[#d4c3fd] font-black text-xs">Component Library</div>
+<div class="text-[10px] text-on-surface-variant opacity-70">v1.0 Ethereal</div>
+</div>
+<div class="space-y-1">
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">smart_button</span>
+<span>Buttons</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">spoke</span>
+<span>Cards</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">input</span>
+<span>Text Fields</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">menu_open</span>
+<span>Navigation</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-[#d4c3fd] dark:bg-[#49454f] text-[#21183a] dark:text-[#e6e1e9] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">check_box</span>
+<span>Selection</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-72 pt-24 px-12 pb-20">
+<header class="mb-16">
+<h1 class="text-5xl font-extrabold tracking-tight text-on-surface mb-4">Selection</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">
+                    Selection components allow users to select one or more options from a set. These curated elements are designed with high-end editorial rhythm and tactile feedback.
+                </p>
+</header>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Checkboxes Section -->
+<section class="col-span-12 lg:col-span-7 bg-surface-container-low rounded-lg p-10">
+<div class="flex items-center justify-between mb-10">
+<h2 class="text-2xl font-bold tracking-tight text-primary">Checkboxes</h2>
+<span class="px-3 py-1 bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-widest rounded-full">Interactive</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Unselected & Selected -->
+<div class="space-y-8">
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-5 h-5 border-2 border-outline rounded-sm flex items-center justify-center group-hover:bg-surface-container-highest transition-colors"></div>
+<span class="text-on-surface font-medium">Unselected</span>
+</div>
+<div class="flex items-center gap-4 cursor-pointer">
+<div class="w-5 h-5 bg-primary rounded-sm flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-primary font-bold">check</span>
+</div>
+<span class="text-on-surface font-medium">Selected</span>
+</div>
+</div>
+<!-- Indeterminate & Disabled -->
+<div class="space-y-8">
+<div class="flex items-center gap-4 cursor-pointer">
+<div class="w-5 h-5 bg-primary rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-primary font-bold">remove</span>
+</div>
+<span class="text-on-surface font-medium">Indeterminate</span>
+</div>
+<div class="flex items-center gap-4 opacity-40 grayscale">
+<div class="w-5 h-5 border-2 border-outline rounded-sm flex items-center justify-center"></div>
+<span class="text-on-surface font-medium italic">Disabled State</span>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-12 border-t border-outline-variant/20">
+<div class="bg-surface-container rounded-xl p-6 overflow-hidden">
+<img class="w-full h-48 object-cover rounded-lg mb-6 mix-blend-multiply opacity-80" data-alt="Modern minimalist aesthetic with a clean wooden desk, a white notebook, and soft natural sunlight filtering through a window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4y9oEAWF7063TZTfmEKlwNvryepDUn-CDT0iSISK8T3yTZsVHQ7EiWkmrgmlzI2aQleTZ9PFYzTgDopJZo1zI-_VeTvKM6uOLeeNBX245mK0AE5cX6-jKWp37EieyfpKCnJyy85YFJLHGD7RnPTDRyZGBvVb_PI546LsXiiCLrjU_RqLU5eh_3JFR2OlKCaNXbnGgMkBjLA_j3WjLSuwRI8jtNhtoywBO8G7NJ3H4o3XjIM0LznONZ2fGDJ3ek84JSAKDoLgdd-w"/>
+<h3 class="font-bold text-on-surface mb-2">Editor's Note</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Checkboxes use the <code>primary</code> color role when selected to provide a clear focal point against the <code>surface</code> canvas.</p>
+</div>
+</div>
+</section>
+<!-- Radio Buttons Section -->
+<section class="col-span-12 lg:col-span-5 bg-surface-container-high rounded-lg p-10 flex flex-col">
+<h2 class="text-2xl font-bold tracking-tight text-primary mb-10">Radio Buttons</h2>
+<div class="space-y-8 flex-1">
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-5 h-5 border-2 border-outline rounded-full flex items-center justify-center group-hover:bg-surface-container-highest transition-all"></div>
+<span class="text-on-surface font-medium">Default Option</span>
+</div>
+<div class="flex items-center gap-4 cursor-pointer">
+<div class="w-5 h-5 border-2 border-primary rounded-full flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
+</div>
+<span class="text-on-surface font-bold">Selected Choice</span>
+</div>
+<div class="flex items-center gap-4 opacity-40 grayscale">
+<div class="w-5 h-5 border-2 border-outline rounded-full flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-outline rounded-full"></div>
+</div>
+<span class="text-on-surface font-medium italic">Disabled Selected</span>
+</div>
+<div class="flex items-center gap-4 opacity-40 grayscale">
+<div class="w-5 h-5 border-2 border-outline rounded-full flex items-center justify-center"></div>
+<span class="text-on-surface font-medium italic">Disabled Empty</span>
+</div>
+</div>
+<div class="mt-10 p-6 bg-primary-container/30 rounded-xl">
+<p class="text-xs text-on-primary-container leading-loose font-medium">
+                            Use radio buttons when users need to see all available options. If you have more than 5 options, consider a drop-down menu instead.
+                        </p>
+</div>
+</section>
+<!-- Switches Section (Bento Bottom) -->
+<section class="col-span-12 bg-surface rounded-lg p-10 shadow-[0_32px_64px_-12px_rgba(101,87,137,0.06)] border border-outline-variant/10">
+<h2 class="text-2xl font-bold tracking-tight text-primary mb-12">Switches</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Unselected Switch -->
+<div class="flex flex-col gap-4 items-center p-6 bg-surface-container-low rounded-2xl">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Unselected</span>
+<div class="w-12 h-7 bg-surface-container-highest rounded-full p-1 transition-all flex items-center">
+<div class="w-5 h-5 bg-outline rounded-full shadow-sm"></div>
+</div>
+</div>
+<!-- Selected Switch -->
+<div class="flex flex-col gap-4 items-center p-6 bg-surface-container-low rounded-2xl">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Selected</span>
+<div class="w-12 h-7 bg-primary rounded-full p-1 transition-all flex items-center justify-end">
+<div class="w-5 h-5 bg-on-primary rounded-full shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-primary font-black">check</span>
+</div>
+</div>
+</div>
+<!-- Disabled Unselected -->
+<div class="flex flex-col gap-4 items-center p-6 bg-surface-container-low rounded-2xl opacity-40">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Disabled Off</span>
+<div class="w-12 h-7 bg-surface-variant/50 rounded-full p-1 flex items-center">
+<div class="w-5 h-5 bg-outline-variant rounded-full"></div>
+</div>
+</div>
+<!-- Disabled Selected -->
+<div class="flex flex-col gap-4 items-center p-6 bg-surface-container-low rounded-2xl opacity-40">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Disabled On</span>
+<div class="w-12 h-7 bg-primary-dim/30 rounded-full p-1 flex items-center justify-end">
+<div class="w-5 h-5 bg-surface-container-low rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Gallery Asymmetric -->
+<div class="col-span-12 md:col-span-4 h-64 bg-surface-container rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Close-up of high-end mechanical keyboard switches with soft purple glowing backlight in a dark, moody studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQzs0i9GcpmHg96Pjuwlx6_V-bAiTgM2bl0Y19y228e6cMX57kOUXrrRsJzeZFR1el6vnvZScco8sYYS83nXweTKjcMUFboLLx4wIVKpPlMVBV9sK9h7vvDAp3Vx06IKgTI9Kw7d9fMNKolBbX4cL9clayFnwwlFQhEvE11AIiJKpfEoMBfYaNnm5frS6D35gf0OQvzNlNIG0TAknpx9Zoojs-rIEBy49eDygldiWVovvLJs7rfIX8GAmLhEoeSVQB9QQnuzTVXTSs"/>
+</div>
+<div class="col-span-12 md:col-span-8 h-64 bg-primary rounded-lg overflow-hidden relative flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-dim opacity-90"></div>
+<div class="relative z-10 text-center px-12">
+<h3 class="text-3xl font-black text-on-primary tracking-tighter mb-4">Precision Selection</h3>
+<p class="text-on-primary/80 text-sm max-w-md mx-auto leading-relaxed">
+                            Our components utilize tactile geometry and smooth tonal transitions to create a sense of reliability and luxury in every interaction.
+                        </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

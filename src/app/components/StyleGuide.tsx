@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import {
   Phone, Mail, CheckCircle2, Quote, Lightbulb, Play, AlertCircle, X, ChevronLeft, ChevronRight, Copy,
-  Minus, Plus, Maximize, MousePointer2, Layers, Send, Lock, MessageCircle, MessageSquare
+  Minus, Plus, Maximize, MousePointer2, Layers, Send, Lock, MessageCircle, MessageSquare, User
 } from 'lucide-react';
 import {
   CampaignOutlined, DataUsageOutlined, VolunteerActivismOutlined,
@@ -587,6 +587,26 @@ export function StyleGuide() {
               </div>
             </div>
           </div>
+
+          <div className="bg-neutral-50 rounded-[24px] p-8 border border-neutral-100 flex flex-col gap-6 col-span-1 md:col-span-2">
+            <h3 className="text-[14px] text-black font-bold uppercase tracking-wider">Expert Feedback Module</h3>
+            <p className="text-[13px] text-neutral-500 mb-2 leading-relaxed">System zaufania wykorzystujący autorytet ekspercki (Institutional Strategist). Stosowany w kalkulatorach i formularzach konwersji.</p>
+            
+            <div className="flex items-start gap-4 bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm max-w-xl">
+              <div className="w-12 h-12 rounded-full bg-neutral-100 shrink-0 flex items-center justify-center border border-white shadow-sm text-neutral-300">
+                <User className="w-6 h-6" />
+              </div>
+              <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-bold text-black uppercase tracking-wider">Expert Silhouette</span>
+                    <span className="text-[12px] text-neutral-400 font-medium">Institutional Strategist</span>
+                  </div>
+                  <p className="text-[13px] italic text-neutral-600 leading-[1.6]">
+                    &ldquo;Strategic alignment ensures that every institutional resource is optimised for enrolment excellence and student flourishing.&rdquo;
+                  </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -798,22 +818,41 @@ export function StyleGuide() {
             { name: "Send", Icon: Send, source: "Form Action" },
             { name: "Lock", Icon: Lock, source: "Security" },
             { name: "MessageCircle", Icon: MessageCircle, source: "WhatsApp" },
-          ], 'lucide')}
+            { name: "MessageSquare", Icon: MessageSquare, source: "Messenger" },
+            { name: "User", Icon: User, source: "Expertise" }
+          ], "lucide")}
 
-          {iconGrid("Custom Lead-Gen Symbols (SVG)", [
-            { name: "IconEmail", Icon: (props: any) => <div className="text-black"><IconEmail /></div>, source: "Contact" },
-            { name: "IconPhone", Icon: (props: any) => <div className="text-black"><IconPhone /></div>, source: "Voice" },
-            { name: "IconWhatsApp", Icon: (props: any) => <div className="text-black"><IconWhatsApp /></div>, source: "Chat" },
-            { name: "IconMessenger", Icon: (props: any) => <div className="text-black"><IconMessenger /></div>, source: "Social" },
-          ], 'lucide')}
+          <div className="flex flex-col gap-6">
+            <h3 className="text-[14px] text-neutral-400 font-bold uppercase tracking-wider">Custom Lead-Gen Symbols (SVG)</h3>
+            <p className="text-[12px] text-neutral-500 mb-4 italic max-w-xl">Bespoke SVG iconography for the direct support channels. te symbole zostały zaprojektowane specjalnie dla instytucjonalnych kanałów wsparcia bezpośredniego.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { name: "IconEmail", Icon: IconEmail, source: "Personal Email" },
+                { name: "IconPhone", Icon: IconPhone, source: "Direct Line" },
+                { name: "IconWhatsApp", Icon: IconWhatsApp, source: "Strategic Chat" },
+                { name: "IconMessenger", Icon: IconMessenger, source: "Instant Support" }
+              ].map((item, idx) => (
+                <div key={idx} className="bg-neutral-50 rounded-2xl p-8 border border-neutral-100 flex flex-col items-center justify-center gap-4 hover:bg-white hover:shadow-xl hover:scale-[1.05] transition-all duration-300">
+                  <div className="text-black">
+                    <item.Icon className="w-12 h-12" />
+                  </div>
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="text-[13px] font-bold text-black">{item.name}</span>
+                    <span className="text-[10px] text-neutral-400 uppercase font-mono">{item.source}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-          {iconGrid("Thematic Symbols (Material Outlined)", [
-            { name: "Campaign", Icon: (props: any) => <CampaignOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Marketing" },
-            { name: "DataUsage", Icon: (props: any) => <DataUsageOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Analytics" },
-            { name: "TrendingUp", Icon: (props: any) => <TrendingUpOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Growth" },
-            { name: "Hub", Icon: (props: any) => <HubOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Platform" },
-            { name: "HealthAndSafety", Icon: (props: any) => <HealthAndSafetyOutlined sx={{ fontSize: props.size || 24, color: 'inherit' }} />, source: "Compliance" },
-          ], 'material')}
+          {iconGrid("Strategic Domain Symbols (Material)", [
+            { name: "CampaignOutlined", Icon: CampaignOutlined, source: "Engagement" },
+            { name: "DataUsageOutlined", Icon: DataUsageOutlined, source: "Intelligence" },
+            { name: "HubOutlined", Icon: HubOutlined, source: "Ecosystem" },
+            { name: "TrendingUpOutlined", Icon: TrendingUpOutlined, source: "Growth" },
+            { name: "MenuBookOutlined", Icon: MenuBookOutlined, source: "Academic" },
+            { name: "HealthAndSafetyOutlined", Icon: HealthAndSafetyOutlined, source: "Flourishing" }
+          ], "material")}
         </section>
       </div>
     );

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ethereal Docs - Button Showcase</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-dim": "#594b7c",
+                        "on-secondary": "#fdf7ff",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#f97386",
+                        "secondary-container": "#e8def8",
+                        "tertiary-container": "#f4bfe3",
+                        "on-primary-fixed-variant": "#524576",
+                        "inverse-surface": "#0f0d12",
+                        "on-secondary-fixed": "#423c50",
+                        "tertiary": "#7b5270",
+                        "on-tertiary": "#fff7f9",
+                        "tertiary-fixed-dim": "#e5b2d5",
+                        "on-secondary-fixed-variant": "#5f586e",
+                        "on-primary": "#fdf7ff",
+                        "inverse-primary": "#d4c3fd",
+                        "primary-fixed": "#d4c3fd",
+                        "primary": "#655789",
+                        "secondary-dim": "#565065",
+                        "tertiary-fixed": "#f4bfe3",
+                        "surface-bright": "#fdf7fe",
+                        "surface-container": "#f2ecf5",
+                        "primary-fixed-dim": "#c6b6ee",
+                        "on-error": "#fff7f7",
+                        "outline": "#7d7983",
+                        "on-tertiary-fixed": "#4a2642",
+                        "surface-dim": "#ded8e4",
+                        "primary-container": "#d4c3fd",
+                        "secondary-fixed": "#e8def8",
+                        "secondary-fixed-dim": "#dad0ea",
+                        "on-tertiary-container": "#5f3956",
+                        "on-surface": "#34313a",
+                        "on-background": "#34313a",
+                        "surface-container-highest": "#e7e0ec",
+                        "on-tertiary-fixed-variant": "#694260",
+                        "error": "#a8364b",
+                        "surface-container-high": "#ece6f0",
+                        "tertiary-dim": "#6e4664",
+                        "secondary": "#625c71",
+                        "surface-tint": "#655789",
+                        "surface-container-low": "#f8f1fa",
+                        "on-surface-variant": "#615d68",
+                        "surface": "#fdf7fe",
+                        "background": "#fdf7fe",
+                        "error-dim": "#6b0221",
+                        "on-primary-fixed": "#352857",
+                        "on-secondary-container": "#554f63",
+                        "outline-variant": "#b5b0bb",
+                        "on-error-container": "#6e0523",
+                        "on-primary-container": "#493c6c",
+                        "inverse-on-surface": "#a09ba1",
+                        "surface-variant": "#e7e0ec"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .filled-gradient {
+            background: linear-gradient(135deg, #655789 0%, #594b7c 100%);
+        }
+        .ghost-lift {
+            box-shadow: 0 8px 32px rgba(52, 49, 58, 0.06);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdf7fe;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e7e0ec;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 w-full bg-[#fdf7fe]/70 dark:bg-[#1c1b1f]/70 backdrop-blur-3xl font-['Inter'] leading-relaxed tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#655789] dark:text-[#d4c3fd]">Ethereal Docs</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-[#615d68] dark:text-[#c9c5d0] hover:text-[#655789] hover:bg-[#f2ecf5] dark:hover:bg-[#49454f] transition-all duration-300 px-3 py-1 rounded-md" href="#">Foundations</a>
+<a class="text-[#655789] dark:text-[#d4c3fd] border-b-2 border-[#655789] pb-1 active:scale-95 transition-transform" href="#">Components</a>
+<a class="text-[#615d68] dark:text-[#c9c5d0] hover:text-[#655789] hover:bg-[#f2ecf5] dark:hover:bg-[#49454f] transition-all duration-300 px-3 py-1 rounded-md" href="#">Layout</a>
+<a class="text-[#615d68] dark:text-[#c9c5d0] hover:text-[#655789] hover:bg-[#f2ecf5] dark:hover:bg-[#49454f] transition-all duration-300 px-3 py-1 rounded-md" href="#">Styles</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#f2ecf5] dark:hover:bg-[#49454f] transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined text-[#655789] dark:text-[#d4c3fd]">dark_mode</span>
+</button>
+</div>
+</nav>
+<div class="flex min-h-screen pt-16">
+<aside class="hidden md:flex flex-col pt-10 px-4 h-screen fixed left-0 w-72 bg-[#f8f1fa] dark:bg-[#1c1b1f] border-r-0 z-40">
+<div class="px-4 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-black">E</div>
+<div>
+<h3 class="font-['Inter'] text-sm font-medium uppercase tracking-widest text-[#655789] dark:text-[#d4c3fd]">Component Library</h3>
+<p class="text-[10px] text-on-surface-variant">v1.0 Ethereal</p>
+</div>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-[#d4c3fd] dark:bg-[#49454f] text-[#21183a] dark:text-[#e6e1e9] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">smart_button</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Buttons</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">spoke</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Cards</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">input</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Text Fields</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">menu_open</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Navigation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">check_box</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Selection</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 md:ml-72 p-8 lg:p-16">
+<header class="mb-16">
+<h1 class="text-6xl font-black tracking-tighter text-on-surface mb-4">Buttons</h1>
+<p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed">Buttons help people take actions, such as sending an email, sharing a document, or liking a comment.</p>
+</header>
+<div class="space-y-24">
+<section>
+<div class="mb-8 border-b border-outline-variant/30 pb-4">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Elevated Buttons</h2>
+<p class="text-on-surface-variant mt-2">Use for secondary actions on dark backgrounds or where they need to stand out from the surface.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Enabled</span>
+<button class="w-fit h-10 px-6 bg-surface-container-low text-primary rounded-full ghost-lift flex items-center justify-center text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container transition-colors">Elevated</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Leading Icon</span>
+<button class="w-fit h-10 pl-4 pr-6 bg-surface-container-low text-primary rounded-full ghost-lift flex items-center gap-2 text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">add</span>
+                                Elevated
+                            </button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Long Label</span>
+<button class="w-fit h-10 px-6 bg-surface-container-low text-primary rounded-full ghost-lift flex items-center justify-center text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container transition-colors">Proceed to the checkout</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Disabled</span>
+<button class="w-fit h-10 px-6 bg-surface-variant/30 text-on-surface/30 rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest cursor-not-allowed" disabled="">Elevated</button>
+</div>
+</div>
+</section>
+<section>
+<div class="mb-8 border-b border-outline-variant/30 pb-4">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Filled Buttons</h2>
+<p class="text-on-surface-variant mt-2">High-emphasis buttons for primary actions in a tool or application flow.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Enabled</span>
+<button class="w-fit h-10 px-6 filled-gradient text-on-primary rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:opacity-90 transition-opacity">Filled</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Leading Icon</span>
+<button class="w-fit h-10 pl-4 pr-6 filled-gradient text-on-primary rounded-full flex items-center gap-2 text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">check</span>
+                                Filled
+                            </button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Long Label</span>
+<button class="w-fit h-10 px-6 filled-gradient text-on-primary rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:opacity-90 transition-opacity">Confirm selection and save</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Disabled</span>
+<button class="w-fit h-10 px-6 bg-on-surface/10 text-on-surface/30 rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest cursor-not-allowed" disabled="">Filled</button>
+</div>
+</div>
+</section>
+<section>
+<div class="mb-8 border-b border-outline-variant/30 pb-4">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Filled Tonal Buttons</h2>
+<p class="text-on-surface-variant mt-2">Medium-emphasis alternative to filled buttons for low-priority functional actions.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Enabled</span>
+<button class="w-fit h-10 px-6 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-secondary-fixed transition-colors">Tonal</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Leading Icon</span>
+<button class="w-fit h-10 pl-4 pr-6 bg-secondary-container text-on-secondary-container rounded-full flex items-center gap-2 text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined">download</span>
+                                Tonal
+                            </button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Long Label</span>
+<button class="w-fit h-10 px-6 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-secondary-fixed transition-colors">Download complete library</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Disabled</span>
+<button class="w-fit h-10 px-6 bg-on-surface/5 text-on-surface/30 rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest cursor-not-allowed" disabled="">Tonal</button>
+</div>
+</div>
+</section>
+<section>
+<div class="mb-8 border-b border-outline-variant/30 pb-4">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Outlined Buttons</h2>
+<p class="text-on-surface-variant mt-2">Low-emphasis buttons for secondary or supplemental actions that are still important.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Enabled</span>
+<button class="w-fit h-10 px-6 bg-transparent text-primary border border-outline/20 rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container-low transition-colors">Outlined</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Leading Icon</span>
+<button class="w-fit h-10 pl-4 pr-6 bg-transparent text-primary border border-outline/20 rounded-full flex items-center gap-2 text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">edit</span>
+                                Outlined
+                            </button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Long Label</span>
+<button class="w-fit h-10 px-6 bg-transparent text-primary border border-outline/20 rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container-low transition-colors">Return to previous page</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Disabled</span>
+<button class="w-fit h-10 px-6 border border-on-surface/10 text-on-surface/30 rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest cursor-not-allowed" disabled="">Outlined</button>
+</div>
+</div>
+</section>
+<section>
+<div class="mb-8 border-b border-outline-variant/30 pb-4">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Text Buttons</h2>
+<p class="text-on-surface-variant mt-2">Lowest-emphasis buttons for supplemental actions like "Cancel" or inline navigation.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Enabled</span>
+<button class="w-fit h-10 px-4 bg-transparent text-primary rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container-low transition-colors">Text Button</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Leading Icon</span>
+<button class="w-fit h-10 pl-3 pr-4 bg-transparent text-primary rounded-full flex items-center gap-2 text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">share</span>
+                                Text Button
+                            </button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Long Label</span>
+<button class="w-fit h-10 px-4 bg-transparent text-primary rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container-low transition-colors">View full documentation</button>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Disabled</span>
+<button class="w-fit h-10 px-4 bg-transparent text-on-surface/30 rounded-full flex items-center justify-center text-xs font-bold uppercase tracking-widest cursor-not-allowed" disabled="">Text Button</button>
+</div>
+</div>
+</section>
+</div>
+<footer class="mt-32 pt-16 border-t border-outline-variant/20 flex flex-col items-center">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col gap-4">
+<h3 class="text-xl font-bold text-on-surface">Documentation Guidelines</h3>
+<p class="text-on-surface-variant leading-relaxed">Ensure all buttons have meaningful labels and appropriate contrast. Use filled buttons for the most important action on a screen to guide user attention.</p>
+</div>
+<div class="bg-surface-container p-8 rounded-lg flex flex-col gap-4">
+<h3 class="text-xl font-bold text-on-surface">Interactive Preview</h3>
+<div class="flex gap-4 items-center">
+<button class="px-6 h-12 filled-gradient text-on-primary rounded-full text-xs font-black uppercase tracking-widest">Action</button>
+<button class="px-6 h-12 border border-outline/20 text-primary rounded-full text-xs font-black uppercase tracking-widest">Dismiss</button>
+</div>
+</div>
+</div>
+<div class="mt-16 text-center text-outline text-xs uppercase tracking-[0.2em]">
+                    © 2024 Ethereal Design System • All Rights Reserved
+                </div>
+</footer>
+</main>
+</div>
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-[#fdf7fe]/90 backdrop-blur-xl border-t-0 shadow-2xl z-50 flex justify-around items-center h-16 px-4">
+<button class="flex flex-col items-center gap-1 text-[#615d68]">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#655789]">
+<span class="material-symbols-outlined">smart_button</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Buttons</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#615d68]">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Search</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#615d68]">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Profile</span>
+</button>
+</div>
+</body></html>

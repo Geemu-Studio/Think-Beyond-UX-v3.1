@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ethereal Docs - Text Fields</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#fdf7fe",
+              "on-surface": "#34313a",
+              "on-error-container": "#6e0523",
+              "primary-dim": "#594b7c",
+              "inverse-primary": "#d4c3fd",
+              "on-surface-variant": "#615d68",
+              "tertiary-container": "#f4bfe3",
+              "on-secondary": "#fdf7ff",
+              "on-tertiary-fixed-variant": "#694260",
+              "surface-tint": "#655789",
+              "on-tertiary-fixed": "#4a2642",
+              "on-tertiary-container": "#5f3956",
+              "surface-variant": "#e7e0ec",
+              "surface": "#fdf7fe",
+              "on-error": "#fff7f7",
+              "primary-fixed-dim": "#c6b6ee",
+              "secondary-fixed": "#e8def8",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#423c50",
+              "tertiary-fixed-dim": "#e5b2d5",
+              "inverse-on-surface": "#a09ba1",
+              "on-primary-container": "#493c6c",
+              "error": "#a8364b",
+              "secondary-container": "#e8def8",
+              "surface-container-low": "#f8f1fa",
+              "surface-container": "#f2ecf5",
+              "secondary-dim": "#565065",
+              "tertiary": "#7b5270",
+              "tertiary-dim": "#6e4664",
+              "on-tertiary": "#fff7f9",
+              "on-primary": "#fdf7ff",
+              "on-primary-fixed-variant": "#524576",
+              "on-primary-fixed": "#352857",
+              "on-secondary-fixed-variant": "#5f586e",
+              "primary": "#655789",
+              "surface-dim": "#ded8e4",
+              "secondary-fixed-dim": "#dad0ea",
+              "primary-container": "#d4c3fd",
+              "primary-fixed": "#d4c3fd",
+              "surface-container-high": "#ece6f0",
+              "on-secondary-container": "#554f63",
+              "on-background": "#34313a",
+              "tertiary-fixed": "#f4bfe3",
+              "surface-container-highest": "#e7e0ec",
+              "surface-bright": "#fdf7fe",
+              "outline": "#7d7983",
+              "secondary": "#625c71",
+              "error-container": "#f97386",
+              "outline-variant": "#b5b0bb",
+              "error-dim": "#6b0221",
+              "inverse-surface": "#0f0d12"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 w-full z-50 bg-[#fdf7fe]/70 backdrop-blur-3xl flex justify-between items-center px-8 h-16 w-full font-['Inter'] leading-relaxed tracking-tight">
+<div class="text-xl font-bold tracking-tighter text-[#655789] dark:text-[#d4c3fd]">Ethereal Docs</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#615d68] hover:text-[#655789] transition-all duration-300" href="#">Foundations</a>
+<a class="text-[#655789] border-b-2 border-[#655789] pb-1 transition-all duration-300" href="#">Components</a>
+<a class="text-[#615d68] hover:text-[#655789] transition-all duration-300" href="#">Layout</a>
+<a class="text-[#615d68] hover:text-[#655789] transition-all duration-300" href="#">Styles</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#f2ecf5] active:scale-95 transition-all text-[#655789]">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+</nav>
+<div class="flex min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="hidden md:flex flex-col pt-20 px-4 h-screen fixed left-0 h-full w-72 border-r-0 bg-[#f8f1fa]">
+<div class="px-4 mb-8">
+<h2 class="text-[#655789] font-black uppercase tracking-widest text-xs">Component Library</h2>
+<p class="text-[10px] text-on-surface-variant/70 tracking-widest font-bold">v1.0 ETHEREAL</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] hover:bg-[#ece6f0] rounded-full font-['Inter'] text-sm font-medium uppercase tracking-widest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">smart_button</span>
+                    Buttons
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] hover:bg-[#ece6f0] rounded-full font-['Inter'] text-sm font-medium uppercase tracking-widest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">spoke</span>
+                    Cards
+                </a>
+<!-- Active Tab -->
+<a class="flex items-center gap-4 px-4 py-3 bg-[#d4c3fd] text-[#21183a] rounded-full font-['Inter'] text-sm font-medium uppercase tracking-widest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">input</span>
+                    Text Fields
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] hover:bg-[#ece6f0] rounded-full font-['Inter'] text-sm font-medium uppercase tracking-widest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">menu_open</span>
+                    Navigation
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] hover:bg-[#ece6f0] rounded-full font-['Inter'] text-sm font-medium uppercase tracking-widest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">check_box</span>
+                    Selection
+                </a>
+</nav>
+<div class="mt-auto p-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">SA</div>
+<div>
+<p class="text-xs font-bold text-on-surface uppercase tracking-tight">System Admin</p>
+<p class="text-[10px] text-on-surface-variant">Administrator</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-72 pt-24 px-8 pb-16">
+<header class="max-w-4xl mb-12">
+<span class="inline-block px-3 py-1 bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">Core Components</span>
+<h1 class="text-6xl font-black text-on-surface tracking-tighter mb-4 leading-none">Text Fields.</h1>
+<p class="text-xl text-on-surface-variant font-medium leading-relaxed max-w-2xl">
+                    Our input fields are designed to be tactile and focused. Moving beyond standard Material lines into an editorial grid where clarity is king.
+                </p>
+</header>
+<!-- Bento Grid Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl">
+<!-- Filled Fields Section (Editorial Card) -->
+<section class="lg:col-span-6 bg-surface-container-low p-8 rounded-lg">
+<div class="flex items-center gap-2 mb-8">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<h2 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Filled Variant</h2>
+</div>
+<div class="space-y-10">
+<!-- Enabled -->
+<div class="group">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2 px-4">Standard Input</label>
+<div class="bg-surface-container-highest px-4 py-4 rounded-t-lg border-b-2 border-outline/30 focus-within:border-primary focus-within:bg-surface-container-lowest transition-all group-hover:bg-surface-container-high">
+<input class="w-full bg-transparent border-none p-0 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-0" placeholder="Placeholder" type="text"/>
+</div>
+<p class="text-[10px] text-on-surface-variant/60 mt-2 px-4">Standard helper message for users</p>
+</div>
+<!-- Focused Simulation -->
+<div class="group">
+<label class="block text-[10px] font-bold text-primary uppercase tracking-widest mb-2 px-4">Focused State</label>
+<div class="bg-surface-container-lowest px-4 py-4 rounded-t-lg border-b-2 border-primary transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">person</span>
+<input class="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0" type="text" value="User input in focus"/>
+</div>
+</div>
+</div>
+<!-- Error State -->
+<div class="group">
+<label class="block text-[10px] font-bold text-error uppercase tracking-widest mb-2 px-4">Error State</label>
+<div class="bg-surface-container-highest px-4 py-4 rounded-t-lg border-b-2 border-error transition-all">
+<div class="flex justify-between items-center">
+<input class="w-full bg-transparent border-none p-0 text-error focus:ring-0" type="email" value="invalid-email@"/>
+<span class="material-symbols-outlined text-error">error</span>
+</div>
+</div>
+<p class="text-[10px] text-error mt-2 px-4">Please enter a valid email address</p>
+</div>
+<!-- Disabled -->
+<div class="opacity-50">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2 px-4">Disabled</label>
+<div class="bg-surface-container-highest px-4 py-4 rounded-t-lg border-b-2 border-outline/10">
+<input class="w-full bg-transparent border-none p-0 text-on-surface-variant cursor-not-allowed" disabled="" type="text" value="System locked"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Outlined Fields Section -->
+<section class="lg:col-span-6 bg-surface-container-low p-8 rounded-lg">
+<div class="flex items-center gap-2 mb-8">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-dim"></span>
+<h2 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Outlined Variant</h2>
+</div>
+<div class="space-y-10">
+<!-- Enabled -->
+<div class="group">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2 px-4">Search Field</label>
+<div class="border border-outline/30 px-4 py-4 rounded-lg focus-within:border-primary-dim focus-within:border-2 transition-all group-hover:bg-surface-container">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="w-full bg-transparent border-none p-0 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-0" placeholder="Search documentation..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Leading/Trailing Icons -->
+<div class="group">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2 px-4">With Trailing Action</label>
+<div class="border border-outline/30 px-4 py-4 rounded-lg focus-within:border-primary focus-within:border-2 transition-all">
+<div class="flex items-center gap-3">
+<input class="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0" type="password" value="secretpassword"/>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">visibility</button>
+</div>
+</div>
+</div>
+<!-- Multiline / Area -->
+<div class="group">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2 px-4">Text Area / Feedback</label>
+<div class="border border-outline/30 px-4 py-4 rounded-lg focus-within:border-primary transition-all">
+<textarea class="w-full bg-transparent border-none p-0 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-0 resize-none" placeholder="Tell us about your experience..." rows="3"></textarea>
+</div>
+</div>
+<!-- Success Simulation (Custom State) -->
+<div class="group">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2 px-4">Validation Success</label>
+<div class="border border-primary-dim px-4 py-4 rounded-lg bg-primary-container/10 transition-all">
+<div class="flex items-center justify-between">
+<input class="w-full bg-transparent border-none p-0 text-on-surface-variant focus:ring-0" type="text" value="ethereal-user-01"/>
+<span class="material-symbols-outlined text-primary-dim" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<p class="text-[10px] text-primary-dim mt-2 px-4">Username is available</p>
+</div>
+</div>
+</section>
+<!-- Design Specs Banner (Full Width) -->
+<div class="lg:col-span-12 relative h-64 rounded-lg overflow-hidden bg-primary flex items-center p-12 group">
+<div class="relative z-10 max-w-lg">
+<h3 class="text-3xl font-black text-on-primary mb-4">Precision is the standard.</h3>
+<p class="text-primary-container text-lg font-medium">Every text field transition is timed at 300ms to ensure a tactile, responsive feel across the platform.</p>
+</div>
+<div class="absolute right-0 top-0 h-full w-1/2 opacity-20 group-hover:scale-110 transition-transform duration-700">
+<img class="w-full h-full object-cover" data-alt="Abstract macro shot of glass and light prisms with purple and blue tones reflecting luxury tech aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDLZtUCJW8BpmV-v8nVBkoqtHgFeYZCqrgEk6AeyjtoVzUlvP2EprEu7HKKqayva68WWTuKovEXBTJ_v9nnRiP8l3NVS-TQMjanwsLj5b3YbxwCCI7Iw3DKRuws1zQOaHlghgNJ7nSkDFS5ZlmwwdVa2tmHevu--5N4_weYPAHMUqNvjvslXDcGyjTXPpPXKpGAQ6T_0Pk3BbZT-dkUOCBBG68EEK1ACTDv9e_ytOH-nSx8V2iRVjplCFIK6IhzubyjJ3gKjolImQp"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary to-transparent"></div>
+</div>
+<!-- Guidance / Do & Don't -->
+<section class="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="p-8 border border-outline-variant/30 rounded-lg">
+<h4 class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface mb-6">Hierarchy Guidelines</h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Use **Filled** fields for primary data entry on white or light surface backgrounds for better contrast.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Reserve **Outlined** fields for secondary forms or when building dense interfaces where visual clutter must be minimized.</p>
+</li>
+</ul>
+</div>
+<div class="p-8 border border-outline-variant/30 rounded-lg">
+<h4 class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface mb-6">Interaction Rules</h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">info</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Floating labels should always use `label-md` and transform with a cubic-bezier curve.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">info</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Error messages must strictly use the `error` token and include an icon for accessibility.</p>
+</li>
+</ul>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-container-low backdrop-blur-xl flex justify-around items-center px-4 z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">input</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Inputs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Config</span>
+</button>
+</nav>
+</body></html>

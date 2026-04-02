@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ethereal Docs - Cards Component Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#fdf7fe",
+                        "on-surface": "#34313a",
+                        "on-error-container": "#6e0523",
+                        "primary-dim": "#594b7c",
+                        "inverse-primary": "#d4c3fd",
+                        "on-surface-variant": "#615d68",
+                        "tertiary-container": "#f4bfe3",
+                        "on-secondary": "#fdf7ff",
+                        "on-tertiary-fixed-variant": "#694260",
+                        "surface-tint": "#655789",
+                        "on-tertiary-fixed": "#4a2642",
+                        "on-tertiary-container": "#5f3956",
+                        "surface-variant": "#e7e0ec",
+                        "surface": "#fdf7fe",
+                        "on-error": "#fff7f7",
+                        "primary-fixed-dim": "#c6b6ee",
+                        "secondary-fixed": "#e8def8",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#423c50",
+                        "tertiary-fixed-dim": "#e5b2d5",
+                        "inverse-on-surface": "#a09ba1",
+                        "on-primary-container": "#493c6c",
+                        "error": "#a8364b",
+                        "secondary-container": "#e8def8",
+                        "surface-container-low": "#f8f1fa",
+                        "surface-container": "#f2ecf5",
+                        "secondary-dim": "#565065",
+                        "tertiary": "#7b5270",
+                        "tertiary-dim": "#6e4664",
+                        "on-tertiary": "#fff7f9",
+                        "on-primary": "#fdf7ff",
+                        "on-primary-fixed-variant": "#524576",
+                        "on-primary-fixed": "#352857",
+                        "on-secondary-fixed-variant": "#5f586e",
+                        "primary": "#655789",
+                        "surface-dim": "#ded8e4",
+                        "secondary-fixed-dim": "#dad0ea",
+                        "primary-container": "#d4c3fd",
+                        "primary-fixed": "#d4c3fd",
+                        "surface-container-high": "#ece6f0",
+                        "on-secondary-container": "#554f63",
+                        "on-background": "#34313a",
+                        "tertiary-fixed": "#f4bfe3",
+                        "surface-container-highest": "#e7e0ec",
+                        "surface-bright": "#fdf7fe",
+                        "outline": "#7d7983",
+                        "secondary": "#625c71",
+                        "error-container": "#f97386",
+                        "outline-variant": "#b5b0bb",
+                        "error-dim": "#6b0221",
+                        "inverse-surface": "#0f0d12"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #655789 0%, #594b7c 100%);
+        }
+        .ghost-lift {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .ghost-lift:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased">
+<nav class="fixed top-0 w-full z-50 bg-[#fdf7fe]/70 dark:bg-[#1c1b1f]/70 backdrop-blur-3xl flex justify-between items-center px-8 h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="text-xl font-bold tracking-tighter text-[#655789] dark:text-[#d4c3fd]">Ethereal Docs</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#615d68] dark:text-[#c9c5d0] hover:text-[#655789] font-['Inter'] leading-relaxed tracking-tight transition-all duration-300" href="#">Foundations</a>
+<a class="text-[#655789] dark:text-[#d4c3fd] border-b-2 border-[#655789] pb-1 font-['Inter'] leading-relaxed tracking-tight" href="#">Components</a>
+<a class="text-[#615d68] dark:text-[#c9c5d0] hover:text-[#655789] font-['Inter'] leading-relaxed tracking-tight transition-all duration-300" href="#">Layout</a>
+<a class="text-[#615d68] dark:text-[#c9c5d0] hover:text-[#655789] font-['Inter'] leading-relaxed tracking-tight transition-all duration-300" href="#">Styles</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#f2ecf5] dark:hover:bg-[#49454f] rounded-full transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined text-[#655789] dark:text-[#d4c3fd]">dark_mode</span>
+</button>
+</div>
+</nav>
+<aside class="flex flex-col pt-20 px-4 h-screen fixed left-0 h-full w-72 border-r-0 bg-[#f8f1fa] dark:bg-[#1c1b1f] z-40">
+<div class="px-4 py-6 mb-4">
+<h2 class="text-[#655789] dark:text-[#d4c3fd] font-black font-['Inter'] text-sm font-medium uppercase tracking-widest">Component Library</h2>
+<p class="text-xs text-on-surface-variant mt-1">v1.0 Ethereal</p>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">smart_button</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Buttons</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-[#d4c3fd] dark:bg-[#49454f] text-[#21183a] dark:text-[#e6e1e9] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">spoke</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Cards</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">input</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Text Fields</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">menu_open</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Navigation</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#615d68] dark:text-[#c9c5d0] hover:bg-[#ece6f0] dark:hover:bg-[#322f37] rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">check_box</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Selection</span>
+</a>
+</nav>
+<div class="mt-auto p-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div>
+<p class="text-sm font-bold">System Admin</p>
+<p class="text-xs text-on-surface-variant">Administrator</p>
+</div>
+</div>
+</aside>
+<main class="ml-72 pt-24 px-12 pb-24 max-w-7xl">
+<header class="mb-16">
+<h1 class="text-[3.5rem] font-headline font-bold leading-none tracking-tight text-on-surface mb-4">Cards</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                Cards serve as an entry point to more detailed information. They contain a variety of content like images, buttons, and text. We utilize tonal layering to define hierarchy without harsh structural lines.
+            </p>
+</header>
+<section class="space-y-24">
+<div>
+<div class="flex items-baseline gap-4 mb-8">
+<h2 class="text-3xl font-headline font-bold text-primary">01. Elevated Cards</h2>
+<div class="h-px flex-grow bg-surface-container"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-surface-container-low rounded-lg p-8 shadow-[0_8px_32px_rgba(52,49,58,0.06)] ghost-lift">
+<div class="mb-6 overflow-hidden rounded-lg">
+<img alt="Product focus" class="w-full h-48 object-cover" data-alt="Close-up of a sleek red athletic sneaker on a minimalist white surface with soft studio lighting and elegant shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFl9ZhDmiiVfReXQUZ7_e55xMOyDziYqLfALBg1fyYPRFmsOPIGD6EnDhitzcAQwjcO26xC3jVePcvAU4DNT__QCFp7z2A4YIgrSDrW0SwnVBi1iST0JSaiIyzgEUolEaEcSPc3JvYB62dsFp3QooESy8h0KgdP9AAQzVxW63cHrCNs4B8tgid3IQ2WWNNtdEvVY12NnE_zhcYH0K03hGUZ9PFQFUgIvIyuy8fTTOmWibn6A3v66g_nIWCvuQlrCDsohGxn5Nvnp0q"/>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-bold">Aura Velocity</h3>
+<span class="text-primary font-bold">$189.00</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                                Performance meeting precision. Designed for the digital curator who moves with purpose and requires absolute comfort.
+                            </p>
+<div class="pt-4 flex gap-3">
+<button class="signature-gradient text-on-primary px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase active:scale-95 transition-transform">Add to Bag</button>
+<button class="bg-surface-container text-primary px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase active:scale-95 transition-transform">Details</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-8 shadow-[0_8px_32px_rgba(52,49,58,0.06)] ghost-lift">
+<div class="flex items-start gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">Monthly Insights</h3>
+<p class="text-xs text-on-surface-variant font-medium uppercase tracking-widest">October 2023</p>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">
+                            Your curation reach has increased by 24% this month. Deep focus sessions are trending upwards, resulting in higher quality component exports.
+                        </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface p-4 rounded-lg">
+<span class="text-xs text-on-surface-variant block mb-1">Reach</span>
+<span class="text-2xl font-bold">12.4k</span>
+</div>
+<div class="bg-surface p-4 rounded-lg">
+<span class="text-xs text-on-surface-variant block mb-1">Growth</span>
+<span class="text-2xl font-bold text-green-600">+14%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-4 mb-8">
+<h2 class="text-3xl font-headline font-bold text-primary">02. Filled Cards</h2>
+<div class="h-px flex-grow bg-surface-container"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container rounded-lg p-6 hover:bg-surface-container-high transition-colors duration-300">
+<span class="material-symbols-outlined text-primary-dim mb-4" style="font-variation-settings: 'opsz' 40;">brush</span>
+<h3 class="text-lg font-bold mb-2">Editor Styles</h3>
+<p class="text-sm text-on-surface-variant mb-6">Configure the visual DNA of your documentation components.</p>
+<button class="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                            Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="bg-surface-container rounded-lg p-6 hover:bg-surface-container-high transition-colors duration-300">
+<span class="material-symbols-outlined text-primary-dim mb-4" style="font-variation-settings: 'opsz' 40;">layers</span>
+<h3 class="text-lg font-bold mb-2">Layer Hierarchy</h3>
+<p class="text-sm text-on-surface-variant mb-6">Manage how components stack and interact in 3D space.</p>
+<button class="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                            Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="bg-surface-container rounded-lg p-6 hover:bg-surface-container-high transition-colors duration-300">
+<span class="material-symbols-outlined text-primary-dim mb-4" style="font-variation-settings: 'opsz' 40;">grid_view</span>
+<h3 class="text-lg font-bold mb-2">Grid Settings</h3>
+<p class="text-sm text-on-surface-variant mb-6">Define the structural rhythmic foundations for layout.</p>
+<button class="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                            Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-4 mb-8">
+<h2 class="text-3xl font-headline font-bold text-primary">03. Outlined Cards</h2>
+<div class="h-px flex-grow bg-surface-container"></div>
+</div>
+<div class="bg-white border border-outline-variant/30 rounded-lg overflow-hidden flex flex-col md:flex-row">
+<div class="md:w-1/3 h-64 md:h-auto">
+<img alt="Workspace" class="w-full h-full object-cover" data-alt="Modern minimalist home office with clean white desk, designer chair, large window with soft morning light, and lush green plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaJGm0gxrs1Qkxr4Qk58itLpPYCKGrK1gj7NWLemDH1sBNB1_xJ3x-tVxlk84qqYHh2RgBnS7i7iNaN-P_jOFm5zD_X1v_-MKndYGVS6Bu_FbmSabUySvN8EV8FwRNbSNl3Zc_F51s34jxnFDXB9Bjs-3KJ82pSxHAVHWuIN7PVG6SZFaRSCKzgRkSZsEQVoUV4OIm4nDRCvh1tE91CwkRSK86BT0q_l-3j_8e08QkB1i_K0MQ6YALZ7La8azGKx3UKfqqhVqP3V7Y"/>
+</div>
+<div class="md:w-2/3 p-10 flex flex-col justify-center">
+<div class="inline-block bg-secondary-container px-3 py-1 rounded-full text-[10px] font-bold text-on-secondary-container uppercase tracking-widest mb-4 w-fit">Featured Insight</div>
+<h3 class="text-2xl font-bold mb-4">Designing for Presence</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8">
+                            In an era of constant distraction, we explore how digital interfaces can foster a sense of calm and intentionality through soft colors and deliberate whitespace. This editorial approach prioritizes human focus over engagement metrics.
+                        </p>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">schedule</span>
+<span class="text-xs text-on-surface-variant">8 min read</span>
+</div>
+<button class="text-primary font-bold text-sm hover:underline underline-offset-4">Read Full Article</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-12 relative overflow-hidden">
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="text-4xl font-headline font-bold mb-6">Mastering the Editorial Grid</h2>
+<p class="text-lg text-on-surface-variant mb-8 leading-relaxed">
+                            Cards are the building blocks of the Ethereal System. Combine different types to create visual rhythm and guide the user's eye through the narrative of your application.
+                        </p>
+<div class="flex gap-4">
+<button class="signature-gradient text-on-primary px-8 py-3 rounded-full text-sm font-bold tracking-wider uppercase shadow-lg shadow-primary/20">Get Started</button>
+<button class="bg-transparent border border-outline/30 text-primary px-8 py-3 rounded-full text-sm font-bold tracking-wider uppercase">View Documentation</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white/80 backdrop-blur-md p-6 rounded-lg transform rotate-2 shadow-sm border border-white/40">
+<div class="w-8 h-8 rounded-full bg-tertiary-container mb-4"></div>
+<div class="h-2 w-3/4 bg-surface-container-highest rounded-full mb-2"></div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full"></div>
+</div>
+<div class="bg-white/80 backdrop-blur-md p-6 rounded-lg transform -rotate-3 translate-y-8 shadow-md border border-white/40">
+<div class="w-8 h-8 rounded-full bg-primary-container mb-4"></div>
+<div class="h-2 w-1/2 bg-surface-container-highest rounded-full mb-2"></div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full"></div>
+</div>
+<div class="bg-white/80 backdrop-blur-md p-6 rounded-lg transform -rotate-2 shadow-lg border border-white/40">
+<div class="w-8 h-8 rounded-full bg-secondary-container mb-4"></div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full mb-2"></div>
+<div class="h-2 w-2/3 bg-surface-container-highest rounded-full"></div>
+</div>
+<div class="bg-primary/5 p-6 rounded-lg transform rotate-6 translate-y-4 border border-primary/10">
+<div class="w-8 h-8 rounded-full bg-primary-dim mb-4"></div>
+<div class="h-2 w-3/4 bg-primary/20 rounded-full mb-2"></div>
+<div class="h-2 w-full bg-primary/20 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Abstract Background Ornament -->
+<div class="absolute top-0 right-0 w-1/2 h-full signature-gradient opacity-[0.03] rounded-l-full translate-x-1/4"></div>
+</div>
+</section>
+</main>
+</body></html>

@@ -73,7 +73,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     ]
   },
   '/enrolment': {
-    tagline: "Recruitment ROI",
+    tagline: "Admissions Value Potential",
     title: "Calculate the strategic value of admission excellence.",
     inputLabel: "Annual Applicant Volume",
     expertQuote: "Every application you fail to frictionless-enrol is not just a missed fee—it's a lost opportunity to enrich your academic community. Let’s make enrolment a human, strategic moment.",
@@ -124,7 +124,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
   },
   '/flourishing': {
     tagline: "Success Scenarios",
-    title: "Visualise the impact of pro-active student enablement.",
+    title: "Visualise the impact of proactive student enablement.",
     inputLabel: "Student Population",
     expertQuote: "Student attrition is an institutional failure, not just an individual one. Proactive, data-driven interventions secure both academic journeys and financial resilience.",
     min: 1000,
@@ -173,7 +173,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     ]
   },
   '/engagement': {
-    tagline: "Engagement ROI",
+    tagline: "Institutional Resonance",
     title: "Quantify the influence of institutional brand storytelling.",
     inputLabel: "Monthly Digital Engagements",
     expertQuote: "Generic communication gets lost in the noise. By orchestrating authentic, personalised journeys, we turn passive prospects into proud alumni.",
@@ -185,7 +185,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     calculate: (engagements) => ({
       conversion: Math.round(engagements * 0.02 * 1.4), // 40% improvement in 2% conversion
       cpa: 22, // 22% reduction in CPA
-      equity: 15 // 15% increase in brand sentiment
+      equity: 15 // 15% increase in brand sentiment equity
     }),
     formatDisplay: (results) => ({
       conversion: results.conversion.toLocaleString('en-GB'),
@@ -195,7 +195,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     stats: [
       {
         key: 'conversion',
-        microcopy: 'Strategic conversion of casual interest into qualified institutional leads.',
+        microcopy: 'Strategic conversion of casual interest into qualified institutional prospects.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
             Prospective learners <span style={{ fontWeight: 600 }} className="text-black">committing to formal inquiry</span> and engagement
@@ -204,10 +204,10 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'cpa',
-        microcopy: 'Optimised marketing spend via high-precision audience targeting.',
+        microcopy: 'Optimised strategic engagement spend via high-precision audience targeting.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
-            Reduction in <span style={{ fontWeight: 600 }} className="text-black">Strategic Acquisition Efficiency</span> across digital channels
+            Reduction in <span style={{ fontWeight: 600 }} className="text-black">Strategic Acquisition Costs</span> across digital channels
           </p>
         ),
       },
@@ -223,7 +223,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     ]
   },
   '/advancement': {
-    tagline: "Advancement ROI",
+    tagline: "Institutional Affinity",
     title: "Measure the power of lifelong institutional connection.",
     inputLabel: "Active Alumni Database",
     expertQuote: "Transactional fundraising yields transactional results. Cultivating a lifelong, engaged alumni community unlocks exponential philanthropic potential.",
@@ -273,7 +273,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     ]
   },
   '/enterprise': {
-    tagline: "Enterprise ROI",
+    tagline: "Innovation Impact",
     title: "Quantify the potential of institutional commercial partnerships.",
     inputLabel: "Active Corporate Engagements",
     expertQuote: "Corporate partnerships shouldn't be siloed. Unifying your enterprise relations unlocks new revenue streams and amplifies your institutional impact.",
@@ -316,7 +316,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
         microcopy: 'Modelled acceleration in technology transfer and knowledge exchange cycles.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
-            Uplift in <span style={{ fontWeight: 600 }} className="text-black">Innovation Velocity</span> and philanthropic reach
+            Uplift in <span style={{ fontWeight: 600 }} className="text-black">Innovation Velocity</span> and commercial reach
           </p>
         ),
       },
