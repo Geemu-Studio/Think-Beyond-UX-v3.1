@@ -121,12 +121,10 @@ export function CTAFormSection({
                   </svg>
                 </div>
                 <div className="">
-                  <div className="text-black font-['Outfit'] font-bold text-sm leading-snug">
+                  <h4 className="text-[15px] font-bold text-black uppercase tracking-tight font-['Outfit']">
                     Marcin Pieńkowski
-                  </div>
-                  <div className="uppercase tracking-[0.5px] text-[#737373] text-[11px] leading-tight">
-                    Lead Institutional Strategist
-                  </div>
+                  </h4>
+                  <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategists</span>
                 </div>
               </div>
               <div className="flex rounded-2xl bg-white border border-solid border-[#F0F0F0] p-5">

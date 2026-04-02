@@ -101,21 +101,18 @@ export function ExpertFooterAccordion() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 text-left">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center rounded-full bg-[#E5E7EB] border border-[#D1D5DB] shrink-0 w-10 h-10">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-[14px] font-bold text-black tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
-                  <p className="text-[11px] text-neutral-500 uppercase tracking-[0.5px]">Lead Institutional Strategist</p>
+            {/* Marcin Profile & Quote (6T-0 Institutional Layout) */}
+            <div className="flex flex-col gap-5 text-left">
+              <div className="flex items-center gap-4">
+                <AvatarStack />
+                <div className="flex flex-col">
+                  <h4 className="text-[15px] font-bold text-black uppercase tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
+                  <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategists</span>
                 </div>
               </div>
-              <div className="flex rounded-2xl bg-white border border-solid border-[#F0F0F0] p-5">
-                <p className="text-[13px] text-[#404040] leading-relaxed italic">
+              {/* Quote (Institutional Style) */}
+              <div className="bg-white border border-neutral-100 p-5 rounded-2xl shadow-sm relative">
+                <p className="text-[13px] text-[#404040] leading-relaxed italic font-['Outfit']">
                   &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
                 </p>
               </div>
