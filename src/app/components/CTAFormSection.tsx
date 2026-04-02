@@ -124,7 +124,7 @@ export function CTAFormSection({
                   <h4 className="text-[15px] font-bold text-black uppercase tracking-tight font-['Outfit']">
                     Marcin Pieńkowski
                   </h4>
-                  <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategists</span>
+                  <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategist</span>
                 </div>
               </div>
               <div className="flex rounded-2xl bg-white border border-solid border-[#F0F0F0] p-5">

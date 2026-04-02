@@ -288,11 +288,11 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
                         className="mt-2 shadow-xl hover:shadow-2xl transition-all"
                       >
                         Initiate Strategic Review
-                        <Send className="ml-2 w-4 h-4" />
+                        <Send className="ml-2 w-4 h-4" aria-hidden="true" />
                       </Button>
 
                       <div className="flex items-center justify-center gap-2 text-[11px] text-neutral-400 mt-2">
-                        <Lock className="w-3 h-3" />
+                        <Lock className="w-3 h-3" aria-hidden="true" />
                         <span>Your data is 100% secure. No spam, ever.</span>
                       </div>
                     </form>

@@ -70,7 +70,7 @@ export function CalculatorSection() {
                   </div>
                   <div className="flex flex-col">
                     <h4 className="text-[15px] font-bold text-black uppercase tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
-                    <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategists</span>
+                    <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategist</span>
                   </div>
                 </div>
 
@@ -83,54 +83,8 @@ export function CalculatorSection() {
             </div>
           </div>
 
-          {/* Slider */}
+          {/* Slider — thumb styles live in theme.css */}
           <div className="relative group/slider pt-4">
-            <style>
-              {`
-                input[type='range']::-webkit-slider-thumb {
-                  -webkit-appearance: none;
-                  appearance: none;
-                  width: 32px;
-                  height: 32px;
-                  background: #000;
-                  border-radius: 50%;
-                  cursor: pointer;
-                  border: 3px solid #fff;
-                  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                  transition: transform 0.2s ease, background 0.2s ease;
-                }
-                
-                @media (max-width: 640px) {
-                  input[type='range']::-webkit-slider-thumb {
-                    width: 48px;
-                    height: 48px;
-                  }
-                }
-
-                input[type='range']::-moz-range-thumb {
-                  width: 32px;
-                  height: 32px;
-                  background: #000;
-                  border-radius: 50%;
-                  cursor: pointer;
-                  border: 3px solid #fff;
-                  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                  transition: transform 0.2s ease;
-                }
-
-                @media (max-width: 640px) {
-                  input[type='range']::-moz-range-thumb {
-                    width: 48px;
-                    height: 48px;
-                  }
-                }
-
-                input[type='range']:active::-webkit-slider-thumb {
-                  transform: scale(1.1);
-                  background: #333;
-                }
-              `}
-            </style>
             <input
               type="range"
               min={config.min}
@@ -138,6 +92,10 @@ export function CalculatorSection() {
               step={config.step}
               value={value}
               onChange={(e) => setValue(Number(e.target.value))}
+              aria-label={config.inputLabel}
+              aria-valuemin={config.min}
+              aria-valuemax={config.max}
+              aria-valuenow={value}
               className="w-full h-[6px] appearance-none cursor-pointer rounded-full outline-none"
               style={{
                 background: `linear-gradient(to right, #000 0%, #000 ${sliderPct}%, #e5e7eb ${sliderPct}%, #e5e7eb 100%)`,
@@ -187,11 +145,10 @@ export function CalculatorSection() {
                 e.preventDefault();
                 setIsModalOpen(true);
               }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-black px-6 py-3 text-[14px] text-black hover:bg-black hover:text-white transition-colors rounded-full"
-              style={{ fontWeight: 600 }}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-black px-6 py-3 text-[14px] font-semibold text-black hover:bg-black hover:text-white transition-colors rounded-full"
             >
               {config.ctaText}
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M2 7h10M8 3l4 4-4 4" />
               </svg>
             </a>

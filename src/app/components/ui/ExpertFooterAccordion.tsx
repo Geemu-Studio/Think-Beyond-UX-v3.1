@@ -107,7 +107,7 @@ export function ExpertFooterAccordion() {
                 <AvatarStack />
                 <div className="flex flex-col">
                   <h4 className="text-[15px] font-bold text-black uppercase tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
-                  <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategists</span>
+                  <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategist</span>
                 </div>
               </div>
               {/* Quote (Institutional Style) */}
