@@ -10,7 +10,7 @@ export function OfferBridgeSection() {
 
   let heading = 'Institutional Resonance & Continuity.';
   let subheading = 'Secure the strategic foundations of your institution. Align every interaction with your academic mission through a unified digital ecosystem.';
-  let cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING, BOXES.ALUMNI, BOXES.ENTERPRISE];
+  let cards = [BOXES.RECRUITMENT, BOXES.ALUMNI, BOXES.SUCCESS, BOXES.ENTERPRISE, BOXES.MARKETING];
 
   if (path === '/enrolment') {
     cards = [BOXES.SUCCESS, BOXES.MARKETING, BOXES.ALUMNI, BOXES.ENTERPRISE];
@@ -50,9 +50,7 @@ export function OfferBridgeSection() {
               className={`
                 bg-transparent border border-neutral-700 rounded-[20px] p-6 flex flex-col gap-3 group hover:bg-[#333333] hover:border-transparent transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl active:scale-[0.98] cursor-pointer no-underline
                 ${cards.length === 5 ? (
-                  idx < 3 ? 'lg:col-span-2' : 
-                  idx === 3 ? 'lg:col-span-2 lg:col-start-2' : 
-                  'lg:col-span-2'
+                  idx < 3 ? 'lg:col-span-2' : 'lg:col-span-3'
                 ) : ''}
               `}
             >
