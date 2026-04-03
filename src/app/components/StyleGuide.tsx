@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import {
   Phone, Mail, CheckCircle2, Quote, Lightbulb, Play, AlertCircle, X, ChevronLeft, ChevronRight, Copy,
-  Minus, Plus, Maximize, MousePointer2, Layers, Send, Lock, MessageCircle, MessageSquare, User
+  Minus, Plus, Maximize, MousePointer2, Layers, Send, Lock, MessageCircle, MessageSquare, User, Target
 } from 'lucide-react';
 import {
   CampaignOutlined, DataUsageOutlined, VolunteerActivismOutlined,
@@ -856,31 +856,95 @@ export function StyleGuide() {
           <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">5. Strategic Partner Insights (Case Study Pattern)</h2>
           <p className="text-[14px] text-neutral-500">Sophisticated modal pattern for deep institutional success stories. Features dynamic navigation and embedded conversion points.</p>
         </div>
-        <div className="bg-neutral-50 rounded-[40px] p-12 border border-neutral-200 overflow-hidden relative min-h-[500px]">
-           {/* Abstract Modal Mockup */}
-           <div className="absolute inset-0 flex flex-col items-center justify-center p-12 translate-y-12">
-              <div className="w-full max-w-4xl bg-white rounded-[32px] shadow-2xl border border-neutral-200 h-full overflow-hidden flex flex-col scale-[0.95] origin-bottom">
-                 <div className="h-24 bg-black shrink-0 flex items-center px-10 gap-4">
-                    <div className="h-4 w-32 bg-white/10 rounded-full" />
-                    <div className="h-2 w-48 bg-white/5 rounded-full" />
-                 </div>
-                 <div className="flex-1 p-10 flex gap-10">
-                    <div className="flex-1 flex flex-col gap-6">
-                       <div className="h-8 w-3/4 bg-neutral-100 rounded-lg" />
-                       <div className="h-4 w-full bg-neutral-50 rounded" />
-                       <div className="h-4 w-5/6 bg-neutral-50 rounded" />
-                       <div className="h-4 w-4/6 bg-neutral-50 rounded" />
-                       <div className="mt-8 grid grid-cols-2 gap-4">
-                          <div className="h-32 bg-neutral-50 rounded-2xl border border-neutral-100" />
-                          <div className="h-32 bg-neutral-50 rounded-2xl border border-neutral-100" />
-                       </div>
+        <div className="bg-neutral-50 rounded-[40px] p-12 border border-neutral-200 overflow-hidden relative min-h-[650px]">
+           {/* High-Fidelity Modal Preview */}
+           <div className="absolute inset-0 flex flex-col items-center justify-start p-12 pt-20">
+              <div className="w-full max-w-5xl bg-white rounded-[32px] shadow-2xl border border-neutral-200 h-full overflow-hidden flex flex-col scale-[0.85] origin-top">
+                 {/* Modal Header */}
+                 <div className="h-28 bg-black shrink-0 flex items-center px-12 relative overflow-hidden">
+                    <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[100px] font-bold text-white/[0.05] pointer-events-none select-none">
+                      S
+                    </div>
+                    <div className="relative z-10 w-full text-left">
+                      <span className="text-neutral-500 text-[9px] uppercase tracking-[2px] font-bold mb-1 block">
+                        Case Study Success Story
+                      </span>
+                      <h2 className="text-white text-2xl font-bold tracking-tight">
+                        SWPS University
+                      </h2>
                     </div>
                  </div>
-                 <div className="h-20 border-t border-neutral-100 bg-white flex items-center justify-between px-10">
-                    <div className="h-4 w-24 bg-neutral-100 rounded-full" />
-                    <div className="flex gap-2">
-                       <div className="w-10 h-10 rounded-full border border-neutral-200" />
-                       <div className="w-10 h-10 rounded-full border border-neutral-200" />
+
+                 {/* Modal Body (Scrollable Fragment) */}
+                 <div className="flex-1 p-12 flex flex-col gap-10 overflow-y-auto text-left">
+                    <header>
+                      <h3 className="text-2xl font-bold text-black mb-6 leading-tight">
+                        Transforming the Student Experience at Scale: The SWPS University Ecosystem
+                      </h3>
+                    </header>
+
+                    <div className="grid md:grid-cols-2 gap-12">
+                       {/* Section: Challenge */}
+                       <div className="flex flex-col gap-4">
+                          <div className="flex items-center gap-2 mb-1">
+                            <AlertCircle className="w-5 h-5 text-black" />
+                            <h4 className="font-bold text-lg text-black">The Challenge</h4>
+                          </div>
+                          <p className="text-[14px] text-neutral-600 leading-relaxed">
+                            Fragmentation of legacy administrative silos and paper-reliant critical paths.
+                          </p>
+                          <ul className="flex flex-col gap-3">
+                             <li className="flex gap-3 items-start">
+                                <div className="h-1.5 w-1.5 rounded-full bg-neutral-300 shrink-0 mt-2"></div>
+                                <span className="text-[13px] text-neutral-700">Digital expectations of 17,500+ learners.</span>
+                             </li>
+                          </ul>
+                       </div>
+
+                       {/* Section: Impact */}
+                       <div className="flex flex-col gap-4">
+                          <div className="flex items-center gap-2 mb-1">
+                            <Target className="w-5 h-5 text-black" />
+                            <h4 className="font-bold text-lg text-black">Institutional Impact</h4>
+                          </div>
+                          <div className="grid gap-3">
+                             <div className="bg-neutral-50 p-4 rounded-xl border border-neutral-100">
+                                <span className="text-[18px] font-bold text-black block">+8.5% NSS Uplift</span>
+                                <span className="text-[11px] text-neutral-400 uppercase font-bold">Projected Satisfaction</span>
+                             </div>
+                             <div className="bg-neutral-50 p-4 rounded-xl border border-neutral-100">
+                                <span className="text-[18px] font-bold text-black block">100% Digital</span>
+                                <span className="text-[11px] text-neutral-400 uppercase font-bold">Paperless Operations</span>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+
+                    {/* Reference Block */}
+                    <div className="bg-neutral-50 rounded-2xl p-8 border-l-4 border-black relative overflow-hidden mt-4">
+                      <Quote className="absolute -top-2 -right-2 w-20 h-20 text-black/5" />
+                      <p className="text-[15px] italic text-neutral-800 leading-relaxed mb-4 relative z-10">
+                        "The transition from reactive administration to proactive student care has fundamentally changed our campus culture."
+                      </p>
+                      <cite className="not-italic font-bold text-black text-[13px]">
+                        SWPS University Representative
+                      </cite>
+                    </div>
+                 </div>
+
+                 {/* Modal Footer */}
+                 <div className="h-20 border-t border-neutral-100 bg-white flex items-center justify-between px-12">
+                    <div className="text-[12px] text-neutral-400 font-medium">Think Beyond © 2026</div>
+                    <div className="flex items-center gap-4">
+                       <span className="font-bold text-black text-sm">1 / 3</span>
+                       <div className="flex gap-2">
+                          <div className="w-9 h-9 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-300">
+                            <ChevronLeft className="w-4 h-4" />
+                          </div>
+                          <div className="w-9 h-9 rounded-full border border-neutral-200 flex items-center justify-center text-black">
+                            <ChevronRight className="w-4 h-4" />
+                          </div>
+                       </div>
                     </div>
                  </div>
               </div>
@@ -888,7 +952,7 @@ export function StyleGuide() {
            
            <div className="absolute top-10 left-10 z-20">
               <div className="bg-black text-white px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider shadow-xl">
-                 High-Context Pattern
+                 Modal Content Architecture
               </div>
            </div>
         </div>
