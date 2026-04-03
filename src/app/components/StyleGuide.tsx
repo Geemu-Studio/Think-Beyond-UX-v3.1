@@ -592,18 +592,85 @@ export function StyleGuide() {
             <h3 className="text-[14px] text-black font-bold uppercase tracking-wider">Expert Feedback Module</h3>
             <p className="text-[13px] text-neutral-500 mb-2 leading-relaxed">System zaufania wykorzystujący autorytet ekspercki (Institutional Strategist). Stosowany w kalkulatorach i formularzach konwersji.</p>
             
-            <div className="flex items-start gap-4 bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm max-w-xl">
-              <div className="w-12 h-12 rounded-full bg-neutral-100 shrink-0 flex items-center justify-center border border-white shadow-sm text-neutral-300">
-                <User className="w-6 h-6" />
+            <div className="flex flex-col gap-8">
+              {/* Variant 1: Standalone */}
+              <div className="flex items-start gap-4 bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm max-w-xl">
+                <div className="w-12 h-12 rounded-full bg-neutral-100 shrink-0 flex items-center justify-center border border-white shadow-sm text-neutral-300">
+                  <User className="w-6 h-6" />
+                </div>
+                <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[11px] font-bold text-black uppercase tracking-wider">Expert Silhouette</span>
+                      <span className="text-[12px] text-neutral-400 font-medium">Institutional Strategist</span>
+                    </div>
+                    <p className="text-[13px] italic text-neutral-600 leading-[1.6]">
+                      &ldquo;Strategic alignment ensures that every institutional resource is optimised for enrolment excellence and student flourishing.&rdquo;
+                    </p>
+                </div>
               </div>
-              <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-bold text-black uppercase tracking-wider">Expert Silhouette</span>
-                    <span className="text-[12px] text-neutral-400 font-medium">Institutional Strategist</span>
+
+              {/* Variant 2: Integrated with Avatar Stack */}
+              <div className="flex flex-col gap-5 max-w-xl">
+                 <div className="flex items-center gap-4">
+                   <div className="flex -space-x-2">
+                     <div className="w-10 h-10 rounded-full border-2 border-white bg-[#F5F5F5] flex items-center justify-center font-bold text-[10px] text-neutral-600">AK</div>
+                     <div className="w-10 h-10 rounded-full border-2 border-white bg-[#D4D4D4] flex items-center justify-center font-bold text-[10px] text-neutral-600">MB</div>
+                     <div className="w-10 h-10 rounded-full border-2 border-white bg-[#111111] flex items-center justify-center font-bold text-[9px] text-white z-10">+17</div>
+                   </div>
+                   <div className="flex flex-col">
+                     <h4 className="text-[15px] font-bold text-black uppercase tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
+                     <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategist</span>
+                   </div>
+                 </div>
+                 <div className="bg-white border border-neutral-100 p-5 rounded-2xl shadow-sm relative">
+                   <p className="text-[13px] text-[#404040] leading-relaxed italic font-['Outfit']">
+                     &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
+                   </p>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-8 mt-8">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">2. Brand Trust Signals</h2>
+          <p className="text-[14px] text-neutral-500">Elements that reinforce institutional authority and compliance across the platform.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-neutral-50 rounded-[24px] p-8 border border-neutral-100 flex flex-col gap-6">
+            <h3 className="text-[14px] text-black font-bold uppercase tracking-wider">Institutional Trust Badges</h3>
+            <div className="flex flex-wrap items-center gap-x-10 gap-y-6">
+              {[
+                { label: 'GDPR Compliant', detail: 'EU Data Protection' },
+                { label: 'ISO 27001 Aligned', detail: 'Information Security' },
+              ].map((badge) => (
+                <div key={badge.label} className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center bg-black/5">
+                    <CheckCircle2 className="w-3 h-3 text-black" />
                   </div>
-                  <p className="text-[13px] italic text-neutral-600 leading-[1.6]">
-                    &ldquo;Strategic alignment ensures that every institutional resource is optimised for enrolment excellence and student flourishing.&rdquo;
-                  </p>
+                  <div className="flex flex-col">
+                    <span className="text-[12px] text-black font-bold leading-none">{badge.label}</span>
+                    <span className="text-[10px] text-neutral-400 mt-1">{badge.detail}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-neutral-50 rounded-[24px] p-8 border border-neutral-100 flex flex-col gap-6">
+            <h3 className="text-[14px] text-black font-bold uppercase tracking-wider">Avatar Stack (Trust Aggregator)</h3>
+            <div className="flex items-center gap-6">
+              <div className="flex -space-x-3">
+                <div className="w-12 h-12 rounded-full border-2 border-white bg-[#F5F5F5] flex items-center justify-center font-bold text-[11px] text-neutral-600 shadow-sm animate-in slide-in-from-left-2 duration-300">AK</div>
+                <div className="w-12 h-12 rounded-full border-2 border-white bg-[#D4D4D4] flex items-center justify-center font-bold text-[11px] text-neutral-600 shadow-sm animate-in slide-in-from-left-2 duration-500 delay-75">MB</div>
+                <div className="w-12 h-12 rounded-full border-2 border-white bg-black flex items-center justify-center font-bold text-[10px] text-white z-10 shadow-md animate-in zoom-in duration-700 delay-150">+20</div>
+              </div>
+              <div className="flex flex-col">
+                 <span className="text-[14px] font-bold text-black tracking-tight">Institutional Experts</span>
+                 <span className="text-[11px] text-neutral-400 uppercase tracking-wider font-bold">24/7 Strategic Support</span>
               </div>
             </div>
           </div>
@@ -627,32 +694,48 @@ export function StyleGuide() {
           <p className="text-[14px] text-neutral-500">The primary modular pattern for presenting strategic capabilities. Includes high-performance hover scaling and integrated interactive triggers.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-          <div className="bg-white rounded-[24px] p-10 flex flex-col gap-8 shadow-[0_4px_24px_rgba(0,0,0,0.05)] border border-neutral-100">
+          <div className="bg-white rounded-[24px] p-10 flex flex-col gap-8 shadow-[0_4px_24px_rgba(0,0,0,0.05)] border border-neutral-100 group cursor-pointer hover:scale-[1.02] transition-all">
             <div className="flex items-start justify-between">
-              <div className="w-14 h-14 rounded-2xl bg-neutral-50 border border-neutral-100 flex items-center justify-center text-neutral-400">
+              <div className="w-14 h-14 rounded-[18px] bg-neutral-50 border border-neutral-100 flex items-center justify-center text-neutral-400 group-hover:bg-black group-hover:text-white transition-all">
                 <HubOutlined sx={{ fontSize: 32 }} />
               </div>
-              <div className="w-10 h-10 rounded-full border border-black flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center">
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8l3.5 3.5L13 4.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-300 group-hover:text-black" />
                 </svg>
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <h3 className="text-[22px] text-black font-bold tracking-tight">Institutional Intelligence</h3>
+              <h3 className="text-[22px] text-black font-bold tracking-tight">Institutional Innovation Hubs</h3>
               <p className="text-[14px] text-neutral-500 leading-[1.7]">
-                A single, unified institutional view empowering decision-makers with real-time academic flourishing metrics.
+                Orchestrate high-value institutional partnerships and commercialise academic research through a unified CRM ecosystem.
               </p>
-              <div className="flex items-center gap-3 text-[13px] font-bold text-black mt-2">
-                <div className="w-7 h-7 rounded-full border border-neutral-200 flex items-center justify-center">
-                  <Play className="w-2.5 h-2.5 fill-black" />
+              <div className="flex items-center gap-3 text-[13px] font-bold text-neutral-400 group-hover:text-black transition-all mt-2">
+                <div className="w-7 h-7 rounded-full border border-neutral-200 flex items-center justify-center group-hover:bg-black group-hover:border-black group-hover:text-white">
+                  <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
                 </div>
                 Watch solution in action
               </div>
             </div>
           </div>
-          <div className="p-8 border border-neutral-200 border-dashed rounded-[32px] flex items-center justify-center h-full">
-            <p className="text-[13px] text-neutral-400 text-center max-w-[200px]">Pattern utilizes 3-column grid layout on production desktop view.</p>
+          <div className="flex flex-col gap-6">
+            <div className="bg-neutral-50 p-8 border border-neutral-200 border-dashed rounded-[32px]">
+              <h4 className="text-[13px] text-black font-bold uppercase tracking-wider mb-4">Pattern Specifications</h4>
+              <ul className="flex flex-col gap-3">
+                <li className="flex items-center gap-3 text-[13px] text-neutral-500">
+                  <CheckCircle2 className="w-4 h-4 text-black" />
+                  Grid: 3-column architectural partitioning
+                </li>
+                <li className="flex items-center gap-3 text-[13px] text-neutral-500">
+                  <CheckCircle2 className="w-4 h-4 text-black" />
+                  Interaction: Active scale (1.02) + Shadow elevation
+                </li>
+                <li className="flex items-center gap-3 text-[13px] text-neutral-500">
+                  <CheckCircle2 className="w-4 h-4 text-black" />
+                  Feedback: Progressive disclosure of checkmark state
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -668,8 +751,10 @@ export function StyleGuide() {
             <p className="text-[14px] text-neutral-600 font-medium">Annual Student Population</p>
             <span className="bg-black text-white text-[20px] px-5 py-1.5 rounded-full font-bold tracking-tight text-center min-w-[100px]">15,000</span>
           </div>
-          <div className="h-[3px] bg-black rounded-full relative">
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-black rounded-full shadow-lg border-2 border-white"></div>
+          {/* ROI Slider Track */}
+          <div className="h-[4px] bg-neutral-100 rounded-full relative">
+            <div className="absolute left-0 top-0 h-full w-[70%] bg-black rounded-full" />
+            <div className="absolute left-[70%] top-1/2 -translate-y-1/2 w-5 h-5 bg-black rounded-full shadow-lg border-2 border-white cursor-pointer ring-0 hover:ring-8 hover:ring-black/5 transition-all"></div>
           </div>
           <div className="grid grid-cols-3 gap-6 pt-4 border-t border-neutral-100">
             <div className="flex flex-col gap-1">
@@ -685,6 +770,11 @@ export function StyleGuide() {
               <span className="text-[11px] text-neutral-400 uppercase font-bold">NSS Uplift</span>
             </div>
           </div>
+           <div className="mt-2 p-4 bg-neutral-50 rounded-2xl border border-neutral-100">
+             <p className="text-[11px] text-neutral-400 leading-relaxed italic">
+               Note: Global ROI slider thumb style is enforced via <code>theme.css</code> to ensure institutional consistency across all pillared calculators.
+             </p>
+           </div>
         </div>
       </section>
 
@@ -714,31 +804,43 @@ export function StyleGuide() {
           <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">4. Strategic Mission Centre (Principal Pattern)</h2>
           <p className="text-[14px] text-neutral-500">The primary institutional lead-generation architecture. A 12-column grid partitioning authority signals (5/12) and the direct conversion interface (7/12).</p>
         </div>
-        <div className="border border-neutral-100 rounded-[32px] overflow-hidden bg-neutral-50 shadow-xl scale-[0.7] origin-top -mb-56 p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start max-w-5xl mx-auto">
-            {/* Left Column Mockup */}
-            <div className="lg:col-span-5 flex flex-col gap-8 opacity-60 pointer-events-none">
-              <div className="bg-white rounded-2xl border border-zinc-200 p-6 flex flex-col gap-4">
-                <div className="h-10 w-32 bg-neutral-100 rounded-full" />
-                <div className="h-4 w-48 bg-neutral-200 rounded" />
-                <div className="h-16 w-full bg-neutral-50 rounded" />
-              </div>
-              <div className="h-[1px] bg-neutral-200" />
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-neutral-200" />
-                <div className="flex flex-col gap-1">
-                  <div className="h-3 w-24 bg-neutral-300 rounded" />
-                  <div className="h-2 w-16 bg-neutral-100 rounded" />
-                </div>
-              </div>
+        <div className="border border-neutral-100 rounded-[32px] overflow-hidden bg-white shadow-xl scale-[0.7] origin-top -mb-72 p-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start max-w-6xl mx-auto text-left">
+            {/* Left Column: Authority signals */}
+            <div className="lg:col-span-5 flex flex-col gap-10 opacity-60">
+               <div className="flex flex-col gap-4">
+                 <span className="text-[9px] text-neutral-400 uppercase tracking-[2px] font-bold">Strategic Mission Centre</span>
+                 <h3 className="text-[28px] font-bold tracking-tight text-black leading-tight">Architecting the Institutional Foundation.</h3>
+               </div>
+               
+               <div className="flex flex-col gap-8">
+                 <div className="flex items-center gap-3">
+                   <div className="flex -space-x-2">
+                     <div className="w-8 h-8 rounded-full border border-white bg-neutral-100 flex items-center justify-center font-bold text-[8px] text-neutral-400">AK</div>
+                     <div className="w-8 h-8 rounded-full border border-white bg-neutral-200 flex items-center justify-center font-bold text-[8px] text-neutral-400">MB</div>
+                   </div>
+                   <div className="flex flex-col">
+                     <span className="text-[12px] font-bold text-black">20+ Architects</span>
+                     <span className="text-[10px] text-neutral-400 uppercase font-bold">Expert Support</span>
+                   </div>
+                 </div>
+
+                 <div className="border-t border-neutral-100 pt-6">
+                    <div className="bg-neutral-50 border border-neutral-100 p-5 rounded-2xl">
+                      <p className="text-[12px] text-neutral-600 italic leading-relaxed">
+                        &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation.&quot;
+                      </p>
+                    </div>
+                 </div>
+               </div>
             </div>
-            {/* Right Column Mockup */}
+            {/* Right Column: Conversion interface */}
             <div className="lg:col-span-7 bg-white rounded-[24px] border border-zinc-200 p-8 flex flex-col gap-6 shadow-sm opacity-60 pointer-events-none">
               <div className="h-6 w-48 bg-neutral-200 rounded mb-4" />
               <div className="flex flex-col gap-4">
-                <div className="h-10 w-full bg-neutral-100 rounded-xl" />
-                <div className="h-10 w-full bg-neutral-100 rounded-xl" />
-                <div className="h-10 w-full bg-neutral-100 rounded-xl" />
+                <div className="h-10 w-full bg-neutral-50 rounded-xl" />
+                <div className="h-10 w-full bg-neutral-50 rounded-xl" />
+                <div className="h-10 w-full bg-neutral-50 rounded-xl" />
                 <div className="h-12 w-full bg-black rounded-full mt-4 flex items-center justify-center gap-2">
                   <div className="h-2 w-24 bg-white/20 rounded" />
                   <Send className="w-3 h-3 text-white/40" />
@@ -746,6 +848,49 @@ export function StyleGuide() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-12 mt-12 pb-24">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-[20px] tracking-[-0.6px] text-black font-bold">5. Strategic Partner Insights (Case Study Pattern)</h2>
+          <p className="text-[14px] text-neutral-500">Sophisticated modal pattern for deep institutional success stories. Features dynamic navigation and embedded conversion points.</p>
+        </div>
+        <div className="bg-neutral-50 rounded-[40px] p-12 border border-neutral-200 overflow-hidden relative min-h-[500px]">
+           {/* Abstract Modal Mockup */}
+           <div className="absolute inset-0 flex flex-col items-center justify-center p-12 translate-y-12">
+              <div className="w-full max-w-4xl bg-white rounded-[32px] shadow-2xl border border-neutral-200 h-full overflow-hidden flex flex-col scale-[0.95] origin-bottom">
+                 <div className="h-24 bg-black shrink-0 flex items-center px-10 gap-4">
+                    <div className="h-4 w-32 bg-white/10 rounded-full" />
+                    <div className="h-2 w-48 bg-white/5 rounded-full" />
+                 </div>
+                 <div className="flex-1 p-10 flex gap-10">
+                    <div className="flex-1 flex flex-col gap-6">
+                       <div className="h-8 w-3/4 bg-neutral-100 rounded-lg" />
+                       <div className="h-4 w-full bg-neutral-50 rounded" />
+                       <div className="h-4 w-5/6 bg-neutral-50 rounded" />
+                       <div className="h-4 w-4/6 bg-neutral-50 rounded" />
+                       <div className="mt-8 grid grid-cols-2 gap-4">
+                          <div className="h-32 bg-neutral-50 rounded-2xl border border-neutral-100" />
+                          <div className="h-32 bg-neutral-50 rounded-2xl border border-neutral-100" />
+                       </div>
+                    </div>
+                 </div>
+                 <div className="h-20 border-t border-neutral-100 bg-white flex items-center justify-between px-10">
+                    <div className="h-4 w-24 bg-neutral-100 rounded-full" />
+                    <div className="flex gap-2">
+                       <div className="w-10 h-10 rounded-full border border-neutral-200" />
+                       <div className="w-10 h-10 rounded-full border border-neutral-200" />
+                    </div>
+                 </div>
+              </div>
+           </div>
+           
+           <div className="absolute top-10 left-10 z-20">
+              <div className="bg-black text-white px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider shadow-xl">
+                 High-Context Pattern
+              </div>
+           </div>
         </div>
       </section>
     </div>
