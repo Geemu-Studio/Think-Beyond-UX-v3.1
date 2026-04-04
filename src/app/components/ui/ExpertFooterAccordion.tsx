@@ -49,10 +49,10 @@ function ContactLink({ icon: Icon, label, href }: { icon: any; label: string; hr
       href={href}
       target={href.startsWith('http') ? '_blank' : undefined}
       rel="noopener noreferrer"
-      className="flex items-center gap-3 text-[13px] text-neutral-600 hover:text-black transition-all group py-1"
+      className="flex items-center gap-4 text-[15px] text-neutral-600 hover:text-black transition-all group py-1.5"
     >
-      <div className="w-8 h-8 flex items-center justify-center border border-zinc-200 bg-white rounded-full group-hover:border-black group-hover:bg-neutral-50 transition-all shrink-0">
-        <Icon className="w-3.5 h-3.5" />
+      <div className="w-10 h-10 flex items-center justify-center border border-zinc-200 bg-white rounded-full group-hover:border-black group-hover:bg-neutral-50 transition-all shrink-0">
+        <Icon className="w-4 h-4" />
       </div>
       <span className="font-medium tracking-tight whitespace-nowrap">{label}</span>
     </a>
@@ -77,56 +77,49 @@ export function ExpertFooterAccordion() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
 
         {/* LEFT COLUMN: Authority & Trust (5/12) */}
-        <div className="lg:col-span-5 flex flex-col gap-8">
-          <div className="text-left">
-            <span className="text-[11px] text-neutral-400 uppercase tracking-[2px] font-bold block mb-4">
-              Strategic Mission Centre
-            </span>
-            <h2 className="text-[28px] sm:text-[34px] leading-[1.1] tracking-[-1.5px] text-black font-bold">
-              Architecting the Institutional Foundation for Academic Excellence.
-            </h2>
+        <div className="lg:col-span-5 flex flex-col gap-10">
+          <div className="flex flex-col gap-6 text-left">
+            <div className="flex items-center gap-6">
+              <AvatarStack />
+              <div>
+                <h3 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-black mb-0.5">20+ Experts</h3>
+                <p className="text-[11px] text-neutral-400 uppercase tracking-[1.5px] font-bold">Institutional Strategy Architects</p>
+              </div>
+            </div>
+            <p className="text-[16px] text-neutral-600 leading-relaxed">
+              Your institution&apos;s transformation will be guided by our full team of certified Salesforce architects.
+            </p>
           </div>
 
-          <div className="flex flex-col gap-8">
-            <div className="bg-zinc-50 rounded-[24px] border border-zinc-100 p-6 flex flex-col gap-4 shadow-sm text-left">
-              <div className="flex items-center gap-5">
-                <AvatarStack />
-                <div>
-                  <h4 className="text-[18px] font-bold tracking-tight text-black mb-0.5">20+ Experts</h4>
-                  <p className="text-[11px] text-neutral-400 uppercase tracking-[1px] font-bold">Institutional Strategy Architects</p>
+          <hr className="border-neutral-100" />
+
+          {/* Marcin Profile & Quote (Institutional Layout) */}
+          <div className="flex flex-col gap-6 text-left">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center border border-neutral-200">
+                <div className="w-6 h-6 text-neutral-400">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
               </div>
-              <p className="text-[13px] text-neutral-600 leading-relaxed font-medium">
-                Your institution&apos;s evolution will be guided by our full team of certified Salesforce architects.
+              <div className="flex flex-col">
+                <h4 className="text-[16px] font-bold text-black uppercase tracking-tight">Marcin Pieńkowski</h4>
+                <span className="text-[13px] text-neutral-400">Institutional Strategist</span>
+              </div>
+            </div>
+            
+            {/* Quote (Institutional Style) */}
+            <div className="bg-white border border-zinc-100 p-8 rounded-[32px] shadow-[0_8px_32px_rgba(0,0,0,0.02)] relative">
+              <p className="text-[15px] sm:text-[16px] text-[#404040] leading-relaxed italic">
+                &quot;Let&apos;s start with strategy. I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
               </p>
             </div>
+          </div>
 
-            {/* Marcin Profile & Quote (6T-0 Institutional Layout) */}
-            <div className="flex flex-col gap-5 text-left">
-              <div className="flex items-center gap-4">
-                <AvatarStack />
-                <div className="flex flex-col">
-                  <h4 className="text-[15px] font-bold text-black uppercase tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
-                  <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategist</span>
-                </div>
-              </div>
-              {/* Quote (Institutional Style) */}
-              <div className="bg-white border border-neutral-100 p-5 rounded-2xl shadow-sm relative">
-                <p className="text-[13px] text-[#404040] leading-relaxed italic font-['Outfit']">
-                  &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-2 text-left">
-              <p className="text-[10px] text-neutral-400 uppercase tracking-[1.5px] font-bold mb-4">Direct Communication Channels</p>
-              <div className="flex flex-col gap-1.5">
-                <ContactLink icon={IconEmail} label="marcin@thinkbeyond.cloud" href="mailto:marcin@thinkbeyond.cloud" />
-                <ContactLink icon={IconPhone} label="+48 502 227 174" href="tel:+48502227174" />
-                <ContactLink icon={IconWhatsApp} label="WhatsApp" href="https://wa.me/48502227174" />
-                <ContactLink icon={IconMessenger} label="Messenger" href="https://m.me/thinkbeyond" />
-              </div>
-            </div>
+          <div className="flex flex-col gap-1.5 text-left">
+            <ContactLink icon={IconEmail} label="marcin@thinkbeyond.cloud" href="mailto:marcin@thinkbeyond.cloud" />
+            <ContactLink icon={IconPhone} label="+48 502 227 174" href="tel:+48502227174" />
+            <ContactLink icon={IconWhatsApp} label="WhatsApp Chat" href="https://wa.me/48502227174" />
+            <ContactLink icon={IconMessenger} label="Messenger" href="https://m.me/thinkbeyond" />
           </div>
         </div>
 
@@ -139,22 +132,18 @@ export function ExpertFooterAccordion() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
-                className="bg-white rounded-[32px] border border-zinc-200 p-12 flex flex-col items-center gap-6 text-center shadow-[0_32px_64px_-12px_rgba(0,0,0,0.06)] min-h-[400px] justify-center"
+                className="bg-white border border-zinc-200 shadow-[0_12px_48px_rgba(0,0,0,0.04)] p-8 sm:p-10 text-left rounded-[32px] flex flex-col items-center text-center gap-6 py-12 animate-in fade-in zoom-in-95 duration-500 min-h-[400px] justify-center"
               >
-                <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center shadow-xl mb-2">
-                  <CheckCircle2 className="w-10 h-10 text-white" />
+                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center shadow-lg mb-2 text-white">
+                  <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-[28px] font-bold tracking-tight text-black mb-3">Strategy Review Initiated</h3>
-                  <p className="text-neutral-500 max-w-sm mx-auto leading-relaxed">
-                    A dedicated strategist will coordinate your strategy session within 24 business hours.
+                  <h4 className="text-[18px] font-bold tracking-tight text-black mb-2">Strategy Session Initiated</h4>
+                  <p className="text-neutral-500 max-w-xs mx-auto leading-relaxed text-[13px]">
+                    Your strategy session coordination will begin within 24 business hours.
                   </p>
                 </div>
-                <Button
-                  variant="link"
-                  onClick={() => setSubmitted(false)}
-                  className="mt-4"
-                >
+                <Button variant="link" onClick={() => setSubmitted(false)} className="mt-2 text-xs">
                   Send another message
                 </Button>
               </motion.div>
@@ -163,16 +152,16 @@ export function ExpertFooterAccordion() {
                 key="form"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-white rounded-[32px] border border-zinc-200 p-8 sm:p-10 flex flex-col gap-8 shadow-[0_12px_48px_rgba(0,0,0,0.04)] text-left"
+                className="bg-white border border-zinc-200 shadow-[0_12px_48px_rgba(0,0,0,0.04)] p-8 sm:p-10 text-left rounded-[32px] flex flex-col gap-5"
               >
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-[24px] font-bold tracking-[-0.5px] text-black">
-                    Initiate Strategic Review
+                  <h3 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-black">
+                    Coordinate your institutional strategy review.
                   </h3>
                 </div>
 
-                <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full text-left" noValidate>
-                  <div className="flex flex-col gap-6">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full text-left" noValidate>
+                  <div className="flex flex-col gap-5">
                     <div className="flex flex-col gap-1.5 text-left">
                       <label className="text-[13px] text-neutral-700 font-bold ml-1">Full name</label>
                       <Input
@@ -240,7 +229,7 @@ export function ExpertFooterAccordion() {
                     <Send className="ml-2 w-4 h-4" />
                   </Button>
 
-                  <div className="flex items-center justify-center gap-2 text-[11px] text-neutral-400 mt-2">
+                  <div className="flex items-center justify-center gap-2 text-[10px] text-neutral-400 mt-2">
                     <Lock className="w-3 h-3" />
                     <span>Your data is 100% secure.</span>
                   </div>
