@@ -24,6 +24,7 @@ export function Header() {
   const tooltipX = useTransform(smoothX, (v: number) => v + 20);
   const tooltipY = useTransform(smoothY, (v: number) => v + 20);
 
+  // Global mouse tracking
   React.useEffect(() => {
     const handleGlobalMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -33,6 +34,11 @@ export function Header() {
     window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
   }, [mouseX, mouseY]);
+
+  // Reset tooltip on navigation
+  React.useEffect(() => {
+    setHoveredLink(null);
+  }, [location.pathname]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
@@ -141,7 +147,11 @@ export function Header() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.1 }}
+                transition={{ 
+                  duration: 0.2, 
+                  delay: 0.1, // Small delay to avoid ghosting on fast mouse movement
+                  ease: "easeOut"
+                }}
                 style={{
                   position: 'fixed',
                   top: 0,
@@ -149,7 +159,7 @@ export function Header() {
                   x: tooltipX,
                   y: tooltipY,
                 }}
-                className="z-[100] pointer-events-none bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col min-w-[260px] max-w-[280px]"
+                className="z-[100] pointer-events-none bg-neutral-800/95 backdrop-blur-sm rounded-[20px] p-6 shadow-2xl border border-neutral-700 flex flex-col min-w-[260px] max-w-[280px]"
               >
                 <AnimatePresence mode="wait">
                   <motion.p

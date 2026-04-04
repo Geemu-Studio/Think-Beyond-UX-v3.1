@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from './ConsultationModal';
+import { ExpertTrace } from './ui/shared/ExpertTrace';
 
 const slides = [
   {
@@ -11,14 +12,14 @@ const slides = [
     micro: "Trusted by universities across the UK and Central Europe."
   },
   {
-    badge: "Ethical AI for Higher Education · Powered by Agentforce",
+    badge: "Salesforce Education Cloud · Certified Partner",
     h1: "Academic heritage deserves a modern foundation. Lead with intelligence, guided by purpose.",
     p: "From elite postgraduate programmes to expansive online learning communities — build truly evidence-led academic experiences. Elevate recruitment outcomes, empower your staff with Agentforce, and cultivate the belonging that secures academic flourishing.",
     cta: "Request Strategy Review →",
     micro: "Built on verified case studies from leading universities."
   },
   {
-    badge: "A 360° Partnership for Your Institution",
+    badge: "Salesforce Education Cloud · Certified Partner",
     h1: "Every student deserves a university that walks beside them. Build relationships that endure beyond graduation.",
     p: "A unified view is the cornerstone of institutional belonging. Deploy self-service portals, 24/7 AI-powered enablement, and connect your Admissions, Student Services, and Careers teams in one compassionate, responsive environment.",
     cta: "Explore Institutional Legacy →",
@@ -42,6 +43,7 @@ export function HeroSection() {
     <section className="bg-white pt-10 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 px-3 lg:px-6 min-h-[600px] flex items-center justify-center relative overflow-hidden">
       <div className="mx-auto max-w-4xl flex flex-col items-center text-center gap-4 sm:gap-6 relative w-full z-10 transition-opacity duration-500">
 
+
         {/* Badge — hidden on very small screens to save fold space */}
         <div
           key={`badge-${activeIndex}`}
@@ -55,7 +57,7 @@ export function HeroSection() {
             {currentSlide.badge}
           </span>
         </div>
-
+        
         {/* Headline */}
         <h1
           key={`h1-${activeIndex}`}
@@ -64,20 +66,25 @@ export function HeroSection() {
           {currentSlide.h1}
         </h1>
 
-        {/* Sub-headline */}
-        <p
-          key={`p-${activeIndex}`}
-          className="text-[15px] sm:text-[18px] text-neutral-500 leading-[1.6] max-w-2xl animate-in slide-in-from-bottom-4 fade-in duration-700"
-          style={{ fontWeight: 400 }}
-        >
-          {currentSlide.p}
-        </p>
+        {/* Sub-headline & Expert Trace */}
+        <div className="flex flex-col items-center gap-2">
+          <p
+            key={`p-${activeIndex}`}
+            className="text-[15px] sm:text-[18px] text-neutral-500 leading-[1.6] max-w-2xl animate-in slide-in-from-bottom-4 fade-in duration-700"
+            style={{ fontWeight: 400 }}
+          >
+            {currentSlide.p}
+          </p>
+          <div className="animate-in slide-in-from-bottom-2 fade-in duration-1000 delay-300">
+            <ExpertTrace />
+          </div>
+        </div>
 
         {/* CTA */}
         <button
           key={`cta-${activeIndex}`}
           onClick={() => setIsModalOpen(true)}
-          className="mt-1 w-full sm:w-auto inline-flex items-center justify-center bg-black text-white px-8 py-2 text-[14px] transition-colors hover:bg-neutral-800 rounded-full animate-in slide-in-from-bottom-4 fade-in duration-700 min-h-10"
+          className="mt-2 w-full sm:w-auto inline-flex items-center justify-center bg-black text-white px-8 py-4 text-[15px] rounded-full hover:bg-neutral-800 transition-colors cursor-pointer animate-in slide-in-from-bottom-4 fade-in duration-700 min-h-12"
           style={{ fontWeight: 600 }}
         >
           {currentSlide.cta}
