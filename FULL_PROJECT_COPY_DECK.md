@@ -459,15 +459,12 @@
 > Source: `EnrolmentProblemSection.tsx`
 
 - **Eyebrow:** Institutional Enrolment Challenges
-- **H2:** *(To be verified — file not fully read; presumed consistent with shared pattern)*
 
 | Card | Title | Body |
 |---|---|---|
-| 1 | Fragmented Prospectus Journeys | *(body text)* |
-| 2 | Conversion Attrition | *(body text)* |
-| 3 | Administrative Overhead | *(body text)* |
-
-> ⚠️ *Exact body texts to verify in `EnrolmentProblemSection.tsx` if editing.*
+| 1 | Institutional Digital Resonance | Legacy systems create friction that risk institutional prestige. Secure the world's brightest talent through a seamless, hyper-personalised digital experience that reflects your academic standing. |
+| 2 | Global Academic Standing | Maintain a distinct competitive advantage in an intensely contested global market. Leverage proactive, mission-driven outreach to connect with candidates who align with your core values. |
+| 3 | Yield Optimisation & Legacy | Mitigate the risks of candidate drop-off. Nurture the critical window between offer and enrolment through consistent, meaningful engagement that fosters early institutional belonging. |
 
 ---
 
@@ -476,9 +473,9 @@
 
 | Card | Title | Body |
 |---|---|---|
-| 1 | Precision Recruitment Intelligence | *(body)* |
-| 2 | Frictionless Application Architecture | *(body)* |
-| 3 | **Institutional Impact Architecture** | Build the Salesforce foundation that drives sustained enrolment excellence. Align your digital ecosystem with the ambitions of your institution and the expectations of tomorrow's students. |
+| 1 | Resonant Candidate Engagement | Anticipate candidate aspirations. Deliver hyper-personalised communication that reflects your university's mission and secures the world's brightest academic talent. |
+| 2 | Premium Enrolment Infrastructure | Eliminate friction at the threshold. Provide an intuitive, elite enrolment gateway that mirrors the academic excellence and heritage of your institution. |
+| 3 | **Institutional Impact Architecture** | Lead with data-informed confidence. Leverage predictive analytics to refine your global admissions funnel and secure high-intent applicant cohorts. |
 
 ---
 
@@ -511,9 +508,9 @@
 
 | Card | Title | Body |
 |---|---|---|
-| 1 | *(name)* | *(body)* |
-| 2 | *(name)* | *(body)* |
-| 3 | **Institutional Impact Metrics** | *(body)* |
+| 1 | Strategic Audience Intelligence | Convert raw institutional data into actionable insights. Deliver resonant, mission-driven engagement based on the unique academic goals and aspirations of every constituent. |
+| 2 | Coordinated Brand Storytelling | Overcome administrative fragmentation. Orchestrate authentic institutional narratives across every touchpoint to create a cohesive, prestigious brand experience. |
+| 3 | **Institutional Impact Metrics** | Focus on the metrics that matter. Gain real-time visibility into engagement ROI and NSS-relevant performance indicators to continuously optimise your strategic outreach. |
 
 ---
 
@@ -533,8 +530,24 @@
 
 ---
 
+### 14.9 ENTERPRISE — Hero Section
+> Source: `EnterpriseHeroSection.tsx`
+
+- **Badge:** Salesforce Education Cloud · Certified Partner
+- **H1:** Elevate Institutional Innovation & Partnerships.
+- **Body:** Diversify institutional revenue through strategic corporate engagement. Transform knowledge exchange into a scalable, mission-driven innovation ecosystem.
+- **CTA:** Review Enterprise Strategy →
+- **Trust micro:** Empowering UK Higher Education to lead in the global innovation economy.
+- **ExpertTrace:** Strategic direction by Marcin Pieńkowski
+
 ### 14.9 ENTERPRISE — Problem Section
 > Source: `EnterpriseProblemSection.tsx`
+
+| Card | Title | Body |
+|---|---|---|
+| 1 | Institutional Innovation & Commercialisation | Surmount the fragmentation of industry touchpoints to foster high-value partnerships and commercialise academic insight across the institution. |
+| 2 | Strategic Executive Learning | Secure institutional revenue through premium microcredentials and professional development paths that align with corporate aspirations. |
+| 3 | Cohesive Partner Ecosystems | Simplify the complex tripartite resonance between the university, the employer, and the learner with unified institutional visibility. |
 
 ---
 
@@ -543,8 +556,8 @@
 
 | Card | Title | Body |
 |---|---|---|
-| 1 | *(name)* | *(body)* |
-| 2 | *(name)* | *(body)* |
+| 1 | Institutional Innovation Hubs | Orchestrate high-value institutional partnerships and commercialise academic research through a unified, strategic CRM ecosystem. |
+| 2 | Strategic Executive Academy | Accelerate institutional revenue through premium microcredentials and professional development paths that secure graduate outcomes. |
 | 3 | **Institutional Innovation Impact** | Simplify the complex tripartite resonance between the university, the employer, and the learner with automated institutional compliance. |
 
 ---

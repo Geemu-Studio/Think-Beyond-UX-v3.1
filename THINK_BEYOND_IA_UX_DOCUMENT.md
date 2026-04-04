@@ -253,7 +253,7 @@ Jeden, obowiązujący układ generowania leadów stosowany wszędzie:
 | Flourishing | `flourishing/` | Hero, Problem, Solution, CaseStudy | ✅ Kompletny |
 | Engagement | `engagement/` | Hero, Problem, Solution, CaseStudy | 🔄 W trakcie |
 | Advancement | `advancement/` | Hero, Problem, Solution, CaseStudy | 🔄 W trakcie |
-| Enterprise | `enterprise/` | Hero, Solution | 🔄 W trakcie |
+| Enterprise | `enterprise/` | Hero, Problem, Solution | ✅ Kompletny |
 
 ---
 
@@ -280,11 +280,13 @@ Przycisk "Strategic Consultation" w prawym rogu:
 Centralne zarządzanie treściami nawigacji i tooltipów. Struktura: `NAVIGATION_CONTENT` (obiekt 6 filarów) + `NAV_LINKS` (tablica dla renderowania).
 
 ### 7.2 calculatorContent.tsx
-Treści i logika kalkulatora ROI podzielona na 4 segmenty:
-- Recruitment / Enrolment
-- Student Success / Flourishing
-- Marketing / Engagement
-- Alumni / Advancement
+Treści i logika kalkulatora ROI podzielona na **6 konfiguracji** (klucz: ścieżka URL):
+- `default` — Platform Hub (homepage)
+- `/enrolment` — Rekrutacja i Zapisy
+- `/flourishing` — Sukces i Retencja Studenta
+- `/engagement` — Marketing i Zaangażowanie
+- `/advancement` — Absolwenci i Fundraising
+- `/enterprise` — Partnerstwa i Badania
 
 > **Dług w danych:** Pola `expertHint` i `impactMultiplier` wymagają uzupełnienia prawdziwymi benchmarkami.
 

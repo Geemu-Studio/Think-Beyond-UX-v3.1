@@ -185,7 +185,7 @@ export function Header() {
             className="hidden md:inline-block bg-black text-white px-5 py-2 text-[14px] hover:bg-neutral-800 transition-colors rounded-full cursor-pointer"
             style={{ fontWeight: 600 }}
           >
-            Book a Free Consultation
+            Strategic Consultation
           </button>
 
           {/* Hamburger (mobile only) */}
@@ -232,7 +232,7 @@ export function Header() {
             className="bg-black text-white text-center px-5 py-3 text-[14px] mt-2 rounded-full w-full cursor-pointer hover:bg-neutral-800 transition-colors"
             style={{ fontWeight: 600 }}
           >
-            Book a Free Consultation
+            Strategic Consultation
           </button>
         </div>
       )}
