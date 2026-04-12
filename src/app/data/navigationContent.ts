@@ -4,7 +4,7 @@ export const NAVIGATION_CONTENT = {
     title: 'Integrated Platform',
     body: 'A unified student lifecycle ecosystem. Seamlessly connect every touchpoint into one intelligent, purpose-driven Salesforce environment.',
     linkText: 'Learn More →',
-    href: '/',
+    href: '/ecosystem',
   },
   RECRUITMENT: {
     label: 'Salesforce Education Cloud',

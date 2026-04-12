@@ -40,7 +40,7 @@ export function HeroSection() {
   const currentSlide = slides[activeIndex];
 
   return (
-    <section className="bg-white pt-10 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 px-3 lg:px-6 min-h-[600px] flex items-center justify-center relative overflow-hidden">
+    <section className="bg-white pt-6 pb-8 md:pt-8 md:pb-16 px-3 lg:px-6 min-h-[550px] flex items-center justify-center relative overflow-hidden">
       <div className="mx-auto max-w-4xl flex flex-col items-center text-center gap-4 sm:gap-6 relative w-full z-10 transition-opacity duration-500">
 
 
@@ -84,7 +84,7 @@ export function HeroSection() {
         <button
           key={`cta-${activeIndex}`}
           onClick={() => setIsModalOpen(true)}
-          className="mt-2 w-full sm:w-auto inline-flex items-center justify-center bg-black text-white px-8 py-4 text-[15px] rounded-full hover:bg-neutral-800 transition-colors cursor-pointer animate-in slide-in-from-bottom-4 fade-in duration-700 min-h-12"
+          className="mt-1 w-full sm:w-auto inline-flex items-center justify-center bg-black text-white px-8 py-4 text-[15px] rounded-full hover:bg-neutral-800 transition-colors cursor-pointer animate-in slide-in-from-bottom-4 fade-in duration-700 min-h-12"
           style={{ fontWeight: 600 }}
         >
           {currentSlide.cta}

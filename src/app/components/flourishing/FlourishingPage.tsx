@@ -1,5 +1,5 @@
 import { Header } from '../Header';
-import { FlourishingHeroSection } from './FlourishingHeroSection';
+import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
 import { SocialProofBar } from '../SocialProofBar';
 import { FlourishingProblemSection } from './FlourishingProblemSection';
 import { CalculatorSection } from '../CalculatorSection';
@@ -15,7 +15,12 @@ export function FlourishingPage() {
     <div className="bg-white text-black selection:bg-black selection:text-white" style={{ fontFamily: 'var(--font-inter)' }}>
       <Header />
       <main>
-        <FlourishingHeroSection />
+        <PillarMergedHero 
+          title="Nurture every potential. Guide every learner to the pride of graduation."
+          description="Move from reactive support to proactive care. Build a connected campus where every student feels seen, supported, and empowered to succeed with Salesforce Education Cloud."
+          ctaText="Transform Student Support"
+          defaultFilter="All"
+        />
         <SocialProofBar />
         <FlourishingProblemSection />
         <FlourishingSolutionSection />

@@ -1,5 +1,5 @@
 import { Header } from '../Header';
-import { EngagementHeroSection } from './EngagementHeroSection';
+import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
 import { SocialProofBar } from '../SocialProofBar';
 import { EngagementProblemSection } from './EngagementProblemSection';
 import { CalculatorSection } from '../CalculatorSection';
@@ -15,7 +15,12 @@ export function EngagementPage() {
     <div className="bg-white text-black selection:bg-black selection:text-white" style={{ fontFamily: 'var(--font-inter)' }}>
       <Header />
       <main>
-        <EngagementHeroSection />
+        <PillarMergedHero 
+          title="Connect with purpose. Deliver the right message to every future world changer."
+          description="Cut through the noise. Leverage Salesforce Education Cloud to orchestrate highly personalised, omnichannel journeys that build lifelong institutional loyalty."
+          ctaText="Elevate Your Engagement"
+          defaultFilter="All"
+        />
         <SocialProofBar />
         <EngagementProblemSection />
         <EngagementSolutionSection />

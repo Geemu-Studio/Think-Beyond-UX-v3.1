@@ -4,7 +4,7 @@ import { CalculatorSection } from '../CalculatorSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
 import { Footer } from '../Footer';
-import { EnterpriseHeroSection } from './EnterpriseHeroSection';
+import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
 import { EnterpriseProblemSection } from './EnterpriseProblemSection';
 import { EnterpriseSolutionSection } from './EnterpriseSolutionSection';
 import { EnterpriseCaseStudySection } from './EnterpriseCaseStudySection';
@@ -15,7 +15,12 @@ export default function EnterprisePage() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <EnterpriseHeroSection />
+        <PillarMergedHero 
+          title="Elevate Institutional Innovation & Partnerships."
+          description="Diversify institutional revenue through strategic corporate engagement. Transform knowledge exchange into a scalable, mission-driven innovation ecosystem."
+          ctaText="Review Enterprise Strategy"
+          defaultFilter="All"
+        />
         <SocialProofBar />
         <EnterpriseProblemSection />
         <EnterpriseSolutionSection />

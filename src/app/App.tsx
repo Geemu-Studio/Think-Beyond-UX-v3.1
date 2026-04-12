@@ -16,7 +16,9 @@ import { FlourishingPage } from './components/flourishing/FlourishingPage';
 import EngagementPage from './components/engagement/EngagementPage';
 import AdvancementPage from './components/advancement/AdvancementPage';
 import EnterprisePage from './components/enterprise/EnterprisePage';
+import EcosystemPage from './components/ecosystem/EcosystemPage';
 import { StyleGuide } from './components/StyleGuide';
+
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -53,7 +55,9 @@ export default function App() {
     <HashRouter>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<EcosystemPage />} />
+        <Route path="/ecosystem" element={<EcosystemPage />} />
+
         <Route path="/enrolment" element={<EnrolmentPage />} />
         <Route path="/flourishing" element={<FlourishingPage />} />
         <Route path="/engagement" element={<EngagementPage />} />

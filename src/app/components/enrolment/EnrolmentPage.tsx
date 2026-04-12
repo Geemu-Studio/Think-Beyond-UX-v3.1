@@ -4,7 +4,7 @@ import { CalculatorSection } from '../CalculatorSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
 import { Footer } from '../Footer';
-import { EnrolmentHeroSection } from './EnrolmentHeroSection';
+import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
 import { EnrolmentProblemSection } from './EnrolmentProblemSection';
 import { EnrolmentSolutionSection } from './EnrolmentSolutionSection';
 import { EnrolmentCaseStudySection } from './EnrolmentCaseStudySection';
@@ -15,7 +15,12 @@ export default function EnrolmentPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <EnrolmentHeroSection />
+        <PillarMergedHero 
+          title="Institutional strategy for your academic community. Redefining the student journey from first enquiry to proud alumnus."
+          description="Move beyond administrative constraints. Build a connected, purpose-driven campus with Salesforce Education Cloud — unifying every touchpoint across the academic lifecycle into one seamless, intelligent ecosystem."
+          ctaText="Initiate Institutional Evolution"
+          defaultFilter="All"
+        />
         <SocialProofBar />
         <EnrolmentProblemSection />
         <EnrolmentSolutionSection />
