@@ -4,10 +4,12 @@ export interface ConsultationFormData {
   name: string;
   university: string;
   email: string;
+  role: string;
+  challenge: string;
   gdpr: boolean;
 }
 
-export function useConsultationForm(initialValues: ConsultationFormData = { name: '', university: '', email: '', gdpr: false }) {
+export function useConsultationForm(initialValues: ConsultationFormData = { name: '', university: '', email: '', role: '', challenge: '', gdpr: false }) {
   const [form, setForm] = useState<ConsultationFormData>(initialValues);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -16,6 +18,7 @@ export function useConsultationForm(initialValues: ConsultationFormData = { name
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = 'This field is required';
     if (!form.university.trim()) e.university = 'This field is required';
+    if (!form.role.trim()) e.role = 'This field is required';
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Please enter a valid email address';
     if (!form.gdpr) e.gdpr = 'Your consent is required to proceed';
     return e;
@@ -24,6 +27,7 @@ export function useConsultationForm(initialValues: ConsultationFormData = { name
   const isFormValid =
     form.name.trim() !== '' &&
     form.university.trim() !== '' &&
+    form.role.trim() !== '' &&
     form.email.trim() !== '' &&
     /\S+@\S+\.\S+/.test(form.email) &&
     form.gdpr;

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle2, Lock, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useConsultationForm } from '../hooks/useConsultationForm';
 import { 
@@ -19,10 +20,17 @@ const EXPERT_PHOTO =
   'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS11c2VyLWljb24gbHVjaWRlLWNpcmNsZS11c2VyIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTAiIHI9IjMiLz48cGF0aCBkPSJNNyAyMC42NjJWMTlhMiAyIDAgMCAxIDItMmg2YTIgMiAwIDAgMSAyIDJ2MS42NjIiLz48L3N2Zz4=';
 
 
+export interface ModalExpert {
+  name: string;
+  role: string;
+  image?: string;
+}
+
 interface ConsultationModalProps {
   isOpen: boolean;
   onClose: () => void;
   pathname?: string;
+  expert?: ModalExpert;
 }
 
 /* ── Avatar stack component for Trust ── */
@@ -52,7 +60,7 @@ function AvatarStack() {
 }
 
 
-export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationModalProps) {
+export function ConsultationModal({ isOpen, onClose, pathname, expert }: ConsultationModalProps) {
   const {
     form,
     setForm,
@@ -63,6 +71,11 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
     handleSubmit,
     resetForm
   } = useConsultationForm();
+
+  const displayExpert = expert || {
+    name: 'Marcin Pieńkowski',
+    role: 'Institutional Strategist • Lead Education Cloud Architect'
+  };
 
   // Accessibility: ESC key handling & Body scroll lock
   useEffect(() => {
@@ -116,10 +129,10 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
             <div className="lg:col-span-5 bg-zinc-50 px-3 py-10 lg:px-8 lg:py-14 flex flex-col gap-10 border-b lg:border-b-0 lg:border-r border-zinc-200">
               <div className="text-left">
                 <span className="text-[11px] text-neutral-400 uppercase tracking-[2px] font-bold block mb-4">
-                  Strategic Mission Centre
+                  {displayExpert.role}
                 </span>
                 <h2 className="text-[32px] sm:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">
-                  Strategic Mission: Student Success & Institutional Growth.
+                  Book a strategic consultation with {displayExpert.name}.
                 </h2>
               </div>
 
@@ -144,21 +157,13 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
 
                 {/* ── MIDDLE: Lead strategist ── */}
                 <div className="flex flex-col pt-6 gap-3 border-t border-solid border-[#D4D4D4]">
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center rounded-full bg-[#E5E7EB] border border-solid border-[#D1D5DB] shrink-0 w-10 h-10">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                        <circle cx="12" cy="7" r="4" />
-                      </svg>
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-center rounded-full bg-[#E5E7EB] border border-solid border-[#D1D5DB] shrink-0 w-16 h-16 sm:w-20 sm:h-20 shadow-sm relative overflow-hidden">
+                      <span className="text-[10px] text-neutral-400 font-black tracking-[0.2em] uppercase">PHOTO</span>
                     </div>
                     <div className="flex flex-col">
-                      <h4 className="text-[15px] font-bold text-black uppercase tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
-                      <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategist</span>
-                    </div>
-                  </div>
-                  <div className="flex rounded-2xl bg-white border border-solid border-[#F0F0F0] p-5">
-                    <div className="text-[14px] leading-relaxed text-[#404040] italic">
-                      &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
+                      <h4 className="text-[18px] sm:text-[20px] font-bold text-black tracking-tight">{displayExpert.name}</h4>
+                      <span className="text-[14px] text-neutral-500 font-medium tracking-tight mt-0.5">{displayExpert.role}</span>
                     </div>
                   </div>
                 </div>
@@ -224,7 +229,7 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
                     <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full text-left" noValidate>
                       <div className="flex flex-col gap-6">
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-[13px] text-neutral-700 font-bold ml-1">Full name</label>
+                          <label className="text-[13px] text-neutral-700 font-bold ml-1">Full Name</label>
                           <Input
                             placeholder="Professor Jane Smith"
                             value={form.name}
@@ -250,7 +255,18 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
                         </div>
 
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-[13px] text-neutral-700 font-bold ml-1">Institutional email address</label>
+                          <label className="text-[13px] text-neutral-700 font-bold ml-1">Your Role</label>
+                          <Input
+                            placeholder="e.g. Vice-Chancellor, Head of Enrolment..."
+                            value={form.role}
+                            onChange={(e) => setForm({ ...form, role: e.target.value })}
+                            error={!!errors.role}
+                          />
+                          {errors.role && <p className="text-[12px] text-black font-bold ml-1">{errors.role}</p>}
+                        </div>
+
+                        <div className="flex flex-col gap-1.5">
+                          <label className="text-[13px] text-neutral-700 font-bold ml-1">Work Email</label>
                           <Input
                             type="email"
                             placeholder="j.smith@university.ac.uk"
@@ -259,6 +275,16 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
                             error={!!errors.email}
                           />
                           {errors.email && <p className="text-[12px] text-black font-bold ml-1">{errors.email}</p>}
+                        </div>
+
+                        <div className="flex flex-col gap-1.5">
+                          <label className="text-[13px] text-neutral-700 font-bold ml-1">Primary Challenge (Optional)</label>
+                          <Textarea
+                            placeholder="Briefly describe what you'd like to discuss..."
+                            className="bg-neutral-50 px-4 py-3 placeholder:text-neutral-400 focus:bg-white text-black"
+                            value={form.challenge}
+                            onChange={(e) => setForm({ ...form, challenge: e.target.value })}
+                          />
                         </div>
                       </div>
 
@@ -283,11 +309,11 @@ export function ConsultationModal({ isOpen, onClose, pathname }: ConsultationMod
                         fullWidth={true}
                         className="mt-2 shadow-xl hover:shadow-2xl transition-all"
                       >
-                        Initiate Strategic Review
+                        Request Consultation
                         <Send className="ml-2 w-4 h-4" aria-hidden="true" />
                       </Button>
 
-                      <div className="flex items-center justify-center gap-2 text-[11px] text-neutral-400 mt-2">
+                      <div className="flex items-center justify-center gap-2 text-slate-500 text-xs mt-2">
                         <Lock className="w-3 h-3" aria-hidden="true" />
                         <span>Your data is 100% secure. No spam, ever.</span>
                       </div>

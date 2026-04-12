@@ -8,7 +8,7 @@ import {
   CarouselNext,
   type CarouselApi
 } from '../../ui/carousel';
-import { ConsultationModal } from '../../ConsultationModal';
+import { ConsultationModal, type ModalExpert } from '../../ConsultationModal';
 import { useLocation } from 'react-router';
 import {
   ArrowRight,
@@ -45,6 +45,7 @@ export function PillarMergedHero({
   const [api, setApi] = useState<CarouselApi>();
   const [activeFilter, setActiveFilter] = useState<Category>(defaultFilter);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedExpert, setSelectedExpert] = useState<ModalExpert | undefined>();
   const location = useLocation();
   const carouselRef = useRef<HTMLDivElement>(null);
   const wheelRef = useRef<HTMLDivElement>(null);
@@ -84,6 +85,7 @@ export function PillarMergedHero({
 
   const handleCTA = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     e.preventDefault();
+    setSelectedExpert(undefined);
     setIsModalOpen(true);
   };
 
@@ -203,10 +205,33 @@ export function PillarMergedHero({
                                 </p>
                               </div>
 
-                              <div className="flex items-center gap-2.5 mb-4">
-                                <button className="w-9 h-9 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-black transition-colors"><MessageCircle className="w-4 h-4" /></button>
-                                <button className="w-9 h-9 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-black transition-colors"><Mail className="w-4 h-4" /></button>
-                                <button className="w-9 h-9 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-black transition-colors"><Phone className="w-4 h-4" /></button>
+                              <div className="flex items-center gap-3 mb-4">
+                                <a 
+                                  href={`https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(expert.name + " Salesforce")}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300" 
+                                  title={`Connect with ${expert.name.split(' ')[0]} on LinkedIn`}
+                                >
+                                  <MessageCircle className="w-4 h-4" />
+                                </a>
+                                <a 
+                                  href={`mailto:experts@thinkbeyond.cloud?subject=Consultation with ${expert.name}`}
+                                  className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300" 
+                                  title={`Email ${expert.name.split(' ')[0]} directly`}
+                                >
+                                  <Mail className="w-4 h-4" />
+                                </a>
+                                <button 
+                                  onClick={() => {
+                                    setSelectedExpert({ name: expert.name, role: expert.role });
+                                    setIsModalOpen(true);
+                                  }}
+                                  className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300" 
+                                  title={`Book 1:1 with ${expert.name.split(' ')[0]}`}
+                                >
+                                  <Phone className="w-4 h-4" />
+                                </button>
                               </div>
 
                               <div className="pt-3.5 border-t border-slate-100 flex items-center gap-2.5 mt-auto">
@@ -224,7 +249,10 @@ export function PillarMergedHero({
                     <CarouselItem className="pl-6 basis-[364px] shrink-0">
                       <motion.div
                         layout={{ duration: 0.15 }}
-                        onClick={() => setIsModalOpen(true)}
+                        onClick={() => {
+                          setSelectedExpert(undefined);
+                          setIsModalOpen(true);
+                        }}
                         className="bg-slate-900 rounded-[28px] p-10 flex flex-col justify-between h-[480px] w-[340px] cursor-pointer group overflow-hidden relative shadow-2xl"
                       >
                         <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-white/5 rounded-full blur-[60px]" />
@@ -284,7 +312,12 @@ export function PillarMergedHero({
           </AnimatePresence>
         </>
       )}
-      <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} pathname={location.pathname} />
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        pathname={location.pathname} 
+        expert={selectedExpert}
+      />
     </section>
   );
 }
