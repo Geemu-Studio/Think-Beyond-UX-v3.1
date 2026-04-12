@@ -175,9 +175,9 @@ export function EcosystemExpertsCarousel() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.4, delay: idx * 0.05 }}
-                    whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                    whileHover={{ scale: 1.015, transition: { duration: 0.1 } }}
                     whileTap={{ scale: 0.98 }}
-                    className="group bg-white border border-neutral-100 rounded-[28px] p-3 hover:shadow-[0_25px_50px_-15px_rgba(0,0,0,0.12)] transition-all duration-500 cursor-grab active:cursor-grabbing h-[480px] w-[340px] flex flex-col"
+                    className="group bg-white border border-neutral-100 rounded-[28px] p-3 shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-[0_0_50px_rgba(0,0,0,0.12)] transition-all duration-500 cursor-grab active:cursor-grabbing h-[480px] w-[340px] flex flex-col"
                   >
                     {/* Placeholder Area */}
                     <div className="relative h-[320px] w-full overflow-hidden rounded-[20px] bg-neutral-50 flex items-center justify-center shrink-0">
@@ -255,7 +255,7 @@ export function EcosystemExpertsCarousel() {
             animate={{ y: 0, x: "-50%", opacity: 1 }}
             exit={{ y: 100, x: "-50%", opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed bottom-6 left-1/2 z-50 w-auto max-w-[95vw]"
+            className="fixed bottom-6 left-1/2 z-50 w-[calc(100%-24px)] md:w-auto max-w-[95vw]"
           >
             {/* Desktop View: Pill Buttons */}
             <div className="hidden md:flex bg-white/70 backdrop-blur-xl border border-white/20 rounded-full p-1 shadow-[0_8px_32px_rgba(0,0,0,0.12)] items-center gap-1.5">

@@ -215,7 +215,7 @@ export function EcosystemMergedHero() {
           { icon: <Users className="w-5 h-5 text-slate-500" />, text: "20+ Certified Consultants" },
           { icon: <CheckCircle className="w-5 h-5 text-slate-500" />, text: "Official Salesforce Partner" }
         ].map((card, idx) => (
-          <div key={idx} className="bg-white border border-slate-200 shadow-sm rounded-lg px-4 py-3 flex items-center gap-3 w-full sm:w-auto min-w-[200px]">
+          <div key={idx} className="bg-white border border-slate-200 shadow-sm rounded-lg px-4 py-3 flex items-center justify-center gap-3 w-full sm:w-auto min-w-[200px]">
             {card.icon}
             <span className="text-sm font-medium text-slate-800 tracking-tight whitespace-nowrap">
               {card.text}
@@ -239,9 +239,9 @@ export function EcosystemMergedHero() {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
                         transition={{ duration: 0.4, delay: idx * 0.05 }}
-                        whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                        whileHover={{ scale: 1.015, transition: { duration: 0.1 } }}
                         whileTap={{ scale: 0.98 }}
-                        className="group bg-white border border-slate-200 rounded-[28px] p-3 transition-all duration-500 cursor-grab h-[480px] w-[340px] flex flex-col relative z-0 hover:z-10 shadow-sm hover:shadow-[0_25px_50px_-15px_rgba(0,0,0,0.12)]"
+                        className="group bg-white border border-slate-200 rounded-[28px] p-3 transition-all duration-500 cursor-grab h-[480px] w-[340px] flex flex-col relative z-0 hover:z-10 shadow-none hover:shadow-[0_0_10px_rgba(0,0,0,0.1)]"
                       >
                         {/* Photo Placeholder */}
                         <div className="relative h-[250px] w-full overflow-hidden rounded-[20px] bg-slate-50 flex items-center justify-center border border-slate-100 shrink-0">
@@ -298,7 +298,7 @@ export function EcosystemMergedHero() {
               </CarouselContent>
             </div>
 
-            <div className="mx-auto max-w-7xl px-3 lg:px-6 mt-0 flex justify-end gap-5">
+            <div className="mx-auto max-w-7xl px-3 lg:px-6 mt-0 hidden sm:flex justify-end gap-5">
               <CarouselPrevious className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white" />
               <CarouselNext className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white" />
             </div>
@@ -314,7 +314,7 @@ export function EcosystemMergedHero() {
             animate={{ y: 0, x: "-50%", opacity: 1 }}
             exit={{ y: 100, x: "-50%", opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed bottom-8 left-1/2 z-50 w-auto max-w-[95vw]"
+            className="fixed bottom-8 left-1/2 z-50 w-[calc(100%-24px)] md:w-auto max-w-[95vw]"
           >
             <div className="hidden md:flex bg-white/90 backdrop-blur-2xl border border-slate-200/50 rounded-full p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.1)] items-center gap-1.5">
               {CATEGORIES.map(cat => (
