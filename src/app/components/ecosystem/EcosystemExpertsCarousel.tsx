@@ -177,7 +177,7 @@ export function EcosystemExpertsCarousel() {
                     transition={{ duration: 0.4, delay: idx * 0.05 }}
                     whileHover={{ scale: 1.015, transition: { duration: 0.1 } }}
                     whileTap={{ scale: 0.98 }}
-                    className="group bg-white border border-neutral-100 rounded-[28px] p-3 shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-[0_0_50px_rgba(0,0,0,0.12)] transition-all duration-500 cursor-grab active:cursor-grabbing h-[480px] w-[340px] flex flex-col"
+                    className="group bg-white border border-neutral-100 rounded-[28px] p-3 shadow-none hover:shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-all duration-500 cursor-grab active:cursor-grabbing h-[480px] w-[340px] flex flex-col"
                   >
                     {/* Placeholder Area */}
                     <div className="relative h-[320px] w-full overflow-hidden rounded-[20px] bg-neutral-50 flex items-center justify-center shrink-0">
