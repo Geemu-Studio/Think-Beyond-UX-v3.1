@@ -14,7 +14,7 @@ const slides = [
   {
     badge: "Salesforce Education Cloud · Certified Partner",
     h1: "Academic heritage deserves a modern foundation. Lead with intelligence, guided by purpose.",
-    p: "From elite postgraduate programmes to expansive online learning communities — build truly evidence-led academic experiences. Elevate recruitment outcomes, empower your staff with Agentforce, and cultivate the belonging that secures academic flourishing.",
+    p: "From elite postgraduate programmes to expansive online learning communities — build truly evidence-led academic experiences. Elevate recruitment outcomes, empower your staff with Agentforce, and cultivate the belonging that secures academic success.",
     cta: "Request Strategy Review →",
     micro: "Built on verified case studies from leading universities."
   },

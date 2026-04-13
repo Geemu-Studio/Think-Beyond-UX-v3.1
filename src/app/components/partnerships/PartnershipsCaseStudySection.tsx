@@ -19,7 +19,7 @@ export function PartnershipsCaseStudySection() {
         </div>
 
         {/* Standardized Interactive Carousel */}
-        <CaseStudyCarousel initialActiveIdx={2} />
+        <CaseStudyCarousel initialActiveIdx={4} />
 
       </div>
     </section>

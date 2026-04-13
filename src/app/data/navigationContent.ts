@@ -30,7 +30,7 @@ export const NAVIGATION_CONTENT = {
   ALUMNI: {
     label: 'Salesforce Education Cloud',
     title: 'Alumni & Development',
-    body: 'Cultivate a loyal global community. Transform transactional fundraising into lifelong alumni relationships and strategic development opportunities.',
+    body: 'Cultivate a loyal global community. Transform transactional philanthropic cycles into lifelong alumni relationships and strategic development opportunities.',
     linkText: 'Explore Alumni →',
     href: '/alumni',
   },

@@ -604,7 +604,7 @@ export function StyleGuide() {
                       <span className="text-[12px] text-neutral-400 font-medium">Institutional Strategist</span>
                     </div>
                     <p className="text-[13px] italic text-neutral-600 leading-[1.6]">
-                      &ldquo;Strategic alignment ensures that every institutional resource is optimised for admissions excellence and student flourishing.&rdquo;
+                      &ldquo;Strategic alignment ensures that every institutional resource is optimised for admissions excellence and student success.&rdquo;
                     </p>
                 </div>
               </div>

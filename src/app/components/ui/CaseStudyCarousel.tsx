@@ -209,6 +209,46 @@ const ALUMNI_DETAILED_CONTENT: SWPSContent = {
   }
 };
 
+const PARTNERSHIPS_DETAILED_CONTENT: SWPSContent = {
+  title: "Strategic Knowledge Exchange: The Strathclyde Innovation Ecosystem",
+  sections: [
+    {
+      icon: <GraduationCap className="w-5 h-5 text-black" />,
+      title: "At a Glance",
+      items: [
+        "Client: University of Strathclyde",
+        "Focus: Research, Innovation & Corporate Partnerships",
+        "Scale: £100M+ Innovation & Research Portfolio"
+      ]
+    },
+    {
+      icon: <AlertCircle className="w-5 h-5 text-black" />,
+      title: "The Challenge: Siloed Industry Engagement",
+      description: "Managing complex tripartite relationships between academic researchers, industrial partners, and corporate learners was hindered by administrative silos. The institution required a unified platform to track Knowledge Exchange metrics and scale degree apprenticeships.",
+      items: []
+    },
+    {
+      icon: <Lightbulb className="w-5 h-5 text-black" />,
+      title: "The Solution: A High-Value Corporate Ecosystem",
+      description: "Think Beyond implemented a secure, strategic B2B portal within Salesforce, enabling real-time visibility into the corporate relationship lifecycle—from initial research bids to apprenticeship delivery.",
+      items: []
+    },
+    {
+      icon: <Target className="w-5 h-5 text-black" />,
+      title: "Institutional Impact",
+      items: [
+        "Corporate Funding: 54% increase in funding yield through streamlined bid management.",
+        "Workforce Development: 2.5x growth in degree apprenticeship cohorts with automated progression tracking.",
+        "Strategic Visibility: 100% unified visibility across corporate touchpoints for the Knowledge Exchange team."
+      ]
+    }
+  ],
+  reference: {
+    text: "We transformed our fragmented industry touchpoints into a unified, high-value corporate ecosystem. Thanks to Think Beyond, we have significantly accelerated our research commercialisation and scaled our degree apprenticeships with frictionless efficiency.",
+    author: "Director of Research & Innovation, University of Strathclyde"
+  }
+};
+
 const CARDS: Card[] = [
   {
     university: "SWPS University",
@@ -268,6 +308,21 @@ const CARDS: Card[] = [
       title: "Lifelong Engagement at Scale: The Open University Ecosystem",
       isDetailed: true,
       content: ALUMNI_DETAILED_CONTENT
+    }
+  },
+  {
+    university: "University of Strathclyde",
+    metrics: [
+      "+54% Corporate Funding Yield",
+      "2.5x Apprenticeship Growth",
+      "100% Unified Partner Visibility"
+    ],
+    button: "Discover the Corporate Story",
+    initial: "U",
+    fullStory: {
+      title: "Strategic Knowledge Exchange: The Strathclyde Innovation Ecosystem",
+      isDetailed: true,
+      content: PARTNERSHIPS_DETAILED_CONTENT
     }
   }
 ];

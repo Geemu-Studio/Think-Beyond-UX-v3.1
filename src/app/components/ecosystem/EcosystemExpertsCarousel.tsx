@@ -45,7 +45,7 @@ const EXPERTS: Expert[] = [
   { id: "6", name: "Piotr Kowalski", role: "Student Journey Specialist", highlight: "10+ Years in Higher Ed IT", category: "Student Success" },
   { id: "7", name: "James Montgomery", role: "Head of Student Engagement", highlight: "NSS Strategy Expert", category: "Student Success" },
   { id: "8", name: "Aisha Khan", role: "HE Data Governance Lead", highlight: "UK HE Compliance Expert", category: "Data & Integration" },
-  { id: "9", name: "Robert Smith", role: "Alumni Relations Architect", highlight: "Advancement Cloud Expert", category: "Recruitment & Engagement" },
+  { id: "9", name: "Robert Smith", role: "Alumni Relations Architect", highlight: "Alumni & Development Expert", category: "Recruitment & Engagement" },
   { id: "10", name: "Elena Rossi", role: "Curriculum Management Lead", highlight: "Curriculum Transformation Expert", category: "Student Success" },
   { id: "11", name: "Oliver Brown", role: "Global Recruitment Strategist", highlight: "International Admissions Expert", category: "Recruitment & Engagement" },
   { id: "12", name: "Sophie Williams", role: "Technical Integration Engineer", highlight: "MuleSoft/SIS Specialist", category: "Data & Integration" },
@@ -56,7 +56,7 @@ const EXPERTS: Expert[] = [
   { id: "17", name: "Benjamin Lee", role: "Student Experience Designer", highlight: "UK HE Digital Campus Expert", category: "Student Success" },
   { id: "18", name: "Maria Garcia", role: "Educational Data Scientist", highlight: "Predictive Analytics Lead", category: "Data & Integration" },
   { id: "19", name: "William Turner", role: "Institutional Strategy Consultant", highlight: "Former Vice-Chancellor Advisor", category: "Education Cloud Architects" },
-  { id: "20", name: "Grace Evans", role: "Enrolment Management Strategist", highlight: "Student Conversion Expert", category: "Recruitment & Engagement" }
+  { id: "20", name: "Grace Evans", role: "Admissions & Recruitment Strategist", highlight: "Yield Optimisation Expert", category: "Recruitment & Engagement" }
 ];
 
 const CATEGORIES: Category[] = [

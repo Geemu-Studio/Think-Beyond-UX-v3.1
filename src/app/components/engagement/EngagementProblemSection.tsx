@@ -32,7 +32,7 @@ const cards = [
   {
     icon: <VolunteerActivismOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Lifelong Institutional Belonging',
-    body: 'Sustain a vibrant academic community far beyond enrolment. Continuously inspire students and alumni through a connected, value-based institutional journey.',
+    body: 'Sustain a vibrant academic community far beyond admissions. Continuously inspire students and alumni through a connected, value-based institutional journey.',
     videoId: 'v5V6Y0_Q_8k',
     expertImage: expertMarcin,
   },
