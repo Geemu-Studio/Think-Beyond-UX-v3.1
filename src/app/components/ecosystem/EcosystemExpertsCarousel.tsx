@@ -189,23 +189,15 @@ export function EcosystemExpertsCarousel() {
                       <h3 className="text-lg text-black font-bold tracking-tight line-clamp-1 mb-1">{expert.name}</h3>
                       <p className="text-[13px] text-neutral-500 font-medium mb-3 line-clamp-2 leading-relaxed">{expert.role}</p>
                       
-                      {/* Action Buttons */}
                       <div className="flex items-center gap-3 mb-4">
                         <a 
-                          href={`https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(expert.name + " Salesforce")}`}
+                          href="https://wa.me/48502227174"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300" 
-                          title={`Connect with ${expert.name.split(' ')[0]} on LinkedIn`}
+                          title={`Message ${expert.name.split(' ')[0]} on WhatsApp`}
                         >
                           <MessageCircle className="w-4 h-4" />
-                        </a>
-                        <a 
-                          href={`mailto:experts@thinkbeyond.cloud?subject=Consultation with ${expert.name}`}
-                          className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300" 
-                          title={`Email ${expert.name.split(' ')[0]} directly`}
-                        >
-                          <Mail className="w-4 h-4" />
                         </a>
                         <button 
                           onClick={() => {
@@ -213,10 +205,17 @@ export function EcosystemExpertsCarousel() {
                             setIsModalOpen(true);
                           }}
                           className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300" 
-                          title={`Book 1:1 with ${expert.name.split(' ')[0]}`}
+                          title={`Send message to ${expert.name.split(' ')[0]}`}
+                        >
+                          <Mail className="w-4 h-4" />
+                        </button>
+                        <a 
+                          href="tel:+48502227174"
+                          className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300" 
+                          title={`Call ${expert.name.split(' ')[0]}`}
                         >
                           <Phone className="w-4 h-4" />
-                        </button>
+                        </a>
                       </div>
 
                       <div className="pt-3 border-t border-neutral-50 flex items-center gap-2 mt-auto">
