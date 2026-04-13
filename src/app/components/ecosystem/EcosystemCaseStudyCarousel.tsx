@@ -125,25 +125,25 @@ export function EcosystemCaseStudyCarousel() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Controls */}
-          <div className="absolute bottom-8 right-8 lg:bottom-12 lg:right-12 flex items-center gap-3 bg-white p-2 rounded-full shadow-lg border border-slate-100 z-10">
-            <button
-              onClick={prevSlide}
-              className="w-12 h-12 flex items-center justify-center rounded-full hover:bg-slate-50 text-slate-400 hover:text-slate-900 transition-colors"
-              aria-label="Previous case study"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <div className="w-[1px] h-6 bg-slate-200" />
-            <button
-              onClick={nextSlide}
-              className="w-12 h-12 flex items-center justify-center rounded-full hover:bg-slate-50 text-slate-400 hover:text-slate-900 transition-colors"
-              aria-label="Next case study"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
         </div>
+      </div>
+
+      {/* Navigation Controls — Styled and placed identically to the Hero section */}
+      <div className="mt-8 flex justify-end gap-5 px-6 max-w-[1400px] mx-auto">
+        <button
+          onClick={prevSlide}
+          className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
+          aria-label="Previous case study"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
+          aria-label="Next case study"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
     </section>
   );

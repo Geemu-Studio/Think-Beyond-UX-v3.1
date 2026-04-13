@@ -264,20 +264,20 @@ export function SolutionSection() {
                <span className="text-white font-bold text-sm tracking-tight w-8 text-center text-neutral-300">
                  {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
                </span>
-               <div className="flex gap-2">
+               <div className="flex gap-4">
                  <button
                   onClick={(e) => { e.stopPropagation(); prevVideo(); }}
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                  className="w-14 h-14 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-95 shadow-lg"
                   aria-label="Previous expert session"
                  >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-6 h-6" />
                  </button>
                  <button
                   onClick={(e) => { e.stopPropagation(); nextVideo(); }}
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
+                  className="w-14 h-14 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-95 shadow-lg"
                   aria-label="Next expert session"
                  >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-6 h-6" />
                  </button>
                </div>
             </div>

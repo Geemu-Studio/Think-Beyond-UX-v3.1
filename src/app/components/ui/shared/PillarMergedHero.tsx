@@ -271,8 +271,20 @@ export function PillarMergedHero({
                 </div>
 
                 <div className="mx-auto max-w-7xl px-3 lg:px-6 mt-0 hidden sm:flex justify-end gap-5">
-                  <CarouselPrevious className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm" />
-                  <CarouselNext className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm" />
+                  <button
+                    onClick={() => api?.scrollPrev()}
+                    className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
+                    aria-label="Previous experts"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={() => api?.scrollNext()}
+                    className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
+                    aria-label="Next experts"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
                 </div>
               </Carousel>
             </div>

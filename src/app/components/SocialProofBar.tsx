@@ -425,9 +425,9 @@ export function SocialProofBar() {
                 <span>Think Beyond &copy; 2026</span>
                 <div className="flex items-center gap-6">
                   <div className="font-bold text-black text-base">{selectedIdx + 1} / {PARTNER_CASES.length}</div>
-                  <div className="flex gap-2">
-                    <button onClick={handlePrevCase} className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90" aria-label="Previous case"><ChevronLeft className="w-5 h-5" /></button>
-                    <button onClick={handleNextCase} className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90" aria-label="Next case"><ChevronRight className="w-5 h-5" /></button>
+                  <div className="flex gap-4">
+                    <button onClick={handlePrevCase} className="w-14 h-14 rounded-full border border-neutral-200 bg-white/10 backdrop-blur-md flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-95 shadow-lg" aria-label="Previous case"><ChevronLeft className="w-6 h-6" /></button>
+                    <button onClick={handleNextCase} className="w-14 h-14 rounded-full border border-neutral-200 bg-white/10 backdrop-blur-md flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-95 shadow-lg" aria-label="Next case"><ChevronRight className="w-6 h-6" /></button>
                   </div>
                 </div>
               </div>

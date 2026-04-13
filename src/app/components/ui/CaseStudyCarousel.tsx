@@ -434,6 +434,24 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
         ))}
       </div>
 
+      {/* Navigation Controls — Standardized across the page */}
+      <div className="mt-8 flex justify-end gap-5 px-6 max-w-7xl mx-auto w-full">
+        <button
+          onClick={prevSlide}
+          className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
+          aria-label="Previous case study"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
+          aria-label="Next case study"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+      </div>
+
       <Dialog open={openModal} onOpenChange={setOpenModal}>
         <DialogContent className="sm:max-w-6xl w-full p-0 overflow-hidden rounded-[24px] sm:rounded-[32px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
           {selectedIdx !== null && (
@@ -597,20 +615,20 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
                     <div className="font-bold text-black text-base">
                       {selectedIdx + 1} / {CARDS.length}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-4">
                       <button
                         onClick={handlePrevCase}
-                        className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90"
+                        className="h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
                         aria-label="Previous case"
                       >
-                        <ChevronLeft className="w-5 h-5" />
+                        <ChevronLeft className="w-6 h-6" />
                       </button>
                       <button
                         onClick={handleNextCase}
-                        className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-90"
+                        className="h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
                         aria-label="Next case"
                       >
-                        <ChevronRight className="w-5 h-5" />
+                        <ChevronRight className="w-6 h-6" />
                       </button>
                     </div>
                   </div>
