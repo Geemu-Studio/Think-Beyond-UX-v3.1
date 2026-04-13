@@ -8,7 +8,8 @@ import {
   RouteOutlined,
   HealthAndSafetyOutlined
 } from '@mui/icons-material';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { NavigationButtons } from './ui/shared/NavigationButtons';
 
 /* Solution Grid — 3-column cards with checkmark icons */
 
@@ -22,32 +23,48 @@ function CheckIcon() {
   );
 }
 
-const cards = [
-  {
-    icon: <AnalyticsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Intelligence',
-    body: 'One unified, compassionate system. From first enquiry to engaged alumnus — transform fragmented interactions into a single, holistic view of your academic community.',
-    videoId: 'qL6R8Z9W4_8', // Student Success
-    expertImage: expertMarcin
-  },
-  {
-    icon: <RouteOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Mission-Driven Admissions',
-    body: 'Secure the future of your institution. Attract brightest global talent through data-informed strategies that align every candidate with your academic values.',
-    videoId: '8_v1-cE9kkw', // Recruitment
-    expertImage: expertMarcin
-  },
-  {
-    icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Academic Resilience & Flourishing',
-    body: 'Surmount the barriers to retention. Proactively identify and respond to early signals of disengagement, ensuring every student has the support to complete their journey.',
-    videoId: 'v5V6Y0_Q_8k', // Salesforce Education Cloud Intro
-    expertImage: expertMarcin
-  },
-];
-
 export function SolutionSection() {
   const location = useLocation();
+  const isEcosystem = location.pathname.includes('ecosystem');
+
+  const standardCards = [
+    {
+      icon: <AnalyticsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+      title: 'Recruitment & Admissions',
+      body: 'Automate candidate engagement and streamline the enrolment journey from initial enquiry to induction.',
+      videoId: 'qL6R8Z9W4_8', // Student Success
+      expertImage: expertMarcin
+    },
+    {
+      icon: <RouteOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+      title: 'Predictive Analytics & Retention',
+      body: 'Deploy automated data workflows and predictive analytics to identify at-risk students, enabling proactive interventions that directly secure NSS outcomes and funding.',
+      videoId: '8_v1-cE9kkw', // Recruitment
+      expertImage: expertMarcin
+    },
+    {
+      icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+      title: 'Core Data Architecture',
+      body: 'Reduce your IT footprint with seamless integration models, ensuring robust data governance and HESA compliance.',
+      videoId: 'v5V6Y0_Q_8k', // Salesforce Education Cloud Intro
+      expertImage: expertMarcin
+    },
+  ];
+
+  const ecosystemCards = [
+    standardCards[0],
+    {
+      icon: <RouteOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+      title: 'Unified Master Data Management',
+      body: 'Orchestrate seamless data flows between Tribal SITS and Salesforce to eliminate redundancies and maintain absolute data integrity.',
+      videoId: '8_v1-cE9kkw', // Recruitment
+      expertImage: expertMarcin
+    },
+    standardCards[2]
+  ];
+
+  const cards = isEcosystem ? ecosystemCards : standardCards;
+
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<typeof cards[0] | null>(null);
   const [videoStarted, setVideoStarted] = useState(false);
@@ -103,11 +120,14 @@ export function SolutionSection() {
         {/* Headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Solution
+            STRATEGIC SOLUTION
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
-            The unified ecosystem for the modern, globally minded university.
+            A unified ecosystem built on Salesforce Education Cloud.
           </h2>
+          <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7]">
+            We deploy scalable, secure architectures that break down silos and establish a Single Source of Truth (SSOT) across the entire student lifecycle.
+          </p>
         </div>
 
         {/* 3-col solution cards */}
@@ -264,22 +284,10 @@ export function SolutionSection() {
                <span className="text-white font-bold text-sm tracking-tight w-8 text-center text-neutral-300">
                  {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
                </span>
-               <div className="flex gap-4">
-                 <button
-                  onClick={(e) => { e.stopPropagation(); prevVideo(); }}
-                  className="w-14 h-14 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-95 shadow-lg"
-                  aria-label="Previous expert session"
-                 >
-                  <ChevronLeft className="w-6 h-6" />
-                 </button>
-                 <button
-                  onClick={(e) => { e.stopPropagation(); nextVideo(); }}
-                  className="w-14 h-14 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-95 shadow-lg"
-                  aria-label="Next expert session"
-                 >
-                  <ChevronRight className="w-6 h-6" />
-                 </button>
-               </div>
+                <NavigationButtons
+                   onPrev={prevVideo}
+                   onNext={nextVideo}
+                />
             </div>
           </>
         )}

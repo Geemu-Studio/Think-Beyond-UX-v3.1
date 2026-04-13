@@ -2,12 +2,14 @@ import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 import {
-  GroupsOutlined,
-  NotificationsActiveOutlined,
-  PhoneIphoneOutlined
+  FavoriteBorderOutlined,
+  WebOutlined,
+  InsightsOutlined
 } from '@mui/icons-material';
 import expertMarcin from '@/assets/expert-marcin.jpeg';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+/* Admissions Solution grid — 3-column cards with checkmark icons */
 
 function CheckIcon() {
   return (
@@ -25,29 +27,29 @@ const svgPaths = {
 
 const cards = [
   {
-    icon: <GroupsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Holistic Institutional Visibility',
-    body: 'Overcome departmental silos. Provide advisors with the comprehensive, real-time insights required to deliver proactive, mission-driven academic support.',
-    videoId: 'qL6R8Z9W4_8',
+    icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Resonant Candidate Engagement',
+    body: 'Anticipate candidate aspirations. Deliver hyper-personalised communication that reflects your university’s mission and secures the world’s brightest academic talent.',
+    videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin,
   },
   {
-    icon: <NotificationsActiveOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Predictive Academic Intervention',
-    body: 'Harness the power of institutional intelligence. Automatically identify high-risk scenarios and orchestrate timely, empathetic interventions that secure student progression.',
-    videoId: 'qL6R8Z9W4_8',
+    icon: <WebOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Premium Admissions Infrastructure',
+    body: 'Eliminate friction at the threshold. Provide an intuitive, elite admissions gateway that mirrors the academic excellence and heritage of your institution.',
+    videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin,
   },
   {
-    icon: <PhoneIphoneOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Retention Impact',
-    body: 'Foster student agency through an intuitive, mobile-first ecosystem. Accelerate access to critical welfare and academic resources, ensuring support is always present.',
-    videoId: 'qL6R8Z9W4_8',
+    icon: <InsightsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Institutional Impact Architecture',
+    body: 'Lead with data-informed confidence. Leverage predictive analytics to refine your global admissions funnel and secure high-intent applicant cohorts.',
+    videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin,
   },
 ];
 
-export function FlourishingSolutionSection() {
+export function AdmissionsSolutionSection() {
   const location = useLocation();
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<typeof cards[0] | null>(null);
@@ -101,7 +103,7 @@ export function FlourishingSolutionSection() {
     <section id="solution" className="bg-neutral-50 py-24 px-3 lg:px-6 border-t border-neutral-200">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
-        {/* Headline */}
+        {/* Headline - identical to master SolutionSection */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
             Solution

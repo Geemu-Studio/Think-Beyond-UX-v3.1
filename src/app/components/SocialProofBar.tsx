@@ -7,16 +7,16 @@ import {
 } from './ui/dialog';
 import {
   X,
-  ChevronLeft,
-  ChevronRight,
+  ArrowLeft,
+  ArrowRight,
   GraduationCap,
   AlertCircle,
   Lightbulb,
   Quote,
   CheckCircle2,
-  ArrowRight,
   Target
 } from 'lucide-react';
+import { NavigationButtons } from './ui/shared/NavigationButtons';
 import { ExpertFooterAccordion } from './ui/ExpertFooterAccordion';
 
 /* --- Shared Types --- */
@@ -281,8 +281,8 @@ export function SocialProofBar() {
       </div>
 
       <Dialog open={openModal} onOpenChange={setOpenModal}>
-        <DialogContent className="sm:max-w-6xl p-0 overflow-hidden rounded-[24px] sm:rounded-[32px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
-          <div className="relative h-full flex flex-col overflow-hidden">
+        <DialogContent className="max-w-6xl sm:max-w-6xl w-full p-0 overflow-hidden rounded-[24px] sm:rounded-[32px] border-none shadow-2xl [&>button]:hidden max-h-[90vh] flex flex-col bg-white">
+          <div className="relative flex-1 min-h-0 flex flex-col overflow-hidden">
 
             {/* Floating Global Close Button - Persistent with dynamic contrast */}
             <DialogClose asChild>
@@ -425,10 +425,11 @@ export function SocialProofBar() {
                 <span>Think Beyond &copy; 2026</span>
                 <div className="flex items-center gap-6">
                   <div className="font-bold text-black text-base">{selectedIdx + 1} / {PARTNER_CASES.length}</div>
-                  <div className="flex gap-4">
-                    <button onClick={handlePrevCase} className="w-14 h-14 rounded-full border border-neutral-200 bg-white/10 backdrop-blur-md flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-95 shadow-lg" aria-label="Previous case"><ChevronLeft className="w-6 h-6" /></button>
-                    <button onClick={handleNextCase} className="w-14 h-14 rounded-full border border-neutral-200 bg-white/10 backdrop-blur-md flex items-center justify-center text-black hover:bg-black hover:text-white transition-all cursor-pointer active:scale-95 shadow-lg" aria-label="Next case"><ChevronRight className="w-6 h-6" /></button>
-                  </div>
+                  <NavigationButtons
+                    onPrev={handlePrevCase}
+                    onNext={handleNextCase}
+                    className="gap-4"
+                  />
                 </div>
               </div>
             </motion.div>

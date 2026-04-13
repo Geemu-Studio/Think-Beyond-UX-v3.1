@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 export interface CalculatorStat {
   key: string;
+  label: string;
   microcopy: string;
   suffix: (v: number) => ReactNode;
 }
@@ -39,12 +40,13 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     }),
     formatDisplay: (results) => ({
       dropouts: results.dropouts.toLocaleString('en-GB'),
-      saved: `+${results.saved.toLocaleString('en-GB')}`,
+      saved: `+${results.saved}%`, // Changed to % based on user request for +45%
       value: `£${(results.value / 1000000).toFixed(1)}M`
     }),
     stats: [
       {
         key: 'dropouts',
+        label: 'INCREASED ENROLMENTS',
         microcopy: 'Projected student attrition based on current UK HE sectoral benchmarks.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -54,6 +56,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'saved',
+        label: 'ENGAGEMENT GROWTH',
         microcopy: 'Secured student outcomes through institutional-level engagement strategies.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -63,6 +66,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'value',
+        label: 'REVENUE IMPACT',
         microcopy: 'Estimated institutional revenue preserved through sustained academic journeys.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -95,6 +99,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     stats: [
       {
         key: 'enrolment',
+        label: 'Enrolment Volume',
         microcopy: 'Projected enrolment volume based on higher-intent applicant conversion.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -104,6 +109,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'efficiency',
+        label: 'Operational Efficiency',
         microcopy: 'Operational capacity regained through intelligent decision support.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -113,6 +119,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'revenue',
+        label: 'Revenue Secured',
         microcopy: 'Tuition revenue secured through improved recruitment funnels.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -145,6 +152,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     stats: [
       {
         key: 'atRisk',
+        label: 'Identified at Risk',
         microcopy: 'Identified through predictive behavioral engagement indicators.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -154,6 +162,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'retention',
+        label: 'Student Retention',
         microcopy: 'Sustained academic journeys following strategic support interventions.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -163,6 +172,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'wellbeing',
+        label: 'Wellbeing Uplift',
         microcopy: 'Improvement in student sentiment and support service utilisation.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -195,6 +205,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     stats: [
       {
         key: 'conversion',
+        label: 'Conversion Rate',
         microcopy: 'Strategic conversion of casual interest into qualified institutional prospects.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -204,6 +215,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'cpa',
+        label: 'Cost Per Acquisition',
         microcopy: 'Optimised strategic engagement spend via high-precision audience targeting.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -213,6 +225,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'equity',
+        label: 'Brand Equity',
         microcopy: 'Modelled growth in institutional brand perception and sentiment.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -245,6 +258,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     stats: [
       {
         key: 'participation',
+        label: 'Donor Participation',
         microcopy: 'Active engagement within the institutional philanthropic ecosystem.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -254,6 +268,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'yield',
+        label: 'Philanthropic Yield',
         microcopy: 'Projected philanthropic donation volume from engaged alumni.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -263,6 +278,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'volunteers',
+        label: 'Volunteer Growth',
         microcopy: 'Growth in alumni volunteering and strategic mentorship roles.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -295,6 +311,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     stats: [
       {
         key: 'revenue',
+        label: 'Corporate Revenue',
         microcopy: 'Projected commercial revenue from executive education and corporate partnerships.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -304,6 +321,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'efficiency',
+        label: 'Admin Efficiency',
         microcopy: 'Operational capacity regained through automated research grant administration.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -313,6 +331,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
       {
         key: 'velocity',
+        label: 'Innovation Velocity',
         microcopy: 'Modelled acceleration in technology transfer and knowledge exchange cycles.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">

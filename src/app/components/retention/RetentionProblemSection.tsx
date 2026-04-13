@@ -25,7 +25,7 @@ const cards = [
   {
     icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Holistic Institutional Belonging',
-    body: 'Academic flourishing extends beyond the lecture theatre. Deliver integrated enablement that addresses the complete academic, social, and wellbeing journey of every learner.',
+    body: 'Student success extends beyond the lecture theatre. Deliver integrated enablement that addresses the complete academic, social, and wellbeing journey of every learner.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
   },
@@ -38,7 +38,7 @@ const cards = [
   },
 ];
 
-export function FlourishingProblemSection() {
+export function RetentionProblemSection() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<typeof cards[0] | null>(null);
@@ -97,7 +97,7 @@ export function FlourishingProblemSection() {
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
             Institutional Opportunity
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Cultivating an environment for academic flourishing.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Cultivating an environment for holistic student success.</h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
             Surmounting the barriers to academic progression. Equip your advising and enablement teams with the strategic insights required to foster a truly resilient academic community.
           </p>

@@ -1,16 +1,16 @@
 import { Header } from '../Header';
 import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
 import { SocialProofBar } from '../SocialProofBar';
-import { AdvancementProblemSection } from './AdvancementProblemSection';
-import { AdvancementSolutionSection } from './AdvancementSolutionSection';
+import { AlumniProblemSection } from './AlumniProblemSection';
+import { AlumniSolutionSection } from './AlumniSolutionSection';
 import { CalculatorSection } from '../CalculatorSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
-import { AdvancementCaseStudySection } from './AdvancementCaseStudySection';
+import { AlumniCaseStudySection } from './AlumniCaseStudySection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
 import { CTAFormSection } from '../CTAFormSection';
 import { Footer } from '../Footer';
 
-export default function AdvancementPage() {
+export default function AlumniPage() {
   return (
     <div className="bg-white text-black selection:bg-black selection:text-white" style={{ fontFamily: 'var(--font-inter)' }}>
       <Header />
@@ -22,11 +22,11 @@ export default function AdvancementPage() {
           defaultFilter="All"
         />
         <SocialProofBar />
-        <AdvancementProblemSection />
-        <AdvancementSolutionSection />
+        <AlumniProblemSection />
+        <AlumniSolutionSection />
         <CalculatorSection />
         <SecurityTrustSection />
-        <AdvancementCaseStudySection />
+        <AlumniCaseStudySection />
         <CTAFormSection 
           title="About us: Your dedicated alumni relations and advancement team."
           formTitle="Let's talk about alumni engagement and lifelong learning at your institution."

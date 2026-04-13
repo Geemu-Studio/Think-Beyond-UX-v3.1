@@ -47,7 +47,7 @@ const cards = [
   },
 ];
 
-export function AdvancementSolutionSection() {
+export function AlumniSolutionSection() {
   const location = useLocation();
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<typeof cards[0] | null>(null);

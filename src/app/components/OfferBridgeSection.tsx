@@ -10,17 +10,17 @@ export function OfferBridgeSection() {
 
   let heading = 'Institutional Resonance & Continuity.';
   let subheading = 'Secure the strategic foundations of your institution. Align every interaction with your academic mission through a unified digital ecosystem.';
-  let cards = [BOXES.RECRUITMENT, BOXES.ALUMNI, BOXES.SUCCESS, BOXES.ENTERPRISE, BOXES.MARKETING];
+  let cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING, BOXES.ALUMNI, BOXES.ENTERPRISE];
 
-  if (path === '/enrolment') {
+  if (path === '/admissions') {
     cards = [BOXES.SUCCESS, BOXES.MARKETING, BOXES.ALUMNI, BOXES.ENTERPRISE];
-  } else if (path === '/flourishing') {
+  } else if (path === '/retention') {
     cards = [BOXES.RECRUITMENT, BOXES.MARKETING, BOXES.ALUMNI, BOXES.ENTERPRISE];
   } else if (path === '/engagement') {
     cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.ALUMNI, BOXES.ENTERPRISE];
-  } else if (path === '/advancement') {
+  } else if (path === '/alumni') {
     cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING, BOXES.ENTERPRISE];
-  } else if (path === '/enterprise') {
+  } else if (path === '/partnerships') {
     cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING, BOXES.ALUMNI];
   }
 

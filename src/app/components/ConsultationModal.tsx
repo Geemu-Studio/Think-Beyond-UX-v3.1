@@ -6,15 +6,16 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useConsultationForm } from '../hooks/useConsultationForm';
-import { 
+import {
   UK_UNIVERSITIES,
   UNIVERSITY_OPTIONS,
   ContactLink,
-  IconEmail, 
-  IconPhone, 
-  IconWhatsApp, 
-  IconMessenger 
+  IconEmail,
+  IconPhone,
+  IconWhatsApp,
+  IconMessenger
 } from './ui/consultation/SharedConsultationUI';
+import { PlaceholderPhoto } from './ui/shared/PlaceholderPhoto';
 
 const EXPERT_PHOTO =
   'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS11c2VyLWljb24gbHVjaWRlLWNpcmNsZS11c2VyIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTAiIHI9IjMiLz48cGF0aCBkPSJNNyAyMC42NjJWMTlhMiAyIDAgMCAxIDItMmg2YTIgMiAwIDAgMSAyIDJ2MS42NjIiLz48L3N2Zz4=';
@@ -52,7 +53,7 @@ function AvatarStack() {
           </span>
         </div>
       ))}
-      <div className="w-10 h-10 rounded-full border-2 border-white bg-[#111111] flex items-center justify-center shrink-0 shadow-sm z-10">
+      <div className="w-10 h-10 rounded-full border-2 border-white bg-black flex items-center justify-center shrink-0 shadow-sm z-10">
         <span className="text-[9px] text-white font-bold">+17</span>
       </div>
     </div>
@@ -102,13 +103,13 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert }: Consult
   if (!isOpen) return null;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
 
       {/* Modal Container */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
@@ -158,9 +159,9 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert }: Consult
                 {/* ── MIDDLE: Lead strategist ── */}
                 <div className="flex flex-col pt-6 gap-3 border-t border-solid border-[#D4D4D4]">
                   <div className="flex items-center gap-4">
-                    <div className="flex items-center justify-center rounded-full bg-[#E5E7EB] border border-solid border-[#D1D5DB] shrink-0 w-16 h-16 sm:w-20 sm:h-20 shadow-sm relative overflow-hidden">
-                      <span className="text-[10px] text-neutral-400 font-black tracking-[0.2em] uppercase">PHOTO</span>
-                    </div>
+                    <PlaceholderPhoto
+                      className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full"
+                    />
                     <div className="flex flex-col">
                       <h4 className="text-[18px] sm:text-[20px] font-bold text-black tracking-tight">{displayExpert.name}</h4>
                       <span className="text-[14px] text-neutral-500 font-medium tracking-tight mt-0.5">{displayExpert.role}</span>
@@ -184,14 +185,14 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert }: Consult
             <div className="lg:col-span-7 bg-white px-3 py-10 lg:px-10 lg:py-14 flex flex-col items-center justify-start lg:justify-center">
               <AnimatePresence mode="wait">
                 {submitted ? (
-                  <motion.div 
+                  <motion.div
                     key="success"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.1 }}
                     className="w-full max-w-md flex flex-col items-center text-center gap-8 py-10"
                   >
-                    <motion.div 
+                    <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", damping: 12, stiffness: 200 }}
@@ -214,14 +215,14 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert }: Consult
                     </Button>
                   </motion.div>
                 ) : (
-                  <motion.div 
+                  <motion.div
                     key="form"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     className="w-full max-w-[480px] flex flex-col gap-10"
                   >
                     <div className="flex flex-col gap-3 text-left">
-                     <h3 className="text-[28px] font-bold tracking-tight text-black text-left">
+                      <h3 className="text-[28px] font-bold tracking-tight text-black text-left">
                         Initiate Strategic Review
                       </h3>
                     </div>

@@ -26,6 +26,7 @@ import {
   CheckCircle
 } from 'lucide-react';
 import { ExpertTrace } from '../ui/shared/ExpertTrace';
+import { PlaceholderPhoto } from '../ui/shared/PlaceholderPhoto';
 
 // --- Utility Components ---
 function CountUp({ value, suffix = "", duration = 2 }: { value: number, suffix?: string, duration?: number }) {
@@ -246,9 +247,9 @@ export function EcosystemMergedHero() {
                         className="group bg-white border border-slate-200 rounded-[28px] p-3 transition-all duration-500 cursor-grab h-[480px] w-[340px] flex flex-col relative z-0 hover:z-10 shadow-none hover:shadow-[0_0_10px_rgba(0,0,0,0.1)]"
                       >
                         {/* Photo Placeholder */}
-                        <div className="relative h-[250px] w-full overflow-hidden rounded-[20px] bg-slate-50 flex items-center justify-center border border-slate-100 shrink-0">
-                          <span className="text-[11px] text-slate-300 font-black tracking-[0.5em] uppercase">PHOTO</span>
-                        </div>
+                        <PlaceholderPhoto 
+                          className="h-[250px] w-full rounded-[20px]"
+                        />
 
                         <div className="px-5 py-4 flex flex-col flex-1 min-h-0 text-left overflow-visible">
                           <h3 className="text-xl text-slate-900 font-bold tracking-tight mb-1 whitespace-normal break-words leading-[1.2]">
@@ -314,8 +315,8 @@ export function EcosystemMergedHero() {
                       <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-white/5 rounded-full blur-[60px]" />
                       <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-white mb-6 relative z-10"><Sparkles className="w-6 h-6" /></div>
                       <div className="text-left relative z-10">
-                        <span className="text-white/40 text-[10px] uppercase tracking-[4px] font-black mb-3 block">Student Conversion Expert • Institutional Growth</span>
-                        <h3 className="text-2xl text-white font-bold leading-tight mb-8 whitespace-normal break-words">Ready to foster student belonging?</h3>
+                        <span className="text-white/40 text-[10px] uppercase tracking-[4px] font-black mb-3 block">Resilient Architecture Expert • Digital Transformation</span>
+                        <h3 className="text-2xl text-white font-bold leading-tight mb-8 whitespace-normal break-words">Ready to unify your digital infrastructure?</h3>
                         <button className="inline-flex items-center gap-4 text-white font-bold text-[13px] uppercase tracking-[2px] group/btn bg-white/10 hover:bg-white/20 px-6 py-3 rounded-full transition-all">
                           Schedule Strategy <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                         </button>

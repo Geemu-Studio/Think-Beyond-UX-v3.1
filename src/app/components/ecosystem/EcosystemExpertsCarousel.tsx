@@ -17,11 +17,11 @@ import {
   Phone, 
   Mail, 
   MessageCircle,
-  LayoutDashboard,
   Sparkles,
   ChevronDown,
   Filter
 } from 'lucide-react';
+import { PlaceholderPhoto } from '../ui/shared/PlaceholderPhoto';
 
 // Types - Strictly Education Cloud Focused
 type Category = "All" | "Education Cloud Architects" | "Recruitment & Engagement" | "Student Success" | "Data & Integration";
@@ -181,9 +181,9 @@ export function EcosystemExpertsCarousel() {
                     className="group bg-white border border-neutral-100 rounded-[28px] p-3 shadow-none hover:shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-all duration-500 cursor-grab active:cursor-grabbing min-h-[480px] w-[340px] flex flex-col"
                   >
                     {/* Placeholder Area */}
-                    <div className="relative h-[320px] w-full overflow-hidden rounded-[20px] bg-neutral-50 flex items-center justify-center shrink-0">
-                      <span className="text-[11px] text-neutral-300 font-black tracking-[0.5em] uppercase">PHOTO</span>
-                    </div>
+                    <PlaceholderPhoto 
+                      className="h-[320px] w-full rounded-[20px]"
+                    />
 
                     <div className="px-5 py-4 flex flex-col flex-1 min-h-0">
                       <h3 className="text-lg text-black font-bold tracking-tight line-clamp-1 mb-1">{expert.name}</h3>
@@ -245,12 +245,12 @@ export function EcosystemExpertsCarousel() {
                   </div>
 
                   <div>
-                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-3 block">Student Conversion Expert • Institutional Growth</span>
+                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-3 block">Resilient Architecture Expert • Digital Transformation</span>
                     <h3 className="text-xl sm:text-2xl text-white font-bold leading-tight mb-6">
-                      Ready to foster student belonging?
+                      Ready to unify your digital infrastructure?
                     </h3>
                     <button className="inline-flex items-center gap-3 text-white font-bold text-[13px] uppercase tracking-wider group/btn">
-                      Schedule a Strategic Consultation 
+                      Schedule an Architectural Review 
                       <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                     </button>
                   </div>

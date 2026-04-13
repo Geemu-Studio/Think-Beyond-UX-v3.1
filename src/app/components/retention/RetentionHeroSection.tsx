@@ -6,14 +6,14 @@ import { ExpertTrace } from '../ui/shared/ExpertTrace';
 const slides = [
   {
     badge: "Salesforce Education Cloud · Certified Partner",
-    h1: "Cultivate lasting relationships. Empower your alumni and champion lifelong learning.",
-    p: "Graduation is not the end of the journey. Leverage Salesforce Education Cloud to build a vibrant, global community that supports continuous education, mentorship, and philanthropic growth.",
-    cta: "Empower Your Advancement Network →",
+    h1: "Nurture every potential. Guide every learner to the pride of graduation.",
+    p: "Move from reactive support to proactive care. Build a connected campus where every student feels seen, supported, and empowered to succeed with Salesforce Education Cloud.",
+    cta: "Transform Student Support →",
     micro: "Trusted by universities across the UK and Central Europe."
   }
 ];
 
-export function AdvancementHeroSection() {
+export function RetentionHeroSection() {
   const location = useLocation();
   const [activeIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);

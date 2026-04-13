@@ -5,12 +5,12 @@ import { SecurityTrustSection } from '../SecurityTrustSection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
 import { Footer } from '../Footer';
 import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
-import { EnterpriseProblemSection } from './EnterpriseProblemSection';
-import { EnterpriseSolutionSection } from './EnterpriseSolutionSection';
-import { EnterpriseCaseStudySection } from './EnterpriseCaseStudySection';
+import { PartnershipsProblemSection } from './PartnershipsProblemSection';
+import { PartnershipsSolutionSection } from './PartnershipsSolutionSection';
+import { PartnershipsCaseStudySection } from './PartnershipsCaseStudySection';
 import { CTAFormSection } from '../CTAFormSection';
 
-export default function EnterprisePage() {
+export default function PartnershipsPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -22,11 +22,11 @@ export default function EnterprisePage() {
           defaultFilter="All"
         />
         <SocialProofBar />
-        <EnterpriseProblemSection />
-        <EnterpriseSolutionSection />
+        <PartnershipsProblemSection />
+        <PartnershipsSolutionSection />
         <CalculatorSection />
         <SecurityTrustSection />
-        <EnterpriseCaseStudySection />
+        <PartnershipsCaseStudySection />
         <CTAFormSection 
           title="About us: Your dedicated Enterprise & Research Partnerships team."
           formTitle="Let's talk about your institutional enterprise and innovation strategy."

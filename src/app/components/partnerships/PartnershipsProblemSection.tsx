@@ -1,44 +1,41 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 import expertMarcin from '@/assets/expert-marcin.jpeg';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import {
-  DevicesOutlined,
-  PublicOutlined,
-  TrendingUpOutlined
+  HubOutlined,
+  SchoolOutlined,
+  DescriptionOutlined
 } from '@mui/icons-material';
-
-const svgPaths = {
-  p1cfaff00: "M10.5 4.5V1.5H1.5V10.5H4.5M10.5 4.5H4.5V10.5M10.5 4.5L1.5 1.5M4.5 10.5L1.5 1.5",
-};
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import svgPaths from '../../../imports/svg-fitf5bq036';
 
 const cards = [
   {
-    icon: <DevicesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Digital Resonance',
-    body: 'Legacy systems create friction that risk institutional prestige. Secure the world’s brightest talent through a seamless, hyper-personalised digital experience that reflects your academic standing.',
-    videoId: '8_v1-cE9kkw',
-    expertImage: expertMarcin,
+    icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Institutional Innovation & Commercialisation',
+    body: 'Surmount the fragmentation of industry touchpoints to foster high-value partnerships and commercialise academic insight across the institution.',
+    videoId: 'v5V6Y0_Q_8k',
+    expertImage: expertMarcin
   },
   {
-    icon: <PublicOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Global Academic Standing',
-    body: 'Maintain a distinct competitive advantage in an intensely contested global market. Leverage proactive, mission-driven outreach to connect with candidates who align with your core values.',
-    videoId: '8_v1-cE9kkw',
-    expertImage: expertMarcin,
+    icon: <SchoolOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Strategic Executive Learning',
+    body: 'Secure institutional revenue through premium microcredentials and professional development paths that align with corporate aspirations.',
+    videoId: 'qL6R8Z9W4_8',
+    expertImage: expertMarcin
   },
   {
-    icon: <TrendingUpOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Yield Optimisation & Legacy',
-    body: 'Mitigate the risks of candidate drop-off. Nurture the critical window between offer and enrolment through consistent, meaningful engagement that fosters early institutional belonging.',
+    icon: <DescriptionOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Cohesive Partner Ecosystems',
+    body: 'Simplify the complex tripartite resonance between the university, the employer, and the learner with unified institutional visibility.',
     videoId: '8_v1-cE9kkw',
-    expertImage: expertMarcin,
+    expertImage: expertMarcin
   },
 ];
 
-export function EnrolmentProblemSection() {
+export function PartnershipsProblemSection() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<typeof cards[0] | null>(null);
@@ -95,11 +92,11 @@ export function EnrolmentProblemSection() {
         {/* Section headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Institutional Opportunity
+            Corporate Partnerships
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Fostering institutional belonging from day one.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Diversify your revenue streams and scale institutional impact.</h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-            Overcome administrative fragmentation. Provide your admissions team with the intelligent tools required to identify, nurture, and secure elite global talent.
+            Fragmented institutional data prevents universities from maximising their commercial potential. Valuable opportunities in executive education and research funding are lost in administrative fragmentation.
           </p>
         </div>
 
@@ -111,6 +108,7 @@ export function EnrolmentProblemSection() {
               onClick={() => openVideo(card)}
               className="p-8 flex flex-col gap-5 text-left rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer w-full border-none"
             >
+              {/* Icon tinted lightly */}
               <div
                 aria-hidden="true"
                 className="w-12 h-12 rounded-[14px] flex items-center justify-center text-neutral-400 bg-neutral-100 border border-neutral-200 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
@@ -124,18 +122,19 @@ export function EnrolmentProblemSection() {
                 {card.body}
               </p>
 
-              {/* Watch Solution CTA */}
-              <div className="flex items-center gap-2.5 text-[13px] font-semibold text-neutral-400 group-hover:text-black transition-all mt-auto">
+              {/* Video Trigger CTA */}
+              <div className="flex items-center gap-2.5 text-[13px] font-semibold text-neutral-400 group-hover:text-black transition-all">
                 <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-200 group-hover:bg-black group-hover:border-black group-hover:text-white transition-all">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="ml-0.5">
                     <polygon points="5 3 19 12 5 21 5 3"></polygon>
                   </svg>
                 </div>
-                <span>Watch overview</span>
+                <span>Hear Expert Insight</span>
               </div>
             </button>
           ))}
         </div>
+
       </div>
 
       <ConsultationModal
@@ -144,6 +143,7 @@ export function EnrolmentProblemSection() {
         pathname={location.pathname}
       />
 
+      {/* Video Dialog Modal */}
       <dialog
         ref={dialogRef}
         onClick={(e) => {
@@ -199,7 +199,7 @@ export function EnrolmentProblemSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
                     <div className="absolute bottom-10 left-10 text-left pr-10">
-                      <span className="text-[11px] text-white/70 uppercase tracking-[1.4px] font-semibold block mb-2">Strategy Session</span>
+                      <span className="text-[11px] text-white/70 uppercase tracking-[1.4px] font-semibold block mb-2">Expert Session</span>
                       <h3 className="text-white text-xl sm:text-3xl font-bold tracking-tight max-w-xl leading-tight">
                         {activeCard.title}
                       </h3>

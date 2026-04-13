@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import expertMarcin from '@/assets/expert-marcin.jpeg';
 import svgPaths from '../../imports/svg-fitf5bq036';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { NavigationButtons } from './ui/shared/NavigationButtons';
 
 const features = [
   {
@@ -353,22 +354,10 @@ export function SecurityTrustSection() {
                <span className="text-white font-bold text-sm tracking-tight w-8 text-center text-neutral-300">
                  {features.findIndex(f => f.id === activeCard.id) + 1} / {features.length}
                </span>
-               <div className="flex gap-4">
-                  <button
-                   onClick={(e) => { e.stopPropagation(); prevVideo(); }}
-                   className="w-14 h-14 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-95 shadow-lg"
-                   aria-label="Previous security insight"
-                  >
-                   <ChevronLeft className="w-6 h-6" aria-hidden="true" />
-                  </button>
-                  <button
-                   onClick={(e) => { e.stopPropagation(); nextVideo(); }}
-                   className="w-14 h-14 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-95 shadow-lg"
-                   aria-label="Next security insight"
-                  >
-                   <ChevronRight className="w-6 h-6" aria-hidden="true" />
-                  </button>
-               </div>
+                <NavigationButtons
+                   onPrev={prevVideo}
+                   onNext={nextVideo}
+                />
             </div>
           </>
         )}

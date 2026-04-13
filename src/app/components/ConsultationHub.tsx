@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router';
 import { Send, CheckCircle2, Lock, Plus, Minus } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Button } from './ui/button';
@@ -36,7 +37,7 @@ function AvatarStack() {
           </span>
         </div>
       ))}
-      <div className="w-10 h-10 rounded-full border-2 border-white bg-[#111111] flex items-center justify-center shrink-0 shadow-sm z-10">
+      <div className="w-10 h-10 rounded-full border-2 border-white bg-black flex items-center justify-center shrink-0 shadow-sm z-10">
         <span className="text-[9px] text-white font-bold">+17</span>
       </div>
     </div>
@@ -82,6 +83,9 @@ export function ConsultationHub({
     handleSubmit
   } = useConsultationForm();
 
+  const { pathname } = useLocation();
+  const isEcosystem = pathname === '/ecosystem';
+
   return (
     <section className={`bg-white border-t border-zinc-200 overflow-hidden ${showH2 ? 'py-24 px-3 lg:px-6' : 'py-12 px-0'}`}>
       <div className="max-w-7xl mx-auto">
@@ -95,7 +99,10 @@ export function ConsultationHub({
                   Strategic Mission Centre
                 </span>
                 <h2 className="text-[32px] sm:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">
-                  Architecting the Institutional Foundation for Academic Excellence.
+                  {isEcosystem 
+                    ? "Architecting the Unified Digital Infrastructure."
+                    : "Architecting the Institutional Foundation for Academic Excellence."
+                  }
                 </h2>
               </div>
             )}
@@ -111,20 +118,36 @@ export function ConsultationHub({
                 </p>
               </div>
 
-              {/* Card 2: Marcin Profile & Quote (6T-0 Institutional Layout) */}
+              {/* Card 2: Premium Expert Card (REPLACED Institutional Layout with Dark Theme) */}
               <div className="flex flex-col gap-5 text-left">
-                <div className="flex items-center gap-4">
-                  <AvatarStack />
-                  <div className="flex flex-col">
-                    <h4 className="text-[15px] font-bold text-black uppercase tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
-                    <span className="text-[12px] text-neutral-400 font-medium tracking-tight">Institutional Strategist</span>
+                <div className="bg-neutral-800 rounded-[28px] p-8 flex flex-col justify-between min-h-[220px] cursor-pointer group overflow-hidden relative shadow-2xl border border-neutral-700">
+                  {/* Subtle glass glow */}
+                  <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-white/5 rounded-full blur-[40px]" />
+                  
+                  <div className="flex items-center gap-4 mb-6 relative z-10">
+                    <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-white shrink-0 shadow-inner border border-white/10">
+                      <Sparkles className="w-5 h-5" />
+                    </div>
+                    <div className="flex flex-col">
+                      <h4 className="text-[14px] font-bold text-white uppercase tracking-tight font-['Outfit']">Marcin Pieńkowski</h4>
+                      <span className="text-[11px] text-neutral-400 font-medium tracking-tight">Lead Strategist</span>
+                    </div>
                   </div>
-                </div>
-                {/* Quote (Institutional Style) */}
-                <div className="bg-white border border-neutral-100 p-5 rounded-2xl shadow-sm relative">
-                  <p className="text-[13px] text-[#404040] leading-relaxed italic font-['Outfit']">
-                    &quot;I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
-                  </p>
+
+                  <div className="text-left relative z-10">
+                    <span className="text-white/40 text-[9px] uppercase tracking-[3px] font-black mb-2.5 block">
+                      {isEcosystem 
+                        ? "Resilient Architecture Expert • Digital Transformation"
+                        : "Student Conversion Expert • Institutional Growth"
+                      }
+                    </span>
+                    <h3 className="text-[20px] text-white font-bold leading-tight mb-0">
+                      {isEcosystem 
+                        ? "Ready to unify your digital infrastructure?"
+                        : "Ready to foster student belonging?"
+                      }
+                    </h3>
+                  </div>
                 </div>
               </div>
 
@@ -133,7 +156,7 @@ export function ConsultationHub({
                 <p className="text-[12px] text-neutral-400 uppercase tracking-[1.2px] font-bold">
                   Prefer direct contact?
                 </p>
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-1.5 text-left">
                   <ContactLink icon={IconEmail} label="marcin@thinkbeyond.cloud" href="mailto:marcin@thinkbeyond.cloud" />
                   <ContactLink icon={IconPhone} label="+48 502 227 174" href="tel:+48502227174" />
                   <ContactLink icon={IconWhatsApp} label="WhatsApp" href="https://wa.me/48502227174" />

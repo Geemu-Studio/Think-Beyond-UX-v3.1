@@ -2,14 +2,14 @@ import { Header } from '../Header';
 import { CalculatorSection } from '../CalculatorSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
-import { Footer } from '../Footer';
 import { ProblemSection } from '../ProblemSection';
 import { SolutionSection } from '../SolutionSection';
-import { CaseStudySection } from '../CaseStudySection';
-import { CTAFormSection } from '../CTAFormSection';
 import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
+import { GlobalFooter } from '../shared/GlobalFooter';
 
 import { EcosystemCaseStudyCarousel } from './EcosystemCaseStudyCarousel';
+import { ManagedServicesBridge } from './ManagedServicesBridge';
+import { EcosystemGlobalCTA } from './EcosystemGlobalCTA';
 
 export default function EcosystemPage() {
   return (
@@ -26,18 +26,13 @@ export default function EcosystemPage() {
         <EcosystemCaseStudyCarousel />
         <ProblemSection />
         <SolutionSection />
+        <ManagedServicesBridge />
         <CalculatorSection />
         <SecurityTrustSection />
-        <CaseStudySection />
-        <CTAFormSection 
-          title="Architecting the Future of Your Institution."
-          formTitle="Ready to unify your ecosystem and drive student success?"
-          buttonText="Request Your Strategic Audit"
-        />
+        <EcosystemGlobalCTA />
         <OfferBridgeSection />
       </main>
-      <Footer />
+      <GlobalFooter />
     </div>
   );
 }
-

@@ -1,27 +1,15 @@
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  Dialog,
-  DialogContent,
-  DialogClose,
-} from './dialog';
-import { Input } from './input';
-import { Button } from './button';
-import {
   ArrowRight,
-  CheckCircle2,
-  X,
-  ChevronLeft,
-  ChevronRight,
-  Mail,
-  Phone,
-  SendHorizonal,
+  ArrowLeft,
   GraduationCap,
   AlertCircle,
   Lightbulb,
-  Quote,
   Target
 } from 'lucide-react';
+import { NavigationButtons } from './shared/NavigationButtons';
+import { CaseStudyModal } from './shared/CaseStudyModal';
 
 // --- Types ---
 interface SWPSSection {
@@ -244,16 +232,6 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
   const [isJumping, setIsJumping] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [selectedIdx, setSelectedIdx] = useState<number>(0);
-  const [isNearForm, setIsNearForm] = useState(false);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  // Reset scroll and UI state on case study change
-  useEffect(() => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop = 0;
-    }
-    setIsNearForm(false);
-  }, [selectedIdx, openModal]);
 
   // Responsive settings
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
@@ -434,210 +412,21 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
         ))}
       </div>
 
-      {/* Navigation Controls — Standardized across the page */}
-      <div className="mt-8 flex justify-end gap-5 px-6 max-w-7xl mx-auto w-full">
-        <button
-          onClick={prevSlide}
-          className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
-          aria-label="Previous case study"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
-          aria-label="Next case study"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </div>
+      <NavigationButtons
+        onPrev={prevSlide}
+        onNext={nextSlide}
+        className="mt-8 justify-end px-3 lg:px-6 max-w-7xl mx-auto w-full"
+      />
 
-      <Dialog open={openModal} onOpenChange={setOpenModal}>
-        <DialogContent className="sm:max-w-6xl w-full p-0 overflow-hidden rounded-[24px] sm:rounded-[32px] border-none shadow-2xl [&>button]:hidden max-h-[92vh] flex flex-col bg-white">
-          {selectedIdx !== null && (
-            <div className="relative h-full flex flex-col overflow-hidden">
-              {/* Floating Global Close Button - Persistent with dynamic contrast */}
-              <DialogClose asChild>
-                <motion.button
-                  animate={{
-                    backgroundColor: isNearForm ? "#000000" : "#ffffff",
-                    color: isNearForm ? "#ffffff" : "#000000",
-                    borderColor: isNearForm ? "#000000" : "#e5e5e5"
-                  }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="absolute right-8 sm:right-12 top-6 z-[130] w-10 h-10 flex items-center justify-center rounded-full shadow-lg active:scale-95 outline-none cursor-pointer border transition-shadow hover:shadow-xl"
-                >
-                  <X className="w-5 h-5" strokeWidth={2.5} />
-                  <span className="sr-only">Close</span>
-                </motion.button>
-              </DialogClose>
-
-              {/* Header - Collapses height on scroll toward form */}
-              <motion.div
-                initial={false}
-                animate={{
-                  height: isNearForm ? 0 : (window.innerWidth < 640 ? 80 : 112),
-                  opacity: isNearForm ? 0 : 1,
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="relative shrink-0 bg-black flex items-center overflow-hidden z-[100]"
-              >
-                <div className="h-20 sm:h-28 flex items-center px-8 sm:px-12 w-full relative">
-                  {/* Background Watermark */}
-                  <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[100px] font-bold text-white/[0.05] pointer-events-none select-none">
-                    {CARDS[selectedIdx].initial}
-                  </div>
-
-                  <div className="relative z-10 w-full text-left">
-                    <span className="text-neutral-500 text-[9px] uppercase tracking-[2px] font-bold mb-0.5 block">
-                      Case Study Success Story
-                    </span>
-                    <h2 className="text-white text-xl sm:text-2xl font-bold tracking-tight">
-                      {CARDS[selectedIdx].university}
-                    </h2>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Scrollable Middle Content */}
-              <div
-                ref={scrollContainerRef}
-                onScroll={(e) => {
-                  const target = e.currentTarget;
-                  const scrollPos = target.scrollTop;
-                  const scrollHeight = target.scrollHeight;
-                  const clientHeight = target.clientHeight;
-
-                  // Refined logic: hide when user scrolls down and is in the bottom area
-                  const nearBottom = scrollHeight - scrollPos <= clientHeight + 450;
-                  setIsNearForm(scrollPos > 100 && nearBottom);
-                }}
-                className="flex-1 overflow-y-auto w-full bg-white min-h-0 relative z-[50] scroll-smooth"
-              >
-                <motion.div
-                  animate={{
-                    paddingTop: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48),
-                    paddingBottom: isNearForm ? 40 : (window.innerWidth < 640 ? 32 : 48)
-                  }}
-                  className="px-8 sm:px-12 flex flex-col gap-10"
-                >
-                  {CARDS[selectedIdx].fullStory.isDetailed && CARDS[selectedIdx].fullStory.content ? (
-                    <div className="flex flex-col gap-10 text-left">
-                      {/* Rich Content View for SWPS */}
-                      <header>
-                        <h3 className="text-xl sm:text-2xl font-bold text-black mb-6 leading-tight">
-                          {CARDS[selectedIdx].fullStory.content.title}
-                        </h3>
-                      </header>
-
-                      <div className="flex flex-col gap-12">
-                        {CARDS[selectedIdx].fullStory.content.sections.map((section, sIdx) => (
-                          <section key={sIdx} className="flex flex-col gap-4">
-                            <div className="flex items-center gap-2 mb-1">
-                              {section.icon}
-                              <h4 className="font-bold text-lg text-black">{section.title}</h4>
-                            </div>
-                            {section.description && (
-                              <p className="text-neutral-600 leading-relaxed mb-2">{section.description}</p>
-                            )}
-                            {section.subTitle && (
-                              <p className="font-bold text-black mt-2 mb-1">{section.subTitle}</p>
-                            )}
-                            <ul className="flex flex-col gap-3">
-                              {section.items.map((item, iIdx) => (
-                                <li key={iIdx} className="flex gap-3 items-start">
-                                  <div className="h-1.5 w-1.5 rounded-full bg-neutral-300 shrink-0 mt-2"></div>
-                                  <span className="text-neutral-700 leading-relaxed">{item}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </section>
-                        ))}
-                      </div>
-
-                      {/* Reference Block */}
-                      <blockquote className="bg-neutral-50 rounded-2xl p-8 border-l-4 border-black relative overflow-hidden group/quote">
-                        <Quote className="absolute -top-2 -right-2 w-20 h-20 text-black/5 opacity-10" />
-                        <p className="text-lg italic text-neutral-800 leading-relaxed mb-6 relative z-10">
-                          "{CARDS[selectedIdx].fullStory.content.reference.text}"
-                        </p>
-                        <footer className="flex items-center gap-4 relative z-10">
-                          <div className="h-px w-8 bg-neutral-200"></div>
-                          <cite className="not-italic font-bold text-black text-sm">
-                            {CARDS[selectedIdx].fullStory.content.reference.author}
-                          </cite>
-                        </footer>
-                      </blockquote>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col gap-8 text-left">
-                      {/* Standard View for other cards */}
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-black mb-4">
-                          {CARDS[selectedIdx].fullStory.title}
-                        </h3>
-                        <p className="text-neutral-600 leading-relaxed text-lg">
-                          {CARDS[selectedIdx].fullStory.description}
-                        </p>
-                      </div>
-
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        {CARDS[selectedIdx].fullStory.impact?.map((item, i) => (
-                          <div key={i} className="flex gap-3 bg-neutral-50 p-5 rounded-[20px] border border-neutral-100 text-left">
-                            <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
-                            <span className="text-[14px] text-neutral-700 font-medium leading-[1.5]">
-                              {item}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Form - Scrolling target */}
-                  <ExpertFooterAccordion />
-                </motion.div>
-              </div>
-
-              {/* Fixed Footer - Collapses height on scroll toward form */}
-              <motion.div
-                initial={false}
-                animate={{
-                  height: isNearForm ? 0 : (window.innerWidth < 640 ? 76 : 88),
-                  opacity: isNearForm ? 0 : 1,
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="shrink-0 bg-white border-t border-neutral-100 overflow-hidden z-[100]"
-              >
-                <div className="h-[76px] sm:h-[88px] px-8 py-6 sm:px-12 sm:py-8 flex justify-between items-center text-sm text-neutral-400 w-full">
-                  <span>Think Beyond &copy; 2026</span>
-                  <div className="flex items-center gap-6">
-                    <div className="font-bold text-black text-base">
-                      {selectedIdx + 1} / {CARDS.length}
-                    </div>
-                    <div className="flex gap-4">
-                      <button
-                        onClick={handlePrevCase}
-                        className="h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
-                        aria-label="Previous case"
-                      >
-                        <ChevronLeft className="w-6 h-6" />
-                      </button>
-                      <button
-                        onClick={handleNextCase}
-                        className="h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
-                        aria-label="Next case"
-                      >
-                        <ChevronRight className="w-6 h-6" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      <CaseStudyModal
+        isOpen={openModal}
+        onOpenChange={setOpenModal}
+        data={CARDS[selectedIdx]}
+        currentIndex={selectedIdx}
+        totalItems={CARDS.length}
+        onPrev={handlePrevCase}
+        onNext={handleNextCase}
+      />
     </div>
   );
 }

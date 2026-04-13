@@ -54,7 +54,7 @@ export function CalculatorSection() {
               <span className="bg-black text-white text-[20px] tracking-[-0.8px] px-6 py-1.5 rounded-full font-extrabold shadow-sm shrink-0">
                 {value.toLocaleString('en-GB')}
               </span>
-              <p className="text-[14px] text-neutral-600 font-bold uppercase tracking-[1.4px]">
+              <p className="text-sm font-medium text-slate-500 uppercase tracking-wider">
                 {config.inputLabel}
               </p>
             </div>
@@ -125,6 +125,11 @@ export function CalculatorSection() {
                 >
                   {displayValues[stat.key]}
                 </span>
+
+                {/* Stat Label */}
+                <p className="text-sm font-medium text-slate-500 uppercase tracking-wider mt-1 mb-2">
+                  {stat.label}
+                </p>
 
                 {/* Bold sentence */}
                 {stat.suffix(results[stat.key] as number)}

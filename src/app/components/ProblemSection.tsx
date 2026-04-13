@@ -8,35 +8,58 @@ import {
   HealthAndSafetyOutlined,
   TrackChangesOutlined
 } from '@mui/icons-material';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { NavigationButtons } from './ui/shared/NavigationButtons';
 import svgPaths from '../../imports/svg-fitf5bq036';
-
-const cards = [
-  {
-    icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Resilience',
-    body: 'Overcome administrative fragmentation. Replace legacy constraints with a unified, resilient digital infrastructure that scales with your academic vision.',
-    videoId: 'dpI9fQRpxU8',
-    expertImage: expertMarcin
-  },
-  {
-    icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Academic Flourishing & Retention',
-    body: 'Proactively nurture institutional belonging. Identify students at risk before they are lost, and build the holistic support structures that secure their academic journey.',
-    videoId: 'qL6R8Z9W4_8', // Student Success
-    expertImage: expertMarcin
-  },
-  {
-    icon: <TrackChangesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Mission-Driven Enrolment',
-    body: 'Engage candidates who align with your institution’s prestige. Deliver frictionless, personalised enrolment journeys that secure the world’s brightest academic talent.',
-    videoId: '8_v1-cE9kkw', // Recruitment
-    expertImage: expertMarcin
-  },
-];
 
 export function ProblemSection() {
   const location = useLocation();
+  const isEcosystem = location.pathname.includes('ecosystem');
+
+  const standardCards = [
+    {
+      icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+      title: 'Institutional Resilience',
+      body: 'Overcome administrative fragmentation. Replace legacy constraints with a unified, resilient digital infrastructure that scales with your academic vision.',
+      videoId: 'dpI9fQRpxU8',
+      expertImage: expertMarcin
+    },
+    {
+      icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+      title: 'Disconnected Retention Metrics',
+      body: 'Fragmented data pipelines prevent early intervention. When academic tracking exists in silos, identifying at-risk students becomes a manual, reactive, and delayed process.',
+      videoId: 'qL6R8Z9W4_8', // Student Success
+      expertImage: expertMarcin
+    },
+    {
+      icon: <TrackChangesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+      title: 'Mission-Driven Enrolment',
+      body: 'Engage candidates who align with your institution’s prestige. Deliver frictionless, personalised enrolment journeys that secure the world’s brightest academic talent.',
+      videoId: '8_v1-cE9kkw', // Recruitment
+      expertImage: expertMarcin
+    },
+  ];
+
+  const ecosystemCards = [
+    standardCards[0],
+    {
+      icon: <HealthAndSafetyOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+      title: 'Data Governance & Security',
+      body: 'Eradicate data silos and ensure HESA compliance. Establish a Single Source of Truth (SSOT) across your entire institution to mitigate risk and enable confident decision-making.',
+      videoId: 'qL6R8Z9W4_8',
+      expertImage: expertMarcin
+    },
+    {
+      icon: <TrackChangesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+      title: 'Technical Debt Reduction',
+      body: 'Modernise legacy architecture without disrupting critical operations. Transition from fragmented SITS environments to a unified, scalable Education Cloud foundation.',
+      videoId: '8_v1-cE9kkw',
+      expertImage: expertMarcin
+    }
+  ];
+
+  const cards = isEcosystem ? ecosystemCards : standardCards;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<typeof cards[0] | null>(null);
   const [videoStarted, setVideoStarted] = useState(false);
@@ -92,9 +115,14 @@ export function ProblemSection() {
         {/* Section headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Institutional Opportunity
+            INSTITUTIONAL OPPORTUNITY
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Securing academic excellence. Build the strategic foundations that proactively foster institutional resilience and student flourishing.</h2>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
+            Is legacy architecture stalling your strategic growth?
+          </h2>
+          <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7]">
+            British universities face an unprecedented challenge: ambitious recruitment targets bottlenecked by fragmented data, disconnected legacy systems (including Tribal SITS), and severe IT resource constraints. When student data sits in silos, institutional resilience suffers.
+          </p>
         </div>
 
         {/* 3-col agitation grid */}
@@ -230,22 +258,10 @@ export function ProblemSection() {
                <span className="text-white font-bold text-sm tracking-tight w-8 text-center text-neutral-300">
                  {cards.findIndex(c => c.title === activeCard.title) + 1} / {cards.length}
                </span>
-               <div className="flex gap-4">
-                 <button
-                  onClick={(e) => { e.stopPropagation(); prevVideo(); }}
-                  className="h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
-                  aria-label="Previous expert session"
-                 >
-                  <ChevronLeft className="w-6 h-6" />
-                 </button>
-                 <button
-                  onClick={(e) => { e.stopPropagation(); nextVideo(); }}
-                  className="h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
-                  aria-label="Next expert session"
-                 >
-                  <ChevronRight className="w-6 h-6" />
-                 </button>
-               </div>
+                <NavigationButtons
+                   onPrev={prevVideo}
+                   onNext={nextVideo}
+                />
             </div>
           </>
         )}

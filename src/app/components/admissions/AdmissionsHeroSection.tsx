@@ -3,7 +3,7 @@ import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 import { ExpertTrace } from '../ui/shared/ExpertTrace';
 
-export function EnterpriseHeroSection() {
+export function AdmissionsHeroSection() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -30,7 +30,7 @@ export function EnterpriseHeroSection() {
         
         {/* Headline */}
         <h1 className="leading-[1.13] tracking-[-1px] sm:tracking-[-2px] text-black text-[30px] sm:text-[44px] lg:text-[48px] animate-in slide-in-from-bottom-4 fade-in duration-500">
-          Elevate Institutional Innovation & Partnerships.
+          Shape the future of your institution. Attract, engage, and enrol the world&apos;s brightest minds.
         </h1>
 
         {/* Sub-headline & Expert Trace */}
@@ -39,7 +39,7 @@ export function EnterpriseHeroSection() {
             className="text-[15px] sm:text-[18px] text-neutral-500 leading-[1.6] max-w-2xl animate-in slide-in-from-bottom-4 fade-in duration-700"
             style={{ fontWeight: 400 }}
           >
-            Diversify institutional revenue through strategic corporate engagement. Transform knowledge exchange into a scalable, mission-driven innovation ecosystem.
+            Move beyond traditional admissions. Transform every enquiry into a meaningful connection and build a thriving, purpose-driven academic community with Salesforce Education Cloud.
           </p>
           <div className="animate-in slide-in-from-bottom-2 fade-in duration-1000 delay-300">
             <ExpertTrace />
@@ -53,13 +53,13 @@ export function EnterpriseHeroSection() {
           className="mt-2 w-full sm:w-auto inline-flex items-center justify-center bg-black text-white px-8 py-4 text-[15px] rounded-full hover:bg-neutral-800 transition-colors cursor-pointer animate-in slide-in-from-bottom-4 fade-in duration-700"
           style={{ fontWeight: 600 }}
         >
-          Review Enterprise Strategy →
+          Redefine Your Admissions Strategy →
         </a>
 
         {/* Trust signal */}
         <div className="flex flex-col items-center gap-6 mt-4">
           <p className="text-[12px] sm:text-[13px] text-neutral-400 m-0 animate-in fade-in duration-1000">
-            Empowering UK Higher Education to lead in the global innovation economy.
+            Trusted by universities across the UK and Central Europe.
           </p>
         </div>
 

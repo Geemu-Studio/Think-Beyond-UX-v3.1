@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { ExpertTrace } from './ExpertTrace';
 import { EXPERTS, CATEGORIES, CATEGORY_LABELS, type Category } from '../../../data/experts';
+import { NavigationButtons } from '../shared/NavigationButtons';
+import { PlaceholderPhoto } from '../shared/PlaceholderPhoto';
 
 interface PillarMergedHeroProps {
   title: string;
@@ -49,6 +51,24 @@ export function PillarMergedHero({
   const location = useLocation();
   const carouselRef = useRef<HTMLDivElement>(null);
   const wheelRef = useRef<HTMLDivElement>(null);
+
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  useEffect(() => {
+    if (!api) return;
+    const updateScrollState = () => {
+      setCanScrollPrev(api.canScrollPrev());
+      setCanScrollNext(api.canScrollNext());
+    };
+    api.on('select', updateScrollState);
+    api.on('reInit', updateScrollState);
+    updateScrollState();
+    return () => {
+      api.off('select', updateScrollState);
+      api.off('reInit', updateScrollState);
+    };
+  }, [api]);
 
   const isCarouselInView = useInView(carouselRef, { amount: 0.5 });
 
@@ -158,8 +178,8 @@ export function PillarMergedHero({
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full px-4 mb-16"
           >
             {[
-              { icon: <Globe className="w-5 h-5 text-slate-500" />, text: "Europe's Largest Practice" },
-              { icon: <Users className="w-5 h-5 text-slate-500" />, text: "20+ Certified Consultants" },
+              { icon: <Globe className="w-5 h-5 text-slate-500" />, text: "Europe's Largest Education Cloud Practice" },
+              { icon: <Users className="w-5 h-5 text-slate-500" />, text: "20+ Certified Architects" },
               { icon: <CheckCircle className="w-5 h-5 text-slate-500" />, text: "Official Salesforce Partner" }
             ].map((card, idx) => (
               <div key={idx} className="bg-white border border-slate-200 shadow-sm rounded-lg px-4 py-3 flex items-center justify-center gap-3 w-full sm:w-auto min-w-[200px]">
@@ -190,9 +210,9 @@ export function PillarMergedHero({
                             className="group bg-white border border-slate-200 rounded-[28px] p-1.5 transition-all duration-500 cursor-grab h-[384px] w-[340px] flex flex-col relative z-0 hover:z-10 shadow-none hover:shadow-[0_0_10px_rgba(0,0,0,0.1)]"
                           >
                             {/* Photo Placeholder */}
-                            <div className="relative h-[200px] w-full overflow-hidden rounded-[20px] bg-slate-50 flex items-center justify-center border border-slate-100 shrink-0">
-                              <span className="text-[11px] text-slate-300 font-black tracking-[0.5em] uppercase">PHOTO</span>
-                            </div>
+                            <PlaceholderPhoto 
+                              className="h-[200px] w-full rounded-[20px]"
+                            />
 
                             <div className="px-3 py-2 flex flex-col flex-1 min-h-0 text-left overflow-visible">
                               <h3 className="text-xl text-slate-900 font-bold tracking-tight mb-1 whitespace-normal break-words leading-[1.2]">
@@ -258,10 +278,10 @@ export function PillarMergedHero({
                         <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-white/5 rounded-full blur-[60px]" />
                         <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-white mb-6 relative z-10"><Sparkles className="w-6 h-6" /></div>
                         <div className="text-left relative z-10">
-                          <span className="text-white/40 text-[10px] uppercase tracking-[4px] font-black mb-3 block">Student Conversion Expert • Institutional Growth</span>
-                          <h3 className="text-2xl text-white font-bold leading-tight mb-8 whitespace-normal break-words">Ready to foster student belonging?</h3>
+                          <span className="text-white/40 text-[10px] uppercase tracking-[4px] font-black mb-3 block">Resilient Architecture Expert • Digital Transformation</span>
+                          <h3 className="text-2xl text-white font-bold leading-tight mb-8 whitespace-normal break-words">Ready to unify your digital infrastructure?</h3>
                           <button className="inline-flex items-center gap-4 text-white font-bold text-[13px] uppercase tracking-[2px] group/btn bg-white/10 hover:bg-white/20 px-6 py-3 rounded-full transition-all">
-                            Schedule Strategy <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                            Schedule an Architectural Review <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                           </button>
                         </div>
                       </motion.div>
@@ -270,22 +290,13 @@ export function PillarMergedHero({
                   </CarouselContent>
                 </div>
 
-                <div className="mx-auto max-w-7xl px-3 lg:px-6 mt-0 hidden sm:flex justify-end gap-5">
-                  <button
-                    onClick={() => api?.scrollPrev()}
-                    className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
-                    aria-label="Previous experts"
-                  >
-                    <ChevronLeft className="w-6 h-6" />
-                  </button>
-                  <button
-                    onClick={() => api?.scrollNext()}
-                    className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
-                    aria-label="Next experts"
-                  >
-                    <ChevronRight className="w-6 h-6" />
-                  </button>
-                </div>
+                <NavigationButtons
+                  onPrev={() => api?.scrollPrev()}
+                  onNext={() => api?.scrollNext()}
+                  disabledPrev={!canScrollPrev}
+                  disabledNext={!canScrollNext}
+                  className="mx-auto max-w-7xl px-3 lg:px-6 mt-0 hidden sm:flex justify-end"
+                />
               </Carousel>
             </div>
           </div>

@@ -5,12 +5,12 @@ import { SecurityTrustSection } from '../SecurityTrustSection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
 import { Footer } from '../Footer';
 import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
-import { EnrolmentProblemSection } from './EnrolmentProblemSection';
-import { EnrolmentSolutionSection } from './EnrolmentSolutionSection';
-import { EnrolmentCaseStudySection } from './EnrolmentCaseStudySection';
+import { AdmissionsProblemSection } from './AdmissionsProblemSection';
+import { AdmissionsSolutionSection } from './AdmissionsSolutionSection';
+import { AdmissionsCaseStudySection } from './AdmissionsCaseStudySection';
 import { CTAFormSection } from '../CTAFormSection';
 
-export default function EnrolmentPage() {
+export default function AdmissionsPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -22,14 +22,14 @@ export default function EnrolmentPage() {
           defaultFilter="All"
         />
         <SocialProofBar />
-        <EnrolmentProblemSection />
-        <EnrolmentSolutionSection />
+        <AdmissionsProblemSection />
+        <AdmissionsSolutionSection />
         <CalculatorSection />
         <SecurityTrustSection />
-        <EnrolmentCaseStudySection />
+        <AdmissionsCaseStudySection />
         <CTAFormSection 
-          title="About us: Your dedicated student recruitment and enrolment team."
-          formTitle="Let's talk about your student recruitment and enrolment strategy."
+          title="About us: Your dedicated student recruitment and admissions team."
+          formTitle="Let's talk about your student recruitment and admissions strategy."
           buttonText="Schedule a Strategic Review"
         />
         <OfferBridgeSection />

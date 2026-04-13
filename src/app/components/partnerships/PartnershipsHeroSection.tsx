@@ -3,27 +3,14 @@ import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
 import { ExpertTrace } from '../ui/shared/ExpertTrace';
 
-const slides = [
-  {
-    badge: "Salesforce Education Cloud · Certified Partner",
-    h1: "Nurture every potential. Guide every learner to the pride of graduation.",
-    p: "Move from reactive support to proactive care. Build a connected campus where every student feels seen, supported, and empowered to succeed with Salesforce Education Cloud.",
-    cta: "Transform Student Support →",
-    micro: "Trusted by universities across the UK and Central Europe."
-  }
-];
-
-export function FlourishingHeroSection() {
+export function PartnershipsHeroSection() {
   const location = useLocation();
-  const [activeIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCTA = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setIsModalOpen(true);
   };
-
-  const currentSlide = slides[activeIndex];
 
   return (
     <section className="bg-white pt-10 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 px-3 lg:px-6 min-h-[600px] flex items-center justify-center relative overflow-hidden">
@@ -37,13 +24,13 @@ export function FlourishingHeroSection() {
             className="text-[12px] text-neutral-600 tracking-[0.4px] uppercase"
             style={{ fontWeight: 500 }}
           >
-            {currentSlide.badge}
+            Salesforce Education Cloud · Certified Partner
           </span>
         </div>
         
         {/* Headline */}
         <h1 className="leading-[1.13] tracking-[-1px] sm:tracking-[-2px] text-black text-[30px] sm:text-[44px] lg:text-[48px] animate-in slide-in-from-bottom-4 fade-in duration-500">
-          {currentSlide.h1}
+          Elevate Institutional Innovation & Partnerships.
         </h1>
 
         {/* Sub-headline & Expert Trace */}
@@ -52,7 +39,7 @@ export function FlourishingHeroSection() {
             className="text-[15px] sm:text-[18px] text-neutral-500 leading-[1.6] max-w-2xl animate-in slide-in-from-bottom-4 fade-in duration-700"
             style={{ fontWeight: 400 }}
           >
-            {currentSlide.p}
+            Diversify institutional revenue through strategic corporate engagement. Transform knowledge exchange into a scalable, mission-driven innovation ecosystem.
           </p>
           <div className="animate-in slide-in-from-bottom-2 fade-in duration-1000 delay-300">
             <ExpertTrace />
@@ -66,13 +53,13 @@ export function FlourishingHeroSection() {
           className="mt-2 w-full sm:w-auto inline-flex items-center justify-center bg-black text-white px-8 py-4 text-[15px] rounded-full hover:bg-neutral-800 transition-colors cursor-pointer animate-in slide-in-from-bottom-4 fade-in duration-700"
           style={{ fontWeight: 600 }}
         >
-          {currentSlide.cta}
+          Review Corporate Partnerships →
         </a>
 
         {/* Trust signal */}
         <div className="flex flex-col items-center gap-6 mt-4">
           <p className="text-[12px] sm:text-[13px] text-neutral-400 m-0 animate-in fade-in duration-1000">
-            {currentSlide.micro}
+            Empowering UK Higher Education to lead in the global innovation economy.
           </p>
         </div>
 

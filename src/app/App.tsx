@@ -11,11 +11,11 @@ import { CaseStudySection } from './components/CaseStudySection';
 import { CTAFormSection } from './components/CTAFormSection';
 import { OfferBridgeSection } from './components/OfferBridgeSection';
 import { Footer } from './components/Footer';
-import EnrolmentPage from './components/enrolment/EnrolmentPage';
-import { FlourishingPage } from './components/flourishing/FlourishingPage';
+import AdmissionsPage from './components/admissions/AdmissionsPage';
+import { RetentionPage } from './components/retention/RetentionPage';
 import EngagementPage from './components/engagement/EngagementPage';
-import AdvancementPage from './components/advancement/AdvancementPage';
-import EnterprisePage from './components/enterprise/EnterprisePage';
+import AlumniPage from './components/alumni/AlumniPage';
+import PartnershipsPage from './components/partnerships/PartnershipsPage';
 import EcosystemPage from './components/ecosystem/EcosystemPage';
 import { StyleGuide } from './components/StyleGuide';
 
@@ -58,11 +58,11 @@ export default function App() {
         <Route path="/" element={<EcosystemPage />} />
         <Route path="/ecosystem" element={<EcosystemPage />} />
 
-        <Route path="/enrolment" element={<EnrolmentPage />} />
-        <Route path="/flourishing" element={<FlourishingPage />} />
+        <Route path="/admissions" element={<AdmissionsPage />} />
+        <Route path="/retention" element={<RetentionPage />} />
         <Route path="/engagement" element={<EngagementPage />} />
-        <Route path="/advancement" element={<AdvancementPage />} />
-        <Route path="/enterprise" element={<EnterprisePage />} />
+        <Route path="/alumni" element={<AlumniPage />} />
+        <Route path="/partnerships" element={<PartnershipsPage />} />
         <Route path="/style-guide" element={<StyleGuide />} />
       </Routes>
     </HashRouter>

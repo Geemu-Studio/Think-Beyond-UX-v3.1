@@ -1,14 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { ConsultationModal } from '../ConsultationModal';
+import {
+  GroupsOutlined,
+  NotificationsActiveOutlined,
+  PhoneIphoneOutlined
+} from '@mui/icons-material';
 import expertMarcin from '@/assets/expert-marcin.jpeg';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import {
-  TrendingUpOutlined,
-  MenuBookOutlined,
-  HubOutlined
-} from '@mui/icons-material';
+function CheckIcon() {
+  return (
+    <div className="w-9 h-9 rounded-full border border-black flex items-center justify-center shrink-0">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8l3.5 3.5L13 4.5" stroke="black" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  );
+}
 
 const svgPaths = {
   p1cfaff00: "M10.5 4.5V1.5H1.5V10.5H4.5M10.5 4.5H4.5V10.5M10.5 4.5L1.5 1.5M4.5 10.5L1.5 1.5",
@@ -16,31 +25,31 @@ const svgPaths = {
 
 const cards = [
   {
-    icon: <TrendingUpOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Strategic Institutional Advancement',
-    body: 'Cultivating philanthropic growth requires more than funding requests. Build deep, resonant relationships by understanding the unique academic journey and passions of every graduate.',
+    icon: <GroupsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Holistic Institutional Visibility',
+    body: 'Overcome departmental silos. Provide advisors with the comprehensive, real-time insights required to deliver proactive, mission-driven academic support.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
   },
   {
-    icon: <MenuBookOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Lifelong Academic Partnership',
-    body: 'The traditional degree is an evolving foundation. Secure your institution’s role as a lifelong partner through bespoke microcredentials and postgraduate paths that meet graduate aspirations.',
+    icon: <NotificationsActiveOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Predictive Academic Intervention',
+    body: 'Harness the power of institutional intelligence. Automatically identify high-risk scenarios and orchestrate timely, empathetic interventions that secure student progression.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
   },
   {
-    icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Administrative Fragmentation',
-    body: 'Siloed institutional insights prevent meaningful outreach. Surmount the barriers to connection, unlocking high-value opportunities for mentorship, corporate partnerships, and advocacy.',
+    icon: <PhoneIphoneOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
+    title: 'Institutional Retention Impact',
+    body: 'Foster student agency through an intuitive, mobile-first ecosystem. Accelerate access to critical welfare and academic resources, ensuring support is always present.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
   },
 ];
 
-export function AdvancementProblemSection() {
+export function RetentionSolutionSection() {
   const location = useLocation();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<typeof cards[0] | null>(null);
   const [videoStarted, setVideoStarted] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -89,58 +98,78 @@ export function AdvancementProblemSection() {
   }, []);
 
   return (
-    <section id="problem" className="bg-white py-24 px-3 lg:px-6 ">
+    <section id="solution" className="bg-neutral-50 py-24 px-3 lg:px-6 border-t border-neutral-200">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
-        {/* Section headline */}
+        {/* Headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Institutional Opportunity
+            Solution
           </span>
-          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Building an institutional legacy of continuous engagement.</h2>
-          <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-            Surmount transactional fundraising constraints. Equip your advancement teams with the strategic insights required to foster a lifelong connection with every graduate.
-          </p>
+          <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
+            The unified ecosystem for the modern, globally minded university.
+          </h2>
         </div>
 
-        {/* 3-col agitation grid */}
+        {/* 3-col solution cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {cards.map((card) => (
-            <button
+            <div
               key={card.title}
               onClick={() => openVideo(card)}
-              className="p-8 flex flex-col gap-5 text-left rounded-[20px] bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer w-full border-none"
+              className="bg-white rounded-[20px] p-8 flex flex-col gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl transition-all duration-300 group cursor-pointer"
             >
-              <div
-                aria-hidden="true"
-                className="w-12 h-12 rounded-[14px] flex items-center justify-center text-neutral-400 bg-neutral-100 border border-neutral-200 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
-              >
-                {card.icon}
-              </div>
-              <h3 className="text-[18px] text-black tracking-[-0.4px]" style={{ fontWeight: 700 }}>
-                {card.title}
-              </h3>
-              <p className="text-[14px] text-neutral-500 leading-[1.7] min-h-[4.5rem]">
-                {card.body}
-              </p>
-
-              {/* Watch Solution CTA */}
-              <div className="flex items-center gap-2.5 text-[13px] font-semibold text-neutral-400 group-hover:text-black transition-all mt-auto">
-                <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-200 group-hover:bg-black group-hover:border-black group-hover:text-white transition-all">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="ml-0.5">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
+              {/* Icon row: line-art + checkmark badge */}
+              <div className="flex items-start justify-between">
+                <div
+                  className="w-12 h-12 rounded-[14px] flex items-center justify-center text-neutral-400 bg-neutral-50 border border-neutral-100 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
+                >
+                  {card.icon}
                 </div>
-                <span>Watch overview</span>
+                <CheckIcon />
               </div>
-            </button>
+
+              <div className="flex flex-col gap-5">
+                <h3 className="text-[18px] text-black tracking-[-0.4px]" style={{ fontWeight: 700 }}>
+                  {card.title}
+                </h3>
+                <p className="text-[14px] text-neutral-500 leading-[1.7] min-h-[4.5rem]">
+                  {card.body}
+                </p>
+
+                {/* Watch Solution CTA */}
+                <div className="flex items-center gap-2.5 text-[13px] font-semibold text-neutral-400 group-hover:text-black transition-all">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-200 group-hover:bg-black group-hover:border-black group-hover:text-white transition-all">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="ml-0.5">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                  <span>Watch strategy session</span>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
+
+        {/* Bridge CTA */}
+        <div className="flex items-center gap-6 pt-2">
+          <button
+            onClick={() => setIsConsultationOpen(true)}
+            className="inline-flex items-center gap-2 text-[14px] text-black hover:opacity-60 transition-opacity px-4 py-2 rounded-full hover:bg-neutral-100"
+            style={{ fontWeight: 600 }}
+          >
+            Discover the full impact for your institution
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 6.5h9M8 3l3.5 3.5L8 10" />
+            </svg>
+          </button>
+        </div>
+
       </div>
 
       <ConsultationModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        isOpen={isConsultationOpen}
+        onClose={() => setIsConsultationOpen(false)}
         pathname={location.pathname}
       />
 
@@ -200,7 +229,7 @@ export function AdvancementProblemSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
                     <div className="absolute bottom-10 left-10 text-left pr-10">
-                      <span className="text-[11px] text-white/70 uppercase tracking-[1.4px] font-semibold block mb-2">Strategy Session</span>
+                      <span className="text-[11px] text-white/70 uppercase tracking-[1.4px] font-semibold block mb-2">Expert Session</span>
                       <h3 className="text-white text-xl sm:text-3xl font-bold tracking-tight max-w-xl leading-tight">
                         {activeCard.title}
                       </h3>
@@ -238,14 +267,12 @@ export function AdvancementProblemSection() {
                  <button
                   onClick={(e) => { e.stopPropagation(); prevVideo(); }}
                   className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
-                  aria-label="Previous expert session"
                  >
                   <ChevronLeft className="w-5 h-5" />
                  </button>
                  <button
                   onClick={(e) => { e.stopPropagation(); nextVideo(); }}
                   className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all cursor-pointer active:scale-90"
-                  aria-label="Next expert session"
                  >
                   <ChevronRight className="w-5 h-5" />
                  </button>
@@ -257,3 +284,4 @@ export function AdvancementProblemSection() {
     </section>
   );
 }
+

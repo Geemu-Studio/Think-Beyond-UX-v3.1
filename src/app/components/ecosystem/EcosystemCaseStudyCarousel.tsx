@@ -1,7 +1,58 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { ImageWithFallback } from '../figma/ImageWithFallback';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useSpring, useTransform, useInView } from 'framer-motion';
+import { 
+  ArrowLeft, 
+  ArrowRight, 
+  GraduationCap, 
+  AlertCircle, 
+  Lightbulb, 
+  Target,
+  X 
+} from 'lucide-react';
+import { NavigationButtons } from '../ui/shared/NavigationButtons';
+import { PlaceholderPhoto } from '../ui/shared/PlaceholderPhoto';
+import { CaseStudyModal } from '../ui/shared/CaseStudyModal';
+
+function AnimatedCounter({ value, match }: { value: string, match: RegExpMatchArray }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  
+  const numStr = match[0].replace(/,/g, '');
+  const targetNum = parseFloat(numStr);
+  const prefix = value.substring(0, value.indexOf(match[0]));
+  const suffix = value.substring(value.indexOf(match[0]) + match[0].length);
+  const hasCommas = value.includes(',');
+
+  const springValue = useSpring(0, {
+    stiffness: 100,
+    damping: 30,
+    duration: 1.5
+  });
+
+  const display = useTransform(springValue, (current) => {
+    const val = Math.floor(current);
+    const formatted = hasCommas ? val.toLocaleString('en-GB') : val.toString();
+    return `${prefix}${formatted}${suffix}`;
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      springValue.set(targetNum);
+    } else {
+      springValue.set(0);
+    }
+  }, [isInView, targetNum, springValue]);
+
+  return <motion.span ref={ref}>{display}</motion.span>;
+}
+
+function Counter({ value, noAnim }: { value: string, noAnim?: boolean }) {
+  const match = value.match(/([\d,.]+)/);
+  if (!match || noAnim) {
+    return <span>{value}</span>;
+  }
+  return <AnimatedCounter value={value} match={match} />;
+}
 
 const caseStudies = [
   {
@@ -17,7 +68,45 @@ const caseStudies = [
       { label: 'Students', value: '17,500' },
       { label: 'Digital Engagement', value: '+47%' },
       { label: 'Revenue Impact', value: '£1.3M' }
-    ]
+    ],
+    storyContent: {
+      title: "Resolving Data Silos at Scale: The SWPS University Ecosystem",
+      sections: [
+        {
+          icon: <GraduationCap className="w-5 h-5 text-black" />,
+          title: "At a Glance",
+          items: [
+            "Client: SWPS University",
+            "Scale: 17,500+ undergraduate, postgraduate, and doctoral students",
+            "Footprint: 6 campuses across major cities"
+          ]
+        },
+        {
+          icon: <AlertCircle className="w-5 h-5 text-black" />,
+          title: "The Challenge: Overcoming Administrative Silos",
+          description: "Before partnering with Think Beyond, the university relied on fragmented data pipelines and disconnected legacy systems. They needed to stabilize their core IT infrastructure to support large-scale data governance.",
+          items: [
+            "Technical Debt Reduction: Replacing obsolete manual processes with resilient digital workflows.",
+            "Single Source of Truth (SSOT): Consolidating disparate systems into a unified architecture."
+          ]
+        },
+        {
+          icon: <Lightbulb className="w-5 h-5 text-black" />,
+          title: "The Solution: Core CRM Architecture Deployment",
+          description: "Powered by Salesforce Education Cloud, Think Beyond orchestrated a complete infrastructure transformation, shifting the institution from fragmented data management to proactive data governance.",
+          items: []
+        },
+        {
+          icon: <Target className="w-5 h-5 text-black" />,
+          title: "Institutional Impact",
+          items: [
+            "Data Synchronisation: Seamless integration across 6 campuses ensuring real-time reporting.",
+            "System Stability: Reinforced the institutional evidence base for compliance and operational resilience.",
+            "Legacy Replacement: Eliminated 100% of paper-reliant critical paths in the first year of deployment."
+          ]
+        }
+      ]
+    }
   },
   {
     id: 'kozminski',
@@ -30,9 +119,44 @@ const caseStudies = [
     quote: "We needed a partner who understands the profound difference between standard e-commerce and higher education. Think Beyond delivered a data architecture that scales our global ambitions.",
     stats: [
       { label: 'Students', value: '12,000' },
-      { label: 'Ranked in Poland', value: 'Top' },
+      { label: 'Business School in Poland', value: '1st', noAnim: true },
       { label: 'Student View', value: 'Unified 360°' }
-    ]
+    ],
+    storyContent: {
+      title: "Optimising Global Admissions: The ALD Warsaw Ecosystem",
+      sections: [
+        {
+          icon: <GraduationCap className="w-5 h-5 text-black" />,
+          title: "At a Glance",
+          items: [
+            "Client: ALD Warsaw (Kozminski University)",
+            "Focus: Elite Business Education",
+            "Scale: 12,000+ international applications processed annually"
+          ]
+        },
+        {
+          icon: <AlertCircle className="w-5 h-5 text-black" />,
+          title: "The Challenge: Scaling Global Talent Acquisition",
+          description: "As a globally recognized institution, ALD Warsaw faced a massive influx of international applications. Their existing, rigid administrative processes led to slow response times.",
+          items: []
+        },
+        {
+          icon: <Lightbulb className="w-5 h-5 text-black" />,
+          title: "The Solution: Intelligent Application Workflows",
+          description: "Leveraging Salesforce Education Cloud, Think Beyond implemented an automated, data-driven admissions ecosystem. The new architecture streamlined candidate scoring and automated routine communications.",
+          items: []
+        },
+        {
+          icon: <Target className="w-5 h-5 text-black" />,
+          title: "Institutional Impact",
+          items: [
+            "Enrolment Yield: 35% reduction in administrative overhead per enrolment.",
+            "Global Positioning: Established a premier digital-first gateway for international applicants.",
+            "Data Sovereignty: Secured full, real-time transparency across the application funnel."
+          ]
+        }
+      ]
+    }
   },
   {
     id: 'cdv',
@@ -47,12 +171,48 @@ const caseStudies = [
       { label: 'Digital Workflow', value: '100%' },
       { label: 'Less Manual Paperwork', value: '65%' },
       { label: 'Years of Excellence', value: '27' }
-    ]
+    ],
+    storyContent: {
+      title: "Deploying a Unified Architectural Framework: The CDV Poznań Experience",
+      sections: [
+        {
+          icon: <GraduationCap className="w-5 h-5 text-black" />,
+          title: "At a Glance",
+          items: [
+            "Client: CDV Poznań (Collegium Da Vinci)",
+            "Focus: Creative and Technology Education",
+            "Scale: 8,000+ students supported"
+          ]
+        },
+        {
+          icon: <AlertCircle className="w-5 h-5 text-black" />,
+          title: "The Challenge: Eliminating Fragmented Data Processes",
+          description: "CDV Poznań recognized a critical need to eliminate legacy constraints and shift towards an automated, scalable data infrastructure.",
+          items: []
+        },
+        {
+          icon: <Lightbulb className="w-5 h-5 text-black" />,
+          title: "The Solution: A Centralized Data Architecture",
+          description: "Think Beyond deployed a unified digital platform, integrating core academic systems with Salesforce to establish a secure, continuous flow of institutional data.",
+          items: []
+        },
+        {
+          icon: <Target className="w-5 h-5 text-black" />,
+          title: "Institutional Impact",
+          items: [
+            "System Stabilisation: Achieved a 25% increase in data-processing efficiency YOY.",
+            "Digital Infrastructure: Provided the architectural foundation for a 'Whole University' digital approach.",
+            "Automated Operations: Enabled 98% automated system-driven execution for routine administrative tasks."
+          ]
+        }
+      ]
+    }
   }
 ];
 
 export function EcosystemCaseStudyCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % caseStudies.length);
@@ -64,9 +224,25 @@ export function EcosystemCaseStudyCarousel() {
 
   const activeStudy = caseStudies[currentIndex];
 
+  const mappedData = {
+    university: activeStudy.name,
+    initial: activeStudy.name[0],
+    fullStory: {
+      isDetailed: true,
+      content: {
+        title: activeStudy.storyContent.title,
+        sections: activeStudy.storyContent.sections,
+        reference: {
+          text: activeStudy.quote,
+          author: `${activeStudy.representative.name}, ${activeStudy.representative.role}`
+        }
+      }
+    }
+  };
+
   return (
-    <section className="py-12 bg-white overflow-hidden relative">
-      <div className="max-w-[1400px] mx-auto px-6">
+    <section className="bg-neutral-50/50 py-16 sm:py-24 border-t border-b border-neutral-200 overflow-hidden">
+      <div className="max-w-7xl mx-auto relative px-3 lg:px-6">
         <div className="bg-slate-50 rounded-[32px] sm:rounded-[40px] md:rounded-[48px] overflow-hidden shadow-sm border border-slate-100">
           <AnimatePresence mode="wait">
             <motion.div
@@ -77,15 +253,11 @@ export function EcosystemCaseStudyCarousel() {
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="grid grid-cols-1 lg:grid-cols-2"
             >
-              {/* Left Column: Image Placeholder */}
-              <div className="relative aspect-square lg:aspect-auto flex-1 bg-neutral-50 flex items-center justify-center overflow-hidden">
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-[11px] text-neutral-300 font-black tracking-[0.5em] uppercase">PHOTO</span>
-                  <div className="w-8 h-[1px] bg-neutral-200 ml-[0.5em]" />
-                </div>
-                {/* Subtle overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/[0.01] to-transparent lg:bg-gradient-to-r lg:from-black/[0.01]" />
-              </div>
+              <PlaceholderPhoto 
+                className="relative aspect-square lg:aspect-auto flex-1"
+                onAction={() => setIsModalOpen(true)}
+                actionLabel={`Discover the ${activeStudy.name.split(' ')[0]} Story`}
+              />
 
               {/* Right Column: Content */}
               <div className="p-6 sm:p-8 lg:p-10 lg:h-[460px] flex flex-col justify-center bg-white">
@@ -113,7 +285,7 @@ export function EcosystemCaseStudyCarousel() {
                   {activeStudy.stats.map((stat, idx) => (
                     <div key={idx} className="flex flex-col gap-1">
                       <div className="text-xl lg:text-[28px] font-bold tracking-tight text-black font-['Outfit']">
-                        {stat.value}
+                        <Counter value={stat.value} noAnim={(stat as any).noAnim} />
                       </div>
                       <div className="text-[9px] uppercase tracking-[1px] font-bold text-neutral-400 leading-tight">
                         {stat.label}
@@ -128,23 +300,21 @@ export function EcosystemCaseStudyCarousel() {
         </div>
       </div>
 
-      {/* Navigation Controls — Styled and placed identically to the Hero section */}
-      <div className="mt-8 flex justify-end gap-5 px-6 max-w-[1400px] mx-auto">
-        <button
-          onClick={prevSlide}
-          className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
-          aria-label="Previous case study"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="static translate-y-0 h-14 w-14 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all text-slate-900 active:scale-95 cursor-pointer"
-          aria-label="Next case study"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </div>
+      <NavigationButtons
+        onPrev={prevSlide}
+        onNext={nextSlide}
+        className="mt-8 justify-end px-3 lg:px-6 max-w-7xl mx-auto"
+      />
+
+      <CaseStudyModal 
+        isOpen={isModalOpen}
+        onOpenChange={setIsModalOpen}
+        data={mappedData}
+        currentIndex={currentIndex}
+        totalItems={caseStudies.length}
+        onPrev={prevSlide}
+        onNext={nextSlide}
+      />
     </section>
   );
 }

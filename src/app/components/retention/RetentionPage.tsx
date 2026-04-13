@@ -1,16 +1,16 @@
 import { Header } from '../Header';
 import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
 import { SocialProofBar } from '../SocialProofBar';
-import { FlourishingProblemSection } from './FlourishingProblemSection';
+import { RetentionProblemSection } from './RetentionProblemSection';
 import { CalculatorSection } from '../CalculatorSection';
-import { FlourishingSolutionSection } from './FlourishingSolutionSection';
+import { RetentionSolutionSection } from './RetentionSolutionSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
-import { FlourishingCaseStudySection } from './FlourishingCaseStudySection';
+import { RetentionCaseStudySection } from './RetentionCaseStudySection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
 import { CTAFormSection } from '../CTAFormSection';
 import { Footer } from '../Footer';
 
-export function FlourishingPage() {
+export function RetentionPage() {
   return (
     <div className="bg-white text-black selection:bg-black selection:text-white" style={{ fontFamily: 'var(--font-inter)' }}>
       <Header />
@@ -22,11 +22,11 @@ export function FlourishingPage() {
           defaultFilter="All"
         />
         <SocialProofBar />
-        <FlourishingProblemSection />
-        <FlourishingSolutionSection />
+        <RetentionProblemSection />
+        <RetentionSolutionSection />
         <CalculatorSection />
         <SecurityTrustSection />
-        <FlourishingCaseStudySection />
+        <RetentionCaseStudySection />
         <CTAFormSection 
           title="About us: Your dedicated student success and retention team."
           formTitle="Let's talk about student success and retention at your institution."
