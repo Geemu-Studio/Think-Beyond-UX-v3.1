@@ -46,6 +46,11 @@ interface CaseStudyData {
   university: string;
   initial: string;
   fullStory: FullStory;
+  expert: {
+    name: string;
+    role: string;
+    quote: string;
+  };
 }
 
 interface CaseStudyModalProps {
@@ -218,7 +223,7 @@ export function CaseStudyModal({
                 </div>
               )}
 
-              <ExpertFooterAccordion />
+              <ExpertFooterAccordion expert={data.expert} />
             </motion.div>
           </div>
 

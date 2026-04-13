@@ -258,7 +258,7 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert }: Consult
                         <div className="flex flex-col gap-1.5">
                           <label className="text-[13px] text-neutral-700 font-bold ml-1">Your Role</label>
                           <Input
-                            placeholder="e.g. Vice-Chancellor, Head of Enrolment..."
+                            placeholder="e.g. Vice-Chancellor, Head of Admissions..."
                             value={form.role}
                             onChange={(e) => setForm({ ...form, role: e.target.value })}
                             error={!!errors.role}

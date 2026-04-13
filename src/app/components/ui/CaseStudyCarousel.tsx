@@ -43,6 +43,11 @@ interface Card {
   button: string;
   initial: string;
   fullStory: FullStory;
+  expert: {
+    name: string;
+    role: string;
+    quote: string;
+  };
 }
 
 // Specialized content for SWPS - Conversion-optimized B2B copy
@@ -263,6 +268,11 @@ const CARDS: Card[] = [
       title: "Transforming the Student Experience at Scale: The SWPS University Ecosystem",
       isDetailed: true,
       content: SWPS_DETAILED_CONTENT
+    },
+    expert: {
+      name: "Marcin Pieńkowski",
+      role: "Institutional Strategist",
+      quote: "Strategic alignment ensures that every institutional resource is optimised for admissions excellence and student success."
     }
   },
   {
@@ -278,6 +288,11 @@ const CARDS: Card[] = [
       title: "Optimising Global Admissions: The ALD Warsaw Ecosystem",
       isDetailed: true,
       content: KOZMINSKI_DETAILED_CONTENT
+    },
+    expert: {
+      name: "Dominik Wyrostek",
+      role: "Admissions Architect",
+      quote: "We architect digital gateways that don't just process applications, but cultivate interest and secure commitment from elite global talent."
     }
   },
   {
@@ -293,6 +308,11 @@ const CARDS: Card[] = [
       title: "Fostering Lifelong Success: The CDV Poznań Experience",
       isDetailed: true,
       content: CDV_DETAILED_CONTENT
+    },
+    expert: {
+      name: "Katarzyna Góźdź",
+      role: "Student Success Strategist",
+      quote: "A proactive care model transforms the institutional relationship with the student—moving from administrative support to true academic enablement."
     }
   },
   {
@@ -308,6 +328,11 @@ const CARDS: Card[] = [
       title: "Lifelong Engagement at Scale: The Open University Ecosystem",
       isDetailed: true,
       content: ALUMNI_DETAILED_CONTENT
+    },
+    expert: {
+      name: "Institutional Expert",
+      role: "Alumni & Development Specialist",
+      quote: "The value of a university is amplified by the strength of its lifelong community. We build ecosystems that secure that legacy."
     }
   },
   {
@@ -323,6 +348,11 @@ const CARDS: Card[] = [
       title: "Strategic Knowledge Exchange: The Strathclyde Innovation Ecosystem",
       isDetailed: true,
       content: PARTNERSHIPS_DETAILED_CONTENT
+    },
+    expert: {
+      name: "B2B Strategy Architect",
+      role: "Corporate Partnerships Lead",
+      quote: "Bridging the gap between academia and industry requires more than just a CRM—it demands a unified platform for strategic knowledge exchange."
     }
   }
 ];
@@ -430,8 +460,8 @@ export function CaseStudyCarousel({ initialActiveIdx = 0 }: CaseStudyCarouselPro
           className="flex gap-6 sm:gap-10 shrink-0"
           animate={{
             x: isMobile
-              ? `calc(${(4 - activeIdx) * 85}vw + ${(4 - activeIdx) * 24}px)`
-              : `calc(${(4 - activeIdx) * 620}px + ${(4 - activeIdx) * 40}px)`
+              ? `calc(${(CARDS.length - (activeIdx % CARDS.length)) * 85}vw)` 
+              : `calc(${((CARDS.length + Math.floor(CARDS.length/2)) - activeIdx) * 660}px)`
           }}
           transition={isJumping ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 35 }}
           drag="x"

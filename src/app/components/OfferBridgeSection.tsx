@@ -10,18 +10,18 @@ export function OfferBridgeSection() {
 
   let heading = 'Institutional Resonance & Continuity.';
   let subheading = 'Secure the strategic foundations of your institution. Align every interaction with your academic mission through a unified digital ecosystem.';
-  let cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING, BOXES.ALUMNI, BOXES.ENTERPRISE];
+  let cards = [BOXES.ADMISSIONS, BOXES.RETENTION, BOXES.ENGAGEMENT, BOXES.ALUMNI, BOXES.PARTNERSHIPS];
 
   if (path === '/admissions') {
-    cards = [BOXES.SUCCESS, BOXES.MARKETING, BOXES.ALUMNI, BOXES.ENTERPRISE];
+    cards = [BOXES.RETENTION, BOXES.ENGAGEMENT, BOXES.ALUMNI, BOXES.PARTNERSHIPS];
   } else if (path === '/retention') {
-    cards = [BOXES.RECRUITMENT, BOXES.MARKETING, BOXES.ALUMNI, BOXES.ENTERPRISE];
+    cards = [BOXES.ADMISSIONS, BOXES.ENGAGEMENT, BOXES.ALUMNI, BOXES.PARTNERSHIPS];
   } else if (path === '/engagement') {
-    cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.ALUMNI, BOXES.ENTERPRISE];
+    cards = [BOXES.ADMISSIONS, BOXES.RETENTION, BOXES.ALUMNI, BOXES.PARTNERSHIPS];
   } else if (path === '/alumni') {
-    cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING, BOXES.ENTERPRISE];
+    cards = [BOXES.ADMISSIONS, BOXES.RETENTION, BOXES.ENGAGEMENT, BOXES.PARTNERSHIPS];
   } else if (path === '/partnerships') {
-    cards = [BOXES.RECRUITMENT, BOXES.SUCCESS, BOXES.MARKETING, BOXES.ALUMNI];
+    cards = [BOXES.ADMISSIONS, BOXES.RETENTION, BOXES.ENGAGEMENT, BOXES.ALUMNI];
   }
 
   return (

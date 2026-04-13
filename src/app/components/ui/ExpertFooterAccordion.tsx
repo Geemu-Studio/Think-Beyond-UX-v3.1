@@ -59,7 +59,21 @@ function ContactLink({ icon: Icon, label, href }: { icon: any; label: string; hr
   );
 }
 
-export function ExpertFooterAccordion() {
+export interface ExpertData {
+  name: string;
+  role: string;
+  quote: string;
+}
+
+export function ExpertFooterAccordion({ expert }: { expert?: ExpertData }) {
+  const defaultExpert = {
+    name: 'Marcin Pieńkowski',
+    role: 'Institutional Strategist',
+    quote: "Let's start with strategy. I won't sell you another IT system. I'll show you how to architect the institutional foundation your vision demands."
+  };
+
+  const activeExpert = expert || defaultExpert;
+
   const {
     form,
     setForm,
@@ -102,15 +116,15 @@ export function ExpertFooterAccordion() {
                 </div>
               </div>
               <div className="flex flex-col">
-                <h4 className="text-[16px] font-bold text-black uppercase tracking-tight">Marcin Pieńkowski</h4>
-                <span className="text-[13px] text-neutral-400">Institutional Strategist</span>
+                <h4 className="text-[16px] font-bold text-black uppercase tracking-tight">{activeExpert.name}</h4>
+                <span className="text-[13px] text-neutral-400">{activeExpert.role}</span>
               </div>
             </div>
             
             {/* Quote (Institutional Style) */}
             <div className="bg-white border border-zinc-100 p-8 rounded-[32px] shadow-[0_8px_32px_rgba(0,0,0,0.02)] relative">
               <p className="text-[15px] sm:text-[16px] text-[#404040] leading-relaxed italic">
-                &quot;Let&apos;s start with strategy. I won&apos;t sell you another IT system. I&apos;ll show you how to architect the institutional foundation your vision demands.&quot;
+                &quot;{activeExpert.quote}&quot;
               </p>
             </div>
           </div>

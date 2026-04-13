@@ -25,7 +25,7 @@ export interface CalculatorConfig {
 export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
   default: {
     tagline: "Institutional Impact",
-    title: "Measuring the institutional value of academic flourishing.",
+    title: "Measuring the institutional value of academic success.",
     inputLabel: "Annual Student Intake",
     expertQuote: "Student attrition is an institutional failure, not just an individual one. Proactive, data-driven interventions secure both academic journeys and financial resilience.",
     min: 200,
@@ -46,7 +46,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     stats: [
       {
         key: 'dropouts',
-        label: 'INCREASED ENROLMENTS',
+        label: 'INCREASED ADMISSIONS',
         microcopy: 'Projected student attrition based on current UK HE sectoral benchmarks.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
@@ -76,31 +76,31 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
     ]
   },
-  '/enrolment': {
+  '/admissions': {
     tagline: "Institutional Impact",
-    title: "Calculate the strategic value of admission excellence.",
+    title: "Calculate the strategic value of admissions excellence.",
     inputLabel: "Annual Applicant Volume",
-    expertQuote: "Every application you fail to frictionless-enrol is not just a missed fee—it's a lost opportunity to enrich your academic community. Let’s make enrolment a human, strategic moment.",
+    expertQuote: "Every application you fail to frictionless-convert is not just a missed fee—it's a lost opportunity to enrich your academic community. Let’s make admissions a human, strategic moment.",
     min: 500,
     max: 30000,
     step: 500,
     initialValue: 8000,
-    ctaText: "Review Enrolment Architecture",
+    ctaText: "Review Admissions Architecture",
     calculate: (applicants) => ({
-      enrolment: Math.round(applicants * 0.18), // 18% conversion rate
+      admissions: Math.round(applicants * 0.18), // 18% conversion rate
       efficiency: 35, // 35% reduction in manual processing
       revenue: Math.round(applicants * 0.18 * 9250)
     }),
     formatDisplay: (results) => ({
-      enrolment: results.enrolment.toLocaleString('en-GB'),
+      admissions: results.admissions.toLocaleString('en-GB'),
       efficiency: `+${results.efficiency}%`,
       revenue: `£${(results.revenue / 1000000).toFixed(1)}M`
     }),
     stats: [
       {
-        key: 'enrolment',
-        label: 'Enrolment Volume',
-        microcopy: 'Projected enrolment volume based on higher-intent applicant conversion.',
+        key: 'admissions',
+        label: 'Admissions Volume',
+        microcopy: 'Projected admissions volume based on higher-intent applicant conversion.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
             Qualified students comfortably <span style={{ fontWeight: 600 }} className="text-black">transitioning from applicant to learner</span>
@@ -129,7 +129,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
     ]
   },
-  '/flourishing': {
+  '/retention': {
     tagline: "Institutional Impact",
     title: "Projecting the institutional ROI of proactive support.",
     inputLabel: "Student Population",
@@ -138,7 +138,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
     max: 50000,
     step: 1000,
     initialValue: 15000,
-    ctaText: "Audit Student Enablement Models",
+    ctaText: "Audit Student Success Models",
     calculate: (population) => ({
       atRisk: Math.round(population * 0.08), // 8% identified as at-risk early
       retention: Math.round(population * 0.08 * 0.25), // 25% of at-risk students successfully retained
@@ -235,16 +235,16 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
     ]
   },
-  '/advancement': {
+  '/alumni': {
     tagline: "Institutional Impact",
     title: "Evaluating the strategic yield of lifelong affinity.",
     inputLabel: "Active Alumni Database",
-    expertQuote: "Transactional fundraising yields transactional results. Cultivating a lifelong, engaged alumni community unlocks exponential philanthropic potential.",
+    expertQuote: "Transactional donor cycles yield transactional results. Cultivating a lifelong, engaged alumni community unlocks exponential philanthropic potential.",
     min: 10000,
     max: 500000,
     step: 10000,
     initialValue: 80000,
-    ctaText: "Evaluate Advancement Potential",
+    ctaText: "Evaluate Alumni Strategy",
     calculate: (alumni) => ({
       participation: Math.round(alumni * 0.05 * 1.6), // 60% boost in 5% participation
       yield: Math.round(alumni * 0.05 * 1.6 * 125), // £125 average gift
@@ -262,7 +262,7 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
         microcopy: 'Active engagement within the institutional philanthropic ecosystem.',
         suffix: () => (
           <p className="text-[13px] text-neutral-600 leading-[1.6]">
-            Graduates <span style={{ fontWeight: 600 }} className="text-black">actively participating</span> in advancement cycles
+            Graduates <span style={{ fontWeight: 600 }} className="text-black">actively participating</span> in developmental cycles
           </p>
         ),
       },
@@ -288,16 +288,16 @@ export const CALCULATOR_CONFIGS: Record<string, CalculatorConfig> = {
       },
     ]
   },
-  '/enterprise': {
+  '/partnerships': {
     tagline: "Institutional Impact",
     title: "Measuring the innovation velocity of institutional partnerships.",
     inputLabel: "Active Corporate Engagements",
-    expertQuote: "Corporate partnerships shouldn't be siloed. Unifying your enterprise relations unlocks new revenue streams and amplifies your institutional impact.",
+    expertQuote: "Corporate partnerships shouldn't be siloed. Unifying your strategic institutional relations unlocks new revenue streams and amplifies your institutional impact.",
     min: 50,
     max: 2500,
     step: 50,
     initialValue: 500,
-    ctaText: "Review Enterprise Strategy",
+    ctaText: "Review Strategic Partnerships",
     calculate: (engagements) => ({
       revenue: Math.round(engagements * 0.06 * 35000), // 6% conversion, £35k avg value
       efficiency: 28, // 28% increase in grant admin efficiency

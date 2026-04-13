@@ -5,7 +5,7 @@ import { OfferBridgeSection } from '../OfferBridgeSection';
 import { ProblemSection } from '../ProblemSection';
 import { SolutionSection } from '../SolutionSection';
 import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
-import { GlobalFooter } from '../shared/GlobalFooter';
+import { Footer } from '../Footer';
 
 import { EcosystemCaseStudyCarousel } from './EcosystemCaseStudyCarousel';
 import { ManagedServicesBridge } from './ManagedServicesBridge';
@@ -32,7 +32,7 @@ export default function EcosystemPage() {
         <EcosystemGlobalCTA />
         <OfferBridgeSection />
       </main>
-      <GlobalFooter />
+      <Footer />
     </div>
   );
 }

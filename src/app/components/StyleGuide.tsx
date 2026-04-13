@@ -1060,7 +1060,7 @@ export function StyleGuide() {
             { name: "HubOutlined", Icon: HubOutlined, source: "Ecosystem" },
             { name: "TrendingUpOutlined", Icon: TrendingUpOutlined, source: "Growth" },
             { name: "MenuBookOutlined", Icon: MenuBookOutlined, source: "Academic" },
-            { name: "HealthAndSafetyOutlined", Icon: HealthAndSafetyOutlined, source: "Flourishing" }
+            { name: "HealthAndSafetyOutlined", Icon: HealthAndSafetyOutlined, source: "Retention" }
           ], "material")}
         </section>
       </div>

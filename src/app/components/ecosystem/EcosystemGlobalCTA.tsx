@@ -18,7 +18,7 @@ export function EcosystemGlobalCTA() {
         </h2>
         
         <p className="mt-2 text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-          Partner with Europe's largest Salesforce Education Cloud practice. Whether you are decoupling from Tribal SITS, establishing a Single Source of Truth (SSOT), or seeking to optimise your Recruitment & Admissions data model, our enterprise architects are ready to audit your infrastructure.
+          Partner with Europe's largest Salesforce Education Cloud practice. Whether you are decoupling from Tribal SITS, establishing a Single Source of Truth (SSOT), or seeking to optimise your Recruitment & Admissions data model, our institutional architects are ready to audit your infrastructure.
         </p>
 
         <div className="mt-10 flex flex-col items-center gap-12 w-full">

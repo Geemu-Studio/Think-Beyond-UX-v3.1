@@ -33,15 +33,15 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t border-neutral-100">
+    <footer className="bg-neutral-900 border-t border-white/5">
       {/* Bottom bar */}
-      <div className="border-t border-neutral-100 py-10 bg-neutral-50/50">
+      <div className="py-10">
         <div className="mx-auto max-w-7xl px-[12px] lg:px-[24px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <p className="text-[12px] text-neutral-400">
-            © 2026 Think Beyond. All rights reserved.
+          <p className="text-[12px] text-neutral-500 font-medium">
+            © {new Date().getFullYear()} Think Beyond. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <p className="text-[12px] text-neutral-400 font-medium">
+            <p className="text-[12px] text-neutral-400 font-semibold tracking-wide uppercase">
               Salesforce Education Cloud · UK & Europe
             </p>
           </div>

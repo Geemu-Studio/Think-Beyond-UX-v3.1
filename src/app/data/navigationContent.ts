@@ -6,21 +6,21 @@ export const NAVIGATION_CONTENT = {
     linkText: 'Learn More →',
     href: '/ecosystem',
   },
-  RECRUITMENT: {
+  ADMISSIONS: {
     label: 'Salesforce Education Cloud',
     title: 'Strategic Admissions',
     body: 'Empower your institution to attract global talent. Eliminate application barriers and build frictionless, highly personalised admissions journeys.',
     linkText: 'Explore Admissions →',
     href: '/admissions',
   },
-  SUCCESS: {
+  RETENTION: {
     label: 'Salesforce Education Cloud',
     title: 'Student Success & Retention',
     body: 'Shift from reactive support to proactive care. Leverage data-driven early alerts to boost student retention and ensure holistic academic success.',
     linkText: 'Explore Retention →',
     href: '/retention',
   },
-  MARKETING: {
+  ENGAGEMENT: {
     label: 'Salesforce Education Cloud',
     title: 'Institutional Engagement',
     body: 'Break down data silos and cut through digital noise. Build automated, omnichannel communication paths driven by secure institutional data.',
@@ -34,7 +34,7 @@ export const NAVIGATION_CONTENT = {
     linkText: 'Explore Alumni →',
     href: '/alumni',
   },
-  ENTERPRISE: {
+  PARTNERSHIPS: {
     label: 'Salesforce Education Cloud',
     title: 'Corporate Partnerships',
     body: 'Catalyse research collaboration and diversify institutional revenue streams through strategic corporate and industry partnerships.',
@@ -45,9 +45,9 @@ export const NAVIGATION_CONTENT = {
 
 export const NAV_LINKS = [
   { label: 'Ecosystem', href: NAVIGATION_CONTENT.PLATFORM.href, description: NAVIGATION_CONTENT.PLATFORM.body },
-  { label: 'Admissions', href: NAVIGATION_CONTENT.RECRUITMENT.href, description: NAVIGATION_CONTENT.RECRUITMENT.body },
-  { label: 'Retention', href: NAVIGATION_CONTENT.SUCCESS.href, description: NAVIGATION_CONTENT.SUCCESS.body },
-  { label: 'Engagement', href: NAVIGATION_CONTENT.MARKETING.href, description: NAVIGATION_CONTENT.MARKETING.body },
+  { label: 'Admissions', href: NAVIGATION_CONTENT.ADMISSIONS.href, description: NAVIGATION_CONTENT.ADMISSIONS.body },
+  { label: 'Retention', href: NAVIGATION_CONTENT.RETENTION.href, description: NAVIGATION_CONTENT.RETENTION.body },
+  { label: 'Engagement', href: NAVIGATION_CONTENT.ENGAGEMENT.href, description: NAVIGATION_CONTENT.ENGAGEMENT.body },
   { label: 'Alumni', href: NAVIGATION_CONTENT.ALUMNI.href, description: NAVIGATION_CONTENT.ALUMNI.body },
-  { label: 'Partnerships', href: NAVIGATION_CONTENT.ENTERPRISE.href, description: NAVIGATION_CONTENT.ENTERPRISE.body },
+  { label: 'Partnerships', href: NAVIGATION_CONTENT.PARTNERSHIPS.href, description: NAVIGATION_CONTENT.PARTNERSHIPS.body },
 ];
