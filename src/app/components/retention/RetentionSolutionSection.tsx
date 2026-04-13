@@ -26,22 +26,22 @@ const svgPaths = {
 const cards = [
   {
     icon: <GroupsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Holistic Institutional Visibility',
-    body: 'Overcome departmental silos. Provide advisors with the comprehensive, real-time insights required to deliver proactive, mission-driven academic support.',
+    title: 'Data-Driven Early Alerts',
+    body: 'Identify at-risk students through integrated progression signals. Automate notifications to academic advisors to ensure timely and compassionate intervention.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
   },
   {
     icon: <NotificationsActiveOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Predictive Academic Intervention',
-    body: 'Harness the power of institutional intelligence. Automatically identify high-risk scenarios and orchestrate timely, empathetic interventions that secure student progression.',
+    title: 'Unified Student Wellbeing',
+    body: 'Break down the silos between academic and pastoral care. Provide a single, 360-degree view of every learner to support their complete university journey.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
   },
   {
     icon: <PhoneIphoneOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Retention Impact',
-    body: 'Foster student agency through an intuitive, mobile-first ecosystem. Accelerate access to critical welfare and academic resources, ensuring support is always present.',
+    title: 'Streamlined Advising Workflows',
+    body: 'Reduce the administrative burden on your student success teams. Equip them with the tools to focus on high-value, personalised guidance rather than manual data entry.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
   },
@@ -104,11 +104,14 @@ export function RetentionSolutionSection() {
         {/* Headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Solution
+            PROACTIVE CARE ARCHITECTURE
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
-            The unified ecosystem for the modern, globally minded university.
+            Empower your advisors with predictive academic insights.
           </h2>
+          <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
+            Shift from reactive problem-solving to holistic student enablement. We deploy intelligent workflows that consolidate wellbeing and progression data, allowing your teams to intervene before a student reaches a crisis point.
+          </p>
         </div>
 
         {/* 3-col solution cards */}

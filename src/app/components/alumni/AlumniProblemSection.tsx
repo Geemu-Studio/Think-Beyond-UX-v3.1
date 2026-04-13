@@ -99,7 +99,7 @@ export function AlumniProblemSection() {
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">Building an institutional legacy of continuous engagement.</h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
-            Surmount transactional fundraising constraints. Equip your alumni and development teams with the strategic insights required to foster a lifelong connection with every graduate.
+            Surmount transactional philanthropic constraints. Equip your alumni and development teams with the strategic insights required to foster a lifelong connection with every graduate.
           </p>
         </div>
 

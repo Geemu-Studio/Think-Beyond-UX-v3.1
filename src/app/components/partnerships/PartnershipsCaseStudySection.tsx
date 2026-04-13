@@ -11,7 +11,7 @@ export function PartnershipsCaseStudySection() {
             Innovation Stories
           </span>
           <h2 className="mt-3 text-[32px] sm:text-[40px] leading-[1.15] tracking-[-1.4px] text-black">
-            Enterprise & Research Transformation
+            Partnerships & Research Transformation
           </h2>
           <p className="mt-4 text-neutral-500 text-[15px] leading-[1.6]">
             Discover how institutions are scaling their commercial impact and streamlining corporate engagement through the Salesforce Education Cloud ecosystem.

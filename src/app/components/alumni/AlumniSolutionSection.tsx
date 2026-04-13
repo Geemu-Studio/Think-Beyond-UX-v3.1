@@ -26,22 +26,22 @@ const svgPaths = {
 const cards = [
   {
     icon: <AutoGraphOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Strategic Philanthropic Intelligence',
-    body: 'Secure the future of your institution. Gain comprehensive visibility into donor readiness and orchestrate hyper-personalised, mission-driven advancement campaigns.',
+    title: 'Strategic Philanthropy',
+    body: 'Identify high-affinity donors through data-driven insights. Automate personalised cultivation journeys that align with individual alumni passions.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
   },
   {
     icon: <SchoolOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Lifelong Academic Upskilling',
-    body: 'Provide a premium storefront for continuous professional development. Empower returning academic cohorts to easily discover and manage their lifelong learning journey.',
+    title: 'Continuous Education',
+    body: 'Seamlessly integrate executive education and microcredentials, ensuring your institution remains the primary partner for their lifelong professional development.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
   },
   {
     icon: <LanguageOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Legacy Impact',
-    body: 'Foster a prestigious, global network for your graduates. Facilitate high-value mentoring, corporate synergy, and enduring institutional advocacy.',
+    title: 'Global Alumni Communities',
+    body: 'Create secure, branded digital spaces where graduates can network, collaborate, and mentor the next generation of students.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin,
   },
@@ -104,11 +104,14 @@ export function AlumniSolutionSection() {
         {/* Headline */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Solution Ecosystem
+            LIFELONG ENGAGEMENT
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
-            The core pillars of alumni engagement.
+            Transform transactional alumni relations into lifelong partnerships.
           </h2>
+          <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
+            Move beyond disconnected philanthropic initiatives. We architect scalable alumni portals and engagement journeys that foster continuous mentorship, philanthropic growth, and lifelong academic loyalty.
+          </p>
         </div>
 
         {/* 3-col solution cards */}

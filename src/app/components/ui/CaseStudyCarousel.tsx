@@ -157,15 +157,55 @@ const CDV_DETAILED_CONTENT: SWPSContent = {
       icon: <Target className="w-5 h-5 text-black" />,
       title: "Institutional Impact",
       items: [
-        "Student Retention: Achieved a 25% increase in retention rate YOY, directly translating to a sustained NSS 'Academic Support' rating.",
-        "Academic Flourishing: Provided the digital foundation for a 'Whole University' approach to mental health and proactive academic care.",
+        "Student Retention: Achieved an 18% increase in retention rate YOY, directly translating to a sustained NSS 'Academic Support' rating.",
+        "Academic Progression: Provided the digital foundation for a 'Whole University' approach to mental health and proactive academic care.",
         "Employment Outcomes: 98% timely outreach for career opportunities, strengthening the university's Graduate Outcomes dataset for TEF assessment."
       ]
     }
   ],
   reference: {
-    text: "The transition from reactive administration to proactive student care has fundamentally changed our campus culture. Think Beyond's strategic approach and deep understanding of our mission made this evolution possible.",
+    text: "We transformed our student support from a reactive, disconnected process into a unified proactive care model. Thanks to Think Beyond, our academic advisors can now identify and support at-risk learners before they disengage, significantly boosting our overall progression rates.",
     author: "Head of Student Success, CDV Poznań"
+  }
+};
+
+const ALUMNI_DETAILED_CONTENT: SWPSContent = {
+  title: "Lifelong Engagement at Scale: The Open University Ecosystem",
+  sections: [
+    {
+      icon: <GraduationCap className="w-5 h-5 text-black" />,
+      title: "At a Glance",
+      items: [
+        "Client: The Open University",
+        "Focus: Continuous Education & Development",
+        "Scale: 200,000+ Alumni global community"
+      ]
+    },
+    {
+      icon: <AlertCircle className="w-5 h-5 text-black" />,
+      title: "The Challenge: Fragmented Graduate Connections",
+      description: "With a vast, global alumni network, the institution struggled with disconnected data and transactional philanthropic cycles. Mentorship and long-term engagement were hindered by legacy systems that provided no single view of the alumni journey.",
+      items: []
+    },
+    {
+      icon: <Lightbulb className="w-5 h-5 text-black" />,
+      title: "The Solution: A Unified Alumni Ecosystem",
+      description: "Think Beyond architected an intelligent alumni portal and CRM architecture that synchronised philanthropic passion with career data. This enabled personalized engagement paths for mentorship and continuous learning.",
+      items: []
+    },
+    {
+      icon: <Target className="w-5 h-5 text-black" />,
+      title: "Institutional Impact",
+      items: [
+        "Philanthropic Growth: 42% increase in recurring engagement through mission-aligned cultivation.",
+        "Network Strength: 3x expansion of the student-alumni mentorship network in the first 24 months.",
+        "Continuous Learning: 60% uplift in alumni uptake for microcredentials and professional development."
+      ]
+    }
+  ],
+  reference: {
+    text: "We moved from disconnected outreach to a cohesive, data-driven alumni ecosystem. Thanks to Think Beyond, our development teams can now cultivate lifelong relationships, significantly increasing both philanthropic engagement and mentorship participation.",
+    author: "Director of Development & Alumni Relations, The Open University"
   }
 };
 
@@ -203,9 +243,9 @@ const CARDS: Card[] = [
   {
     university: "CDV Poznań (Collegium Da Vinci)",
     metrics: [
-      "Supported 8,000+ Students with Proactive Welfare Alerts",
-      "25% Increase in Student Retention Rate YOY",
-      "98% Timely Outreach for Career Opportunities"
+      "+35% Early Interventions",
+      "100% Unified Student View",
+      "+18% Retention Rate"
     ],
     button: "Explore the CDV Campus",
     initial: "C",
@@ -213,6 +253,21 @@ const CARDS: Card[] = [
       title: "Fostering Lifelong Success: The CDV Poznań Experience",
       isDetailed: true,
       content: CDV_DETAILED_CONTENT
+    }
+  },
+  {
+    university: "The Open University",
+    metrics: [
+      "+42% Philanthropic Engagement",
+      "3x Mentorship Network Growth",
+      "+60% Continuous Education Uptake"
+    ],
+    button: "Discover the Alumni Story",
+    initial: "O",
+    fullStory: {
+      title: "Lifelong Engagement at Scale: The Open University Ecosystem",
+      isDetailed: true,
+      content: ALUMNI_DETAILED_CONTENT
     }
   }
 ];

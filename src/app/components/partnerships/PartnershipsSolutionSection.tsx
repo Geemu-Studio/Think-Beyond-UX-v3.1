@@ -10,7 +10,7 @@ import {
 } from '@mui/icons-material';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-/* Enterprise Solution grid — 3-column cards with checkmark icons */
+/* Partnerships Solution grid — 3-column cards with checkmark icons */
 
 function CheckIcon() {
   return (
@@ -25,22 +25,22 @@ function CheckIcon() {
 const cards = [
   {
     icon: <HubOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Innovation Hubs',
-    body: 'Orchestrate high-value institutional partnerships and commercialise academic research through a unified, strategic CRM ecosystem.',
+    title: 'Research Commercialisation',
+    body: 'Transform academic insight into measurable industry impact. Streamline the management of joint ventures, strategic funding bids, and intellectual property portfolios.',
     videoId: 'v5V6Y0_Q_8k',
     expertImage: expertMarcin
   },
   {
     icon: <SchoolOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Strategic Executive Academy',
-    body: 'Accelerate institutional revenue through premium microcredentials and professional development paths that secure graduate outcomes.',
+    title: 'Executive Learning & Apprenticeships',
+    body: 'Meet the evolving demands of the corporate workforce. Deliver seamless onboarding and progress tracking for premium executive courses and degree apprenticeships.',
     videoId: 'qL6R8Z9W4_8',
     expertImage: expertMarcin
   },
   {
     icon: <AssignmentOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Innovation Impact',
-    body: 'Simplify the complex tripartite resonance between the university, the employer, and the learner with automated institutional compliance.',
+    title: 'Unified Corporate Ecosystem',
+    body: 'Gain a 360-degree view of your institutional relationships. Consolidate fragmented corporate touchpoints to identify new revenue streams and strategic synergies.',
     videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin
   },
@@ -102,13 +102,13 @@ export function PartnershipsSolutionSection() {
 
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Solution
+            STRATEGIC KNOWLEDGE EXCHANGE
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
-            Transform external relations into a unified enterprise ecosystem.
+            Catalyse innovation through high-value corporate partnerships.
           </h2>
           <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-3xl">
-            Salesforce empowers your institution to seamlessly manage corporate partnerships, secure research grant pipelines, and curate highly targeted executive learning cohorts—all through a single, strategic source of truth.
+            Break down the barriers between academia and industry. We architect scalable engagement platforms that drive research commercialisation, degree apprenticeships, and strategic executive education.
           </p>
         </div>
 

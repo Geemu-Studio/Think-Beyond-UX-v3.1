@@ -19,7 +19,7 @@ export function AlumniCaseStudySection() {
         </div>
 
         {/* Standardized Interactive Carousel */}
-        <CaseStudyCarousel initialActiveIdx={1} />
+        <CaseStudyCarousel initialActiveIdx={3} />
 
       </div>
     </section>
