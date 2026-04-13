@@ -149,8 +149,8 @@ export function ConsultationHub({
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
                 className={`w-full p-8 rounded-[32px] border transition-all duration-300 text-left group flex items-center justify-between cursor-pointer ${isExpanded
-                    ? "bg-black border-black text-white translate-y-[-4px]"
-                    : "bg-white border-zinc-200 text-black hover:border-black hover:shadow-lg"
+                  ? "bg-black border-black text-white translate-y-[-4px]"
+                  : "bg-white border-zinc-200 text-black hover:border-black hover:shadow-lg"
                   }`}
               >
                 <div className="flex flex-col gap-1">
@@ -162,8 +162,8 @@ export function ConsultationHub({
                   </h3>
                 </div>
                 <div className={`w-12 h-12 rounded-full border transition-all flex items-center justify-center shrink-0 ${isExpanded
-                    ? "bg-white border-white text-black rotate-180"
-                    : "bg-black border-black text-white group-hover:scale-110"
+                  ? "bg-white border-white text-black rotate-180"
+                  : "bg-black border-black text-white group-hover:scale-110"
                   }`}>
                   {isExpanded ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                 </div>

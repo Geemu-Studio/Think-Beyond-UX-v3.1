@@ -171,14 +171,14 @@ export function PillarMergedHero({
             ))}
           </motion.div>
           {/* 2. Carousel Overlay (High Overlap to meet 50% visibility goal) */}
-          <div ref={carouselRef} className="relative z-10 px-3 lg:px-6 pb-24">
+          <div ref={carouselRef} className="relative z-10 px-3 lg:px-6 pb-16">
             <div className="-mt-12 transition-all">
               <Carousel setApi={setApi} opts={{ align: 'start', dragFree: true, containScroll: 'trimSnaps' }} className="w-full">
                 <div ref={wheelRef} className="pl-3 lg:pl-[max(theme(spacing.6),calc((100vw-80rem)/2+1.5rem))]">
-                  <CarouselContent className="-ml-8 pt-16 pb-6 px-8">
+                  <CarouselContent className="-ml-4 pt-8 pb-3 px-4">
                     <AnimatePresence mode="popLayout">
                       {filteredExperts.map((expert, idx) => (
-                        <CarouselItem key={expert.id} className="pl-8 basis-[372px] shrink-0">
+                        <CarouselItem key={expert.id} className="pl-4 basis-[356px] shrink-0">
                           <motion.div
                             layout
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -187,25 +187,25 @@ export function PillarMergedHero({
                             transition={{ duration: 0.4, delay: idx * 0.05 }}
                             whileHover={{ scale: 1.015, transition: { duration: 0.1 } }}
                             whileTap={{ scale: 0.98 }}
-                            className="group bg-white border border-slate-200 rounded-[28px] p-3 transition-all duration-500 cursor-grab h-[480px] w-[340px] flex flex-col relative z-0 hover:z-10 shadow-none hover:shadow-[0_0_10px_rgba(0,0,0,0.1)]"
+                            className="group bg-white border border-slate-200 rounded-[28px] p-1.5 transition-all duration-500 cursor-grab h-[384px] w-[340px] flex flex-col relative z-0 hover:z-10 shadow-none hover:shadow-[0_0_10px_rgba(0,0,0,0.1)]"
                           >
                             {/* Photo Placeholder */}
-                            <div className="relative h-[250px] w-full overflow-hidden rounded-[20px] bg-slate-50 flex items-center justify-center border border-slate-100 shrink-0">
+                            <div className="relative h-[200px] w-full overflow-hidden rounded-[20px] bg-slate-50 flex items-center justify-center border border-slate-100 shrink-0">
                               <span className="text-[11px] text-slate-300 font-black tracking-[0.5em] uppercase">PHOTO</span>
                             </div>
 
-                            <div className="px-5 py-4 flex flex-col flex-1 min-h-0 text-left overflow-visible">
+                            <div className="px-3 py-2 flex flex-col flex-1 min-h-0 text-left overflow-visible">
                               <h3 className="text-xl text-slate-900 font-bold tracking-tight mb-1 whitespace-normal break-words leading-[1.2]">
                                 {expert.name}
                               </h3>
                               {/* Role with Min-height for consistency */}
-                              <div className="min-h-[3rem] mb-4">
+                              <div className="min-h-[3rem] mb-2">
                                 <p className="text-[14px] text-slate-600 font-medium line-clamp-2 leading-tight whitespace-normal break-words">
                                   {expert.role}
                                 </p>
                               </div>
 
-                              <div className="flex items-center gap-3 mb-4">
+                              <div className="flex items-center gap-3 mb-2">
                                 <a 
                                   href="https://wa.me/48502227174"
                                   target="_blank"
@@ -234,7 +234,7 @@ export function PillarMergedHero({
                                 </a>
                               </div>
 
-                              <div className="pt-3.5 border-t border-slate-100 flex items-center gap-2.5 mt-auto">
+                              <div className="pt-1.5 border-t border-slate-100 flex items-center gap-2.5 mt-auto">
                                 <div className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0" />
                                 <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[1.5px] whitespace-normal break-words leading-tight">
                                   {expert.highlight}
@@ -246,14 +246,14 @@ export function PillarMergedHero({
                       ))}
 
 
-                    <CarouselItem className="pl-6 basis-[364px] shrink-0">
+                    <CarouselItem className="pl-3 basis-[353px] shrink-0">
                       <motion.div
                         layout={{ duration: 0.15 }}
                         onClick={() => {
                           setSelectedExpert(undefined);
                           setIsModalOpen(true);
                         }}
-                        className="bg-slate-900 rounded-[28px] p-10 flex flex-col justify-between h-[480px] w-[340px] cursor-pointer group overflow-hidden relative shadow-2xl"
+                        className="bg-slate-900 rounded-[28px] p-5 flex flex-col justify-between h-[384px] w-[340px] cursor-pointer group overflow-hidden relative shadow-2xl"
                       >
                         <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-white/5 rounded-full blur-[60px]" />
                         <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-white mb-6 relative z-10"><Sparkles className="w-6 h-6" /></div>

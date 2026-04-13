@@ -65,7 +65,7 @@ export function EcosystemCaseStudyCarousel() {
   const activeStudy = caseStudies[currentIndex];
 
   return (
-    <section className="py-24 bg-white overflow-hidden relative">
+    <section className="py-12 bg-white overflow-hidden relative">
       <div className="max-w-[1400px] mx-auto px-6">
         <div className="bg-slate-50 rounded-[32px] sm:rounded-[40px] md:rounded-[48px] overflow-hidden shadow-sm border border-slate-100">
           <AnimatePresence mode="wait">
@@ -88,18 +88,18 @@ export function EcosystemCaseStudyCarousel() {
               </div>
 
               {/* Right Column: Content */}
-              <div className="p-8 sm:p-10 lg:p-12 lg:h-[500px] flex flex-col justify-center bg-white">
-                <span className="text-[11px] font-bold uppercase tracking-[2px] text-neutral-400 mb-4 lg:mb-6 font-['Space_Grotesk']">
+              <div className="p-6 sm:p-8 lg:p-10 lg:h-[460px] flex flex-col justify-center bg-white">
+                <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px] mb-2 lg:mb-4" style={{ fontWeight: 600 }}>
                   Voice of the Customer
                 </span>
 
-                <blockquote className="mb-6 lg:mb-8">
+                <blockquote className="mb-4 lg:mb-6">
                   <p className="text-2xl sm:text-2xl lg:text-[28px] leading-[1.2] font-bold text-black tracking-tight font-['Outfit']">
                     "{activeStudy.quote}"
                   </p>
                 </blockquote>
 
-                <div className="mb-8 lg:mb-10">
+                <div className="mb-6 lg:mb-8">
                   <div className="font-bold text-[16px] text-black tracking-tight">
                     {activeStudy.representative.name}
                   </div>

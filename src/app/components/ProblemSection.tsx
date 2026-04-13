@@ -86,7 +86,7 @@ export function ProblemSection() {
   }, []);
 
   return (
-    <section id="problem" className="bg-white py-24 px-3 lg:px-6 border-t border-neutral-200">
+    <section id="problem" className="bg-white py-24 px-3 lg:px-6">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
         {/* Section headline */}
