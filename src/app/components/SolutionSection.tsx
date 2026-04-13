@@ -31,7 +31,7 @@ export function SolutionSection() {
     {
       icon: <AnalyticsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
       title: 'Recruitment & Admissions',
-      body: 'Automate candidate engagement and streamline the enrolment journey from initial enquiry to induction.',
+      body: 'Automate candidate engagement and streamline the admissions journey from initial enquiry to induction.',
       videoId: 'qL6R8Z9W4_8', // Student Success
       expertImage: expertMarcin
     },

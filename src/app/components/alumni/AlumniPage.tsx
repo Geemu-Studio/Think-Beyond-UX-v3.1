@@ -18,7 +18,7 @@ export default function AlumniPage() {
         <PillarMergedHero 
           title="Cultivate lasting relationships. Empower your alumni and champion lifelong learning."
           description="Graduation is not the end of the journey. Leverage Salesforce Education Cloud to build a vibrant, global community that supports continuous education, mentorship, and philanthropic growth."
-          ctaText="Empower Your Advancement Network"
+          ctaText="Empower Your Alumni Network"
           defaultFilter="All"
         />
         <SocialProofBar />
@@ -28,9 +28,9 @@ export default function AlumniPage() {
         <SecurityTrustSection />
         <AlumniCaseStudySection />
         <CTAFormSection 
-          title="About us: Your dedicated alumni relations and advancement team."
+          title="About us: Your dedicated alumni relations and development team."
           formTitle="Let's talk about alumni engagement and lifelong learning at your institution."
-          buttonText="Request an Advancement Strategy Call"
+          buttonText="Request an Alumni Strategy Call"
         />
         <OfferBridgeSection />
       </main>

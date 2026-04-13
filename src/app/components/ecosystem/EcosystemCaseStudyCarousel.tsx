@@ -150,7 +150,7 @@ const caseStudies = [
           icon: <Target className="w-5 h-5 text-black" />,
           title: "Institutional Impact",
           items: [
-            "Enrolment Yield: 35% reduction in administrative overhead per enrolment.",
+            "Admissions Yield: 35% reduction in administrative overhead per admissions.",
             "Global Positioning: Established a premier digital-first gateway for international applicants.",
             "Data Sovereignty: Secured full, real-time transparency across the application funnel."
           ]
@@ -166,7 +166,7 @@ const caseStudies = [
       role: 'Head of Recruitment',
       image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80',
     },
-    quote: "We transformed our student services from a traditional paper-based approach to a fully digital ecosystem. Thanks to Think Beyond, our enrolment process is now 100% remote and candidate-centric.",
+    quote: "We transformed our student services from a traditional paper-based approach to a fully digital ecosystem. Thanks to Think Beyond, our admissions process is now 100% remote and candidate-centric.",
     stats: [
       { label: 'Digital Workflow', value: '100%' },
       { label: 'Less Manual Paperwork', value: '65%' },

@@ -137,10 +137,10 @@ export function StyleGuide() {
 
   const pages = [
     { title: "Home Page (Platform)", path: "/", description: NAVIGATION_CONTENT.PLATFORM.body },
-    { title: "Enrolment Excellence", path: "/enrolment", description: NAVIGATION_CONTENT.RECRUITMENT.body },
-    { title: "Academic Flourishing", path: "/flourishing", description: NAVIGATION_CONTENT.SUCCESS.body },
+    { title: "Admissions Excellence", path: "/admissions", description: NAVIGATION_CONTENT.RECRUITMENT.body },
+    { title: "Retention & Success", path: "/retention", description: NAVIGATION_CONTENT.SUCCESS.body },
     { title: "Strategic Engagement", path: "/engagement", description: NAVIGATION_CONTENT.MARKETING.body },
-    { title: "Institutional Advancement", path: "/advancement", description: NAVIGATION_CONTENT.ALUMNI.body }
+    { title: "Alumni & Development", path: "/alumni", description: NAVIGATION_CONTENT.ALUMNI.body }
   ];
 
   const getFrameUrl = (path: string) => {
@@ -450,7 +450,7 @@ export function StyleGuide() {
         <h1 className="text-[36px] md:text-[40px] leading-[1.1] tracking-[-1.5px] text-black font-bold">Institutional Typographic Scale</h1>
         <p className="text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
           <strong><a href="https://fonts.google.com/specimen/Outfit" target="_blank" rel="noreferrer" className="hover:underline text-black decoration-black underline-offset-4 transition-all">Outfit Bold</a></strong> for institutional headings and <strong><a href="https://fonts.google.com/specimen/Inter" target="_blank" rel="noreferrer" className="hover:underline text-black decoration-black underline-offset-4 transition-all">Inter Regular</a></strong> for academic body copy.
-          <br /><span className="text-[12px] mt-2 block opacity-70 italic text-black font-semibold">Requirement: British English (en-GB) and University/Programme/Enrolment terminology.</span>
+          <br /><span className="text-[12px] mt-2 block opacity-70 italic text-black font-semibold">Requirement: British English (en-GB) and University/Programme/Admissions terminology.</span>
         </p>
       </div>
 
@@ -582,7 +582,7 @@ export function StyleGuide() {
               <div className="text-[14px] text-neutral-400 font-medium italic underline decoration-neutral-200 underline-offset-4">Hover over Nav Link</div>
               <div className="absolute top-10 left-10 z-[100] bg-neutral-800 rounded-[20px] p-6 shadow-2xl border border-neutral-700/50 flex flex-col min-w-[200px] max-w-[240px]">
                 <p className="text-[12px] text-neutral-400 leading-[1.65]">
-                  Strategic guidance on institutional enrolment excellence and applicant journey optimisation.
+                  Strategic guidance on institutional admissions excellence and applicant journey optimisation.
                 </p>
               </div>
             </div>
@@ -604,7 +604,7 @@ export function StyleGuide() {
                       <span className="text-[12px] text-neutral-400 font-medium">Institutional Strategist</span>
                     </div>
                     <p className="text-[13px] italic text-neutral-600 leading-[1.6]">
-                      &ldquo;Strategic alignment ensures that every institutional resource is optimised for enrolment excellence and student flourishing.&rdquo;
+                      &ldquo;Strategic alignment ensures that every institutional resource is optimised for admissions excellence and student flourishing.&rdquo;
                     </p>
                 </div>
               </div>

@@ -18,7 +18,7 @@ export default function PartnershipsPage() {
         <PillarMergedHero 
           title="Elevate Institutional Innovation & Partnerships."
           description="Diversify institutional revenue through strategic corporate engagement. Transform knowledge exchange into a scalable, mission-driven innovation ecosystem."
-          ctaText="Review Enterprise Strategy"
+          ctaText="Review Corporate Partnerships"
           defaultFilter="All"
         />
         <SocialProofBar />
@@ -28,8 +28,8 @@ export default function PartnershipsPage() {
         <SecurityTrustSection />
         <PartnershipsCaseStudySection />
         <CTAFormSection 
-          title="About us: Your dedicated Enterprise & Research Partnerships team."
-          formTitle="Let's talk about your institutional enterprise and innovation strategy."
+          title="About us: Your dedicated Corporate & Research Partnerships team."
+          formTitle="Let's talk about your institutional corporate partnerships and innovation strategy."
           buttonText="Schedule a Strategic Review"
         />
         <OfferBridgeSection />

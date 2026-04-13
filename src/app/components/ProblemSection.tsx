@@ -33,8 +33,8 @@ export function ProblemSection() {
     },
     {
       icon: <TrackChangesOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-      title: 'Mission-Driven Enrolment',
-      body: 'Engage candidates who align with your institution’s prestige. Deliver frictionless, personalised enrolment journeys that secure the world’s brightest academic talent.',
+      title: 'Mission-Driven Admissions',
+      body: 'Engage candidates who align with your institution’s prestige. Deliver frictionless, personalised admissions journeys that secure the world’s brightest academic talent.',
       videoId: '8_v1-cE9kkw', // Recruitment
       expertImage: expertMarcin
     },

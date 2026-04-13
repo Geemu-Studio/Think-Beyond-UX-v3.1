@@ -32,7 +32,7 @@ const cards = [
   {
     icon: <TrendingUpOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
     title: 'Yield Optimisation & Legacy',
-    body: 'Mitigate the risks of candidate drop-off. Nurture the critical window between offer and enrolment through consistent, meaningful engagement that fosters early institutional belonging.',
+    body: 'Mitigate the risks of candidate drop-off. Nurture the critical window between offer and admissions through consistent, meaningful engagement that fosters early institutional belonging.',
     videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin,
   },

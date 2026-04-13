@@ -111,7 +111,7 @@ const KOZMINSKI_DETAILED_CONTENT: SWPSContent = {
       icon: <Target className="w-5 h-5 text-black" />,
       title: "Strategic Impact",
       items: [
-        "Efficiency Yield: Achieved a 35% reduction in administrative overhead per enrolment, allowing for higher strategic investment in faculty.",
+        "Efficiency Yield: Achieved a 35% reduction in administrative overhead per admissions, allowing for higher strategic investment in faculty.",
         "Candidate Resonance: Secured full, real-time transparency across the application funnel, directly informing the institutional growth strategy."
       ]
     }
