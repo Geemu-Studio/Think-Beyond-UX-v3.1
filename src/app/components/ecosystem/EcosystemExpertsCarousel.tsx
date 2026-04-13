@@ -122,7 +122,7 @@ export function EcosystemExpertsCarousel() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative bg-neutral-50 py-12 lg:py-16 overflow-hidden"
+      className="relative bg-neutral-50 px-3 lg:px-6 py-0 overflow-hidden"
     >
       <Carousel 
         setApi={setApi}
@@ -178,7 +178,7 @@ export function EcosystemExpertsCarousel() {
                     transition={{ duration: 0.4, delay: idx * 0.05 }}
                     whileHover={{ scale: 1.015, transition: { duration: 0.1 } }}
                     whileTap={{ scale: 0.98 }}
-                    className="group bg-white border border-neutral-100 rounded-[28px] p-3 shadow-none hover:shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-all duration-500 cursor-grab active:cursor-grabbing h-[480px] w-[340px] flex flex-col"
+                    className="group bg-white border border-neutral-100 rounded-[28px] p-3 shadow-none hover:shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-all duration-500 cursor-grab active:cursor-grabbing min-h-[480px] w-[340px] flex flex-col"
                   >
                     {/* Placeholder Area */}
                     <div className="relative h-[320px] w-full overflow-hidden rounded-[20px] bg-neutral-50 flex items-center justify-center shrink-0">
@@ -236,7 +236,7 @@ export function EcosystemExpertsCarousel() {
                     setSelectedExpert(undefined);
                     setIsModalOpen(true);
                   }}
-                  className="bg-black rounded-[28px] p-10 flex flex-col justify-between h-[480px] w-[340px] cursor-pointer group overflow-hidden relative shadow-2xl"
+                  className="bg-black rounded-[28px] p-10 flex flex-col justify-between min-h-[480px] w-[340px] cursor-pointer group overflow-hidden relative shadow-2xl"
                 >
                   <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-white/5 rounded-full blur-[60px]" />
                   

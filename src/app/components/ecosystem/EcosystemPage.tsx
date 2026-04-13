@@ -1,5 +1,4 @@
 import { Header } from '../Header';
-import { SocialProofBar } from '../SocialProofBar';
 import { CalculatorSection } from '../CalculatorSection';
 import { SecurityTrustSection } from '../SecurityTrustSection';
 import { OfferBridgeSection } from '../OfferBridgeSection';
@@ -9,6 +8,8 @@ import { SolutionSection } from '../SolutionSection';
 import { CaseStudySection } from '../CaseStudySection';
 import { CTAFormSection } from '../CTAFormSection';
 import { PillarMergedHero } from '../ui/shared/PillarMergedHero';
+
+import { EcosystemCaseStudyCarousel } from './EcosystemCaseStudyCarousel';
 
 export default function EcosystemPage() {
   return (
@@ -22,7 +23,7 @@ export default function EcosystemPage() {
           defaultFilter="All"
           showExperts={true}
         />
-        <SocialProofBar />
+        <EcosystemCaseStudyCarousel />
         <ProblemSection />
         <SolutionSection />
         <CalculatorSection />
