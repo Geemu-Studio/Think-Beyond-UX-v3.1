@@ -28,22 +28,22 @@ const svgPaths = {
 const cards = [
   {
     icon: <FavoriteBorderOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Resonant Candidate Engagement',
-    body: 'Anticipate candidate aspirations. Deliver hyper-personalised communication that reflects your university’s mission and secures the world’s brightest academic talent.',
+    title: 'Personalised Outreach',
+    body: 'Deliver timely, mission-driven narratives. Automate multi-channel communications that resonate with the unique aspirations of every prospective student.',
     videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin,
   },
   {
     icon: <WebOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Premium Admissions Infrastructure',
-    body: 'Eliminate friction at the threshold. Provide an intuitive, elite admissions gateway that mirrors the academic excellence and heritage of your institution.',
+    title: 'Frictionless Applications',
+    body: 'Remove administrative barriers. Provide candidates with an intuitive, mobile-first application gateway that accelerates submission rates and reduces drop-off.',
     videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin,
   },
   {
     icon: <InsightsOutlined sx={{ fontSize: 36, color: 'inherit' }} />,
-    title: 'Institutional Impact Architecture',
-    body: 'Lead with data-informed confidence. Leverage predictive analytics to refine your global admissions funnel and secure high-intent applicant cohorts.',
+    title: 'Predictive Yield Analytics',
+    body: 'Move from guesswork to strategic certainty. Leverage intelligent forecasting to identify high-intent candidates and optimise your admissions yield.',
     videoId: '8_v1-cE9kkw',
     expertImage: expertMarcin,
   },
@@ -106,11 +106,14 @@ export function AdmissionsSolutionSection() {
         {/* Headline - identical to master SolutionSection */}
         <div className="max-w-3xl">
           <span className="text-[11px] text-neutral-400 uppercase tracking-[1.4px]" style={{ fontWeight: 600 }}>
-            Solution
+            INTELLIGENT CAPABILITIES
           </span>
           <h2 className="mt-3 leading-[1.15] tracking-[-1.5px] text-black text-[32px]">
-            The unified ecosystem for the modern, globally minded university.
+            Orchestrating a seamless candidate journey.
           </h2>
+          <p className="mt-4 text-[16px] text-neutral-500 leading-[1.7] max-w-2xl">
+            Transform disparate touchpoints into a unified, compassionate candidate experience. We deploy intuitive portals and automated engagement paths that guide prospective students effortlessly toward their academic future.
+          </p>
         </div>
 
         {/* 3-col solution cards */}
