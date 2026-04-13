@@ -117,14 +117,14 @@ const KOZMINSKI_DETAILED_CONTENT: SWPSContent = {
       icon: <Target className="w-5 h-5 text-black" />,
       title: "Institutional Impact",
       items: [
-        "Enrolment Yield: 35% reduction in administrative overhead per enrolment, allowing for higher strategic investment in faculty recruitment.",
+        "Admissions Yield: 27% increase in conversion yield through intelligent forecasting.",
         "Global Positioning: Established a premier digital-first gateway for international applicants, supporting the university's mission to attract elite global talent.",
         "Data Sovereignty: Secured full, real-time transparency across the application funnel, directly informing the institutional growth strategy."
       ]
     }
   ],
   reference: {
-    text: "Think Beyond entirely reshaped how we engage with global talent. The automation, clarity, and strategic insight brought to our admissions team have given us a distinct competitive advantage.",
+    text: "We transformed our candidate engagement from a fragmented approach to a unified digital ecosystem. Thanks to Think Beyond, our admissions journey is now entirely remote, frictionless, and applicant-centric.",
     author: "Admissions Director, ALD Warsaw"
   }
 };
@@ -188,9 +188,9 @@ const CARDS: Card[] = [
   {
     university: "ALD Warsaw (Kozminski University)",
     metrics: [
-      "Processed 12,000+ International Applications Annually",
-      "35% Reduction in Administrative Overhead per Enrolment",
-      "92% Alumni Engagement Score"
+      "100% Remote Admissions Infrastructure",
+      "-45% Reduction in Application Drop-off",
+      "+27% Yield Optimisation through Predictive Logic"
     ],
     button: "Discover the ALD Story",
     initial: "A",
