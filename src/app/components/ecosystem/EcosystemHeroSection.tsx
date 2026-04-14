@@ -103,7 +103,7 @@ export function EcosystemHeroSection() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-[16px] sm:text-[20px] text-neutral-500 leading-[1.6] max-w-3xl font-normal"
           >
-            Many institutions stall at the data integration phase due to internal resource constraints. Partner with Europe's largest dedicated Education Cloud practice to unlock the full potential of your digital ecosystem—without expanding your internal IT footprint.
+            Eradicate data silos and reduce technical debt with a unified Institutional Architecture. We deliver seamless Tribal SITS integration and establish a robust Single Source of Truth (SSOT), ensuring strict HESA compliance across your digital infrastructure.
           </motion.p>
           
           <motion.div 

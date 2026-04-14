@@ -27,7 +27,7 @@ export const EXPERTS: Expert[] = [
     category: "Education Cloud Architects",
     description: "Architecting resilient digital ecosystems for Europe's leading universities. Marcin specialises in complex migrations from legacy SIS to Salesforce Education Cloud, ensuring data integrity and institutional scalability.",
     certificates: ["8x Salesforce Certified", "System Architect", "Education Cloud Consultant"],
-    skills: ["Enterprise Architecture", "SIS Migration", "Data Strategy", "Governance"],
+    skills: ["Institutional Architecture", "SIS Migration", "Data Strategy", "Governance"],
     contact: { whatsapp: "48502227174", email: "marcin@thinkbeyond.cloud", phone: "+48 502 227 174" }
   },
   { 
@@ -58,7 +58,7 @@ export const EXPERTS: Expert[] = [
     role: "Admissions Strategy Consultant", 
     highlight: "Recruitment Optimisation Expert", 
     category: "Recruitment & Engagement",
-    description: "Transforming the candidate journey from first touch to enrolment. Sarah optimises lead scoring and automated engagement to reduce application drop-off and increase yield in competitive global markets.",
+    description: "Transforming the candidate journey from first touch to admissions. Sarah optimises lead scoring and automated engagement to reduce application drop-off and increase yield in competitive global markets.",
     certificates: ["Marketing Cloud Specialist", "Yield Optimisation Lead", "Salesforce Certified Architect"],
     skills: ["Lead Scoring", "International Recruitment", "CRM Automation", "Persona Mapping"],
     contact: { whatsapp: "48502227174", email: "sarah@thinkbeyond.cloud", phone: "+48 502 227 174" }
@@ -92,7 +92,7 @@ export const EXPERTS: Expert[] = [
     highlight: "HE Strategy Specialist", 
     category: "Education Cloud Architects",
     description: "High-level strategic advisor for executive leadership teams. James specialises in aligning digital infrastructure with institutional KPIs and long-term academic excellence.",
-    certificates: ["Strategic HE Leadership", "Enterprise Architect", "Education Cloud Expert"],
+    certificates: ["Strategic HE Leadership", "Institutional Architect", "Education Cloud Expert"],
     skills: ["Institutional Strategy", "KPI Frameworks", "Executive Advisory", "Governance"],
     contact: { whatsapp: "48502227174", email: "james@thinkbeyond.cloud", phone: "+48 502 227 174" }
   },
@@ -114,7 +114,7 @@ export const EXPERTS: Expert[] = [
     highlight: "Alumni & Development Strategist", 
     category: "Recruitment & Engagement",
     description: "Fostering lifelong academic loyalty through strategic engagement. Robert integrates development and alumni relations into the core student lifecycle for sustained philanthropic growth.",
-    certificates: ["Advancement Cloud Expert", "Fundraising Strategist", "Salesforce Consultant"],
+    certificates: ["Strategic Philanthropy Expert", "Fundraising Strategist", "Salesforce Consultant"],
     skills: ["Philanthropy Strategy", "Donor Journeys", "Alumni Engagement", "Relationship Management"],
     contact: { whatsapp: "48502227174", email: "robert@thinkbeyond.cloud", phone: "+48 502 227 174" }
   },
@@ -137,7 +137,7 @@ export const EXPERTS: Expert[] = [
     category: "Education Cloud Architects",
     description: "Mastermind of the university-wide technical blueprint. Sophie ensures that infrastructure is resilient, secure, and ready for high-volume academic operations.",
     certificates: ["Master System Architect", "Security Specialist", "Hereditary Systems Expert"],
-    skills: ["DevOps", "Infrastructure Design", "Cloud Security", "Enterprise Integration"],
+    skills: ["DevOps", "Infrastructure Design", "Cloud Security", "Institutional Integration"],
     contact: { whatsapp: "48502227174", email: "sophie@thinkbeyond.cloud", phone: "+48 502 227 174" }
   },
   { 

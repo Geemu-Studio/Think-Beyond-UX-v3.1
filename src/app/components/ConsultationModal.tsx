@@ -75,7 +75,7 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
     category: 'Education Cloud Architects',
     description: 'Lead strategist and institutional architect specialising in university-wide digital transformation.',
     certificates: ['8x Salesforce Certified', 'System Architect'],
-    skills: ['Enterprise Architecture', 'Governance', 'SIS Migration'],
+    skills: ['Institutional Architecture', 'Governance', 'SIS Migration'],
     contact: { whatsapp: '48502227174', email: 'marcin@thinkbeyond.cloud', phone: '+48 502 227 174' }
   };
 

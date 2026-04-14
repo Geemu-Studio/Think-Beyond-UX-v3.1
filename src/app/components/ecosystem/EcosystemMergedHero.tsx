@@ -180,7 +180,7 @@ export function EcosystemMergedHero() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-[15px] sm:text-[18px] text-neutral-500 leading-[1.6] max-w-2xl font-normal animate-in slide-in-from-bottom-4 fade-in duration-700 px-4"
             >
-              Stalled by IT constraints? Partner with Europe's largest Education Cloud practice to unlock your digital ecosystem.
+              Eradicate data silos and reduce technical debt with a unified Institutional Architecture. We deliver seamless Tribal SITS integration and establish a robust Single Source of Truth (SSOT), ensuring strict HESA compliance across your digital infrastructure.
             </motion.p>
             <div className="animate-in slide-in-from-bottom-2 fade-in duration-1000 delay-300">
               <ExpertTrace />
