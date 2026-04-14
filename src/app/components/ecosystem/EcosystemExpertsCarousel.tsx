@@ -1,63 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, useInView } from 'motion/react';
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-  type CarouselApi
-} from '../ui/carousel';
-import { ConsultationModal, type ModalExpert } from '../ConsultationModal';
-import { useLocation } from 'react-router';
-import { 
-  ArrowRight, 
-  Users, 
-  HelpCircle, 
-  Phone, 
-  Mail, 
-  MessageCircle,
-  Sparkles,
-  ChevronDown,
-  Filter
-} from 'lucide-react';
 import { PlaceholderPhoto } from '../ui/shared/PlaceholderPhoto';
+import { EXPERTS, type Expert, type Category } from '../../data/experts';
 
-// Types - Strictly Education Cloud Focused
-type Category = "All" | "Education Cloud Architects" | "Recruitment & Engagement" | "Student Success" | "Data & Integration";
 
-interface Expert {
-  id: string;
-  name: string;
-  role: string;
-  highlight: string;
-  category: Category;
-  image?: string;
-}
-
-// Full Dataset (20 Experts) - Education Cloud Specialization
-const EXPERTS: Expert[] = [
-  { id: "1", name: "Marcin Pieńkowski", role: "Lead Education Cloud Architect", highlight: "8x Salesforce Certified", category: "Education Cloud Architects" },
-  { id: "2", name: "Dr. Eleanor Hayes", role: "Head of Unified System Strategy", highlight: "Legacy SIS/SITS Expertise", category: "Data & Integration" },
-  { id: "3", name: "Tomasz Wróbel", role: "Student Success Consultant", highlight: "NSS Strategy Specialist", category: "Student Success" },
-  { id: "4", name: "Sarah Jenkins", role: "Admissions Strategy Consultant", highlight: "Education Cloud Certified", category: "Recruitment & Engagement" },
-  { id: "5", name: "David O'Connor", role: "Education Cloud Architect", highlight: "7x Salesforce Certified", category: "Education Cloud Architects" },
-  { id: "6", name: "Piotr Kowalski", role: "Student Journey Specialist", highlight: "10+ Years in Higher Ed IT", category: "Student Success" },
-  { id: "7", name: "James Montgomery", role: "Head of Student Engagement", highlight: "NSS Strategy Expert", category: "Student Success" },
-  { id: "8", name: "Aisha Khan", role: "HE Data Governance Lead", highlight: "UK HE Compliance Expert", category: "Data & Integration" },
-  { id: "9", name: "Robert Smith", role: "Alumni Relations Architect", highlight: "Alumni & Development Expert", category: "Recruitment & Engagement" },
-  { id: "10", name: "Elena Rossi", role: "Curriculum Management Lead", highlight: "Curriculum Transformation Expert", category: "Student Success" },
-  { id: "11", name: "Oliver Brown", role: "Global Recruitment Strategist", highlight: "International Admissions Expert", category: "Recruitment & Engagement" },
-  { id: "12", name: "Sophie Williams", role: "Technical Integration Engineer", highlight: "MuleSoft/SIS Specialist", category: "Data & Integration" },
-  { id: "13", name: "Michael Chang", role: "Education Cloud Solution Lead", highlight: "6x Salesforce Certified", category: "Education Cloud Architects" },
-  { id: "14", name: "Hannah Taylor", role: "HE Business Analyst", highlight: "HE Process Audit Specialist", category: "Student Success" },
-  { id: "15", name: "Adam Nowak", role: "Resilient Cloud Infrastructure Lead", highlight: "Strategic Hosting Expert", category: "Data & Integration" },
-  { id: "16", name: "Charlotte Davies", role: "Transformation Change Management Lead", highlight: "Oxford Governance Expert", category: "Education Cloud Architects" },
-  { id: "17", name: "Benjamin Lee", role: "Student Experience Designer", highlight: "UK HE Digital Campus Expert", category: "Student Success" },
-  { id: "18", name: "Maria Garcia", role: "Educational Data Scientist", highlight: "Predictive Analytics Lead", category: "Data & Integration" },
-  { id: "19", name: "William Turner", role: "Institutional Strategy Consultant", highlight: "Former Vice-Chancellor Advisor", category: "Education Cloud Architects" },
-  { id: "20", name: "Grace Evans", role: "Admissions & Recruitment Strategist", highlight: "Yield Optimisation Expert", category: "Recruitment & Engagement" }
-];
 
 const CATEGORIES: Category[] = [
   "All", 
@@ -80,7 +24,7 @@ export function EcosystemExpertsCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const [activeFilter, setActiveFilter] = useState<Category>("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedExpert, setSelectedExpert] = useState<ModalExpert | undefined>();
+  const [selectedExpert, setSelectedExpert] = useState<Expert | undefined>();
   const location = useLocation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const wheelRef = useRef<HTMLDivElement>(null);
@@ -178,49 +122,39 @@ export function EcosystemExpertsCarousel() {
                     transition={{ duration: 0.4, delay: idx * 0.05 }}
                     whileHover={{ scale: 1.015, transition: { duration: 0.1 } }}
                     whileTap={{ scale: 0.98 }}
-                    className="group bg-white border border-neutral-100 rounded-[28px] p-3 shadow-none hover:shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-all duration-500 cursor-grab active:cursor-grabbing min-h-[480px] w-[340px] flex flex-col"
+                    onClick={() => {
+                      setSelectedExpert(expert);
+                      setIsModalOpen(true);
+                    }}
+                    className="group bg-white border border-neutral-100 rounded-[28px] p-3 shadow-none hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 cursor-pointer w-[340px] flex flex-col relative"
                   >
                     {/* Placeholder Area */}
                     <PlaceholderPhoto 
                       className="h-[320px] w-full rounded-[20px]"
                     />
 
-                    <div className="px-5 py-4 flex flex-col flex-1 min-h-0">
-                      <h3 className="text-lg text-black font-bold tracking-tight line-clamp-1 mb-1">{expert.name}</h3>
-                      <p className="text-[13px] text-neutral-500 font-medium mb-3 line-clamp-2 leading-relaxed">{expert.role}</p>
+                    <div className="px-5 py-5 flex flex-col flex-1 min-h-0">
+                      <div className="flex items-start justify-between gap-2 mb-1">
+                        <h3 className="text-xl text-black font-bold tracking-tight line-clamp-1">{expert.name}</h3>
+                        <div className="w-8 h-8 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-black group-hover:text-white group-hover:border-black transition-all duration-300 shrink-0">
+                          <ArrowRight className="w-4 h-4" />
+                        </div>
+                      </div>
+                      <p className="text-[13px] text-neutral-500 font-medium mb-4 line-clamp-2 leading-relaxed">{expert.role}</p>
                       
-                      <div className="flex items-center gap-3 mb-4">
-                        <a 
-                          href="https://wa.me/48502227174"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300" 
-                          title={`Message ${expert.name.split(' ')[0]} on WhatsApp`}
-                        >
-                          <MessageCircle className="w-4 h-4" />
-                        </a>
-                        <button 
-                          onClick={() => {
-                            setSelectedExpert({ name: expert.name, role: expert.role });
-                            setIsModalOpen(true);
-                          }}
-                          className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300" 
-                          title={`Send message to ${expert.name.split(' ')[0]}`}
-                        >
-                          <Mail className="w-4 h-4" />
-                        </button>
-                        <a 
-                          href="tel:+48502227174"
-                          className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300" 
-                          title={`Call ${expert.name.split(' ')[0]}`}
-                        >
-                          <Phone className="w-4 h-4" />
-                        </a>
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {expert.skills.slice(0, 2).map((skill, sIdx) => (
+                          <span key={sIdx} className="px-2 py-0.5 rounded-full bg-neutral-50 text-neutral-400 text-[10px] font-bold uppercase tracking-wider">
+                            {skill}
+                          </span>
+                        ))}
                       </div>
 
-                      <div className="pt-3 border-t border-neutral-50 flex items-center gap-2 mt-auto">
-                        <div className="w-1.5 h-1.5 rounded-full bg-black shrink-0" />
-                        <span className="text-[11px] text-black font-bold uppercase tracking-wider">{expert.highlight}</span>
+                      <div className="pt-4 border-t border-neutral-50 flex items-center justify-between mt-auto">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-black shrink-0" />
+                          <span className="text-[11px] text-black font-bold uppercase tracking-wider">{expert.highlight}</span>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
