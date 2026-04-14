@@ -59,6 +59,7 @@ export function ManagedServicesBridge() {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         pathname="/ecosystem#managed-services" 
+        variant="managed-services"
       />
     </section>
   );
