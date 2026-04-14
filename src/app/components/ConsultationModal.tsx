@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, CheckCircle2, Lock, X } from 'lucide-react';
+import { Send, CheckCircle2, Lock, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
@@ -16,7 +16,7 @@ import {
   IconMessenger
 } from './ui/consultation/SharedConsultationUI';
 import { PlaceholderPhoto } from './ui/shared/PlaceholderPhoto';
-import { type Expert } from '../data/experts';
+import { EXPERTS, type Expert } from '../data/experts';
 import { Mail, Phone, MessageCircle, Award, BadgeCheck, Briefcase } from 'lucide-react';
 
 const EXPERT_PHOTO =
@@ -71,6 +71,10 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
     handleSubmit,
     resetForm
   } = useConsultationForm();
+  
+  const [showNav, setShowNav] = useState(true);
+  
+  const [cycleExpert, setCycleExpert] = useState<ModalExpert | null>(null);
 
   const fallbackExpert: ModalExpert = {
     id: 'default',
@@ -84,7 +88,6 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
     contact: { whatsapp: '48502227174', email: 'marcin@thinkbeyond.cloud', phone: '+48 502 227 174' }
   };
 
-  const displayExpert = expert || fallbackExpert;
 
   // Accessibility: ESC key handling & Body scroll lock
   useEffect(() => {
@@ -101,17 +104,47 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
     }
   }, [isOpen, onClose]);
 
+  // Sync expert with prop
+  useEffect(() => {
+    if (isOpen) {
+      setCycleExpert(null); // Reset cycle when opening
+    }
+  }, [isOpen]);
+
   // Reset form when modal closes
   useEffect(() => {
     if (!isOpen) {
-      setTimeout(resetForm, 300);
+      setTimeout(() => {
+        resetForm();
+      }, 300);
     }
   }, [isOpen, resetForm]);
 
   if (!isOpen) return null;
 
+  const currentExpert = cycleExpert || expert || fallbackExpert;
+
   // Determine which layout to show
-  const activeVariant = variant || (expert ? 'expert' : 'default');
+  const activeVariant = variant || (expert || cycleExpert ? 'expert' : 'default');
+
+  const handleNextExpert = () => {
+    const currentIndex = EXPERTS.findIndex(e => e.id === currentExpert.id);
+    const nextIndex = (currentIndex + 1) % EXPERTS.length;
+    setCycleExpert(EXPERTS[nextIndex]);
+  };
+
+  const handlePrevExpert = () => {
+    const currentIndex = EXPERTS.findIndex(e => e.id === currentExpert.id);
+    const prevIndex = (currentIndex - 1 + EXPERTS.length) % EXPERTS.length;
+    setCycleExpert(EXPERTS[prevIndex]);
+  };
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const scrollTop = e.currentTarget.scrollTop;
+    setShowNav(scrollTop < 150);
+  };
+
+  if (!isOpen) return null;
 
   return (
     <div
@@ -136,28 +169,71 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
               <X className="w-5 h-5" strokeWidth={2.5} />
             </button>
 
-            <div className="flex-1 overflow-y-auto min-h-0 h-full scroll-smooth custom-scrollbar">
-              {/* Profile Header & Info (White Section) */}
-              <div className="bg-white px-8 pt-12 pb-10">
-                <div className="flex flex-col items-center text-center mb-10">
-                  <PlaceholderPhoto
-                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-full mb-6 ring-4 ring-neutral-50 shadow-md"
-                  />
-                  <span className="text-[11px] text-neutral-400 uppercase tracking-[2px] font-bold block mb-2">
-                    {activeVariant === 'managed-services' ? 'Strategic Support' : displayExpert.role}
-                  </span>
-                  <h2 className="text-3xl sm:text-4xl leading-tight tracking-tight text-black font-bold mb-4">
-                    {activeVariant === 'managed-services' ? 'Expert Support Consultation' : displayExpert.name}
-                  </h2>
-                  <div className="h-1 w-12 bg-black rounded-full" />
-                </div>
+            {/* Navigation Buttons */}
+            {activeVariant === 'expert' && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: showNav ? 1 : 0 }}
+                transition={{ duration: 0.2 }}
+                className="pointer-events-none"
+              >
+                <button
+                  onClick={handlePrevExpert}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-white/80 hover:bg-black text-neutral-400 hover:text-white transition-all shadow-xl backdrop-blur-md border border-neutral-100 active:scale-90 group pointer-events-auto"
+                  aria-label="Previous expert"
+                >
+                  <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
+                </button>
+                <button
+                  onClick={handleNextExpert}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-white/80 hover:bg-black text-neutral-400 hover:text-white transition-all shadow-xl backdrop-blur-md border border-neutral-100 active:scale-90 group pointer-events-auto"
+                  aria-label="Next expert"
+                >
+                  <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </motion.div>
+            )}
+
+            <div 
+              onScroll={handleScroll}
+              className="flex-1 overflow-y-auto min-h-0 h-full scroll-smooth custom-scrollbar"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentExpert.id}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* Profile Header & Info (White Section) */}
+                  <div className="bg-white px-8 pt-12 pb-10">
+                    <div className="flex flex-col items-center text-center mb-10">
+                      <div className="relative">
+                        <PlaceholderPhoto
+                          className="w-24 h-24 sm:w-28 sm:h-28 rounded-full mb-8 ring-4 ring-neutral-50 shadow-md"
+                        />
+                        {activeVariant === 'expert' && (
+                          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm z-10">
+                            {EXPERTS.findIndex(e => e.id === currentExpert.id) + 1} / {EXPERTS.length}
+                          </div>
+                        )}
+                      </div>
+                      <span className="text-[11px] text-neutral-400 uppercase tracking-[2px] font-bold block mb-2 mt-4">
+                        {activeVariant === 'managed-services' ? 'Strategic Support' : currentExpert.role}
+                      </span>
+                      <h2 className="text-3xl sm:text-4xl leading-tight tracking-tight text-black font-bold mb-4">
+                        {activeVariant === 'managed-services' ? 'Expert Support Consultation' : currentExpert.name}
+                      </h2>
+                      <div className="h-1 w-12 bg-black rounded-full" />
+                    </div>
 
                 {activeVariant === 'expert' && (
                   <div className="space-y-10">
                     {/* Bio */}
                     <div className="text-center max-w-lg mx-auto">
                       <p className="text-[15px] leading-relaxed text-neutral-600 font-medium italic">
-                        &ldquo;{displayExpert.description}&rdquo;
+                        &ldquo;{currentExpert.description}&rdquo;
                       </p>
                     </div>
 
@@ -169,7 +245,7 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
                           <span className="text-[11px] text-black font-bold uppercase tracking-wider">Certifications</span>
                         </div>
                         <div className="flex flex-wrap gap-2">
-                          {displayExpert.certificates.map((cert, i) => (
+                          {currentExpert.certificates.map((cert, i) => (
                             <span key={i} className="px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-100 text-[12px] font-bold text-neutral-700 flex items-center gap-1.5">
                               <BadgeCheck className="w-3.5 h-3.5 text-black" />
                               {cert}
@@ -184,7 +260,7 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
                           <span className="text-[11px] text-black font-bold uppercase tracking-wider">Expertise</span>
                         </div>
                         <div className="flex flex-wrap gap-2">
-                          {displayExpert.skills.map((skill, i) => (
+                          {currentExpert.skills.map((skill, i) => (
                             <span key={i} className="px-3 py-1.5 rounded-lg bg-black text-white text-[12px] font-bold tracking-tight">
                               {skill}
                             </span>
@@ -195,13 +271,13 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
 
                     {/* Contact Bar */}
                     <div className="flex items-center justify-center gap-4 pt-6 border-t border-neutral-100">
-                      <a href={`https://wa.me/${displayExpert.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366]/10 text-[#075E54] hover:bg-[#25D366] hover:text-white transition-all duration-300 font-bold text-[13px]">
+                      <a href={`https://wa.me/${currentExpert.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366]/10 text-[#075E54] hover:bg-[#25D366] hover:text-white transition-all duration-300 font-bold text-[13px]">
                         <MessageCircle className="w-4 h-4" /> WhatsApp
                       </a>
-                      <a href={`mailto:${displayExpert.contact.email}`} className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-black hover:text-white transition-all duration-300 font-bold text-[13px]">
+                      <a href={`mailto:${currentExpert.contact.email}`} className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-black hover:text-white transition-all duration-300 font-bold text-[13px]">
                         <Mail className="w-4 h-4" /> Email
                       </a>
-                      <a href={`tel:${displayExpert.contact.phone.replace(/\s+/g, '')}`} className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-black hover:text-white transition-all duration-300 font-bold text-[13px]">
+                      <a href={`tel:${currentExpert.contact.phone.replace(/\s+/g, '')}`} className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-black hover:text-white transition-all duration-300 font-bold text-[13px]">
                         <Phone className="w-4 h-4" /> Call
                       </a>
                     </div>
@@ -213,15 +289,17 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
                     <p className="text-[15px] leading-relaxed text-neutral-600 font-medium">
                       Discuss how our Managed Services can act as a seamless extension of your HE institution. Tell us about your current technical constraints.
                     </p>
-                  </div>
-                )}
-              </div>
+                    </div>
+                  )}
+                </div>
 
-              {/* Form Section */}
-              <div id="expert-contact-form" className="bg-slate-50 border-t border-neutral-200 px-8 py-16">
-                {renderFormUI('expert')}
-              </div>
-            </div>
+                {/* Form Section */}
+                <div id="expert-contact-form" className="bg-slate-50 border-t border-neutral-200 px-8 py-16">
+                  {renderFormUI('expert')}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
           </motion.div>
         ) : (
           /* ── ORIGINAL: Two Column Layout ── */
@@ -317,7 +395,7 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
               <h3 className={`${layoutType === 'default' ? 'text-[32px]' : 'text-2xl'} font-bold tracking-tight text-black mb-3`}>Strategic Dialogue Initiated</h3>
               <p className="text-neutral-500 text-md leading-relaxed px-10">
                 {layoutType === 'expert' 
-                  ? `Your brief has been forwarded to ${displayExpert.name.split(' ')[0]}. A session will be coordinated within 24 business hours.`
+                  ? `Your brief has been forwarded to ${currentExpert.name.split(' ')[0]}. A session will be coordinated within 24 business hours.`
                   : "A dedicated institutional strategist will coordinate your strategy session within 24 business hours."}
               </p>
             </div>
@@ -342,7 +420,7 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
               </h3>
               {layoutType === 'expert' && (
                 <p className="text-[13px] text-neutral-500 font-medium">
-                  Fill out the form below to begin your consultation with {activeVariant === 'managed-services' ? 'our support team' : displayExpert.name.split(' ')[0]}.
+                  Fill out the form below to begin your consultation with {activeVariant === 'managed-services' ? 'our support team' : currentExpert.name.split(' ')[0]}.
                 </p>
               )}
             </div>
