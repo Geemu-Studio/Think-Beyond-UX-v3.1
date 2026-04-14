@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Send, CheckCircle2, Lock, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Send, CheckCircle2, Lock, X, ChevronLeft, ChevronRight, Mail, Phone, MessageCircle, Award, BadgeCheck, Briefcase } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useConsultationForm } from '../hooks/useConsultationForm';
 import {
-  UK_UNIVERSITIES,
   UNIVERSITY_OPTIONS,
   ContactLink,
   IconEmail,
   IconPhone,
-  IconWhatsApp,
-  IconMessenger
+  IconWhatsApp
 } from './ui/consultation/SharedConsultationUI';
 import { PlaceholderPhoto } from './ui/shared/PlaceholderPhoto';
 import { EXPERTS, type Expert } from '../data/experts';
-import { Mail, Phone, MessageCircle, Award, BadgeCheck, Briefcase } from 'lucide-react';
-
-const EXPERT_PHOTO =
-  'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS11c2VyLWljb24gbHVjaWRlLWNpcmNsZS11c2VyIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTAiIHI9IjMiLz48cGF0aCBkPSJNNyAyMC42NjJWMTlhMiAyIDAgMCAxIDItMmg2YTIgMiAwIDAgMSAyIDJ2MS42NjIiLz48L3N2Zz4=';
-
 
 export type ModalExpert = Expert;
 
@@ -59,7 +51,6 @@ function AvatarStack() {
   );
 }
 
-
 export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }: ConsultationModalProps) {
   const {
     form,
@@ -73,7 +64,7 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
   } = useConsultationForm();
   
   const [showNav, setShowNav] = useState(true);
-  
+  const navRef = useRef(true);
   const [cycleExpert, setCycleExpert] = useState<ModalExpert | null>(null);
 
   const fallbackExpert: ModalExpert = {
@@ -88,8 +79,6 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
     contact: { whatsapp: '48502227174', email: 'marcin@thinkbeyond.cloud', phone: '+48 502 227 174' }
   };
 
-
-  // Accessibility: ESC key handling & Body scroll lock
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -104,14 +93,12 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
     }
   }, [isOpen, onClose]);
 
-  // Sync expert with prop
   useEffect(() => {
     if (isOpen) {
       setCycleExpert(null); // Reset cycle when opening
     }
   }, [isOpen]);
 
-  // Reset form when modal closes
   useEffect(() => {
     if (!isOpen) {
       setTimeout(() => {
@@ -123,8 +110,6 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
   if (!isOpen) return null;
 
   const currentExpert = cycleExpert || expert || fallbackExpert;
-
-  // Determine which layout to show
   const activeVariant = variant || (expert || cycleExpert ? 'expert' : 'default');
 
   const handleNextExpert = () => {
@@ -141,19 +126,23 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const scrollTop = e.currentTarget.scrollTop;
-    setShowNav(scrollTop < 150);
+    const shouldShow = scrollTop < 150;
+    if (shouldShow !== navRef.current) {
+      navRef.current = shouldShow;
+      setShowNav(shouldShow);
+    }
   };
-
-  if (!isOpen) return null;
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <AnimatePresence mode="wait">
         {activeVariant === 'expert' || activeVariant === 'managed-services' ? (
-          /* ── NEW: Single Column Profile Layout ── */
           <motion.div
             key="expert-layout"
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -165,6 +154,7 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
             <button
               onClick={onClose}
               className="absolute right-6 top-6 z-[110] w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-black text-neutral-400 hover:text-white transition-all shadow-sm active:scale-95 cursor-pointer border border-neutral-200"
+              aria-label="Close modal"
             >
               <X className="w-5 h-5" strokeWidth={2.5} />
             </button>
@@ -206,7 +196,6 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Profile Header & Info (White Section) */}
                   <div className="bg-white px-8 pt-12 pb-10">
                     <div className="flex flex-col items-center text-center mb-10">
                       <div className="relative">
@@ -228,81 +217,76 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
                       <div className="h-1 w-12 bg-black rounded-full" />
                     </div>
 
-                {activeVariant === 'expert' && (
-                  <div className="space-y-10">
-                    {/* Bio */}
-                    <div className="text-center max-w-lg mx-auto">
-                      <p className="text-[15px] leading-relaxed text-neutral-600 font-medium italic">
-                        &ldquo;{currentExpert.description}&rdquo;
-                      </p>
-                    </div>
-
-                    {/* Certificates & Skills Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-neutral-100">
-                      <div>
-                        <div className="flex items-center gap-2 mb-4">
-                          <Award className="w-4 h-4 text-black" />
-                          <span className="text-[11px] text-black font-bold uppercase tracking-wider">Certifications</span>
+                    {activeVariant === 'expert' && (
+                      <div className="space-y-10">
+                        <div className="text-center max-w-lg mx-auto">
+                          <p className="text-[15px] leading-relaxed text-neutral-600 font-medium italic">
+                            &ldquo;{currentExpert.description}&rdquo;
+                          </p>
                         </div>
-                        <div className="flex flex-wrap gap-2">
-                          {currentExpert.certificates.map((cert, i) => (
-                            <span key={i} className="px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-100 text-[12px] font-bold text-neutral-700 flex items-center gap-1.5">
-                              <BadgeCheck className="w-3.5 h-3.5 text-black" />
-                              {cert}
-                            </span>
-                          ))}
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-neutral-100">
+                          <div>
+                            <div className="flex items-center gap-2 mb-4">
+                              <Award className="w-4 h-4 text-black" />
+                              <span className="text-[11px] text-black font-bold uppercase tracking-wider">Certifications</span>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {currentExpert.certificates.map((cert, i) => (
+                                <span key={i} className="px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-100 text-[12px] font-bold text-neutral-700 flex items-center gap-1.5">
+                                  <BadgeCheck className="w-3.5 h-3.5 text-black" />
+                                  {cert}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div>
+                            <div className="flex items-center gap-2 mb-4">
+                              <Briefcase className="w-4 h-4 text-black" />
+                              <span className="text-[11px] text-black font-bold uppercase tracking-wider">Expertise</span>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {currentExpert.skills.map((skill, i) => (
+                                <span key={i} className="px-3 py-1.5 rounded-lg bg-black text-white text-[12px] font-bold tracking-tight">
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center gap-4 pt-6 border-t border-neutral-100">
+                          <a href={`https://wa.me/${currentExpert.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366]/10 text-[#075E54] hover:bg-[#25D366] hover:text-white transition-all duration-300 font-bold text-[13px]">
+                            <MessageCircle className="w-4 h-4" /> WhatsApp
+                          </a>
+                          <a href={`mailto:${currentExpert.contact.email}`} className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-black hover:text-white transition-all duration-300 font-bold text-[13px]">
+                            <Mail className="w-4 h-4" /> Email
+                          </a>
+                          <a href={`tel:${currentExpert.contact.phone.replace(/\s+/g, '')}`} className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-black hover:text-white transition-all duration-300 font-bold text-[13px]">
+                            <Phone className="w-4 h-4" /> Call
+                          </a>
                         </div>
                       </div>
+                    )}
 
-                      <div>
-                        <div className="flex items-center gap-2 mb-4">
-                          <Briefcase className="w-4 h-4 text-black" />
-                          <span className="text-[11px] text-black font-bold uppercase tracking-wider">Expertise</span>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {currentExpert.skills.map((skill, i) => (
-                            <span key={i} className="px-3 py-1.5 rounded-lg bg-black text-white text-[12px] font-bold tracking-tight">
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
+                    {activeVariant === 'managed-services' && (
+                      <div className="text-center max-w-lg mx-auto py-4">
+                        <p className="text-[15px] leading-relaxed text-neutral-600 font-medium">
+                          Discuss how our Managed Services can act as a seamless extension of your HE institution. Tell us about your current technical constraints.
+                        </p>
                       </div>
-                    </div>
-
-                    {/* Contact Bar */}
-                    <div className="flex items-center justify-center gap-4 pt-6 border-t border-neutral-100">
-                      <a href={`https://wa.me/${currentExpert.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366]/10 text-[#075E54] hover:bg-[#25D366] hover:text-white transition-all duration-300 font-bold text-[13px]">
-                        <MessageCircle className="w-4 h-4" /> WhatsApp
-                      </a>
-                      <a href={`mailto:${currentExpert.contact.email}`} className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-black hover:text-white transition-all duration-300 font-bold text-[13px]">
-                        <Mail className="w-4 h-4" /> Email
-                      </a>
-                      <a href={`tel:${currentExpert.contact.phone.replace(/\s+/g, '')}`} className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-black hover:text-white transition-all duration-300 font-bold text-[13px]">
-                        <Phone className="w-4 h-4" /> Call
-                      </a>
-                    </div>
+                    )}
                   </div>
-                )}
 
-                {activeVariant === 'managed-services' && (
-                  <div className="text-center max-w-lg mx-auto py-4">
-                    <p className="text-[15px] leading-relaxed text-neutral-600 font-medium">
-                      Discuss how our Managed Services can act as a seamless extension of your HE institution. Tell us about your current technical constraints.
-                    </p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Form Section */}
-                <div id="expert-contact-form" className="bg-slate-50 border-t border-neutral-200 px-8 py-16">
-                  {renderFormUI('expert')}
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+                  <div id="expert-contact-form" className="bg-slate-50 border-t border-neutral-200 px-8 py-16">
+                    {renderFormUI('expert')}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </motion.div>
         ) : (
-          /* ── ORIGINAL: Two Column Layout ── */
           <motion.div
             key="default-layout"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -310,7 +294,6 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
             exit={{ opacity: 0, scale: 0.95 }}
             className="relative w-full max-w-6xl bg-neutral-100 rounded-[24px] sm:rounded-[32px] shadow-2xl flex flex-col max-h-[90vh] overflow-hidden"
           >
-            {/* Close Button UI */}
             <button
               onClick={onClose}
               className="absolute right-8 top-8 z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white text-black hover:scale-105 transition-all shadow-lg active:scale-95 cursor-pointer backdrop-blur-md border border-black/5"
@@ -320,7 +303,6 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
 
             <div className="flex-1 overflow-y-auto min-h-0 h-full scroll-smooth">
               <div className="grid grid-cols-1 lg:grid-cols-12">
-                {/* Left Column (Content) */}
                 <div className="lg:col-span-5 bg-zinc-50 px-3 py-10 lg:px-8 lg:py-14 flex flex-col gap-10 border-b lg:border-b-0 lg:border-r border-zinc-200">
                   <div className="text-left">
                     <span className="text-[11px] text-neutral-400 uppercase tracking-[2px] font-bold block mb-4">
@@ -340,7 +322,7 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
                             20+ Specialists
                           </div>
                           <div className="uppercase tracking-[1px] text-[#A3A3A3] font-bold text-[11px] leading-tight">
-                            UK HIGHER ED ADVISORS
+                             UK HIGHER ED ADVISORS
                           </div>
                         </div>
                       </div>
@@ -359,7 +341,6 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
                   </div>
                 </div>
 
-                {/* Right Column (Form) */}
                 <div className="lg:col-span-7 bg-white px-3 py-10 lg:px-10 lg:py-14 flex flex-col items-center justify-start lg:justify-center">
                   {renderFormUI('default')}
                 </div>
@@ -371,7 +352,6 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
     </div>
   );
 
-  // Modular Form UI
   function renderFormUI(layoutType: 'default' | 'expert') {
     return (
       <AnimatePresence mode="wait">
@@ -440,7 +420,7 @@ export function ConsultationModal({ isOpen, onClose, pathname, expert, variant }
                 </div>
 
                 <div className="flex flex-col gap-1.5 text-black">
-                  <label className={`text-[12px] ${layoutType === 'default' ? 'text-neutral-700' : 'text-neutral-500'} font-bold ml-1 uppercase tracking-wider`}>Institution name</label>
+                   <label className={`text-[12px] ${layoutType === 'default' ? 'text-neutral-700' : 'text-neutral-500'} font-bold ml-1 uppercase tracking-wider text-black`}>Institution name</label>
                   <Input
                     placeholder="Start typing institution name..."
                     list="modal-universities"
